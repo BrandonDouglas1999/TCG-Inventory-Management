@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InventoryApp.API_Model;
 using InventoryApp.Helpers;
 using System.Net.Http;
+using System.Net;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -36,7 +37,6 @@ namespace InventoryApp.Processors
                 else
                 {
                     //return null card model
-                    MessageBox.Show("Error");
                     YGOProCard card = new YGOProCard();
                     return card;
                 }

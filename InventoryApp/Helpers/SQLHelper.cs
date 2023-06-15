@@ -58,6 +58,26 @@ namespace InventoryApp.Helpers
             return null;
         }
 
+        public int InsertCard(string query) //return status code 
+        {
+            SqlConnection myConnection = new SqlConnection(connectionString);
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            try
+            {
+                myConnection.Open();
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@stat", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                myReader = myCommand.ExecuteReader();
+                int status = (int)myCommand.Parameters["@stat"].Value;
+                return status;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
 
     }
 }
