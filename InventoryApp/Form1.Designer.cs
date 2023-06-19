@@ -28,266 +28,271 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
-            this.table = new System.Windows.Forms.TableLayoutPanel();
-            this.menuButton = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.sidebar.SuspendLayout();
-            this.table.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel7.SuspendLayout();
-            this.flowLayoutPanel9.SuspendLayout();
-            this.flowLayoutPanel8.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            sidebar = new FlowLayoutPanel();
+            table = new TableLayoutPanel();
+            menuButton = new PictureBox();
+            label1 = new Label();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            button1 = new Button();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            button2 = new Button();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            button3 = new Button();
+            flowLayoutPanel6 = new FlowLayoutPanel();
+            button4 = new Button();
+            flowLayoutPanel7 = new FlowLayoutPanel();
+            button5 = new Button();
+            flowLayoutPanel9 = new FlowLayoutPanel();
+            button7 = new Button();
+            flowLayoutPanel8 = new FlowLayoutPanel();
+            button6 = new Button();
+            sidebarTimer = new System.Windows.Forms.Timer(components);
+            sidebar.SuspendLayout();
+            table.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
+            SuspendLayout();
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(76)))), ((int)(((byte)(100)))));
-            this.sidebar.Controls.Add(this.table);
-            this.sidebar.Controls.Add(this.flowLayoutPanel3);
-            this.sidebar.Controls.Add(this.flowLayoutPanel4);
-            this.sidebar.Controls.Add(this.flowLayoutPanel5);
-            this.sidebar.Controls.Add(this.flowLayoutPanel9);
-            this.sidebar.Controls.Add(this.flowLayoutPanel8);
-            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Location = new System.Drawing.Point(0, 0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(182, 556);
-            this.sidebar.MinimumSize = new System.Drawing.Size(48, 556);
-            this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(182, 556);
-            this.sidebar.TabIndex = 0;
+            sidebar.BackColor = Color.FromArgb(47, 76, 100);
+            sidebar.Controls.Add(table);
+            sidebar.Controls.Add(flowLayoutPanel3);
+            sidebar.Controls.Add(flowLayoutPanel4);
+            sidebar.Controls.Add(flowLayoutPanel5);
+            sidebar.Controls.Add(flowLayoutPanel9);
+            sidebar.Controls.Add(flowLayoutPanel8);
+            sidebar.Dock = DockStyle.Left;
+            sidebar.Location = new Point(0, 0);
+            sidebar.MaximumSize = new Size(182, 556);
+            sidebar.MinimumSize = new Size(48, 556);
+            sidebar.Name = "sidebar";
+            sidebar.Size = new Size(182, 556);
+            sidebar.TabIndex = 0;
             // 
             // table
             // 
-            this.table.ColumnCount = 2;
-            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table.Controls.Add(this.menuButton, 0, 1);
-            this.table.Controls.Add(this.label1, 1, 1);
-            this.table.Location = new System.Drawing.Point(3, 3);
-            this.table.Name = "table";
-            this.table.RowCount = 2;
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.table.Size = new System.Drawing.Size(179, 96);
-            this.table.TabIndex = 4;
+            table.ColumnCount = 2;
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            table.Controls.Add(menuButton, 0, 1);
+            table.Controls.Add(label1, 1, 1);
+            table.Location = new Point(3, 3);
+            table.Name = "table";
+            table.RowCount = 2;
+            table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            table.Size = new Size(179, 96);
+            table.TabIndex = 4;
             // 
             // menuButton
             // 
-            this.menuButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuButton.Image = global::InventoryApp.Properties.Resources.menu;
-            this.menuButton.Location = new System.Drawing.Point(3, 51);
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(31, 34);
-            this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.menuButton.TabIndex = 1;
-            this.menuButton.TabStop = false;
+            menuButton.Cursor = Cursors.Hand;
+            menuButton.Image = Properties.Resources.menu;
+            menuButton.Location = new Point(3, 51);
+            menuButton.Name = "menuButton";
+            menuButton.Size = new Size(31, 34);
+            menuButton.SizeMode = PictureBoxSizeMode.StretchImage;
+            menuButton.TabIndex = 1;
+            menuButton.TabStop = false;
+            menuButton.Click += menuButton_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(63, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Menu";
+            label1.AutoSize = true;
+            label1.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(63, 48);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 18);
+            label1.TabIndex = 2;
+            label1.Text = "Menu";
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.button1);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 105);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel3.TabIndex = 1;
+            flowLayoutPanel3.Controls.Add(button1);
+            flowLayoutPanel3.Location = new Point(3, 105);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(173, 46);
+            flowLayoutPanel3.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = global::InventoryApp.Properties.Resources.home;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Home";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Image = Properties.Resources.home;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(3, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(164, 46);
+            button1.TabIndex = 0;
+            button1.Text = "Home";
+            button1.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.button2);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 157);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel4.TabIndex = 2;
+            flowLayoutPanel4.Controls.Add(button2);
+            flowLayoutPanel4.Location = new Point(3, 157);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(173, 46);
+            flowLayoutPanel4.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = global::InventoryApp.Properties.Resources.trading_card;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 46);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Cards";
-            this.button2.UseVisualStyleBackColor = true;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Image = Properties.Resources.trading_card;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(164, 46);
+            button2.TabIndex = 0;
+            button2.Text = "Cards";
+            button2.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel5
             // 
-            this.flowLayoutPanel5.Controls.Add(this.button3);
-            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 209);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel5.TabIndex = 3;
+            flowLayoutPanel5.Controls.Add(button3);
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel5.Location = new Point(3, 209);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new Size(173, 46);
+            flowLayoutPanel5.TabIndex = 3;
             // 
             // button3
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Image = global::InventoryApp.Properties.Resources.line_chart;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(164, 46);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Graphs";
-            this.button3.UseVisualStyleBackColor = true;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Image = Properties.Resources.line_chart;
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(164, 46);
+            button3.TabIndex = 0;
+            button3.Text = "Graphs";
+            button3.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel6
             // 
-            this.flowLayoutPanel6.Controls.Add(this.button4);
-            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 55);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel6.TabIndex = 2;
+            flowLayoutPanel6.Controls.Add(button4);
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel7);
+            flowLayoutPanel6.Location = new Point(3, 55);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            flowLayoutPanel6.Size = new Size(173, 46);
+            flowLayoutPanel6.TabIndex = 2;
             // 
             // button4
             // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::InventoryApp.Properties.Resources.home;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(164, 46);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Home";
-            this.button4.UseVisualStyleBackColor = true;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Image = Properties.Resources.home;
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(3, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(164, 46);
+            button4.TabIndex = 0;
+            button4.Text = "Home";
+            button4.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel7
             // 
-            this.flowLayoutPanel7.Controls.Add(this.button5);
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 55);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel7.TabIndex = 2;
+            flowLayoutPanel7.Controls.Add(button5);
+            flowLayoutPanel7.Location = new Point(3, 55);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            flowLayoutPanel7.Size = new Size(173, 46);
+            flowLayoutPanel7.TabIndex = 2;
             // 
             // button5
             // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::InventoryApp.Properties.Resources.home;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(3, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(164, 46);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Home";
-            this.button5.UseVisualStyleBackColor = true;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Image = Properties.Resources.home;
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
+            button5.Location = new Point(3, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(164, 46);
+            button5.TabIndex = 0;
+            button5.Text = "Home";
+            button5.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel9
             // 
-            this.flowLayoutPanel9.Controls.Add(this.button7);
-            this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 261);
-            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
-            this.flowLayoutPanel9.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel9.TabIndex = 2;
+            flowLayoutPanel9.Controls.Add(button7);
+            flowLayoutPanel9.Location = new Point(3, 261);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            flowLayoutPanel9.Size = new Size(173, 46);
+            flowLayoutPanel9.TabIndex = 2;
             // 
             // button7
             // 
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button7.Image = global::InventoryApp.Properties.Resources.settings;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(3, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(164, 46);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Settings";
-            this.button7.UseVisualStyleBackColor = true;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button7.Image = Properties.Resources.settings;
+            button7.ImageAlign = ContentAlignment.MiddleLeft;
+            button7.Location = new Point(3, 3);
+            button7.Name = "button7";
+            button7.Size = new Size(164, 46);
+            button7.TabIndex = 0;
+            button7.Text = "Settings";
+            button7.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel8
             // 
-            this.flowLayoutPanel8.Controls.Add(this.button6);
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 313);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(173, 46);
-            this.flowLayoutPanel8.TabIndex = 2;
+            flowLayoutPanel8.Controls.Add(button6);
+            flowLayoutPanel8.Location = new Point(3, 313);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            flowLayoutPanel8.Size = new Size(173, 46);
+            flowLayoutPanel8.TabIndex = 2;
             // 
             // button6
             // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = global::InventoryApp.Properties.Resources.question_mark;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(3, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(164, 46);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "About";
-            this.button6.UseVisualStyleBackColor = true;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button6.Image = Properties.Resources.question_mark;
+            button6.ImageAlign = ContentAlignment.MiddleLeft;
+            button6.Location = new Point(3, 3);
+            button6.Name = "button6";
+            button6.Size = new Size(164, 46);
+            button6.TabIndex = 0;
+            button6.Text = "About";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // sidebarTimer
+            // 
+            sidebarTimer.Interval = 10;
+            sidebarTimer.Tick += sidebarTimer_Tick;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 542);
-            this.Controls.Add(this.sidebar);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.sidebar.ResumeLayout(false);
-            this.table.ResumeLayout(false);
-            this.table.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel9.ResumeLayout(false);
-            this.flowLayoutPanel8.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(704, 542);
+            Controls.Add(sidebar);
+            Name = "Form1";
+            Text = "Form1";
+            sidebar.ResumeLayout(false);
+            table.ResumeLayout(false);
+            table.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)menuButton).EndInit();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel8.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

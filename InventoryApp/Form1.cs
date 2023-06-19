@@ -52,7 +52,7 @@ namespace InventoryApp
             }
         }
 
-        private void menuButton_MouseClick(object sender, MouseEventArgs e)
+        private void menuButton_Click(object sender, EventArgs e)
         {
             sidebarTimer.Start();
         }
