@@ -49,6 +49,7 @@
             button6 = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             logo = new PictureBox();
+            add_cards1 = new add_cards();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -287,11 +288,19 @@
             logo.TabIndex = 1;
             logo.TabStop = false;
             // 
+            // add_cards1
+            // 
+            add_cards1.Location = new Point(206, 0);
+            add_cards1.Name = "add_cards1";
+            add_cards1.Size = new Size(762, 556);
+            add_cards1.TabIndex = 2;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1248, 702);
+            Controls.Add(add_cards1);
             Controls.Add(logo);
             Controls.Add(sidebar);
             Name = "Main";
@@ -334,5 +343,6 @@
         private PictureBox menuButton;
         private Label label1;
         private PictureBox logo;
+        private add_cards add_cards1;
     }
 }
