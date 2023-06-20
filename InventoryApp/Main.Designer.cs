@@ -49,7 +49,10 @@
             button6 = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             logo = new PictureBox();
+            card_opt_tabs = new TabControl();
+            tabPage1 = new TabPage();
             add_cards1 = new add_cards();
+            tabPage2 = new TabPage();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -61,6 +64,8 @@
             flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
+            card_opt_tabs.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // sidebar
@@ -288,24 +293,61 @@
             logo.TabIndex = 1;
             logo.TabStop = false;
             // 
+            // card_opt_tabs
+            // 
+            card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            card_opt_tabs.Controls.Add(tabPage1);
+            card_opt_tabs.Controls.Add(tabPage2);
+            card_opt_tabs.Location = new Point(206, 3);
+            card_opt_tabs.Name = "card_opt_tabs";
+            card_opt_tabs.SelectedIndex = 0;
+            card_opt_tabs.Size = new Size(880, 502);
+            card_opt_tabs.TabIndex = 2;
+            card_opt_tabs.Visible = false;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(add_cards1);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(872, 474);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
             // add_cards1
             // 
-            add_cards1.Location = new Point(206, 0);
+            add_cards1.AutoSize = true;
+            add_cards1.BackColor = Color.RosyBrown;
+            add_cards1.Dock = DockStyle.Fill;
+            add_cards1.Location = new Point(3, 3);
             add_cards1.Name = "add_cards1";
-            add_cards1.Size = new Size(762, 556);
-            add_cards1.TabIndex = 2;
+            add_cards1.Size = new Size(866, 468);
+            add_cards1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(872, 474);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1248, 702);
-            Controls.Add(add_cards1);
-            Controls.Add(logo);
+            ClientSize = new Size(1086, 702);
+            Controls.Add(card_opt_tabs);
             Controls.Add(sidebar);
+            Controls.Add(logo);
             Name = "Main";
             Text = "Main";
             Load += Main_Load;
+            Resize += Main_Resize;
             sidebar.ResumeLayout(false);
             table.ResumeLayout(false);
             table.PerformLayout();
@@ -318,6 +360,9 @@
             flowLayoutPanel9.ResumeLayout(false);
             flowLayoutPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logo).EndInit();
+            card_opt_tabs.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -343,6 +388,9 @@
         private PictureBox menuButton;
         private Label label1;
         private PictureBox logo;
+        private TabControl card_opt_tabs;
+        private TabPage tabPage1;
         private add_cards add_cards1;
+        private TabPage tabPage2;
     }
 }
