@@ -13,8 +13,10 @@ namespace InventoryApp
         {
             // Set sizes for certain objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
+            logo.Location = new Point(this.Width / 3 + 50, logo.Location.Y);
         }
 
+        // Menu click
         private void menuButton_Click(object sender, EventArgs e)
         {
             sidebarTimer.Start();
@@ -42,6 +44,16 @@ namespace InventoryApp
             }
         }
 
+        // Home Click
+        private void home_button_Click(object sender, EventArgs e)
+        {
+            logo.Show();
+        }
 
+        // Cards click
+        private void card_button_Click(object sender, EventArgs e)
+        {
+            logo.Hide();
+        }
     }
 }

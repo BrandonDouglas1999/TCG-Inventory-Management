@@ -34,9 +34,9 @@
             menuButton = new PictureBox();
             label1 = new Label();
             flowLayoutPanel3 = new FlowLayoutPanel();
-            button1 = new Button();
+            home_button = new Button();
             flowLayoutPanel4 = new FlowLayoutPanel();
-            button2 = new Button();
+            card_button = new Button();
             flowLayoutPanel5 = new FlowLayoutPanel();
             button3 = new Button();
             flowLayoutPanel6 = new FlowLayoutPanel();
@@ -48,6 +48,7 @@
             flowLayoutPanel8 = new FlowLayoutPanel();
             button6 = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
+            logo = new PictureBox();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -58,6 +59,7 @@
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             SuspendLayout();
             // 
             // sidebar
@@ -117,47 +119,49 @@
             // 
             // flowLayoutPanel3
             // 
-            flowLayoutPanel3.Controls.Add(button1);
+            flowLayoutPanel3.Controls.Add(home_button);
             flowLayoutPanel3.Location = new Point(3, 105);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(173, 46);
             flowLayoutPanel3.TabIndex = 1;
             // 
-            // button1
+            // home_button
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Image = Properties.Resources.home;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(164, 46);
-            button1.TabIndex = 0;
-            button1.Text = "Home";
-            button1.UseVisualStyleBackColor = true;
+            home_button.FlatAppearance.BorderSize = 0;
+            home_button.FlatStyle = FlatStyle.Flat;
+            home_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            home_button.Image = Properties.Resources.home;
+            home_button.ImageAlign = ContentAlignment.MiddleLeft;
+            home_button.Location = new Point(3, 3);
+            home_button.Name = "home_button";
+            home_button.Size = new Size(164, 46);
+            home_button.TabIndex = 0;
+            home_button.Text = "Home";
+            home_button.UseVisualStyleBackColor = true;
+            home_button.Click += home_button_Click;
             // 
             // flowLayoutPanel4
             // 
-            flowLayoutPanel4.Controls.Add(button2);
+            flowLayoutPanel4.Controls.Add(card_button);
             flowLayoutPanel4.Location = new Point(3, 157);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new Size(173, 46);
             flowLayoutPanel4.TabIndex = 2;
             // 
-            // button2
+            // card_button
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Image = Properties.Resources.trading_card;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(164, 46);
-            button2.TabIndex = 0;
-            button2.Text = "Cards";
-            button2.UseVisualStyleBackColor = true;
+            card_button.FlatAppearance.BorderSize = 0;
+            card_button.FlatStyle = FlatStyle.Flat;
+            card_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            card_button.Image = Properties.Resources.trading_card;
+            card_button.ImageAlign = ContentAlignment.MiddleLeft;
+            card_button.Location = new Point(3, 3);
+            card_button.Name = "card_button";
+            card_button.Size = new Size(164, 46);
+            card_button.TabIndex = 0;
+            card_button.Text = "Cards";
+            card_button.UseVisualStyleBackColor = true;
+            card_button.Click += card_button_Click;
             // 
             // flowLayoutPanel5
             // 
@@ -274,11 +278,21 @@
             sidebarTimer.Interval = 10;
             sidebarTimer.Tick += sidebarTimer_Tick;
             // 
+            // logo
+            // 
+            logo.Image = Properties.Resources.logo;
+            logo.Location = new Point(472, 0);
+            logo.Name = "logo";
+            logo.Size = new Size(484, 350);
+            logo.TabIndex = 1;
+            logo.TabStop = false;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1248, 702);
+            Controls.Add(logo);
             Controls.Add(sidebar);
             Name = "Main";
             Text = "Main";
@@ -294,6 +308,7 @@
             flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel9.ResumeLayout(false);
             flowLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)logo).EndInit();
             ResumeLayout(false);
         }
 
@@ -301,9 +316,9 @@
 
         private FlowLayoutPanel sidebar;
         private FlowLayoutPanel flowLayoutPanel3;
-        private Button button1;
+        private Button home_button;
         private FlowLayoutPanel flowLayoutPanel4;
-        private Button button2;
+        private Button card_button;
         private FlowLayoutPanel flowLayoutPanel5;
         private Button button3;
         private FlowLayoutPanel flowLayoutPanel6;
@@ -318,5 +333,6 @@
         private TableLayoutPanel table;
         private PictureBox menuButton;
         private Label label1;
+        private PictureBox logo;
     }
 }
