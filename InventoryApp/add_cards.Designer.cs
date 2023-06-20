@@ -58,11 +58,16 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel4 = new TableLayoutPanel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)api_gridview).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // comboBox1
@@ -168,7 +173,7 @@
             api_gridview.Anchor = AnchorStyles.None;
             api_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             api_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            api_gridview.Location = new Point(29, 281);
+            api_gridview.Location = new Point(34, 290);
             api_gridview.Name = "api_gridview";
             api_gridview.RowTemplate.Height = 25;
             api_gridview.Size = new Size(680, 186);
@@ -179,7 +184,7 @@
             add_bttn.Anchor = AnchorStyles.None;
             add_bttn.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             add_bttn.ImageAlign = ContentAlignment.BottomCenter;
-            add_bttn.Location = new Point(272, 471);
+            add_bttn.Location = new Point(295, 491);
             add_bttn.Name = "add_bttn";
             add_bttn.Size = new Size(164, 38);
             add_bttn.TabIndex = 39;
@@ -285,7 +290,6 @@
             card_srch.PlaceholderText = "Card Name";
             card_srch.Size = new Size(326, 23);
             card_srch.TabIndex = 28;
-            card_srch.TextChanged += card_srch_TextChanged;
             // 
             // api_cn
             // 
@@ -316,7 +320,7 @@
             tableLayoutPanel1.Controls.Add(comboBox1, 1, 0);
             tableLayoutPanel1.Controls.Add(card_srch, 0, 0);
             tableLayoutPanel1.Controls.Add(rtv_card, 2, 0);
-            tableLayoutPanel1.Location = new Point(51, 14);
+            tableLayoutPanel1.Location = new Point(80, 29);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -340,7 +344,7 @@
             tableLayoutPanel2.Controls.Add(api_cn, 1, 1);
             tableLayoutPanel2.Controls.Add(api_ctype, 3, 1);
             tableLayoutPanel2.Controls.Add(api_crace, 2, 1);
-            tableLayoutPanel2.Location = new Point(51, 64);
+            tableLayoutPanel2.Location = new Point(80, 79);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 35.294117F));
@@ -363,7 +367,7 @@
             tableLayoutPanel3.Controls.Add(api_setname, 1, 1);
             tableLayoutPanel3.Controls.Add(api_setcode, 0, 1);
             tableLayoutPanel3.Controls.Add(label2, 0, 0);
-            tableLayoutPanel3.Location = new Point(51, 129);
+            tableLayoutPanel3.Location = new Point(80, 138);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 34.2857132F));
@@ -384,7 +388,7 @@
             tableLayoutPanel4.Controls.Add(label8, 0, 0);
             tableLayoutPanel4.Controls.Add(label4, 1, 0);
             tableLayoutPanel4.Controls.Add(s_price, 1, 1);
-            tableLayoutPanel4.Location = new Point(51, 205);
+            tableLayoutPanel4.Location = new Point(80, 214);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 35.7142868F));
@@ -392,19 +396,51 @@
             tableLayoutPanel4.Size = new Size(596, 70);
             tableLayoutPanel4.TabIndex = 55;
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(835, 576);
+            tabControl1.TabIndex = 56;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(api_gridview);
+            tabPage1.Controls.Add(add_bttn);
+            tabPage1.Controls.Add(tableLayoutPanel4);
+            tabPage1.Controls.Add(tableLayoutPanel1);
+            tabPage1.Controls.Add(tableLayoutPanel3);
+            tabPage1.Controls.Add(tableLayoutPanel2);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(827, 548);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(821, 540);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // add_cards
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            Controls.Add(tableLayoutPanel4);
-            Controls.Add(tableLayoutPanel3);
-            Controls.Add(tableLayoutPanel2);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(api_gridview);
-            Controls.Add(add_bttn);
+            Controls.Add(tabControl1);
             Name = "add_cards";
-            Size = new Size(732, 534);
+            Size = new Size(835, 576);
             ((System.ComponentModel.ISupportInitialize)api_gridview).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -414,8 +450,10 @@
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -450,5 +488,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel4;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
     }
 }

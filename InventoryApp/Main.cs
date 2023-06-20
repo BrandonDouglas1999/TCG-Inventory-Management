@@ -3,7 +3,8 @@ namespace InventoryApp
     public partial class Main : Form
     {
 
-        bool sidebarExpand = true;
+        bool sidebarExpand = false;
+        string active_window = "Home";
         public Main()
         {
             InitializeComponent();
@@ -11,10 +12,12 @@ namespace InventoryApp
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // Set sizes for certain objects
+            // Set sizes for objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
-            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), logo.Location.Y);
-            card_opt_tabs.Size = new Size(this.Width - 220, this.Height);
+
+            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), 0);
+            card_opt_tabs.Size = new Size(this.Width - 50, this.Height);
+            card_opt_tabs.Location = new Point(50, 0);
         }
 
 
@@ -59,6 +62,11 @@ namespace InventoryApp
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
+            if (active_window == "Home")
+            {
+                return;
+            }
+            active_window = "Home";
             card_opt_tabs.Hide();
             logo.Show();
         }
@@ -66,9 +74,16 @@ namespace InventoryApp
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
+
+            if (active_window == "Cards")
+            {
+                return;
+            }
+            active_window = "Cards";
             logo.Hide();
             card_opt_tabs.Show();
         }
+
 
     }
 }
