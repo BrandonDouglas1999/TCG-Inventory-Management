@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -70,11 +70,12 @@
             sidebar.Controls.Add(flowLayoutPanel9);
             sidebar.Controls.Add(flowLayoutPanel8);
             sidebar.Dock = DockStyle.Left;
+            sidebar.FlowDirection = FlowDirection.TopDown;
             sidebar.Location = new Point(0, 0);
-            sidebar.MaximumSize = new Size(182, 556);
+            sidebar.MaximumSize = new Size(200, 500);
             sidebar.MinimumSize = new Size(48, 556);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(182, 556);
+            sidebar.Size = new Size(200, 556);
             sidebar.TabIndex = 0;
             // 
             // table
@@ -273,14 +274,15 @@
             sidebarTimer.Interval = 10;
             sidebarTimer.Tick += sidebarTimer_Tick;
             // 
-            // Form1
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(704, 542);
+            ClientSize = new Size(1248, 702);
             Controls.Add(sidebar);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "Main";
+            Text = "Main";
+            Load += Main_Load;
             sidebar.ResumeLayout(false);
             table.ResumeLayout(false);
             table.PerformLayout();

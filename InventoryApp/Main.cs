@@ -1,34 +1,24 @@
 namespace InventoryApp
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
 
         bool sidebarExpand;
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-
+            // Set sizes for certain objects
+            sidebar.MaximumSize = new Size(200, int.MaxValue);
         }
 
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void menuButton_Click(object sender, EventArgs e)
         {
-
+            sidebarTimer.Start();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void sidebarTimer_Tick(object sender, EventArgs e)
         {
 
@@ -52,9 +42,6 @@ namespace InventoryApp
             }
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-            sidebarTimer.Start();
-        }
+
     }
 }
