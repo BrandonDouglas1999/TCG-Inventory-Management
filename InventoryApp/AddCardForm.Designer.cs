@@ -55,6 +55,7 @@
             this.api_price = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.updateCard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -296,11 +297,22 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 25;
             // 
+            // updateCard
+            // 
+            this.updateCard.Location = new System.Drawing.Point(477, 226);
+            this.updateCard.Name = "updateCard";
+            this.updateCard.Size = new System.Drawing.Size(122, 45);
+            this.updateCard.TabIndex = 26;
+            this.updateCard.Text = "update";
+            this.updateCard.UseVisualStyleBackColor = true;
+            this.updateCard.Click += new System.EventHandler(this.updateCard_Click);
+            // 
             // AddCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 542);
+            this.Controls.Add(this.updateCard);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.api_price);
@@ -364,5 +376,6 @@
         private TextBox api_price;
         private Label label8;
         private ComboBox comboBox1;
+        private Button updateCard;
     }
 }

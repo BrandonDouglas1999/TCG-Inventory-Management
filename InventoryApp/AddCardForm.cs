@@ -50,10 +50,9 @@ namespace InventoryApp
 
             if (card_srch.Text == "") //no input
             {
-                MessageBox.Show(path);
                 return;
             }
-            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info
+            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
             if (card.data == null)
             {
                 api_gridview.ColumnCount= 1;
@@ -90,7 +89,7 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            //String image_file = SaveImage(image, cid, set_code);
+            //String image_file = SaveImage(image, cid, set_code); 
             String query = String.Format("Execute AddCard {0}, '{1}', 'YGO', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
                             cid, set_code, cname, ctype, crace, rarity, set_name, price, inv, image, s_price);
             MessageBox.Show(query);
@@ -131,6 +130,17 @@ namespace InventoryApp
                 api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Text.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
+
         //------------------------------------------------------------------------------------------------------------------------
+        private void updateCard_Click(object sender, EventArgs e)
+         {
+            SQLHelper db = new SQLHelper();
+            double rate = db.GetRate();
+            MessageBox.Show(rate.ToString());
+            
+         }
+
+
+
     }
 }
