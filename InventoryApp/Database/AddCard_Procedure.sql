@@ -31,8 +31,8 @@ End
 --drop procedure AddCard
 --delete from CardsInfo
 
-Declare @stat as int;
-Execute AddCard 123, 'Set', 'YGO', 'name', 'type', 'race', 'rare', 'beybe', 2.33, 3, 'image.jpg', 3, @stat output
-print @stat
+--Declare @stat as int;
+--Execute AddCard 123, 'Set', 'YGO', 'name', 'type', 'race', 'rare', 'beybe', 2.33, 3, 'image.jpg', 3, @stat output
+--print @stat
 
-select * from CardsInfo
+--select * from CardsInfo
