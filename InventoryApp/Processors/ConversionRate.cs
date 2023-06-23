@@ -18,7 +18,9 @@ namespace InventoryApp.Processors
             {
                 if (response.IsSuccessStatusCode)
                 {
+                    SQLHelper db = new SQLHelper();
                     ConversionModel rate = await response.Content.ReadAsAsync<ConversionModel>();
+                    rate.db_rate = db.InsertRate(rate.conversion_rate);
                     return rate;
                 }
                 else
