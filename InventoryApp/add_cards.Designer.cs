@@ -178,6 +178,7 @@
             api_gridview.RowTemplate.Height = 25;
             api_gridview.Size = new Size(680, 186);
             api_gridview.TabIndex = 40;
+            api_gridview.CellContentClick += api_gridview_CellContentClick;
             // 
             // add_bttn
             // 
@@ -190,6 +191,7 @@
             add_bttn.TabIndex = 39;
             add_bttn.Text = "Add Card";
             add_bttn.UseVisualStyleBackColor = true;
+            add_bttn.Click += add_bttn_Click;
             // 
             // image_url
             // 
@@ -281,6 +283,7 @@
             rtv_card.TabIndex = 29;
             rtv_card.Text = "Search Database";
             rtv_card.UseVisualStyleBackColor = true;
+            rtv_card.Click += rtv_card_Click;
             // 
             // card_srch
             // 
@@ -428,7 +431,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(821, 540);
+            tabPage2.Size = new Size(827, 548);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
