@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using InventoryApp.Processors;
+using InventoryApp.API_Model;
+
 
 namespace InventoryApp.Helpers
 {
@@ -13,6 +16,7 @@ namespace InventoryApp.Helpers
         //change this to your server name
         public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
 
+        //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
          This function only execute the sql query, it does not read the result from SELECT query
         */
@@ -33,7 +37,7 @@ namespace InventoryApp.Helpers
             }
             finally
             {
-                myConnection.Close(); //close connection for 
+                myConnection.Close(); //close connection
             }
         }
 
@@ -57,7 +61,9 @@ namespace InventoryApp.Helpers
             }
             return null;
         }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
+        //Card Related---------------------------------------------------------------------------------------------------------------------------------
         public int InsertCard(string query) //return status code 
         {
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -75,9 +81,53 @@ namespace InventoryApp.Helpers
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                myConnection.Close();
                 return -1;
             }
         }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
 
+        //-----------------------------------------------------------------Conversion Rate Related-----------------------------------------------------
+        /*
+         Check current rate from database with api rate
+        */
+        public double GetRate()
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            double rate = 0;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                String query = "Select Rate from ConversionRate where Date = (Select MAX(Date) as date from ConversionRate)";
+                myCommand= new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction= System.Data.ParameterDirection.Output;
+                myReader= myCommand.ExecuteReader();
+                if (myReader.HasRows) 
+                {
+                    rate = myReader.GetDouble(0);
+                }
+            }
+            return rate; 
+        }
+
+        /*Insert and return the previously latest or latest rate in the database*/
+        public double InsertRate(double rate)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            double db_rate = 0;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                String query = String.Format("Exec InsertRate {0}, @rate output", rate);
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction = System.Data.ParameterDirection.Output;
+                myReader = myCommand.ExecuteReader();
+                db_rate = (double)myCommand.Parameters["@rate"].Value;
+            }
+            return db_rate;
+        }
+        //---------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

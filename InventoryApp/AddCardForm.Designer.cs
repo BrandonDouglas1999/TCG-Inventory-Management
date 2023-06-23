@@ -329,6 +329,7 @@
             this.Controls.Add(this.cn_label);
             this.Name = "AddCardForm";
             this.Text = "AddCardForm";
+            this.Load += new System.EventHandler(this.AddCardForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

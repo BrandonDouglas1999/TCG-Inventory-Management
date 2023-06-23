@@ -1,5 +1,4 @@
-﻿using InventoryApp.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryApp.API_Model;
 using InventoryApp.Processors;
+using InventoryApp.Helpers;
 using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
@@ -21,12 +21,19 @@ namespace InventoryApp
     public partial class AddCardForm : Form
     {
         public String path = "D:\\Users\\hang_\\Documents\\School\\Capstone\\GitHub\\TCG-Inventory-Management-Application\\InventoryApp\\CardImage"; //change this to your!!!
+        public double c_rate = 0;
         public AddCardForm()
         {
             InitializeComponent();
             APIHelper.InitializeClient();
         }
 
+        //load conversion rate on opening
+        private void AddCardForm_Load(object sender, EventArgs e)
+        {
+            //var rate = await ConversionRate.LoadRate();
+            //c_rate = rate.db_rate;
+        }
         private void cn_label_Click(object sender, EventArgs e)
         {
 
@@ -39,21 +46,12 @@ namespace InventoryApp
 
         private async void rtv_card_Click(object sender, EventArgs e)
         {
-            api_gridview.DataSource = null;
-            api_gridview.Rows.Clear();
-            api_gridview.Columns.Clear();
-            api_id.Text = "";
-            api_cn.Text = "";
-            api_crace.Text = "";
-            api_ctype.Text = "";
-            image_url.Text = "";
-
+            clear_boxes();
             if (card_srch.Text == "") //no input
             {
-                MessageBox.Show(path);
                 return;
             }
-            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info
+            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
             if (card.data == null)
             {
                 api_gridview.ColumnCount= 1;
@@ -68,11 +66,7 @@ namespace InventoryApp
             api_crace.Text = card.data[0].race;
             api_ctype.Text = card.data[0].type;
             image_url.Text = card.data[0].card_images[0].image_url;
-            //set up button for selecting which card version
-            DataGridViewButtonColumn select = new DataGridViewButtonColumn();
-            select.Text = "Select";
-            select.UseColumnTextForButtonValue = true;
-            api_gridview.Columns.Add(select);
+            set_column();
         }
 
         private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -90,7 +84,7 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            //String image_file = SaveImage(image, cid, set_code);
+            //String image_file = SaveImage(image, cid, set_code); 
             String query = String.Format("Execute AddCard {0}, '{1}', 'YGO', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
                             cid, set_code, cname, ctype, crace, rarity, set_name, price, inv, image, s_price);
             MessageBox.Show(query);
@@ -131,6 +125,44 @@ namespace InventoryApp
                 api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Text.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
+
         //------------------------------------------------------------------------------------------------------------------------
+
+        //-------------------------------------------Others-----------------------------------------------------------------------
+        private void clear_boxes()
+        {
+            api_gridview.DataSource = null;
+            api_gridview.Rows.Clear();
+            api_gridview.Columns.Clear();
+            api_id.Text = "";
+            api_cn.Text = "";
+            api_crace.Text = "";
+            api_ctype.Text = "";
+            image_url.Text = "";
+            s_price.Text = "";
+            card_qnty.Text = "";
+            api_setcode.Text = "";
+            api_setname.Text = "";
+            api_price.Text = "";
+            api_rare.Text = "";
+        }
+
+        private void set_column()
+        {
+            api_gridview.Columns["set_name"].HeaderText = "Set Name";
+            api_gridview.Columns["set_code"].HeaderText = "Set Code";
+            api_gridview.Columns["set_rarity"].HeaderText = "Rarity";
+            api_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
+            api_gridview.Columns["set_price"].HeaderText = "Current Price";
+            //set up button for selecting which card version
+            DataGridViewButtonColumn select = new DataGridViewButtonColumn();
+            select.Text = "Select";
+            select.UseColumnTextForButtonValue = true;
+            api_gridview.Columns.Add(select);
+
+        }
+
+
+        
     }
 }
