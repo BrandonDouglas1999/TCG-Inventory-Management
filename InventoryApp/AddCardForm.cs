@@ -1,5 +1,4 @@
-﻿using InventoryApp.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryApp.API_Model;
 using InventoryApp.Processors;
+using InventoryApp.Helpers;
 using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
@@ -21,12 +21,19 @@ namespace InventoryApp
     public partial class AddCardForm : Form
     {
         public String path = "D:\\Users\\hang_\\Documents\\School\\Capstone\\GitHub\\TCG-Inventory-Management-Application\\InventoryApp\\CardImage"; //change this to your!!!
+        public double c_rate = 0;
         public AddCardForm()
         {
             InitializeComponent();
             APIHelper.InitializeClient();
         }
 
+        //load conversion rate on opening
+        private void AddCardForm_Load(object sender, EventArgs e)
+        {
+            //var rate = await ConversionRate.LoadRate();
+            //c_rate = rate.db_rate;
+        }
         private void cn_label_Click(object sender, EventArgs e)
         {
 
@@ -39,15 +46,7 @@ namespace InventoryApp
 
         private async void rtv_card_Click(object sender, EventArgs e)
         {
-            api_gridview.DataSource = null;
-            api_gridview.Rows.Clear();
-            api_gridview.Columns.Clear();
-            api_id.Text = "";
-            api_cn.Text = "";
-            api_crace.Text = "";
-            api_ctype.Text = "";
-            image_url.Text = "";
-
+            clear_boxes();
             if (card_srch.Text == "") //no input
             {
                 return;
@@ -67,11 +66,7 @@ namespace InventoryApp
             api_crace.Text = card.data[0].race;
             api_ctype.Text = card.data[0].type;
             image_url.Text = card.data[0].card_images[0].image_url;
-            //set up button for selecting which card version
-            DataGridViewButtonColumn select = new DataGridViewButtonColumn();
-            select.Text = "Select";
-            select.UseColumnTextForButtonValue = true;
-            api_gridview.Columns.Add(select);
+            set_column();
         }
 
         private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -132,15 +127,42 @@ namespace InventoryApp
         }
 
         //------------------------------------------------------------------------------------------------------------------------
-        private void updateCard_Click(object sender, EventArgs e)
-         {
-            SQLHelper db = new SQLHelper();
-            double rate = db.GetRate();
-            MessageBox.Show(rate.ToString());
-            
-         }
+
+        //-------------------------------------------Others-----------------------------------------------------------------------
+        private void clear_boxes()
+        {
+            api_gridview.DataSource = null;
+            api_gridview.Rows.Clear();
+            api_gridview.Columns.Clear();
+            api_id.Text = "";
+            api_cn.Text = "";
+            api_crace.Text = "";
+            api_ctype.Text = "";
+            image_url.Text = "";
+            s_price.Text = "";
+            card_qnty.Text = "";
+            api_setcode.Text = "";
+            api_setname.Text = "";
+            api_price.Text = "";
+            api_rare.Text = "";
+        }
+
+        private void set_column()
+        {
+            api_gridview.Columns["set_name"].HeaderText = "Set Name";
+            api_gridview.Columns["set_code"].HeaderText = "Set Code";
+            api_gridview.Columns["set_rarity"].HeaderText = "Rarity";
+            api_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
+            api_gridview.Columns["set_price"].HeaderText = "Current Price";
+            //set up button for selecting which card version
+            DataGridViewButtonColumn select = new DataGridViewButtonColumn();
+            select.Text = "Select";
+            select.UseColumnTextForButtonValue = true;
+            api_gridview.Columns.Add(select);
+
+        }
 
 
-
+        
     }
 }

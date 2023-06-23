@@ -111,16 +111,22 @@ namespace InventoryApp.Helpers
             return rate; 
         }
 
-        public void InsertRate(double rate)
+        /*Insert and return the previously latest or latest rate in the database*/
+        public double InsertRate(double rate)
         {
             SqlCommand myCommand;
+            SqlDataReader myReader;
+            double db_rate = 0;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myConnection.Open();
-                String query = String.Format("Exec InsertRate {0}", rate);
+                String query = String.Format("Exec InsertRate {0}, @rate output", rate);
                 myCommand = new SqlCommand(query, myConnection);
-                myCommand.ExecuteNonQuery();
+                myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction = System.Data.ParameterDirection.Output;
+                myReader = myCommand.ExecuteReader();
+                db_rate = (double)myCommand.Parameters["@rate"].Value;
             }
+            return db_rate;
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------
     }

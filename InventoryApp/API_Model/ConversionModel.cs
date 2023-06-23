@@ -11,5 +11,8 @@ namespace InventoryApp.API_Model
         public string result { get; set; }
         public string time_net_update_utc { get; set; } //could use this info
         public double conversion_rate { get; set; }
+        
+        public double db_rate;
+
     }
 }
