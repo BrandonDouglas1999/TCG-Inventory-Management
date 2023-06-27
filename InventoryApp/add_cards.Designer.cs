@@ -72,97 +72,107 @@
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = AnchorStyles.None;
+            comboBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(341, 10);
+            comboBox1.Location = new Point(335, 10);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
+            comboBox1.Size = new Size(133, 23);
             comboBox1.TabIndex = 51;
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(3, 0);
+            label8.Location = new Point(3, 4);
             label8.Name = "label8";
-            label8.Size = new Size(102, 16);
+            label8.Size = new Size(206, 16);
             label8.TabIndex = 50;
             label8.Text = "Current Price";
             // 
             // api_price
             // 
-            api_price.Location = new Point(3, 28);
+            api_price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_price.Location = new Point(3, 36);
             api_price.Name = "api_price";
             api_price.ReadOnly = true;
-            api_price.Size = new Size(100, 23);
+            api_price.Size = new Size(206, 23);
             api_price.TabIndex = 49;
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(427, 0);
+            label7.Location = new Point(427, 4);
             label7.Name = "label7";
-            label7.Size = new Size(74, 16);
+            label7.Size = new Size(166, 16);
             label7.TabIndex = 48;
             label7.Text = "Quantity ";
             // 
             // card_qnty
             // 
-            card_qnty.Location = new Point(427, 28);
+            card_qnty.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            card_qnty.Location = new Point(427, 36);
             card_qnty.Name = "card_qnty";
-            card_qnty.Size = new Size(100, 23);
+            card_qnty.Size = new Size(166, 23);
             card_qnty.TabIndex = 47;
             // 
             // api_ctype
             // 
-            api_ctype.Location = new Point(476, 21);
+            api_ctype.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_ctype.Location = new Point(476, 24);
             api_ctype.Name = "api_ctype";
             api_ctype.ReadOnly = true;
-            api_ctype.Size = new Size(100, 23);
+            api_ctype.Size = new Size(117, 23);
             api_ctype.TabIndex = 46;
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(476, 0);
+            label6.Location = new Point(476, 1);
             label6.Name = "label6";
-            label6.Size = new Size(80, 16);
+            label6.Size = new Size(117, 16);
             label6.TabIndex = 45;
             label6.Text = "Card Type";
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(308, 0);
+            label5.Location = new Point(308, 1);
             label5.Name = "label5";
-            label5.Size = new Size(80, 16);
+            label5.Size = new Size(162, 16);
             label5.TabIndex = 44;
             label5.Text = "Card Race";
             // 
             // api_crace
             // 
-            api_crace.Location = new Point(308, 21);
+            api_crace.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_crace.Location = new Point(308, 24);
             api_crace.Name = "api_crace";
             api_crace.ReadOnly = true;
-            api_crace.Size = new Size(100, 23);
+            api_crace.Size = new Size(162, 23);
             api_crace.TabIndex = 43;
             // 
             // rare_label
             // 
+            rare_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             rare_label.AutoSize = true;
             rare_label.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            rare_label.Location = new Point(406, 0);
+            rare_label.Location = new Point(406, 4);
             rare_label.Name = "rare_label";
-            rare_label.Size = new Size(50, 16);
+            rare_label.Size = new Size(98, 16);
             rare_label.TabIndex = 42;
             rare_label.Text = "Rarity";
             // 
             // api_rare
             // 
-            api_rare.Location = new Point(406, 27);
+            api_rare.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_rare.Location = new Point(406, 35);
             api_rare.Name = "api_rare";
             api_rare.ReadOnly = true;
             api_rare.Size = new Size(98, 23);
@@ -170,13 +180,13 @@
             // 
             // api_gridview
             // 
-            api_gridview.Anchor = AnchorStyles.None;
+            api_gridview.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             api_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             api_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            api_gridview.Location = new Point(34, 290);
+            api_gridview.Location = new Point(80, 290);
             api_gridview.Name = "api_gridview";
             api_gridview.RowTemplate.Height = 25;
-            api_gridview.Size = new Size(680, 186);
+            api_gridview.Size = new Size(596, 186);
             api_gridview.TabIndex = 40;
             api_gridview.CellContentClick += api_gridview_CellContentClick;
             // 
@@ -195,7 +205,8 @@
             // 
             // image_url
             // 
-            image_url.Location = new Point(510, 27);
+            image_url.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            image_url.Location = new Point(510, 35);
             image_url.Name = "image_url";
             image_url.ReadOnly = true;
             image_url.Size = new Size(83, 23);
@@ -204,24 +215,27 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(215, 0);
+            label4.Location = new Point(215, 4);
             label4.Name = "label4";
-            label4.Size = new Size(90, 16);
+            label4.Size = new Size(206, 16);
             label4.TabIndex = 37;
             label4.Text = "Store Price ";
             // 
             // s_price
             // 
-            s_price.Location = new Point(215, 28);
+            s_price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            s_price.Location = new Point(215, 36);
             s_price.Name = "s_price";
-            s_price.Size = new Size(100, 23);
+            s_price.Size = new Size(206, 23);
             s_price.TabIndex = 36;
             // 
             // api_setname
             // 
-            api_setname.Location = new Point(159, 27);
+            api_setname.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_setname.Location = new Point(159, 35);
             api_setname.Name = "api_setname";
             api_setname.ReadOnly = true;
             api_setname.Size = new Size(241, 23);
@@ -229,57 +243,63 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(159, 0);
+            label3.Location = new Point(159, 4);
             label3.Name = "label3";
-            label3.Size = new Size(77, 16);
+            label3.Size = new Size(241, 16);
             label3.TabIndex = 34;
             label3.Text = "Set Name";
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 0);
+            label2.Location = new Point(3, 4);
             label2.Name = "label2";
-            label2.Size = new Size(72, 16);
+            label2.Size = new Size(150, 16);
             label2.TabIndex = 33;
             label2.Text = "Set Code";
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 0);
+            label1.Location = new Point(3, 1);
             label1.Name = "label1";
-            label1.Size = new Size(61, 16);
+            label1.Size = new Size(120, 16);
             label1.TabIndex = 32;
             label1.Text = "Card ID";
             // 
             // api_setcode
             // 
-            api_setcode.Location = new Point(3, 27);
+            api_setcode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_setcode.Location = new Point(3, 35);
             api_setcode.Name = "api_setcode";
             api_setcode.ReadOnly = true;
-            api_setcode.Size = new Size(100, 23);
+            api_setcode.Size = new Size(150, 23);
             api_setcode.TabIndex = 31;
             // 
             // api_id
             // 
-            api_id.Location = new Point(3, 21);
+            api_id.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_id.Location = new Point(3, 24);
             api_id.Name = "api_id";
             api_id.ReadOnly = true;
-            api_id.Size = new Size(100, 23);
+            api_id.Size = new Size(120, 23);
             api_id.TabIndex = 30;
             // 
             // rtv_card
             // 
-            rtv_card.Anchor = AnchorStyles.None;
+            rtv_card.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rtv_card.AutoSize = true;
             rtv_card.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            rtv_card.Location = new Point(474, 10);
+            rtv_card.Location = new Point(474, 9);
             rtv_card.Name = "rtv_card";
-            rtv_card.Size = new Size(119, 23);
+            rtv_card.Size = new Size(119, 26);
             rtv_card.TabIndex = 29;
             rtv_card.Text = "Search Database";
             rtv_card.UseVisualStyleBackColor = true;
@@ -287,7 +307,7 @@
             // 
             // card_srch
             // 
-            card_srch.Anchor = AnchorStyles.None;
+            card_srch.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             card_srch.Location = new Point(3, 10);
             card_srch.Name = "card_srch";
             card_srch.PlaceholderText = "Card Name";
@@ -296,25 +316,27 @@
             // 
             // api_cn
             // 
-            api_cn.Location = new Point(129, 21);
+            api_cn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            api_cn.Location = new Point(129, 24);
             api_cn.Name = "api_cn";
             api_cn.ReadOnly = true;
-            api_cn.Size = new Size(100, 23);
+            api_cn.Size = new Size(173, 23);
             api_cn.TabIndex = 27;
             // 
             // cn_label
             // 
+            cn_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cn_label.AutoSize = true;
             cn_label.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            cn_label.Location = new Point(129, 0);
+            cn_label.Location = new Point(129, 1);
             cn_label.Name = "cn_label";
-            cn_label.Size = new Size(87, 16);
+            cn_label.Size = new Size(173, 16);
             cn_label.TabIndex = 26;
             cn_label.Text = "Card Name";
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.None;
+            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.48832F));
@@ -332,7 +354,7 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.Anchor = AnchorStyles.None;
+            tableLayoutPanel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel2.AutoSize = true;
             tableLayoutPanel2.ColumnCount = 4;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.4835167F));
@@ -357,7 +379,8 @@
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.Anchor = AnchorStyles.None;
+            tableLayoutPanel3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel3.AutoSize = true;
             tableLayoutPanel3.ColumnCount = 4;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.83249F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 61.16751F));
@@ -380,7 +403,8 @@
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.Anchor = AnchorStyles.None;
+            tableLayoutPanel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel4.AutoSize = true;
             tableLayoutPanel4.ColumnCount = 3;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
