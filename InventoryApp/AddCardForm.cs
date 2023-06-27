@@ -22,6 +22,8 @@ namespace InventoryApp
     {
         public String path = "D:\\Users\\hang_\\Documents\\School\\Capstone\\GitHub\\TCG-Inventory-Management-Application\\InventoryApp\\CardImage"; //change this to your!!!
         public double c_rate = 0;
+        YGOProCard card;
+
         public AddCardForm()
         {
             InitializeComponent();
@@ -29,10 +31,10 @@ namespace InventoryApp
         }
 
         //load conversion rate on opening
-        private void AddCardForm_Load(object sender, EventArgs e)
+        private async void AddCardForm_Load(object sender, EventArgs e)
         {
-            //var rate = await ConversionRate.LoadRate();
-            //c_rate = rate.db_rate;
+            var rate = await ConversionRate.LoadRate();
+            c_rate = rate.db_rate;
         }
         private void cn_label_Click(object sender, EventArgs e)
         {
@@ -51,7 +53,7 @@ namespace InventoryApp
             {
                 return;
             }
-            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
+            card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
             if (card.data == null)
             {
                 api_gridview.ColumnCount= 1;
@@ -84,9 +86,9 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            //String image_file = SaveImage(image, cid, set_code); 
-            String query = String.Format("Execute AddCard {0}, '{1}', 'YGO', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
-                            cid, set_code, cname, ctype, crace, rarity, set_name, price, inv, image, s_price);
+            String image_file = SaveImage(image, cid, set_code); 
+            String query = String.Format("Execute AddCard {0}, '{1}',  '{2}', 'YGO','{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
+                            cid, set_code, rarity, cname, ctype, crace, set_name, price, s_price, inv, image_file);
             MessageBox.Show(query);
             int status = db.InsertCard(query);
             if (status == 0) { MessageBox.Show("Card already in database"); }
