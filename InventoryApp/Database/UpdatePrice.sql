@@ -7,7 +7,7 @@ as Begin
 	declare @c_price money
 	declare @date date
 	set @date = GETDATE()
-	set @c_price= (select current_price from CardsInfo where card_id = @CID and set_code = @Setcode and rarity = @Rarity and update_date < @date)
+	set @c_price= (select current_price from CardsInfo where card_id = @CID and set_code = @Setcode and rarity = @Rarity)
 	if (@new_price != @c_price)
 		begin
 			update CardsInfo 
@@ -30,3 +30,7 @@ select * from CardsInfo
 update CardsInfo 
 set old_price = current_price, current_price = 11.15, update_date = GETDATE()
 where card_id = 3410461 and set_code = 'DIFO-EN035' and rarity = '(StR)'
+
+update CardsInfo set current_price = 0
+select distinct set_name from CardsInfo
+select * from CardsInfo where card_id = 73642296

@@ -35,15 +35,6 @@ namespace InventoryApp
             //var rate = await ConversionRate.LoadRate();
             //c_rate = rate.db_rate;
         }
-        private void cn_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void image_url_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void rtv_card_Click(object sender, EventArgs e)
         {
@@ -85,9 +76,10 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            //String image_file = SaveImage(image, cid, set_code); 
+            String image_file = cid + ".jpg";
+            SaveImage(image, cid);
             String query = String.Format("Execute AddCard {0}, '{1}', 'YGO', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
-                            cid, set_code, cname, ctype, crace, rarity, set_name, price, inv, image, s_price);
+                            cid, set_code, cname, ctype, crace, rarity, set_name, price, inv, image_file, s_price);
             MessageBox.Show(query);
             int status = db.InsertCard(query);
             if (status == 0) { MessageBox.Show("Card already in database"); }
@@ -95,17 +87,23 @@ namespace InventoryApp
             return;
         }
 
-        private string SaveImage(string url, string card_id, string set_code)
+        private async void SaveImage(string url, string card_ID)
         {
-            //change the path 
-            String file_name = card_id + set_code + ".jpg";
-            String file = path + "\\" + file_name;
-            file = file.Replace(@"\\", @"\");
-            using (WebClient client = new WebClient())
+            String file_name = card_ID + ".jpg";
+            String file_path = path + @"\" + file_name;
+            if (File.Exists(file_path)) //check if file exist
             {
-                client.DownloadFile(new Uri(url), file);
+                return;
             }
-            return file_name;
+            var uri = new Uri(url);
+            HttpClient client = new HttpClient();
+            using (var stream = await client.GetStreamAsync(uri))
+            {
+                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
+                {
+                    await stream.CopyToAsync(file_stream);
+                }
+            }
         }
 
         private void add_bttn_Click(object sender, EventArgs e)
