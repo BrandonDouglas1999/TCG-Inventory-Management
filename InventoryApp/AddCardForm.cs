@@ -20,7 +20,7 @@ namespace InventoryApp
 {
     public partial class AddCardForm : Form
     {
-        public String path = "D:\\Users\\hang_\\Documents\\School\\Capstone\\GitHub\\TCG-Inventory-Management-Application\\InventoryApp\\CardImage"; //change this to your!!!
+        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
         public double c_rate = 0;
         YGOProCard card;
 
@@ -86,7 +86,8 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            String image_file = SaveImage(image, cid, set_code); 
+            String image_file = cid + ".jpg";
+            SaveImage(image, cid); 
             String query = String.Format("Execute AddCard {0}, '{1}',  '{2}', 'YGO','{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
                             cid, set_code, rarity, cname, ctype, crace, set_name, price, s_price, inv, image_file);
             MessageBox.Show(query);
@@ -96,17 +97,23 @@ namespace InventoryApp
             return;
         }
 
-        private string SaveImage(string url, string card_id, string set_code)
+        private async void SaveImage(string url, string card_ID)
         {
-            //change the path 
-            String file_name = card_id+ set_code + ".jpg";
-            String file = path + "\\" + file_name;
-            file = file.Replace(@"\\", @"\");
-            using (WebClient client = new WebClient())
+            String file_name = card_ID + ".jpg";
+            String file_path = path + @"\" + file_name;
+            if (File.Exists(file_path)) //check if file exist
             {
-                client.DownloadFile(new Uri(url), file);
+                return;
             }
-            return file_name;
+            var uri = new Uri(url);
+            HttpClient client = new HttpClient();
+            using (var stream = await client.GetStreamAsync(uri))
+            {
+                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
+                {
+                    await stream.CopyToAsync(file_stream);
+                }
+            }
         }
 
         private void add_bttn_Click(object sender, EventArgs e)

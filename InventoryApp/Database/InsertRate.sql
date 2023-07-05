@@ -49,3 +49,5 @@ End
 declare @rate float
 Exec InsertRate 0.9, @rate output
 print @rate 
+
+select * from ConversionRate
