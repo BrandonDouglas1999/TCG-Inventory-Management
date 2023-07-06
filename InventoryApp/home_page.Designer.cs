@@ -34,6 +34,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.logo;
             pictureBox1.Location = new Point(190, 0);
             pictureBox1.Name = "pictureBox1";

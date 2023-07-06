@@ -288,6 +288,8 @@
             // 
             // home_page
             // 
+            home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            home_page.AutoSize = true;
             home_page.Location = new Point(157, 0);
             home_page.Name = "home_page";
             home_page.Size = new Size(837, 488);
@@ -298,9 +300,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1086, 702);
+            Controls.Add(sidebar);
             Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
-            Controls.Add(sidebar);
             Name = "Main";
             Text = "Main";
             Load += Main_Load;

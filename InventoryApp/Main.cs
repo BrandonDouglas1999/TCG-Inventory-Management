@@ -20,10 +20,6 @@ namespace InventoryApp
             activeWindow = home_page;
             activeWindow.Size = new Size(this.Width - 50, this.Height);
             activeWindow.Location = new Point(50, 0);
-            activeWindow.Hide();
-
-            card_opt_tabs.Size = new Size(this.Width - 50, this.Height);
-            card_opt_tabs.Location = new Point(50, 0);
         }
 
 
@@ -67,23 +63,20 @@ namespace InventoryApp
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
-            /*            if (active_window == "Home")
-                        {
-                            return;
-                        }
-                        active_window = "Home";*/
+            activeWindow.Hide();
+            activeWindow = home_page;
+
+            activeWindow.Show();
 
         }
 
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
+            activeWindow.Hide();
+            activeWindow = card_opt_tabs;
 
-            /*            if (active_window == "Cards")
-                        {
-                            return;
-                        }
-                        active_window = "Cards";*/
+            activeWindow.Show();
         }
 
 
