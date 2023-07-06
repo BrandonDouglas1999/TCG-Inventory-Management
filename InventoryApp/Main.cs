@@ -7,6 +7,8 @@ namespace InventoryApp
 
         bool sidebarExpand = false;
         UserControl activeWindow;
+        Size sidebarCollapsedSize;
+        Size sidebarExpandedSize;
         public Main()
         {
             InitializeComponent();
@@ -17,9 +19,14 @@ namespace InventoryApp
             // Set sizes for objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
 
+            sidebarCollapsedSize = new Size(this.Width - 50, this.Height);
+            sidebarExpandedSize = new Size(this.Width - 200, this.Height);
+
             activeWindow = home_page;
-            activeWindow.Size = new Size(this.Width - 50, this.Height);
+            activeWindow.Size = sidebarCollapsedSize;
             activeWindow.Location = new Point(50, 0);
+
+            card_opt_tabs.Location = new Point(50, 0);
         }
 
 
@@ -43,6 +50,7 @@ namespace InventoryApp
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
+                activeWindow.Location = new Point(activeWindow.Location.X - 10, activeWindow.Location.Y);
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebarExpand = false;
@@ -52,6 +60,7 @@ namespace InventoryApp
             else
             {
                 sidebar.Width += 10;
+                activeWindow.Location = new Point(activeWindow.Location.X + 10, activeWindow.Location.Y);
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebarExpand = true;
@@ -75,8 +84,9 @@ namespace InventoryApp
         {
             activeWindow.Hide();
             activeWindow = card_opt_tabs;
-
             activeWindow.Show();
+
+
         }
 
 

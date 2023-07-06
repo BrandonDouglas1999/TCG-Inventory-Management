@@ -280,6 +280,7 @@
             // 
             // card_opt_tabs
             // 
+            card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             card_opt_tabs.AutoSize = true;
             card_opt_tabs.Location = new Point(157, 0);
             card_opt_tabs.Name = "card_opt_tabs";
@@ -290,9 +291,9 @@
             // 
             home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             home_page.AutoSize = true;
-            home_page.Location = new Point(157, 0);
+            home_page.Location = new Point(263, 0);
             home_page.Name = "home_page";
-            home_page.Size = new Size(837, 488);
+            home_page.Size = new Size(731, 330);
             home_page.TabIndex = 2;
             // 
             // Main
