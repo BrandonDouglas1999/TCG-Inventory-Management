@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using InventoryApp.Processors;
 using InventoryApp.API_Model;
+using System.IO;
 
 
 namespace InventoryApp.Helpers
@@ -13,8 +14,9 @@ namespace InventoryApp.Helpers
 
     class SQLHelper
     {
-        //change this to your server name
+        //change this to your server name and the path for the image folder
         public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
+        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
@@ -64,11 +66,14 @@ namespace InventoryApp.Helpers
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //Card Related---------------------------------------------------------------------------------------------------------------------------------
-        public int InsertCard(string query) //return status code 
+        public int InsertCard(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price) //return status code 
         {
             SqlConnection myConnection = new SqlConnection(connectionString);
             SqlCommand myCommand;
             SqlDataReader myReader;
+            String image_file = cid + ".jpg";
+            String query = String.Format("Execute AddCard {0}, '{1}',  '{2}', 'YGO','{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
+                           cid, set_code, rarity, cname, ctype, crace, set_name, price, s_price, inv, image_file);
             try
             {
                 myConnection.Open();
@@ -76,6 +81,7 @@ namespace InventoryApp.Helpers
                 myCommand.Parameters.Add("@stat", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
                 myReader = myCommand.ExecuteReader();
                 int status = (int)myCommand.Parameters["@stat"].Value;
+                SaveImage(image, cid);
                 return status;
             }
             catch (Exception ex)
@@ -85,6 +91,26 @@ namespace InventoryApp.Helpers
                 return -1;
             }
         }
+
+        private async void SaveImage(string url, string card_ID)
+        {
+            String file_name = card_ID + ".jpg";
+            String file_path = path + @"\" + file_name;
+            if (File.Exists(file_path)) //check if file exist
+            {
+                return;
+            }
+            var uri = new Uri(url);
+            HttpClient client = new HttpClient();
+            using (var stream = await client.GetStreamAsync(uri))
+            {
+                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
+                {
+                    await stream.CopyToAsync(file_stream);
+                }
+            }
+        }
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------Conversion Rate Related-----------------------------------------------------
