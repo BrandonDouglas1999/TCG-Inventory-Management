@@ -48,8 +48,8 @@
             flowLayoutPanel8 = new FlowLayoutPanel();
             button6 = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
-            logo = new PictureBox();
             card_opt_tabs = new add_cards();
+            home_page = new home_page();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -60,7 +60,6 @@
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             SuspendLayout();
             // 
             // sidebar
@@ -279,34 +278,29 @@
             sidebarTimer.Interval = 10;
             sidebarTimer.Tick += sidebarTimer_Tick;
             // 
-            // logo
-            // 
-            logo.Image = Properties.Resources.logo;
-            logo.Location = new Point(472, 0);
-            logo.Name = "logo";
-            logo.Size = new Size(484, 350);
-            logo.TabIndex = 1;
-            logo.TabStop = false;
-            // 
             // card_opt_tabs
             // 
-            card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            card_opt_tabs.AutoScroll = true;
             card_opt_tabs.AutoSize = true;
-            card_opt_tabs.Location = new Point(314, 3);
+            card_opt_tabs.Location = new Point(157, 0);
             card_opt_tabs.Name = "card_opt_tabs";
-            card_opt_tabs.Size = new Size(816, 594);
-            card_opt_tabs.TabIndex = 2;
-            card_opt_tabs.Visible = false;
+            card_opt_tabs.Size = new Size(837, 576);
+            card_opt_tabs.TabIndex = 1;
+            // 
+            // home_page
+            // 
+            home_page.Location = new Point(157, 0);
+            home_page.Name = "home_page";
+            home_page.Size = new Size(837, 488);
+            home_page.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1086, 702);
-            Controls.Add(sidebar);
-            Controls.Add(logo);
+            Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
+            Controls.Add(sidebar);
             Name = "Main";
             Text = "Main";
             Load += Main_Load;
@@ -322,7 +316,6 @@
             flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel9.ResumeLayout(false);
             flowLayoutPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -348,7 +341,7 @@
         private TableLayoutPanel table;
         private PictureBox menuButton;
         private Label label1;
-        private PictureBox logo;
         private add_cards card_opt_tabs;
+        private home_page home_page;
     }
 }

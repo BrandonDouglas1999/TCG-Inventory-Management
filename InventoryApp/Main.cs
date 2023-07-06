@@ -1,10 +1,12 @@
+using Microsoft.VisualBasic.Logging;
+
 namespace InventoryApp
 {
     public partial class Main : Form
     {
 
         bool sidebarExpand = false;
-        string active_window = "Home";
+        UserControl activeWindow;
         public Main()
         {
             InitializeComponent();
@@ -15,7 +17,11 @@ namespace InventoryApp
             // Set sizes for objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
 
-            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), 0);
+            activeWindow = home_page;
+            activeWindow.Size = new Size(this.Width - 50, this.Height);
+            activeWindow.Location = new Point(50, 0);
+            activeWindow.Hide();
+
             card_opt_tabs.Size = new Size(this.Width - 50, this.Height);
             card_opt_tabs.Location = new Point(50, 0);
         }
@@ -23,7 +29,6 @@ namespace InventoryApp
 
         private void Main_Resize(object sender, EventArgs e)
         {
-            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), logo.Location.Y);
 
             // Should decide soon if sidebar open causes everything to scale, or if 
             // Interaction only occurs when sidebar is closed.
@@ -62,26 +67,23 @@ namespace InventoryApp
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
-            if (active_window == "Home")
-            {
-                return;
-            }
-            active_window = "Home";
-            card_opt_tabs.Hide();
-            logo.Show();
+            /*            if (active_window == "Home")
+                        {
+                            return;
+                        }
+                        active_window = "Home";*/
+
         }
 
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
 
-            if (active_window == "Cards")
-            {
-                return;
-            }
-            active_window = "Cards";
-            logo.Hide();
-            card_opt_tabs.Show();
+            /*            if (active_window == "Cards")
+                        {
+                            return;
+                        }
+                        active_window = "Cards";*/
         }
 
 
