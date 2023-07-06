@@ -7,8 +7,8 @@ namespace InventoryApp
 
         bool sidebarExpand = false;
         UserControl activeWindow;
-        Size sidebarCollapsedSize;
-        Size sidebarExpandedSize;
+        Point sidebarCollapsedLocation;
+        Point sidebarExpandedLocation;
         public Main()
         {
             InitializeComponent();
@@ -18,15 +18,18 @@ namespace InventoryApp
         {
             // Set sizes for objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
+            Size UCSize = new Size(this.Width - 50, this.Height);
 
-            sidebarCollapsedSize = new Size(this.Width - 50, this.Height);
-            sidebarExpandedSize = new Size(this.Width - 200, this.Height);
+            sidebarCollapsedLocation = new Point(50, 0);
+            sidebarExpandedLocation = new Point(200, 0);
 
             activeWindow = home_page;
-            activeWindow.Size = sidebarCollapsedSize;
-            activeWindow.Location = new Point(50, 0);
+            activeWindow.Size = UCSize;
+            activeWindow.Location = sidebarCollapsedLocation;
 
-            card_opt_tabs.Location = new Point(50, 0);
+            // Change size of all UC's to windows size
+
+            card_opt_tabs.Size = UCSize;
         }
 
 
@@ -69,12 +72,25 @@ namespace InventoryApp
             }
         }
 
+        // Short function to change active size window depending on sidebar state
+        private void resizeActiveWindow()
+        {
+            if (sidebarExpand)
+            {
+                activeWindow.Location = sidebarExpandedLocation;
+            }
+            else
+            {
+                activeWindow.Location = sidebarCollapsedLocation;
+            }
+        }
+
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
             activeWindow.Hide();
             activeWindow = home_page;
-
+            resizeActiveWindow();
             activeWindow.Show();
 
         }
@@ -84,6 +100,7 @@ namespace InventoryApp
         {
             activeWindow.Hide();
             activeWindow = card_opt_tabs;
+            resizeActiveWindow();
             activeWindow.Show();
 
 
