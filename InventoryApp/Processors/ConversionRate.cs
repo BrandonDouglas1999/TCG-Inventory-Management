@@ -20,6 +20,7 @@ namespace InventoryApp.Processors
                 {
                     SQLHelper db = new SQLHelper();
                     ConversionModel rate = await response.Content.ReadAsAsync<ConversionModel>();
+                    rate.conversion_rate = Math.Round(rate.conversion_rate, 2);
                     rate.db_rate = db.InsertRate(rate.conversion_rate);
                     return rate;
                 }

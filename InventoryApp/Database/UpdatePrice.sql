@@ -27,10 +27,6 @@ exec UpdateOnlinePrice 3410461, 'DIFO-EN035', '(StR)', 0
 
 select * from CardsInfo
 
-update CardsInfo 
-set old_price = current_price, current_price = 11.15, update_date = GETDATE()
-where card_id = 3410461 and set_code = 'DIFO-EN035' and rarity = '(StR)'
-
 update CardsInfo set current_price = 0
 select distinct set_name from CardsInfo
 select * from CardsInfo where card_id = 73642296

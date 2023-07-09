@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 using InventoryApp.Processors;
 using InventoryApp.API_Model;
 using System.IO;
@@ -16,7 +18,7 @@ namespace InventoryApp.Helpers
     {
         //change this to your server name and the path for the image folder
         public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
-        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+        public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
@@ -71,6 +73,8 @@ namespace InventoryApp.Helpers
             SqlConnection myConnection = new SqlConnection(connectionString);
             SqlCommand myCommand;
             SqlDataReader myReader;
+            cname = cname.Replace("'", "''");
+            set_name = set_name.Replace("'", "''");
             String image_file = cid + ".jpg";
             String query = String.Format("Execute AddCard {0}, '{1}',  '{2}', 'YGO','{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
                            cid, set_code, rarity, cname, ctype, crace, set_name, price, s_price, inv, image_file);
@@ -92,6 +96,42 @@ namespace InventoryApp.Helpers
             }
         }
 
+        public void DeleteCard(string cid, string setcode, string rarity)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            String image_file = "";
+            int status;
+            String query = "Exec deleteCard @CID, @Setcode, @Rarity, @image output, @stat output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                /* This way will prevent sql injection attack*/
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@Setcode", SqlDbType.VarChar, 20).Value = setcode;
+                myCommand.Parameters.Add("@Rarity", SqlDbType.VarChar, 20).Value = rarity;
+                myCommand.Parameters.Add("@image", SqlDbType.VarChar, -1).Direction = ParameterDirection.Output; //-1 for max
+                myCommand.Parameters.Add("@stat", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    image_file = myCommand.Parameters["@image"].Value.ToString();
+                    status = (int)myCommand.Parameters["@stat"].Value;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    myConnection.Close();
+                    return;
+                }
+            }
+            if (status == 1) /*delete the image corresponding to the card data if it is the only one using the image file*/
+            {
+                DeleteImage(image_file);
+            }
+        }
+
         private async void SaveImage(string url, string card_ID)
         {
             String file_name = card_ID + ".jpg";
@@ -108,6 +148,16 @@ namespace InventoryApp.Helpers
                 {
                     await stream.CopyToAsync(file_stream);
                 }
+            }
+        }
+
+        private void DeleteImage(string image_file)
+        {
+            String file_path = path + @"\" + image_file;
+            if (File.Exists(file_path))
+            {
+                MessageBox.Show(file_path);
+                File.Delete(file_path);
             }
         }
 

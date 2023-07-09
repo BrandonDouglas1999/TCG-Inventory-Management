@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.srch_option = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.api_price = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -39,7 +39,7 @@
             this.api_crace = new System.Windows.Forms.TextBox();
             this.rare_label = new System.Windows.Forms.Label();
             this.api_rare = new System.Windows.Forms.TextBox();
-            this.api_gridview = new System.Windows.Forms.DataGridView();
+            this.set_gridview = new System.Windows.Forms.DataGridView();
             this.add_bttn = new System.Windows.Forms.Button();
             this.image_url = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -70,14 +70,18 @@
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // srch_option
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(341, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 51;
+            this.srch_option.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.srch_option.FormattingEnabled = true;
+            this.srch_option.Items.AddRange(new object[] {
+            "Card Name",
+            "Card ID",
+            "Set Name"});
+            this.srch_option.Location = new System.Drawing.Point(341, 10);
+            this.srch_option.Name = "srch_option";
+            this.srch_option.Size = new System.Drawing.Size(121, 23);
+            this.srch_option.TabIndex = 51;
             // 
             // label8
             // 
@@ -168,17 +172,17 @@
             this.api_rare.Size = new System.Drawing.Size(98, 23);
             this.api_rare.TabIndex = 41;
             // 
-            // api_gridview
+            // set_gridview
             // 
-            this.api_gridview.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.api_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.api_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.api_gridview.Location = new System.Drawing.Point(34, 290);
-            this.api_gridview.Name = "api_gridview";
-            this.api_gridview.RowTemplate.Height = 25;
-            this.api_gridview.Size = new System.Drawing.Size(680, 186);
-            this.api_gridview.TabIndex = 40;
-            this.api_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
+            this.set_gridview.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.set_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.set_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.set_gridview.Location = new System.Drawing.Point(34, 290);
+            this.set_gridview.Name = "set_gridview";
+            this.set_gridview.RowTemplate.Height = 25;
+            this.set_gridview.Size = new System.Drawing.Size(680, 186);
+            this.set_gridview.TabIndex = 40;
+            this.set_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
             // 
             // add_bttn
             // 
@@ -320,7 +324,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.48832F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.51168F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.srch_option, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.card_srch, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.rtv_card, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(80, 29);
@@ -412,7 +416,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.api_gridview);
+            this.tabPage1.Controls.Add(this.set_gridview);
             this.tabPage1.Controls.Add(this.add_bttn);
             this.tabPage1.Controls.Add(this.tableLayoutPanel4);
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
@@ -444,7 +448,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "add_cards";
             this.Size = new System.Drawing.Size(835, 576);
-            ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -462,7 +466,7 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox srch_option;
         private Label label8;
         private TextBox api_price;
         private Label label7;
@@ -473,7 +477,7 @@
         private TextBox api_crace;
         private Label rare_label;
         private TextBox api_rare;
-        private DataGridView api_gridview;
+        private DataGridView set_gridview;
         private Button add_bttn;
         private TextBox image_url;
         private Label label4;

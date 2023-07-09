@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.image_url = new System.Windows.Forms.TextBox();
             this.add_bttn = new System.Windows.Forms.Button();
-            this.api_gridview = new System.Windows.Forms.DataGridView();
+            this.set_gridview = new System.Windows.Forms.DataGridView();
             this.api_rare = new System.Windows.Forms.TextBox();
             this.rare_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -54,8 +54,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.api_price = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).BeginInit();
+            this.srch_option = new System.Windows.Forms.ComboBox();
+            this.card_gridview = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.card_gridview)).BeginInit();
             this.SuspendLayout();
             // 
             // cn_label
@@ -67,14 +69,13 @@
             this.cn_label.Size = new System.Drawing.Size(87, 16);
             this.cn_label.TabIndex = 0;
             this.cn_label.Text = "Card Name";
-            this.cn_label.Click += new System.EventHandler(this.cn_label_Click);
             // 
             // api_cn
             // 
             this.api_cn.Location = new System.Drawing.Point(179, 112);
             this.api_cn.Name = "api_cn";
             this.api_cn.ReadOnly = true;
-            this.api_cn.Size = new System.Drawing.Size(100, 23);
+            this.api_cn.Size = new System.Drawing.Size(219, 23);
             this.api_cn.TabIndex = 1;
             // 
             // card_srch
@@ -174,13 +175,12 @@
             this.image_url.Size = new System.Drawing.Size(87, 23);
             this.image_url.TabIndex = 12;
             this.image_url.Visible = false;
-            this.image_url.TextChanged += new System.EventHandler(this.image_url_TextChanged);
             // 
             // add_bttn
             // 
             this.add_bttn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.add_bttn.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.add_bttn.Location = new System.Drawing.Point(255, 492);
+            this.add_bttn.Location = new System.Drawing.Point(255, 704);
             this.add_bttn.Name = "add_bttn";
             this.add_bttn.Size = new System.Drawing.Size(164, 38);
             this.add_bttn.TabIndex = 13;
@@ -188,16 +188,16 @@
             this.add_bttn.UseVisualStyleBackColor = true;
             this.add_bttn.Click += new System.EventHandler(this.add_bttn_Click);
             // 
-            // api_gridview
+            // set_gridview
             // 
-            this.api_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.api_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.api_gridview.Location = new System.Drawing.Point(12, 302);
-            this.api_gridview.Name = "api_gridview";
-            this.api_gridview.RowTemplate.Height = 25;
-            this.api_gridview.Size = new System.Drawing.Size(680, 186);
-            this.api_gridview.TabIndex = 14;
-            this.api_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
+            this.set_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.set_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.set_gridview.Location = new System.Drawing.Point(12, 512);
+            this.set_gridview.Name = "set_gridview";
+            this.set_gridview.RowTemplate.Height = 25;
+            this.set_gridview.Size = new System.Drawing.Size(680, 186);
+            this.set_gridview.TabIndex = 14;
+            this.set_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
             // 
             // api_rare
             // 
@@ -219,7 +219,7 @@
             // 
             // api_crace
             // 
-            this.api_crace.Location = new System.Drawing.Point(319, 112);
+            this.api_crace.Location = new System.Drawing.Point(422, 112);
             this.api_crace.Name = "api_crace";
             this.api_crace.ReadOnly = true;
             this.api_crace.Size = new System.Drawing.Size(100, 23);
@@ -229,7 +229,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(319, 92);
+            this.label5.Location = new System.Drawing.Point(422, 92);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 18;
@@ -239,7 +239,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(472, 92);
+            this.label6.Location = new System.Drawing.Point(575, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 19;
@@ -247,7 +247,7 @@
             // 
             // api_ctype
             // 
-            this.api_ctype.Location = new System.Drawing.Point(472, 111);
+            this.api_ctype.Location = new System.Drawing.Point(575, 111);
             this.api_ctype.Name = "api_ctype";
             this.api_ctype.ReadOnly = true;
             this.api_ctype.Size = new System.Drawing.Size(100, 23);
@@ -288,20 +288,37 @@
             this.label8.TabIndex = 24;
             this.label8.Text = "Current Price";
             // 
-            // comboBox1
+            // srch_option
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(446, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 25;
+            this.srch_option.FormattingEnabled = true;
+            this.srch_option.Items.AddRange(new object[] {
+            "Card Name",
+            "Card ID",
+            "Set Name"});
+            this.srch_option.Location = new System.Drawing.Point(446, 43);
+            this.srch_option.Name = "srch_option";
+            this.srch_option.Size = new System.Drawing.Size(121, 23);
+            this.srch_option.TabIndex = 25;
+            // 
+            // card_gridview
+            // 
+            this.card_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.card_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.card_gridview.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.card_gridview.Location = new System.Drawing.Point(12, 284);
+            this.card_gridview.Name = "card_gridview";
+            this.card_gridview.RowTemplate.Height = 25;
+            this.card_gridview.Size = new System.Drawing.Size(680, 186);
+            this.card_gridview.TabIndex = 26;
+            this.card_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.card_view_CellContentClick);
             // 
             // AddCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 542);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(704, 754);
+            this.Controls.Add(this.card_gridview);
+            this.Controls.Add(this.srch_option);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.api_price);
             this.Controls.Add(this.label7);
@@ -312,7 +329,7 @@
             this.Controls.Add(this.api_crace);
             this.Controls.Add(this.rare_label);
             this.Controls.Add(this.api_rare);
-            this.Controls.Add(this.api_gridview);
+            this.Controls.Add(this.set_gridview);
             this.Controls.Add(this.add_bttn);
             this.Controls.Add(this.image_url);
             this.Controls.Add(this.label4);
@@ -330,7 +347,8 @@
             this.Name = "AddCardForm";
             this.Text = "AddCardForm";
             this.Load += new System.EventHandler(this.AddCardForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.api_gridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.card_gridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,7 +370,7 @@
         private Label label4;
         private TextBox image_url;
         private Button add_bttn;
-        private DataGridView api_gridview;
+        private DataGridView set_gridview;
         private TextBox api_rare;
         private Label rare_label;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -364,6 +382,7 @@
         private Label label7;
         private TextBox api_price;
         private Label label8;
-        private ComboBox comboBox1;
+        private ComboBox srch_option;
+        private DataGridView card_gridview;
     }
 }

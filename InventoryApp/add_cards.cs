@@ -21,8 +21,10 @@ namespace InventoryApp
 {
     public partial class add_cards : UserControl
     {
-        public String path = "D:\\Users\\hang_\\Documents\\School\\Capstone\\GitHub\\TCG-Inventory-Management-Application\\InventoryApp\\CardImage"; //change this to your!!!
+        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
         public double c_rate = 0;
+        SQLHelper db = new SQLHelper();
+        YGOProCard card;
         public add_cards()
         {
             InitializeComponent();
@@ -43,15 +45,28 @@ namespace InventoryApp
             {
                 return;
             }
-            var card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
+            switch (srch_option.SelectedIndex)
+            {
+                case 0: //search card by name
+                    card = await CardProcessor.LoadProData(0, card_srch.Text.ToString());
+                    break;
+                case 1: //search by card ID
+                    card = await CardProcessor.LoadProData(1, card_srch.Text.ToString());
+                    break;
+                case 2: //search set
+                    card = await CardProcessor.LoadProData(2, card_srch.Text.ToString());
+                    break;
+                default:
+                    return;
+            }
             if (card.data == null)
             {
-                api_gridview.ColumnCount = 1;
-                api_gridview.Columns[0].Name = "No card matching your query was found in the database";
+                set_gridview.ColumnCount = 1;
+                set_gridview.Columns[0].Name = "No card matching your query was found in the database";
                 return;
             }
             //load set info into gridview
-            api_gridview.DataSource = card.data[0].card_sets;
+            set_gridview.DataSource = card.data[0].card_sets;
             //auto fill some boxes
             api_id.Text = card.data[0].id.ToString();
             api_cn.Text = card.data[0].name;
@@ -65,40 +80,20 @@ namespace InventoryApp
         {
             if (e.ColumnIndex == 5)
             {
-                api_setname.Text = api_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
-                api_setcode.Text = api_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
-                api_rare.Text = api_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
-                api_price.Text = api_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
+                api_setname.Text = set_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
+                api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
+                api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
+                api_price.Text = set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
         }
 
         //---------------------------------Functions for inserting card into database---------------------------------------------
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
-            SQLHelper db = new SQLHelper();
             int status = db.InsertCard(cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
             if (status == 0) { MessageBox.Show("Card already in database"); }
             else if (status == 1) { MessageBox.Show("Successfully added card to Inventory"); }
             return;
-        }
-
-        private async void SaveImage(string url, string card_ID)
-        {
-            String file_name = card_ID + ".jpg";
-            String file_path = path + @"\" + file_name;
-            if (File.Exists(file_path)) //check if file exist
-            {
-                return;
-            }
-            var uri = new Uri(url);
-            HttpClient client = new HttpClient();
-            using (var stream = await client.GetStreamAsync(uri))
-            {
-                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
-                {
-                    await stream.CopyToAsync(file_stream);
-                }
-            }
         }
 
         private void add_bttn_Click(object sender, EventArgs e)
@@ -125,9 +120,8 @@ namespace InventoryApp
         //-------------------------------------------Others-----------------------------------------------------------------------
         private void clear_boxes()
         {
-            api_gridview.DataSource = null;
-            api_gridview.Rows.Clear();
-            api_gridview.Columns.Clear();
+            set_gridview.DataSource = null;
+            set_gridview.Columns.Clear();
             api_id.Text = "";
             api_cn.Text = "";
             api_crace.Text = "";
@@ -143,17 +137,30 @@ namespace InventoryApp
 
         private void set_column()
         {
-            api_gridview.Columns["set_name"].HeaderText = "Set Name";
-            api_gridview.Columns["set_code"].HeaderText = "Set Code";
-            api_gridview.Columns["set_rarity"].HeaderText = "Rarity";
-            api_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
-            api_gridview.Columns["set_price"].HeaderText = "Current Price";
+            set_gridview.Columns["set_name"].HeaderText = "Set Name";
+            set_gridview.Columns["set_code"].HeaderText = "Set Code";
+            set_gridview.Columns["set_rarity"].HeaderText = "Rarity";
+            set_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
+            set_gridview.Columns["set_price"].HeaderText = "Current Price";
             //set up button for selecting which card version
             DataGridViewButtonColumn select = new DataGridViewButtonColumn();
             select.Text = "Select";
             select.UseColumnTextForButtonValue = true;
-            api_gridview.Columns.Add(select);
-
+            set_gridview.Columns.Add(select);
         }
+
+        /*
+        private void cardinfo_columns()
+        {
+            card_gridview.Columns["id"].HeaderText = "Card ID";
+            card_gridview.Columns["name"].HeaderText = "Card Name";
+            card_gridview.Columns["type"].HeaderText = "Card Type";
+            card_gridview.Columns["race"].HeaderText = "Card Race";
+            DataGridViewButtonColumn card_select = new DataGridViewButtonColumn();
+            card_select.Text = "Select";
+            card_select.UseColumnTextForButtonValue = true;
+            card_gridview.Columns.Add(card_select);
+        }
+        */
     }
 }
