@@ -1,10 +1,14 @@
+using Microsoft.VisualBasic.Logging;
+
 namespace InventoryApp
 {
     public partial class Main : Form
     {
 
         bool sidebarExpand = false;
-        string active_window = "Home";
+        UserControl activeWindow;
+        Point sidebarCollapsedLocation;
+        Point sidebarExpandedLocation;
         public Main()
         {
             InitializeComponent();
@@ -14,16 +18,23 @@ namespace InventoryApp
         {
             // Set sizes for objects
             sidebar.MaximumSize = new Size(200, int.MaxValue);
+            Size UCSize = new Size(this.Width - 50, this.Height);
 
-            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), 0);
-            card_opt_tabs.Size = new Size(this.Width - 50, this.Height);
-            card_opt_tabs.Location = new Point(50, 0);
+            sidebarCollapsedLocation = new Point(50, 0);
+            sidebarExpandedLocation = new Point(200, 0);
+
+            activeWindow = home_page;
+            activeWindow.Size = UCSize;
+            activeWindow.Location = sidebarCollapsedLocation;
+
+            // Change size of all UC's to windows size
+
+            card_opt_tabs.Size = UCSize;
         }
 
 
         private void Main_Resize(object sender, EventArgs e)
         {
-            logo.Location = new Point((this.Width / 2) - (logo.Width / 2), logo.Location.Y);
 
             // Should decide soon if sidebar open causes everything to scale, or if 
             // Interaction only occurs when sidebar is closed.
@@ -42,6 +53,7 @@ namespace InventoryApp
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
+                activeWindow.Location = new Point(activeWindow.Location.X - 10, activeWindow.Location.Y);
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebarExpand = false;
@@ -51,6 +63,7 @@ namespace InventoryApp
             else
             {
                 sidebar.Width += 10;
+                activeWindow.Location = new Point(activeWindow.Location.X + 10, activeWindow.Location.Y);
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebarExpand = true;
@@ -59,29 +72,38 @@ namespace InventoryApp
             }
         }
 
+        // Short function to change active size window depending on sidebar state
+        private void resizeActiveWindow()
+        {
+            if (sidebarExpand)
+            {
+                activeWindow.Location = sidebarExpandedLocation;
+            }
+            else
+            {
+                activeWindow.Location = sidebarCollapsedLocation;
+            }
+        }
+
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
-            if (active_window == "Home")
-            {
-                return;
-            }
-            active_window = "Home";
-            card_opt_tabs.Hide();
-            logo.Show();
+            activeWindow.Hide();
+            activeWindow = home_page;
+            resizeActiveWindow();
+            activeWindow.Show();
+
         }
 
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
+            activeWindow.Hide();
+            activeWindow = card_opt_tabs;
+            resizeActiveWindow();
+            activeWindow.Show();
 
-            if (active_window == "Cards")
-            {
-                return;
-            }
-            active_window = "Cards";
-            logo.Hide();
-            card_opt_tabs.Show();
+
         }
 
 
