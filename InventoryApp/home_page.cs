@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class UserControl1 : UserControl
+    public partial class home_page : UserControl
     {
-        public UserControl1()
+        public home_page()
         {
             InitializeComponent();
         }
