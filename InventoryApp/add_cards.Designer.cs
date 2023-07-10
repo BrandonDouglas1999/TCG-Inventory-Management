@@ -28,56 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
-            label8 = new Label();
-            api_price = new TextBox();
-            label7 = new Label();
-            card_qnty = new TextBox();
-            api_ctype = new TextBox();
-            label6 = new Label();
-            label5 = new Label();
-            api_crace = new TextBox();
-            rare_label = new Label();
-            api_rare = new TextBox();
-            api_gridview = new DataGridView();
-            add_bttn = new Button();
-            image_url = new TextBox();
-            label4 = new Label();
-            s_price = new TextBox();
-            api_setname = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            api_setcode = new TextBox();
-            api_id = new TextBox();
-            rtv_card = new Button();
-            card_srch = new TextBox();
-            api_cn = new TextBox();
-            cn_label = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            ((System.ComponentModel.ISupportInitialize)api_gridview).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
-            SuspendLayout();
+
+            this.srch_option = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.api_price = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.card_qnty = new System.Windows.Forms.TextBox();
+            this.api_ctype = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.api_crace = new System.Windows.Forms.TextBox();
+            this.rare_label = new System.Windows.Forms.Label();
+            this.api_rare = new System.Windows.Forms.TextBox();
+            this.set_gridview = new System.Windows.Forms.DataGridView();
+            this.add_bttn = new System.Windows.Forms.Button();
+            this.image_url = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.s_price = new System.Windows.Forms.TextBox();
+            this.api_setname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.api_setcode = new System.Windows.Forms.TextBox();
+            this.api_id = new System.Windows.Forms.TextBox();
+            this.rtv_card = new System.Windows.Forms.Button();
+            this.card_srch = new System.Windows.Forms.TextBox();
+            this.api_cn = new System.Windows.Forms.TextBox();
+            this.cn_label = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.SuspendLayout();
+
             // 
-            // comboBox1
+            // srch_option
             // 
-            comboBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(335, 10);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(133, 23);
-            comboBox1.TabIndex = 51;
+            this.srch_option.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.srch_option.FormattingEnabled = true;
+            this.srch_option.Items.AddRange(new object[] {
+            "Card Name",
+            "Card ID",
+            "Set Name"});
+            this.srch_option.Location = new System.Drawing.Point(341, 10);
+            this.srch_option.Name = "srch_option";
+            this.srch_option.Size = new System.Drawing.Size(121, 23);
+            this.srch_option.TabIndex = 51;
             // 
             // label8
             // 
@@ -178,17 +184,17 @@
             api_rare.Size = new Size(98, 23);
             api_rare.TabIndex = 41;
             // 
-            // api_gridview
+            // set_gridview
             // 
-            api_gridview.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            api_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            api_gridview.Location = new Point(80, 290);
-            api_gridview.Name = "api_gridview";
-            api_gridview.RowTemplate.Height = 25;
-            api_gridview.Size = new Size(596, 186);
-            api_gridview.TabIndex = 40;
-            api_gridview.CellContentClick += api_gridview_CellContentClick;
+            this.set_gridview.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.set_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.set_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.set_gridview.Location = new System.Drawing.Point(34, 290);
+            this.set_gridview.Name = "set_gridview";
+            this.set_gridview.RowTemplate.Height = 25;
+            this.set_gridview.Size = new System.Drawing.Size(680, 186);
+            this.set_gridview.TabIndex = 40;
+            this.set_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
             // 
             // add_bttn
             // 
@@ -336,21 +342,21 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.48832F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.5116768F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 124F));
-            tableLayoutPanel1.Controls.Add(comboBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(card_srch, 0, 0);
-            tableLayoutPanel1.Controls.Add(rtv_card, 2, 0);
-            tableLayoutPanel1.Location = new Point(80, 29);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(596, 44);
-            tableLayoutPanel1.TabIndex = 52;
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.48832F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.51168F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel1.Controls.Add(this.srch_option, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.card_srch, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rtv_card, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(80, 29);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(596, 44);
+            this.tableLayoutPanel1.TabIndex = 52;
             // 
             // tableLayoutPanel2
             // 
@@ -436,19 +442,19 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(api_gridview);
-            tabPage1.Controls.Add(add_bttn);
-            tabPage1.Controls.Add(tableLayoutPanel4);
-            tabPage1.Controls.Add(tableLayoutPanel1);
-            tabPage1.Controls.Add(tableLayoutPanel3);
-            tabPage1.Controls.Add(tableLayoutPanel2);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(827, 548);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.set_gridview);
+            this.tabPage1.Controls.Add(this.add_bttn);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel4);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(827, 548);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -462,30 +468,31 @@
             // 
             // add_cards
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            Controls.Add(tabControl1);
-            Name = "add_cards";
-            Size = new Size(835, 576);
-            ((System.ComponentModel.ISupportInitialize)api_gridview).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
-            ResumeLayout(false);
+
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.Controls.Add(this.tabControl1);
+            this.Name = "add_cards";
+            this.Size = new System.Drawing.Size(835, 576);
+            ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox srch_option;
         private Label label8;
         private TextBox api_price;
         private Label label7;
@@ -496,7 +503,7 @@
         private TextBox api_crace;
         private Label rare_label;
         private TextBox api_rare;
-        private DataGridView api_gridview;
+        private DataGridView set_gridview;
         private Button add_bttn;
         private TextBox image_url;
         private Label label4;

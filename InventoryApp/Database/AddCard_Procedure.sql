@@ -18,7 +18,7 @@ Begin
 	if not exists (select card_id, set_code, rarity, game from CardsInfo where card_id = @CID and set_code = @Set_Code and rarity = @Rarity and game = @Game)
 		Begin
 			set @date = GETDATE()
-			if (@Copies is null and @s_price is null)
+			if (@Copies is null and @s_price is null) /*Store card with copies and store prices set as null*/
 				Begin 
 					Insert into CardsInfo 
 					(card_id, set_code, rarity, game, card_name, card_type, card_race, set_name, current_price, update_date, image) 

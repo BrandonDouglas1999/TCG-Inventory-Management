@@ -36,15 +36,6 @@ namespace InventoryApp
             var rate = await ConversionRate.LoadRate();
             c_rate = rate.db_rate;
         }
-        private void cn_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void image_url_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void rtv_card_Click(object sender, EventArgs e)
         {
@@ -53,32 +44,61 @@ namespace InventoryApp
             {
                 return;
             }
-            card = await CardProcessor.LoadProData(card_srch.Text.ToString()); //retrieve card info, add rate as parameter
+            switch (srch_option.SelectedIndex)
+            {
+                case 0: //search card by name
+                    card = await CardProcessor.LoadProData(0, card_srch.Text.ToString());
+                    break;
+                case 1: //search by card ID
+                    card = await CardProcessor.LoadProData(1, card_srch.Text.ToString());
+                    break;
+                case 2: //search set
+                    card = await CardProcessor.LoadProData(2, card_srch.Text.ToString());
+                    break;
+                default:
+                    return;
+            }
             if (card.data == null)
             {
-                api_gridview.ColumnCount= 1;
-                api_gridview.Columns[0].Name = "No card matching your query was found in the database";
+                card_gridview.ColumnCount= 1;
+                card_gridview.Columns[0].Name = "No card data matching your query was found in the database";
                 return;
             }
-            //load set info into gridview
-            api_gridview.DataSource= card.data[0].card_sets;
-            //auto fill some boxes
-            api_id.Text = card.data[0].id.ToString();
-            api_cn.Text = card.data[0].name;
-            api_crace.Text = card.data[0].race;
-            api_ctype.Text = card.data[0].type;
-            image_url.Text = card.data[0].card_images[0].image_url;
-            set_column();
+            //Load card lsit from api return into gridview
+            card_gridview.DataSource = card.data;
+            //addbutton to cell
+            cardinfo_columns();
         }
 
         private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5)
             {
-                api_setname.Text = api_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
-                api_setcode.Text = api_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
-                api_rare.Text = api_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
-                api_price.Text = api_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
+                //fill boxes with the selected set information
+                api_setname.Text = set_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
+                api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
+                api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
+                api_price.Text = set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+        }
+
+        private void card_view_CellContentClick(object sender, DataGridViewCellEventArgs e) 
+        {
+            if (e.ColumnIndex == 4)
+            {
+                //Fill boxes with the card info and load set info into api_gridview
+                api_id.Text = card.data[e.RowIndex].id.ToString();
+                api_cn.Text = card.data[e.RowIndex].name;
+                api_crace.Text = card.data[e.RowIndex].race;
+                api_ctype.Text = card.data[e.RowIndex].type;
+                image_url.Text = card.data[e.RowIndex].card_images[0].image_url;
+                foreach (DataGridViewRow r in card_gridview.Rows)
+                {
+                    r.DefaultCellStyle.BackColor = Color.White;
+                } 
+                card_gridview.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Aqua;
+                load_set(e.RowIndex);
+                setinfo_column();
             }
         }
 
@@ -90,25 +110,6 @@ namespace InventoryApp
             if (status == 0) { MessageBox.Show("Card already in database"); }
             else if (status == 1) { MessageBox.Show("Successfully added card to Inventory"); }
             return;
-        }
-
-        private async void SaveImage(string url, string card_ID)
-        {
-            String file_name = card_ID + ".jpg";
-            String file_path = path + @"\" + file_name;
-            if (File.Exists(file_path)) //check if file exist
-            {
-                return;
-            }
-            var uri = new Uri(url);
-            HttpClient client = new HttpClient();
-            using (var stream = await client.GetStreamAsync(uri))
-            {
-                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
-                {
-                    await stream.CopyToAsync(file_stream);
-                }
-            }
         }
 
         private void add_bttn_Click(object sender, EventArgs e)
@@ -135,9 +136,10 @@ namespace InventoryApp
         //-------------------------------------------Others-----------------------------------------------------------------------
         private void clear_boxes()
         {
-            api_gridview.DataSource = null;
-            api_gridview.Rows.Clear();
-            api_gridview.Columns.Clear();
+            card_gridview.DataSource = null;
+            set_gridview.DataSource = null;
+            card_gridview.Columns.Clear();
+            set_gridview.Columns.Clear();
             api_id.Text = "";
             api_cn.Text = "";
             api_crace.Text = "";
@@ -151,20 +153,41 @@ namespace InventoryApp
             api_rare.Text = "";
         }
 
-        private void set_column()
+        //Function to load set info of the selected card
+        private void load_set(int index) 
         {
-            api_gridview.Columns["set_name"].HeaderText = "Set Name";
-            api_gridview.Columns["set_code"].HeaderText = "Set Code";
-            api_gridview.Columns["set_rarity"].HeaderText = "Rarity";
-            api_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
-            api_gridview.Columns["set_price"].HeaderText = "Current Price";
+            set_gridview.DataSource = null;
+            set_gridview.Columns.Clear();
+            set_gridview.DataSource = card.data[index].card_sets;
+        }
+
+        //Change header name and add select button for set gridview
+        private void setinfo_column()
+        {
+            set_gridview.Columns["set_name"].HeaderText = "Set Name";
+            set_gridview.Columns["set_code"].HeaderText = "Set Code";
+            set_gridview.Columns["set_rarity"].HeaderText = "Rarity";
+            set_gridview.Columns["set_rarity_code"].HeaderText = "Rarity Code";
+            set_gridview.Columns["set_price"].HeaderText = "Current Price";
             //set up button for selecting which card version
             DataGridViewButtonColumn select = new DataGridViewButtonColumn();
             select.Text = "Select";
             select.UseColumnTextForButtonValue = true;
-            api_gridview.Columns.Add(select);
-
+            set_gridview.Columns.Add(select);
         }
+
+        private void cardinfo_columns ()
+        {
+            card_gridview.Columns["id"].HeaderText = "Card ID";
+            card_gridview.Columns["name"].HeaderText = "Card Name";
+            card_gridview.Columns["type"].HeaderText = "Card Type";
+            card_gridview.Columns["race"].HeaderText = "Card Race";
+            DataGridViewButtonColumn card_select = new DataGridViewButtonColumn();
+            card_select.Text = "Select";
+            card_select.UseColumnTextForButtonValue = true;
+            card_gridview.Columns.Add(card_select);
+        }
+
 
 
         
