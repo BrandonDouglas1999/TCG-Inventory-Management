@@ -149,15 +149,33 @@ namespace InventoryApp.Helpers
                     await stream.CopyToAsync(file_stream);
                 }
             }
+            create_thumbnail(file_name);
+
         }
 
+        /*Create thumbnail from image*/
+        private void create_thumbnail(String file_name)
+        {
+            DirectoryInfo d = new DirectoryInfo(path);
+            string save_path = path + @"\Card_Thumbnails\";
+            Image img = new Bitmap(path + @"\" + file_name);
+            Image myThumbnail = img.GetThumbnailImage(105, 153, () => false, IntPtr.Zero);
+            myThumbnail.Save(save_path + file_name);
+        }
+
+        /*Delete card image and thumbnail*/
         private void DeleteImage(string image_file)
         {
             String file_path = path + @"\" + image_file;
+            String thumbnail = path + @"\Card_Thumbnails\" + image_file;
             if (File.Exists(file_path))
             {
                 MessageBox.Show(file_path);
                 File.Delete(file_path);
+            }
+            if (File.Exists(thumbnail)) 
+            {
+                File.Delete(thumbnail);
             }
         }
 
