@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace InventoryApp
 {
@@ -16,14 +18,17 @@ namespace InventoryApp
     {
         public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
+        DataTable dt;
+        int ScrollVal; //Value for paging
         public CatalogForm()
         {
             InitializeComponent();
+            ScrollVal= 0;
         }
 
         private void CatalogForm_Load(object sender, EventArgs e)
         {
-            load_catalog();
+            paging_catalog();
         }
 
 //============================================================================Gridview Interaction================================================================== 
@@ -51,17 +56,37 @@ namespace InventoryApp
         }
 
 //============================================================================Catalog Gridview===================================================================
-        private void load_catalog()
+        private void paging_catalog() /*Default load for catalog*/
         {
-            catalog_view.DataSource = null;
-            catalog_view.Rows.Clear();
-            catalog_view.Columns.Clear();
-            String query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ORDER BY card_name";
-            var myreader = new SQLHelper().Select(query);
-            DataTable dt = new DataTable();
+            setup_dttable();
+            format_view();
+        }
+
+        private void prev_catalog_Click(object sender, EventArgs e)
+        {
+            ScrollVal = ScrollVal - 20;
+            if (ScrollVal < 0) 
+            {
+                ScrollVal= 0;
+            }
+            setup_dttable();
+            format_view();
+        }  
+        
+        private void next_catalog_Click(object sender, EventArgs e)
+        {
+            ScrollVal = ScrollVal + 20;
+            setup_dttable();
+            format_view();
+        }
+        
+        private void setup_dttable() /*Set up datatable for query result*/
+        {
+            dt = new DataTable();
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
-            dt.Load(myreader); //load sql result into datatable
+            //dt.Load(myreader); //load sql result into datatable
+            db.LoadCatalog(dt, ScrollVal);
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["Current_Price"].ColumnName = "Online Price";
@@ -75,22 +100,40 @@ namespace InventoryApp
                 String full_image = path + @"\" + row["Image"].ToString();
                 row["Card Image Full"] = File.ReadAllBytes(full_image);
             }
-            
+        }
+
+        private void format_view() /*Setting up gridview*/
+        {
+            //Header Cell index in display: 0, 4-10
+            /*Topdeck Color Code: 
+                * 255, 237, 33, 125 
+                * 255, 26, 28, 60
+                * 254, 38, 171, 254
+                * White
+            */
+            catalog_view.DataSource = null;
+            catalog_view.Rows.Clear();
+            catalog_view.Columns.Clear();
             catalog_view.DataSource = dt;
+            catalog_view.EnableHeadersVisualStyles = false;
+            catalog_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60); //change header cell color
+            catalog_view.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;                 //change header text color
             catalog_view.Columns[1].Visible = false; //hide full image
             catalog_view.Columns[2].Visible = false; //hide image file name
             catalog_view.Columns[3].Visible = false; //hide card_id
-
+            //Resizing columns
+            catalog_view.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            catalog_view.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            catalog_view.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            catalog_view.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            catalog_view.AutoSizeRowsMode= DataGridViewAutoSizeRowsMode.AllCells;
+            //Change prices decimal points
             catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
             catalog_view.Columns[9].DefaultCellStyle.Format = "0.00##";
-
-            add_button();
-        }
-
-        private void add_button()
-        {
+            
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
+            update_card.FlatStyle = FlatStyle.Standard;
             update_card.Text = "Update";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             catalog_view.Columns.Add(update_card);
@@ -105,6 +148,7 @@ namespace InventoryApp
             add_to_cart.UseColumnTextForButtonValue = true;
             catalog_view.Columns.Add(add_to_cart);
         }
-//===============================================================================================================================================================   
+
+        //===============================================================================================================================================================   
     }
 }
