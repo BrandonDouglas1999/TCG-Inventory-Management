@@ -65,6 +65,19 @@ namespace InventoryApp.Helpers
             }
             return null;
         }
+
+        public void LoadCatalog(DataTable catalog, int scrollVal) /*Paging the result, passing in scroll value to indicate the start point*/
+        {
+            String query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ORDER BY card_name";
+            SqlDataAdapter pagingAdapter;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                pagingAdapter = new SqlDataAdapter(query, myConnection);
+                pagingAdapter.Fill(scrollVal, 20, catalog);
+            }
+        }
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //Card Related---------------------------------------------------------------------------------------------------------------------------------
@@ -136,21 +149,20 @@ namespace InventoryApp.Helpers
         {
             String file_name = card_ID + ".jpg";
             String file_path = path + @"\" + file_name;
-            if (File.Exists(file_path)) //check if file exist
-            {
-                return;
-            }
             var uri = new Uri(url);
             HttpClient client = new HttpClient();
             using (var stream = await client.GetStreamAsync(uri))
             {
+                if (File.Exists(file_path)) //check if file exist
+                {
+                    return;
+                }
                 using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
                 {
                     await stream.CopyToAsync(file_stream);
                 }
             }
             create_thumbnail(file_name);
-
         }
 
         /*Create thumbnail from image*/

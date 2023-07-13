@@ -303,6 +303,7 @@
             // card_gridview
             // 
             this.card_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.card_gridview.BackgroundColor = System.Drawing.SystemColors.Control;
             this.card_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.card_gridview.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.card_gridview.Location = new System.Drawing.Point(12, 284);
