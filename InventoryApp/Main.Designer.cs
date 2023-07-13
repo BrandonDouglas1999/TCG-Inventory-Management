@@ -299,7 +299,7 @@
             // 
             // UCTransitionTimer
             // 
-            UCTransitionTimer.Interval = 10;
+            UCTransitionTimer.Interval = 50;
             UCTransitionTimer.Tick += UCTransitionTimer_Tick;
             // 
             // Main

@@ -110,23 +110,27 @@ namespace InventoryApp
             tempMove = activeWindow;
             activeWindow = UCSwitchTo;
             UCTransitionTimer.Tag = UCNumber.ToString();
+            activeWindow.Show();
 
 
-            // If active is lower than the one being swapped to, scroll down, else up.
+            // If active is lower than the one being swapped to, scroll up, else down.
             if (activeWindowNumber < UCNumber)
             {
-                activeWindow.Location = new Point(tempMove.Location.X, this.Height + activeWindow.Height);
+                activeWindow.Location = new Point(tempMove.Location.X, tempMove.Location.Y + tempMove.Height);
             }
             else
             {
-                activeWindow.Location = new Point(tempMove.Location.X, this.Height - activeWindow.Height);
+                activeWindow.Location = new Point(tempMove.Location.X, tempMove.Location.Y - tempMove.Height);
             }
 
 
-            activeWindow.Show();
+
             UCTransitionTimer.Start();
+
         }
+
         // Transition slide timer tick
+        // since it references point y==0, main windows size has to be divisible by 10 plz
         private void UCTransitionTimer_Tick(object sender, EventArgs e)
         {
 
@@ -138,13 +142,13 @@ namespace InventoryApp
                 // If active is lower than the one being swapped to, scroll down, else up.
                 if (activeWindowNumber < goToUCNum)
                 {
-                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y - 5);
-                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y - 5);
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y - 10);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y - 10);
                 }
                 else
                 {
-                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y + 5);
-                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y + 5);
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y + 2);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y + 2);
                 }
             }
 
