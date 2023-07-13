@@ -6,7 +6,9 @@ namespace InventoryApp
     {
 
         bool sidebarExpand = false;
+        int activeWindowNumber = 1;
         UserControl activeWindow;
+        UserControl tempMove;
         Point sidebarCollapsedLocation;
         Point sidebarExpandedLocation;
         public Main()
@@ -85,27 +87,71 @@ namespace InventoryApp
             }
         }
 
+
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
-            activeWindow.Hide();
-            activeWindow = home_page;
-            resizeActiveWindow();
-            activeWindow.Show();
-
+            transitionUC(1, home_page);
         }
 
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
-            activeWindow.Hide();
-            activeWindow = card_opt_tabs;
-            resizeActiveWindow();
-            activeWindow.Show();
-
-
+            transitionUC(2, card_opt_tabs);
         }
 
+        // Handles the transition between UserControls (buttons)
+        // UCNumber is the number of the scene transitioning to
+        // UCSwitchTo is the UC to become the active window.
+        private void transitionUC(int UCNumber, UserControl UCSwitchTo)
+        {
+            if (activeWindowNumber == UCNumber) { return; }
 
+            tempMove = activeWindow;
+            activeWindow = UCSwitchTo;
+            UCTransitionTimer.Tag = UCNumber.ToString();
+
+
+            // If active is lower than the one being swapped to, scroll down, else up.
+            if (activeWindowNumber < UCNumber)
+            {
+                activeWindow.Location = new Point(tempMove.Location.X, this.Height + activeWindow.Height);
+            }
+            else
+            {
+                activeWindow.Location = new Point(tempMove.Location.X, this.Height - activeWindow.Height);
+            }
+
+
+            activeWindow.Show();
+            UCTransitionTimer.Start();
+        }
+        // Transition slide timer tick
+        private void UCTransitionTimer_Tick(object sender, EventArgs e)
+        {
+
+            int goToUCNum = int.Parse(UCTransitionTimer.Tag.ToString());
+
+            while (activeWindow.Location.Y != 0)
+            {
+
+                // If active is lower than the one being swapped to, scroll down, else up.
+                if (activeWindowNumber < goToUCNum)
+                {
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y - 5);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y - 5);
+                }
+                else
+                {
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y + 5);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y + 5);
+                }
+            }
+
+            tempMove.Hide();
+            activeWindowNumber = goToUCNum;
+            UCTransitionTimer.Stop();
+
+        }
     }
 }

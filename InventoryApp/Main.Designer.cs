@@ -50,6 +50,7 @@
             sidebarTimer = new System.Windows.Forms.Timer(components);
             card_opt_tabs = new add_cards();
             home_page = new home_page();
+            UCTransitionTimer = new System.Windows.Forms.Timer(components);
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -284,7 +285,7 @@
             card_opt_tabs.AutoSize = true;
             card_opt_tabs.Location = new Point(157, 0);
             card_opt_tabs.Name = "card_opt_tabs";
-            card_opt_tabs.Size = new Size(837, 576);
+            card_opt_tabs.Size = new Size(837, 575);
             card_opt_tabs.TabIndex = 1;
             // 
             // home_page
@@ -296,11 +297,16 @@
             home_page.Size = new Size(731, 330);
             home_page.TabIndex = 2;
             // 
+            // UCTransitionTimer
+            // 
+            UCTransitionTimer.Interval = 10;
+            UCTransitionTimer.Tick += UCTransitionTimer_Tick;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1086, 702);
+            ClientSize = new Size(1086, 701);
             Controls.Add(sidebar);
             Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
@@ -346,5 +352,6 @@
         private Label label1;
         private add_cards card_opt_tabs;
         private home_page home_page;
+        private System.Windows.Forms.Timer UCTransitionTimer;
     }
 }
