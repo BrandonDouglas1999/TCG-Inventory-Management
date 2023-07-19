@@ -9,6 +9,7 @@ using System.Data;
 using InventoryApp.Processors;
 using InventoryApp.API_Model;
 using System.IO;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 
 namespace InventoryApp.Helpers
@@ -17,8 +18,8 @@ namespace InventoryApp.Helpers
     class SQLHelper
     {
         //change this to your server name and the path for the image folder
-        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
-        public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+        public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory; Trusted_Connection=yes";
+        public static readonly String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage"; //change this to your!!!
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
@@ -66,9 +67,13 @@ namespace InventoryApp.Helpers
             return null;
         }
 
-        public void LoadCatalog(DataTable catalog, int scrollVal) /*Paging the result, passing in scroll value to indicate the start point*/
+        public void LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
-            String query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ORDER BY card_name";
+            filters = null; //Comment out to test filter string
+            string query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ";
+            if (filters !=  null) { query += "WHERE " + filters + " "; }
+            query += "ORDER BY card_name";
+            
             SqlDataAdapter pagingAdapter;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {

@@ -10,12 +10,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+using InventoryApp.API_Model;
+using System.Xml.Linq;
 
 namespace InventoryApp
 {
+    class Global
+    {
+        public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null); }
     public partial class CatalogForm : Form
     {
-        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
+        public String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         DataTable dt;
         int ScrollVal; //Value for paging
@@ -94,7 +100,7 @@ namespace InventoryApp
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
-            db.LoadCatalog(dt, ScrollVal);
+            db.LoadCatalog(dt, ScrollVal, Global.filters);
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["Current_Price"].ColumnName = "Online Price";
@@ -159,5 +165,91 @@ namespace InventoryApp
         }
 
         //===============================================================================================================================================================   
+        
+        /*
+         * Function to be run when you wish to filter what options the catalog is showing.
+         * 
+         * Inputs:
+         * total_filters: Total number of filters that aren't null
+         * card_name, card_type, etc. - Strings containing sql filter statements corresponding to desired filters(ie. card_price = "card_price > 32")
+         *                         or NULL if you do not wish to filter category
+         *                       
+         * Outputs: filter_string - String to be used for SQL select statement where clause
+         */
+        public static string return_filter_string(int total_filters, string card_name, string card_type, string card_race, string card_price, string rarity, string inventory, string set_name)
+        {
+            if (total_filters == 0) { return null; }
+
+            int current_filter = 0; //Way to check current number of implemented filters
+            string filter_string = ""; //empty string to be used for filters for SQL select statement
+
+            //Repeated for each category that can be filtered
+            //If card_name has a filter string
+            if (!string.IsNullOrEmpty(card_name)){
+                //Increase current filter and add card_name to filter string
+                current_filter += 1;
+                filter_string += card_name;
+                //If there's another filter to be added, add " and " to SQL filter string
+                if (current_filter < total_filters){
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(card_type)){
+                current_filter += 1;
+                filter_string += card_type;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(card_race)){
+                current_filter += 1;
+                filter_string += card_race;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(card_price)){
+                current_filter += 1;
+                filter_string += card_price;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(rarity)){
+                current_filter += 1;
+                filter_string += rarity;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(inventory)){
+                current_filter += 1;
+                filter_string += inventory;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(set_name)){
+                current_filter += 1;
+                filter_string += set_name;
+                if (current_filter < total_filters)
+                {
+                    filter_string += " and ";
+                }
+            }
+
+            return filter_string;
+        }
     }
 }

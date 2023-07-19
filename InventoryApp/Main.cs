@@ -6,7 +6,9 @@ namespace InventoryApp
     {
 
         bool sidebarExpand = false;
+        int activeWindowNumber = 1;
         UserControl activeWindow;
+        UserControl tempMove;
         Point sidebarCollapsedLocation;
         Point sidebarExpandedLocation;
         public Main()
@@ -85,27 +87,75 @@ namespace InventoryApp
             }
         }
 
+
         // Home functions
         private void home_button_Click(object sender, EventArgs e)
         {
-            activeWindow.Hide();
-            activeWindow = home_page;
-            resizeActiveWindow();
-            activeWindow.Show();
-
+            transitionUC(1, home_page);
         }
 
         // Card functions
         private void card_button_Click(object sender, EventArgs e)
         {
-            activeWindow.Hide();
-            activeWindow = card_opt_tabs;
-            resizeActiveWindow();
+            transitionUC(2, card_opt_tabs);
+        }
+
+        // Handles the transition between UserControls (buttons)
+        // UCNumber is the number of the scene transitioning to
+        // UCSwitchTo is the UC to become the active window.
+        private void transitionUC(int UCNumber, UserControl UCSwitchTo)
+        {
+            if (activeWindowNumber == UCNumber) { return; }
+
+            tempMove = activeWindow;
+            activeWindow = UCSwitchTo;
+            UCTransitionTimer.Tag = UCNumber.ToString();
             activeWindow.Show();
 
 
+            // If active is lower than the one being swapped to, scroll up, else down.
+            if (activeWindowNumber < UCNumber)
+            {
+                activeWindow.Location = new Point(tempMove.Location.X, tempMove.Location.Y + tempMove.Height);
+            }
+            else
+            {
+                activeWindow.Location = new Point(tempMove.Location.X, tempMove.Location.Y - tempMove.Height);
+            }
+
+
+
+            UCTransitionTimer.Start();
+
         }
 
+        // Transition slide timer tick
+        // since it references point y==0, main windows size has to be divisible by 10 plz
+        private void UCTransitionTimer_Tick(object sender, EventArgs e)
+        {
 
+            int goToUCNum = int.Parse(UCTransitionTimer.Tag.ToString());
+
+            while (activeWindow.Location.Y != 0)
+            {
+
+                // If active is lower than the one being swapped to, scroll down, else up.
+                if (activeWindowNumber < goToUCNum)
+                {
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y - 10);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y - 10);
+                }
+                else
+                {
+                    tempMove.Location = new Point(tempMove.Location.X, tempMove.Location.Y + 2);
+                    activeWindow.Location = new Point(activeWindow.Location.X, activeWindow.Location.Y + 2);
+                }
+            }
+
+            tempMove.Hide();
+            activeWindowNumber = goToUCNum;
+            UCTransitionTimer.Stop();
+
+        }
     }
 }
