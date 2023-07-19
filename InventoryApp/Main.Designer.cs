@@ -38,7 +38,7 @@
             flowLayoutPanel4 = new FlowLayoutPanel();
             card_button = new Button();
             flowLayoutPanel5 = new FlowLayoutPanel();
-            button3 = new Button();
+            edit_inventory = new Button();
             flowLayoutPanel6 = new FlowLayoutPanel();
             button4 = new Button();
             flowLayoutPanel7 = new FlowLayoutPanel();
@@ -166,26 +166,26 @@
             // 
             // flowLayoutPanel5
             // 
-            flowLayoutPanel5.Controls.Add(button3);
+            flowLayoutPanel5.Controls.Add(edit_inventory);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel6);
             flowLayoutPanel5.Location = new Point(3, 209);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new Size(173, 46);
             flowLayoutPanel5.TabIndex = 3;
             // 
-            // button3
+            // edit_inventory
             // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Image = Properties.Resources.line_chart;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(164, 46);
-            button3.TabIndex = 0;
-            button3.Text = "Graphs";
-            button3.UseVisualStyleBackColor = true;
+            edit_inventory.FlatAppearance.BorderSize = 0;
+            edit_inventory.FlatStyle = FlatStyle.Flat;
+            edit_inventory.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            edit_inventory.Image = Properties.Resources.inventory;
+            edit_inventory.ImageAlign = ContentAlignment.MiddleLeft;
+            edit_inventory.Location = new Point(3, 3);
+            edit_inventory.Name = "edit_inventory";
+            edit_inventory.Size = new Size(164, 46);
+            edit_inventory.TabIndex = 0;
+            edit_inventory.Text = "Inventory";
+            edit_inventory.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel6
             // 
@@ -243,13 +243,13 @@
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button7.Image = Properties.Resources.settings;
+            button7.Image = Properties.Resources.shopping_cart1;
             button7.ImageAlign = ContentAlignment.MiddleLeft;
             button7.Location = new Point(3, 3);
             button7.Name = "button7";
             button7.Size = new Size(164, 46);
             button7.TabIndex = 0;
-            button7.Text = "Settings";
+            button7.Text = "Cart";
             button7.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel8
@@ -265,13 +265,13 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Image = Properties.Resources.question_mark;
+            button6.Image = Properties.Resources.line_chart;
             button6.ImageAlign = ContentAlignment.MiddleLeft;
             button6.Location = new Point(3, 3);
             button6.Name = "button6";
             button6.Size = new Size(164, 46);
             button6.TabIndex = 0;
-            button6.Text = "About";
+            button6.Text = "Sales";
             button6.UseVisualStyleBackColor = true;
             // 
             // sidebarTimer
@@ -337,7 +337,7 @@
         private FlowLayoutPanel flowLayoutPanel4;
         private Button card_button;
         private FlowLayoutPanel flowLayoutPanel5;
-        private Button button3;
+        private Button edit_inventory;
         private FlowLayoutPanel flowLayoutPanel6;
         private Button button4;
         private FlowLayoutPanel flowLayoutPanel7;
