@@ -22,7 +22,7 @@ namespace InventoryApp
 
         private void load_catalog() //Load catalog of cards into catalog_gridview
         {
-            String query = "";
+            //String query = "";
         }
     }
 

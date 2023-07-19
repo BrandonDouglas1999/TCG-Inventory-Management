@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace InventoryApp
 {
@@ -24,6 +23,7 @@ namespace InventoryApp
         {
             InitializeComponent();
             ScrollVal= 0;
+            prev_catalog.Enabled = false;
         }
 
         private void CatalogForm_Load(object sender, EventArgs e)
@@ -71,11 +71,19 @@ namespace InventoryApp
             }
             setup_dttable();
             format_view();
+            if (ScrollVal == 0)
+            {
+                prev_catalog.Enabled = false;
+            }
         }  
         
         private void next_catalog_Click(object sender, EventArgs e)
         {
             ScrollVal = ScrollVal + 20;
+            if (ScrollVal > 0)
+            {
+                prev_catalog.Enabled= true;
+            }
             setup_dttable();
             format_view();
         }
@@ -105,11 +113,11 @@ namespace InventoryApp
         private void format_view() /*Setting up gridview*/
         {
             //Header Cell index in display: 0, 4-10
-            /*Topdeck Color Code: 
+            /*Topdeck Color Code (ARGB): 
                 * 255, 237, 33, 125 
                 * 255, 26, 28, 60
                 * 254, 38, 171, 254
-                * White
+                * White(obviously)
             */
             catalog_view.DataSource = null;
             catalog_view.Rows.Clear();
@@ -130,12 +138,13 @@ namespace InventoryApp
             //Change prices decimal points
             catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
             catalog_view.Columns[9].DefaultCellStyle.Format = "0.00##";
-            
+
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
             update_card.Text = "Update";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
+            update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             catalog_view.Columns.Add(update_card);
 
             DataGridViewButtonColumn edit_card = new DataGridViewButtonColumn();
