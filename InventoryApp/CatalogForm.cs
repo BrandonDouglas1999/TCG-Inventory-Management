@@ -21,7 +21,7 @@ namespace InventoryApp
         public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null); }
     public partial class CatalogForm : Form
     {
-        public String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage";
+        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         DataTable dt;
         int ScrollVal; //Value for paging
@@ -83,7 +83,7 @@ namespace InventoryApp
             }
         }  
         
-        private void next_catalog_Click(object sender, EventArgs e)
+        private void next_catalog_Click(object sender, EventArgs e) //need to work on in case of hitting the end of result
         {
             ScrollVal = ScrollVal + 20;
             if (ScrollVal > 0)
