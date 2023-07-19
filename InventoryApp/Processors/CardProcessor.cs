@@ -23,13 +23,13 @@ namespace InventoryApp.Processors
             {
                 switch (option) {
                     case 0:
-                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?name={cardName}";
+                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?name={cardName}&tcgplayer_data";
                         break;
                     case 1:
-                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?id={cardName}";
+                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?id={cardName}&tcgplayer_data";
                         break;
                     case 2:
-                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?cardset={cardName}";
+                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?cardset={cardName}&tcgplayer_data";
                         break;
                     default:
                         YGOProCard card = new YGOProCard();
