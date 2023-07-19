@@ -44,13 +44,15 @@
             flowLayoutPanel7 = new FlowLayoutPanel();
             button5 = new Button();
             flowLayoutPanel9 = new FlowLayoutPanel();
-            button7 = new Button();
+            cart_button = new Button();
             flowLayoutPanel8 = new FlowLayoutPanel();
-            button6 = new Button();
+            sales_button = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             card_opt_tabs = new add_cards();
             home_page = new home_page();
-            UCTransitionTimer = new System.Windows.Forms.Timer(components);
+            catalog_uc = new catalog();
+            cart_tab = new shopping_cart_page();
+            sales_uc = new sales_report();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -186,6 +188,7 @@
             edit_inventory.TabIndex = 0;
             edit_inventory.Text = "Inventory";
             edit_inventory.UseVisualStyleBackColor = true;
+            edit_inventory.Click += edit_inventory_Click;
             // 
             // flowLayoutPanel6
             // 
@@ -232,47 +235,49 @@
             // 
             // flowLayoutPanel9
             // 
-            flowLayoutPanel9.Controls.Add(button7);
+            flowLayoutPanel9.Controls.Add(cart_button);
             flowLayoutPanel9.Location = new Point(3, 261);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             flowLayoutPanel9.Size = new Size(173, 46);
             flowLayoutPanel9.TabIndex = 2;
             // 
-            // button7
+            // cart_button
             // 
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button7.Image = Properties.Resources.shopping_cart1;
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(3, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(164, 46);
-            button7.TabIndex = 0;
-            button7.Text = "Cart";
-            button7.UseVisualStyleBackColor = true;
+            cart_button.FlatAppearance.BorderSize = 0;
+            cart_button.FlatStyle = FlatStyle.Flat;
+            cart_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cart_button.Image = Properties.Resources.shopping_cart1;
+            cart_button.ImageAlign = ContentAlignment.MiddleLeft;
+            cart_button.Location = new Point(3, 3);
+            cart_button.Name = "cart_button";
+            cart_button.Size = new Size(164, 46);
+            cart_button.TabIndex = 0;
+            cart_button.Text = "Cart";
+            cart_button.UseVisualStyleBackColor = true;
+            cart_button.Click += cart_button_Click;
             // 
             // flowLayoutPanel8
             // 
-            flowLayoutPanel8.Controls.Add(button6);
+            flowLayoutPanel8.Controls.Add(sales_button);
             flowLayoutPanel8.Location = new Point(3, 313);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
             flowLayoutPanel8.Size = new Size(173, 46);
             flowLayoutPanel8.TabIndex = 2;
             // 
-            // button6
+            // sales_button
             // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Image = Properties.Resources.line_chart;
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(3, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(164, 46);
-            button6.TabIndex = 0;
-            button6.Text = "Sales";
-            button6.UseVisualStyleBackColor = true;
+            sales_button.FlatAppearance.BorderSize = 0;
+            sales_button.FlatStyle = FlatStyle.Flat;
+            sales_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            sales_button.Image = Properties.Resources.line_chart;
+            sales_button.ImageAlign = ContentAlignment.MiddleLeft;
+            sales_button.Location = new Point(3, 3);
+            sales_button.Name = "sales_button";
+            sales_button.Size = new Size(164, 46);
+            sales_button.TabIndex = 0;
+            sales_button.Text = "Sales";
+            sales_button.UseVisualStyleBackColor = true;
+            sales_button.Click += sales_button_Click;
             // 
             // sidebarTimer
             // 
@@ -283,7 +288,7 @@
             // 
             card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             card_opt_tabs.AutoSize = true;
-            card_opt_tabs.Location = new Point(157, 0);
+            card_opt_tabs.Location = new Point(176, 0);
             card_opt_tabs.Name = "card_opt_tabs";
             card_opt_tabs.Size = new Size(837, 575);
             card_opt_tabs.TabIndex = 1;
@@ -297,16 +302,42 @@
             home_page.Size = new Size(731, 330);
             home_page.TabIndex = 2;
             // 
-            // UCTransitionTimer
+            // catalog_uc
             // 
-            UCTransitionTimer.Interval = 50;
-            UCTransitionTimer.Tick += UCTransitionTimer_Tick;
+            catalog_uc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            catalog_uc.AutoSize = true;
+            catalog_uc.Location = new Point(108, 164);
+            catalog_uc.Name = "catalog_uc";
+            catalog_uc.Size = new Size(350, 341);
+            catalog_uc.TabIndex = 3;
+            catalog_uc.Visible = false;
+            // 
+            // cart_tab
+            // 
+            cart_tab.Location = new Point(329, 35);
+            cart_tab.Name = "cart_tab";
+            cart_tab.Size = new Size(636, 384);
+            cart_tab.TabIndex = 4;
+            cart_tab.Visible = false;
+            // 
+            // sales_uc
+            // 
+            sales_uc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            sales_uc.AutoSize = true;
+            sales_uc.Location = new Point(826, 285);
+            sales_uc.Name = "sales_uc";
+            sales_uc.Size = new Size(248, 220);
+            sales_uc.TabIndex = 5;
+            sales_uc.Visible = false;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1086, 701);
+            Controls.Add(sales_uc);
+            Controls.Add(cart_tab);
+            Controls.Add(catalog_uc);
             Controls.Add(sidebar);
             Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
@@ -343,15 +374,17 @@
         private FlowLayoutPanel flowLayoutPanel7;
         private Button button5;
         private FlowLayoutPanel flowLayoutPanel9;
-        private Button button7;
+        private Button cart_button;
         private FlowLayoutPanel flowLayoutPanel8;
-        private Button button6;
+        private Button sales_button;
         private System.Windows.Forms.Timer sidebarTimer;
         private TableLayoutPanel table;
         private PictureBox menuButton;
         private Label label1;
         private add_cards card_opt_tabs;
         private home_page home_page;
-        private System.Windows.Forms.Timer UCTransitionTimer;
+        private catalog catalog_uc;
+        private shopping_cart_page cart_tab;
+        private sales_report sales_uc;
     }
 }
