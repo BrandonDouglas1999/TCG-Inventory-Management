@@ -16,5 +16,10 @@ namespace InventoryApp
         {
             InitializeComponent();
         }
+
+        private void edit_inventory_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
