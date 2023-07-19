@@ -115,12 +115,13 @@ namespace InventoryApp
         private void add_bttn_Click(object sender, EventArgs e)
         {
             int num = 0;
+            float num2;
             if (api_rare.Text == "" || api_setcode.Text == "" || api_setname.Text == "" || api_price.Text == "" || card_qnty.Text == "" || s_price.Text == "")
             {
                 MessageBox.Show("Missing card information");
                 return;
             }
-            else if (int.TryParse(card_qnty.Text, out num) == false || int.TryParse(s_price.Text, out num) == false)
+            else if (int.TryParse(card_qnty.Text, out num) == false || float.TryParse(s_price.Text, out num2) == false)
             {
                 MessageBox.Show("Invalid value for quantity/store price.");
             }
