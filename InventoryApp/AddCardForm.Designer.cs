@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cn_label = new System.Windows.Forms.Label();
             this.api_cn = new System.Windows.Forms.TextBox();
             this.card_srch = new System.Windows.Forms.TextBox();
@@ -56,6 +60,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.srch_option = new System.Windows.Forms.ComboBox();
             this.card_gridview = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card_gridview)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +72,8 @@
             // 
             this.cn_label.AutoSize = true;
             this.cn_label.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cn_label.Location = new System.Drawing.Point(152, 128);
+            this.cn_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.cn_label.Location = new System.Drawing.Point(285, 89);
             this.cn_label.Name = "cn_label";
             this.cn_label.Size = new System.Drawing.Size(87, 16);
             this.cn_label.TabIndex = 0;
@@ -72,7 +81,8 @@
             // 
             // api_cn
             // 
-            this.api_cn.Location = new System.Drawing.Point(152, 148);
+            this.api_cn.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_cn.Location = new System.Drawing.Point(285, 109);
             this.api_cn.Name = "api_cn";
             this.api_cn.ReadOnly = true;
             this.api_cn.Size = new System.Drawing.Size(300, 23);
@@ -87,18 +97,22 @@
             // 
             // rtv_card
             // 
+            this.rtv_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(171)))), ((int)(((byte)(254)))));
+            this.rtv_card.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rtv_card.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtv_card.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.rtv_card.Location = new System.Drawing.Point(719, 30);
             this.rtv_card.Name = "rtv_card";
             this.rtv_card.Size = new System.Drawing.Size(126, 23);
             this.rtv_card.TabIndex = 3;
             this.rtv_card.Text = "Search Database";
-            this.rtv_card.UseVisualStyleBackColor = true;
+            this.rtv_card.UseVisualStyleBackColor = false;
             this.rtv_card.Click += new System.EventHandler(this.rtv_card_Click);
             // 
             // api_id
             // 
-            this.api_id.Location = new System.Drawing.Point(152, 90);
+            this.api_id.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_id.Location = new System.Drawing.Point(152, 109);
             this.api_id.Name = "api_id";
             this.api_id.ReadOnly = true;
             this.api_id.Size = new System.Drawing.Size(100, 23);
@@ -106,7 +120,8 @@
             // 
             // api_setcode
             // 
-            this.api_setcode.Location = new System.Drawing.Point(591, 148);
+            this.api_setcode.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_setcode.Location = new System.Drawing.Point(152, 162);
             this.api_setcode.Name = "api_setcode";
             this.api_setcode.ReadOnly = true;
             this.api_setcode.Size = new System.Drawing.Size(100, 23);
@@ -116,7 +131,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(152, 70);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label1.Location = new System.Drawing.Point(152, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 16);
             this.label1.TabIndex = 6;
@@ -126,7 +142,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(591, 128);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label2.Location = new System.Drawing.Point(152, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 7;
@@ -136,7 +153,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(591, 71);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label3.Location = new System.Drawing.Point(286, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 16);
             this.label3.TabIndex = 8;
@@ -144,7 +162,8 @@
             // 
             // api_setname
             // 
-            this.api_setname.Location = new System.Drawing.Point(591, 90);
+            this.api_setname.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_setname.Location = new System.Drawing.Point(286, 162);
             this.api_setname.Name = "api_setname";
             this.api_setname.ReadOnly = true;
             this.api_setname.Size = new System.Drawing.Size(300, 23);
@@ -152,7 +171,7 @@
             // 
             // s_price
             // 
-            this.s_price.Location = new System.Drawing.Point(297, 256);
+            this.s_price.Location = new System.Drawing.Point(297, 245);
             this.s_price.Name = "s_price";
             this.s_price.Size = new System.Drawing.Size(100, 23);
             this.s_price.TabIndex = 10;
@@ -161,7 +180,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(297, 237);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label4.Location = new System.Drawing.Point(297, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 16);
             this.label4.TabIndex = 11;
@@ -169,7 +189,7 @@
             // 
             // image_url
             // 
-            this.image_url.Location = new System.Drawing.Point(697, 199);
+            this.image_url.Location = new System.Drawing.Point(725, 162);
             this.image_url.Name = "image_url";
             this.image_url.ReadOnly = true;
             this.image_url.Size = new System.Drawing.Size(87, 23);
@@ -178,26 +198,50 @@
             // 
             // add_bttn
             // 
+            this.add_bttn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.add_bttn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.add_bttn.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.add_bttn.Location = new System.Drawing.Point(324, 704);
+            this.add_bttn.Location = new System.Drawing.Point(442, 719);
             this.add_bttn.Name = "add_bttn";
             this.add_bttn.Size = new System.Drawing.Size(164, 38);
             this.add_bttn.TabIndex = 13;
-            this.add_bttn.Text = "Add Card";
+            this.add_bttn.Text = "Add To Inventory";
             this.add_bttn.UseVisualStyleBackColor = true;
             this.add_bttn.Click += new System.EventHandler(this.add_bttn_Click);
             // 
             // set_gridview
             // 
-            this.set_gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.set_gridview.AllowUserToAddRows = false;
+            this.set_gridview.AllowUserToDeleteRows = false;
+            this.set_gridview.AllowUserToResizeColumns = false;
+            this.set_gridview.AllowUserToResizeRows = false;
+            this.set_gridview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.set_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.set_gridview.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.set_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.set_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.set_gridview.Location = new System.Drawing.Point(135, 504);
+            this.set_gridview.EnableHeadersVisualStyles = false;
+            this.set_gridview.Location = new System.Drawing.Point(134, 527);
+            this.set_gridview.MultiSelect = false;
             this.set_gridview.Name = "set_gridview";
+            this.set_gridview.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.set_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.set_gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.set_gridview.RowTemplate.Height = 25;
             this.set_gridview.Size = new System.Drawing.Size(798, 186);
             this.set_gridview.TabIndex = 14;
@@ -205,7 +249,8 @@
             // 
             // api_rare
             // 
-            this.api_rare.Location = new System.Drawing.Point(591, 199);
+            this.api_rare.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_rare.Location = new System.Drawing.Point(619, 162);
             this.api_rare.Name = "api_rare";
             this.api_rare.ReadOnly = true;
             this.api_rare.Size = new System.Drawing.Size(100, 23);
@@ -215,7 +260,8 @@
             // 
             this.rare_label.AutoSize = true;
             this.rare_label.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rare_label.Location = new System.Drawing.Point(591, 180);
+            this.rare_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.rare_label.Location = new System.Drawing.Point(619, 143);
             this.rare_label.Name = "rare_label";
             this.rare_label.Size = new System.Drawing.Size(50, 16);
             this.rare_label.TabIndex = 16;
@@ -223,7 +269,8 @@
             // 
             // api_crace
             // 
-            this.api_crace.Location = new System.Drawing.Point(152, 199);
+            this.api_crace.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_crace.Location = new System.Drawing.Point(619, 109);
             this.api_crace.Name = "api_crace";
             this.api_crace.ReadOnly = true;
             this.api_crace.Size = new System.Drawing.Size(100, 23);
@@ -233,7 +280,8 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(152, 180);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label5.Location = new System.Drawing.Point(619, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 18;
@@ -243,7 +291,8 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(297, 180);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label6.Location = new System.Drawing.Point(764, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 19;
@@ -251,7 +300,8 @@
             // 
             // api_ctype
             // 
-            this.api_ctype.Location = new System.Drawing.Point(297, 199);
+            this.api_ctype.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_ctype.Location = new System.Drawing.Point(764, 109);
             this.api_ctype.Name = "api_ctype";
             this.api_ctype.ReadOnly = true;
             this.api_ctype.Size = new System.Drawing.Size(100, 23);
@@ -259,7 +309,7 @@
             // 
             // card_qnty
             // 
-            this.card_qnty.Location = new System.Drawing.Point(442, 256);
+            this.card_qnty.Location = new System.Drawing.Point(442, 245);
             this.card_qnty.Name = "card_qnty";
             this.card_qnty.Size = new System.Drawing.Size(100, 23);
             this.card_qnty.TabIndex = 21;
@@ -268,7 +318,8 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(442, 237);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label7.Location = new System.Drawing.Point(442, 226);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 16);
             this.label7.TabIndex = 22;
@@ -276,7 +327,8 @@
             // 
             // api_price
             // 
-            this.api_price.Location = new System.Drawing.Point(152, 256);
+            this.api_price.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_price.Location = new System.Drawing.Point(152, 245);
             this.api_price.Name = "api_price";
             this.api_price.ReadOnly = true;
             this.api_price.Size = new System.Drawing.Size(100, 23);
@@ -286,14 +338,16 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(152, 237);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label8.Location = new System.Drawing.Point(152, 226);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 16);
+            this.label8.Size = new System.Drawing.Size(97, 16);
             this.label8.TabIndex = 24;
-            this.label8.Text = "Current Price";
+            this.label8.Text = "Market Price";
             // 
             // srch_option
             // 
+            this.srch_option.Cursor = System.Windows.Forms.Cursors.Hand;
             this.srch_option.FormattingEnabled = true;
             this.srch_option.Items.AddRange(new object[] {
             "Card Name",
@@ -306,22 +360,91 @@
             // 
             // card_gridview
             // 
+            this.card_gridview.AllowUserToAddRows = false;
+            this.card_gridview.AllowUserToDeleteRows = false;
+            this.card_gridview.AllowUserToResizeColumns = false;
+            this.card_gridview.AllowUserToResizeRows = false;
+            this.card_gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.card_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.card_gridview.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.card_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.card_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.card_gridview.EnableHeadersVisualStyles = false;
             this.card_gridview.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.card_gridview.Location = new System.Drawing.Point(135, 300);
+            this.card_gridview.Location = new System.Drawing.Point(135, 306);
+            this.card_gridview.MultiSelect = false;
             this.card_gridview.Name = "card_gridview";
+            this.card_gridview.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.card_gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.card_gridview.RowTemplate.Height = 25;
             this.card_gridview.Size = new System.Drawing.Size(798, 186);
             this.card_gridview.TabIndex = 26;
             this.card_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.card_view_CellContentClick);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(134, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 16);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Card Details:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(134, 201);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 16);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Product Details:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(134, 287);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Card Info:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(135, 508);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(105, 16);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Card Version:";
+            // 
             // AddCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 702);
+            this.ClientSize = new System.Drawing.Size(1086, 785);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.card_gridview);
             this.Controls.Add(this.srch_option);
             this.Controls.Add(this.label8);
@@ -389,5 +512,9 @@
         private Label label8;
         private ComboBox srch_option;
         private DataGridView card_gridview;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
     }
 }

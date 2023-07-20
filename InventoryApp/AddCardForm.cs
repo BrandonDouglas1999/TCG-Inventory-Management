@@ -70,18 +70,6 @@ namespace InventoryApp
             cardinfo_columns();
         }
 
-        private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            {
-                //fill boxes with the selected set information
-                api_setname.Text = set_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
-                api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
-                api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
-                api_price.Text = set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
-            }
-        }
-
         private void card_view_CellContentClick(object sender, DataGridViewCellEventArgs e) 
         {
             if (e.ColumnIndex == 4)
@@ -100,6 +88,23 @@ namespace InventoryApp
                 load_set(e.RowIndex);
                 setinfo_column();
             }
+        } 
+
+        private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                //fill boxes with the selected set information
+                api_setname.Text = set_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
+                api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
+                api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
+                api_price.Text = set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
+                foreach (DataGridViewRow r in set_gridview.Rows)
+                {
+                    r.DefaultCellStyle.BackColor = Color.White;
+                }
+                set_gridview.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Aqua;
+            }
         }
 
         //---------------------------------Functions for inserting card into database---------------------------------------------
@@ -114,7 +119,7 @@ namespace InventoryApp
 
         private void add_bttn_Click(object sender, EventArgs e)
         {
-            int num = 0;
+            int num;
             float num2;
             if (api_rare.Text == "" || api_setcode.Text == "" || api_setname.Text == "" || api_price.Text == "" || card_qnty.Text == "" || s_price.Text == "")
             {
@@ -158,6 +163,10 @@ namespace InventoryApp
         private void load_set(int index) 
         {
             set_gridview.DataSource = null;
+            api_setcode.Text = "";
+            api_setname.Text = "";
+            api_price.Text = "";
+            api_rare.Text = "";
             set_gridview.Columns.Clear();
             set_gridview.DataSource = card.data[index].card_sets;
         }
@@ -175,6 +184,9 @@ namespace InventoryApp
             select.Text = "Select";
             select.UseColumnTextForButtonValue = true;
             set_gridview.Columns.Add(select);
+            //set_gridview.EnableHeadersVisualStyles = false;
+            set_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
+            set_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void cardinfo_columns ()
@@ -187,10 +199,9 @@ namespace InventoryApp
             card_select.Text = "Select";
             card_select.UseColumnTextForButtonValue = true;
             card_gridview.Columns.Add(card_select);
+            //card_gridview.EnableHeadersVisualStyles = false;
+            card_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
+            card_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
-
-
-
-        
     }
 }

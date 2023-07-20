@@ -18,8 +18,9 @@ namespace InventoryApp.Helpers
     class SQLHelper
     {
         //change this to your server name and the path for the image folder
-        public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory; Trusted_Connection=yes";
-        public static readonly String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage"; //change this to your!!!
+        //public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory; Trusted_Connection=yes";
+        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
+        public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
