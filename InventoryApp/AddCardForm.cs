@@ -31,10 +31,11 @@ namespace InventoryApp
         }
 
         //load conversion rate on opening
-        private async void AddCardForm_Load(object sender, EventArgs e)
+        private void AddCardForm_Load(object sender, EventArgs e)
         {
-            var rate = await ConversionRate.LoadRate();
-            c_rate = rate.db_rate;
+            //var rate = await ConversionRate.LoadRate();
+            //c_rate = rate.db_rate;
+            card_srch.Select();
         }
 
         private async void rtv_card_Click(object sender, EventArgs e)
@@ -202,6 +203,11 @@ namespace InventoryApp
             //card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
             card_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -43,6 +43,7 @@
             this.catalog_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.catalog_view.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.catalog_view.BackgroundColor = System.Drawing.Color.White;
+            this.catalog_view.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.catalog_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.catalog_view.GridColor = System.Drawing.SystemColors.Control;
             this.catalog_view.Location = new System.Drawing.Point(12, 77);
@@ -55,7 +56,7 @@
             // 
             // prev_catalog
             // 
-            this.prev_catalog.Location = new System.Drawing.Point(12, 611);
+            this.prev_catalog.Location = new System.Drawing.Point(485, 622);
             this.prev_catalog.Name = "prev_catalog";
             this.prev_catalog.Size = new System.Drawing.Size(99, 23);
             this.prev_catalog.TabIndex = 1;
@@ -65,7 +66,7 @@
             // 
             // next_catalog
             // 
-            this.next_catalog.Location = new System.Drawing.Point(129, 611);
+            this.next_catalog.Location = new System.Drawing.Point(602, 622);
             this.next_catalog.Name = "next_catalog";
             this.next_catalog.Size = new System.Drawing.Size(99, 23);
             this.next_catalog.TabIndex = 2;

@@ -16,11 +16,13 @@ using System.Xml.Linq;
 
 namespace InventoryApp
 {
-    class Global
-    {
-        public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null); }
     public partial class CatalogForm : Form
     {
+        class Global
+        {
+            public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
+        }
+
         public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         DataTable dt;
@@ -47,6 +49,11 @@ namespace InventoryApp
             }
             if (e.ColumnIndex == 12) //Edit Inventory
             {
+                /*
+                    Pass row info: Card ID, Set Code, Rarity
+                 */
+                MessageBox.Show(catalog_view.Rows[e.RowIndex].Cells[2].Value.ToString()); 
+
                 return;
             }
             if (e.ColumnIndex == 13) //Add to shopping cart
