@@ -52,8 +52,8 @@ namespace InventoryApp
                 /*
                     Pass row info: Card ID, Set Code, Rarity
                  */
-                MessageBox.Show(catalog_view.Rows[e.RowIndex].Cells[2].Value.ToString()); 
-
+                String card_id = catalog_view.Rows[e.RowIndex].Cells[3].Value.ToString();
+                MessageBox.Show(card_id);
                 return;
             }
             if (e.ColumnIndex == 13) //Add to shopping cart

@@ -68,7 +68,7 @@ namespace InventoryApp.Helpers
             return null;
         }
 
-        public void LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
+        public int LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
             filters = null; //Comment out to test filter string
             string query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ";
@@ -82,6 +82,7 @@ namespace InventoryApp.Helpers
                 pagingAdapter = new SqlDataAdapter(query, myConnection);
                 pagingAdapter.Fill(scrollVal, 20, catalog);
             }
+            return scrollVal;
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
