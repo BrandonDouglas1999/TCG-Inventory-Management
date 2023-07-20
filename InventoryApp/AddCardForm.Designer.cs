@@ -71,11 +71,11 @@
             // cn_label
             // 
             this.cn_label.AutoSize = true;
-            this.cn_label.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cn_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.cn_label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cn_label.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.cn_label.Location = new System.Drawing.Point(285, 89);
             this.cn_label.Name = "cn_label";
-            this.cn_label.Size = new System.Drawing.Size(87, 16);
+            this.cn_label.Size = new System.Drawing.Size(76, 17);
             this.cn_label.TabIndex = 0;
             this.cn_label.Text = "Card Name";
             // 
@@ -90,7 +90,7 @@
             // 
             // card_srch
             // 
-            this.card_srch.Location = new System.Drawing.Point(180, 31);
+            this.card_srch.Location = new System.Drawing.Point(307, 31);
             this.card_srch.Name = "card_srch";
             this.card_srch.Size = new System.Drawing.Size(406, 23);
             this.card_srch.TabIndex = 2;
@@ -99,13 +99,13 @@
             // 
             this.rtv_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(171)))), ((int)(((byte)(254)))));
             this.rtv_card.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rtv_card.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtv_card.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtv_card.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.rtv_card.Location = new System.Drawing.Point(719, 30);
+            this.rtv_card.Location = new System.Drawing.Point(719, 25);
             this.rtv_card.Name = "rtv_card";
-            this.rtv_card.Size = new System.Drawing.Size(126, 23);
+            this.rtv_card.Size = new System.Drawing.Size(126, 33);
             this.rtv_card.TabIndex = 3;
-            this.rtv_card.Text = "Search Database";
+            this.rtv_card.Text = "Search";
             this.rtv_card.UseVisualStyleBackColor = false;
             this.rtv_card.Click += new System.EventHandler(this.rtv_card_Click);
             // 
@@ -130,33 +130,33 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Location = new System.Drawing.Point(152, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "Card ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(152, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Set Code";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(286, 143);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Set Name";
             // 
@@ -179,11 +179,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label4.Location = new System.Drawing.Point(297, 226);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 16);
+            this.label4.Size = new System.Drawing.Size(77, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Store Price ";
             // 
@@ -199,14 +199,16 @@
             // add_bttn
             // 
             this.add_bttn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.add_bttn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_bttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.add_bttn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_bttn.ForeColor = System.Drawing.Color.White;
             this.add_bttn.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.add_bttn.Location = new System.Drawing.Point(442, 719);
             this.add_bttn.Name = "add_bttn";
-            this.add_bttn.Size = new System.Drawing.Size(164, 38);
+            this.add_bttn.Size = new System.Drawing.Size(164, 43);
             this.add_bttn.TabIndex = 13;
             this.add_bttn.Text = "Add To Inventory";
-            this.add_bttn.UseVisualStyleBackColor = true;
+            this.add_bttn.UseVisualStyleBackColor = false;
             this.add_bttn.Click += new System.EventHandler(this.add_bttn_Click);
             // 
             // set_gridview
@@ -259,18 +261,18 @@
             // rare_label
             // 
             this.rare_label.AutoSize = true;
-            this.rare_label.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rare_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.rare_label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rare_label.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.rare_label.Location = new System.Drawing.Point(619, 143);
             this.rare_label.Name = "rare_label";
-            this.rare_label.Size = new System.Drawing.Size(50, 16);
+            this.rare_label.Size = new System.Drawing.Size(43, 17);
             this.rare_label.TabIndex = 16;
             this.rare_label.Text = "Rarity";
             // 
             // api_crace
             // 
             this.api_crace.Cursor = System.Windows.Forms.Cursors.No;
-            this.api_crace.Location = new System.Drawing.Point(619, 109);
+            this.api_crace.Location = new System.Drawing.Point(745, 110);
             this.api_crace.Name = "api_crace";
             this.api_crace.ReadOnly = true;
             this.api_crace.Size = new System.Drawing.Size(100, 23);
@@ -279,29 +281,30 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.label5.Location = new System.Drawing.Point(619, 90);
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label5.Location = new System.Drawing.Point(745, 89);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 16);
+            this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Card Race";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.label6.Location = new System.Drawing.Point(764, 90);
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Location = new System.Drawing.Point(619, 89);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
+            this.label6.Size = new System.Drawing.Size(68, 17);
             this.label6.TabIndex = 19;
             this.label6.Text = "Card Type";
             // 
             // api_ctype
             // 
             this.api_ctype.Cursor = System.Windows.Forms.Cursors.No;
-            this.api_ctype.Location = new System.Drawing.Point(764, 109);
+            this.api_ctype.Location = new System.Drawing.Point(619, 110);
             this.api_ctype.Name = "api_ctype";
             this.api_ctype.ReadOnly = true;
             this.api_ctype.Size = new System.Drawing.Size(100, 23);
@@ -317,11 +320,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label7.Location = new System.Drawing.Point(442, 226);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 16);
+            this.label7.Size = new System.Drawing.Size(65, 17);
             this.label7.TabIndex = 22;
             this.label7.Text = "Quantity ";
             // 
@@ -337,23 +340,24 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label8.Location = new System.Drawing.Point(152, 226);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 16);
+            this.label8.Size = new System.Drawing.Size(84, 17);
             this.label8.TabIndex = 24;
             this.label8.Text = "Market Price";
             // 
             // srch_option
             // 
             this.srch_option.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.srch_option.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.srch_option.FormattingEnabled = true;
             this.srch_option.Items.AddRange(new object[] {
             "Card Name",
             "Card ID",
             "Set Name"});
-            this.srch_option.Location = new System.Drawing.Point(592, 31);
+            this.srch_option.Location = new System.Drawing.Point(180, 31);
             this.srch_option.Name = "srch_option";
             this.srch_option.Size = new System.Drawing.Size(121, 23);
             this.srch_option.TabIndex = 25;
@@ -400,6 +404,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.label9.Location = new System.Drawing.Point(134, 64);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 16);
@@ -410,6 +415,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.label10.Location = new System.Drawing.Point(134, 201);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 16);
@@ -420,6 +426,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.label11.Location = new System.Drawing.Point(134, 287);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 16);
@@ -430,6 +437,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.label12.Location = new System.Drawing.Point(135, 508);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(105, 16);
@@ -440,6 +448,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1086, 785);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
