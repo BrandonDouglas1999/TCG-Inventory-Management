@@ -94,7 +94,6 @@
             this.upate_card.TabIndex = 2;
             this.upate_card.Text = "Save Changes";
             this.upate_card.UseVisualStyleBackColor = false;
-            this.upate_card.Click += new System.EventHandler(this.upate_card_Click);
             // 
             // cancel_bttn
             // 

@@ -32,9 +32,9 @@ namespace InventoryApp
 
             card_opt_tabs.Size = UCSize;
             catalog_uc.Size = UCSize;
-            cart_tab.Size = UCSize;
-            sales_uc.Size = UCSize;
-            edit_inven_uc.Size = UCSize;
+            //cart_tab.Size = UCSize;
+            //sales_uc.Size = UCSize;
+            //edit_inven_uc.Size = UCSize;
         }
 
 
@@ -101,7 +101,7 @@ namespace InventoryApp
             transitionUC(2, card_opt_tabs);
         }
 
-        private void edit_inventory_Click(object sender, EventArgs e)
+        private void catalog_Click(object sender, EventArgs e)
         {
             transitionUC(3, catalog_uc);
         }

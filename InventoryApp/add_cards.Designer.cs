@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.card_gridview = new System.Windows.Forms.DataGridView();
             this.srch_option = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.api_price = new System.Windows.Forms.TextBox();
@@ -55,443 +64,448 @@
             this.card_srch = new System.Windows.Forms.TextBox();
             this.api_cn = new System.Windows.Forms.TextBox();
             this.cn_label = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.card_gridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.card_gridview);
+            this.panel1.Controls.Add(this.srch_option);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.api_price);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.card_qnty);
+            this.panel1.Controls.Add(this.api_ctype);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.api_crace);
+            this.panel1.Controls.Add(this.rare_label);
+            this.panel1.Controls.Add(this.api_rare);
+            this.panel1.Controls.Add(this.set_gridview);
+            this.panel1.Controls.Add(this.add_bttn);
+            this.panel1.Controls.Add(this.image_url);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.s_price);
+            this.panel1.Controls.Add(this.api_setname);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.api_setcode);
+            this.panel1.Controls.Add(this.api_id);
+            this.panel1.Controls.Add(this.rtv_card);
+            this.panel1.Controls.Add(this.card_srch);
+            this.panel1.Controls.Add(this.api_cn);
+            this.panel1.Controls.Add(this.cn_label);
+            this.panel1.Location = new System.Drawing.Point(99, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(832, 820);
+            this.panel1.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label12.Location = new System.Drawing.Point(18, 527);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(105, 16);
+            this.label12.TabIndex = 61;
+            this.label12.Text = "Card Version:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label11.Location = new System.Drawing.Point(17, 306);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.TabIndex = 60;
+            this.label11.Text = "Card Info:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label10.Location = new System.Drawing.Point(17, 220);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 16);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "Product Details:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.label9.Location = new System.Drawing.Point(17, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 16);
+            this.label9.TabIndex = 58;
+            this.label9.Text = "Card Details:";
+            // 
+            // card_gridview
+            // 
+            this.card_gridview.AllowUserToAddRows = false;
+            this.card_gridview.AllowUserToDeleteRows = false;
+            this.card_gridview.AllowUserToResizeColumns = false;
+            this.card_gridview.AllowUserToResizeRows = false;
+            this.card_gridview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.card_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.card_gridview.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.card_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.card_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.card_gridview.EnableHeadersVisualStyles = false;
+            this.card_gridview.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.card_gridview.Location = new System.Drawing.Point(18, 323);
+            this.card_gridview.MultiSelect = false;
+            this.card_gridview.Name = "card_gridview";
+            this.card_gridview.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.card_gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.card_gridview.RowTemplate.Height = 25;
+            this.card_gridview.Size = new System.Drawing.Size(798, 186);
+            this.card_gridview.TabIndex = 57;
+            this.card_gridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.card_view_CellContentClick);
             // 
             // srch_option
             // 
-            this.srch_option.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.srch_option.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.srch_option.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.srch_option.FormattingEnabled = true;
             this.srch_option.Items.AddRange(new object[] {
             "Card Name",
             "Card ID",
             "Set Name"});
-            this.srch_option.Location = new System.Drawing.Point(341, 10);
+            this.srch_option.Location = new System.Drawing.Point(63, 50);
             this.srch_option.Name = "srch_option";
             this.srch_option.Size = new System.Drawing.Size(121, 23);
-            this.srch_option.TabIndex = 51;
+            this.srch_option.TabIndex = 56;
             // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(3, 4);
-            label8.Name = "label8";
-            label8.Size = new Size(206, 16);
-            label8.TabIndex = 50;
-            label8.Text = "Current Price";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label8.Location = new System.Drawing.Point(35, 245);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 17);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Market Price";
             // 
             // api_price
             // 
-            api_price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_price.Location = new Point(3, 36);
-            api_price.Name = "api_price";
-            api_price.ReadOnly = true;
-            api_price.Size = new Size(206, 23);
-            api_price.TabIndex = 49;
+            this.api_price.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_price.Location = new System.Drawing.Point(35, 264);
+            this.api_price.Name = "api_price";
+            this.api_price.ReadOnly = true;
+            this.api_price.Size = new System.Drawing.Size(100, 23);
+            this.api_price.TabIndex = 54;
             // 
             // label7
             // 
-            label7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(427, 4);
-            label7.Name = "label7";
-            label7.Size = new Size(166, 16);
-            label7.TabIndex = 48;
-            label7.Text = "Quantity ";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label7.Location = new System.Drawing.Point(325, 245);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 17);
+            this.label7.TabIndex = 53;
+            this.label7.Text = "Quantity ";
             // 
             // card_qnty
             // 
-            card_qnty.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            card_qnty.Location = new Point(427, 36);
-            card_qnty.Name = "card_qnty";
-            card_qnty.Size = new Size(166, 23);
-            card_qnty.TabIndex = 47;
+            this.card_qnty.Location = new System.Drawing.Point(325, 264);
+            this.card_qnty.Name = "card_qnty";
+            this.card_qnty.Size = new System.Drawing.Size(100, 23);
+            this.card_qnty.TabIndex = 52;
             // 
             // api_ctype
             // 
-            api_ctype.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_ctype.Location = new Point(476, 24);
-            api_ctype.Name = "api_ctype";
-            api_ctype.ReadOnly = true;
-            api_ctype.Size = new Size(117, 23);
-            api_ctype.TabIndex = 46;
+            this.api_ctype.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_ctype.Location = new System.Drawing.Point(502, 129);
+            this.api_ctype.Name = "api_ctype";
+            this.api_ctype.ReadOnly = true;
+            this.api_ctype.Size = new System.Drawing.Size(100, 23);
+            this.api_ctype.TabIndex = 51;
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(476, 1);
-            label6.Name = "label6";
-            label6.Size = new Size(117, 16);
-            label6.TabIndex = 45;
-            label6.Text = "Card Type";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Location = new System.Drawing.Point(502, 108);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "Card Type";
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(308, 1);
-            label5.Name = "label5";
-            label5.Size = new Size(162, 16);
-            label5.TabIndex = 44;
-            label5.Text = "Card Race";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label5.Location = new System.Drawing.Point(628, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "Card Race";
             // 
             // api_crace
             // 
-            api_crace.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_crace.Location = new Point(308, 24);
-            api_crace.Name = "api_crace";
-            api_crace.ReadOnly = true;
-            api_crace.Size = new Size(162, 23);
-            api_crace.TabIndex = 43;
+            this.api_crace.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_crace.Location = new System.Drawing.Point(628, 129);
+            this.api_crace.Name = "api_crace";
+            this.api_crace.ReadOnly = true;
+            this.api_crace.Size = new System.Drawing.Size(100, 23);
+            this.api_crace.TabIndex = 48;
             // 
             // rare_label
             // 
-            rare_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rare_label.AutoSize = true;
-            rare_label.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            rare_label.Location = new Point(406, 4);
-            rare_label.Name = "rare_label";
-            rare_label.Size = new Size(98, 16);
-            rare_label.TabIndex = 42;
-            rare_label.Text = "Rarity";
+            this.rare_label.AutoSize = true;
+            this.rare_label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rare_label.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.rare_label.Location = new System.Drawing.Point(502, 162);
+            this.rare_label.Name = "rare_label";
+            this.rare_label.Size = new System.Drawing.Size(43, 17);
+            this.rare_label.TabIndex = 47;
+            this.rare_label.Text = "Rarity";
             // 
             // api_rare
             // 
-            api_rare.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_rare.Location = new Point(406, 35);
-            api_rare.Name = "api_rare";
-            api_rare.ReadOnly = true;
-            api_rare.Size = new Size(98, 23);
-            api_rare.TabIndex = 41;
+            this.api_rare.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_rare.Location = new System.Drawing.Point(502, 181);
+            this.api_rare.Name = "api_rare";
+            this.api_rare.ReadOnly = true;
+            this.api_rare.Size = new System.Drawing.Size(100, 23);
+            this.api_rare.TabIndex = 46;
             // 
             // set_gridview
             // 
-            this.set_gridview.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.set_gridview.AllowUserToAddRows = false;
+            this.set_gridview.AllowUserToDeleteRows = false;
+            this.set_gridview.AllowUserToResizeColumns = false;
+            this.set_gridview.AllowUserToResizeRows = false;
+            this.set_gridview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.set_gridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.set_gridview.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.set_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.set_gridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.set_gridview.Location = new System.Drawing.Point(34, 290);
+            this.set_gridview.EnableHeadersVisualStyles = false;
+            this.set_gridview.Location = new System.Drawing.Point(17, 546);
+            this.set_gridview.MultiSelect = false;
             this.set_gridview.Name = "set_gridview";
+            this.set_gridview.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.set_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.set_gridview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.set_gridview.RowTemplate.Height = 25;
-            this.set_gridview.Size = new System.Drawing.Size(680, 186);
-            this.set_gridview.TabIndex = 40;
-            this.set_gridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
+            this.set_gridview.Size = new System.Drawing.Size(798, 186);
+            this.set_gridview.TabIndex = 45;
+            this.set_gridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.api_gridview_CellContentClick);
             // 
             // add_bttn
             // 
-            add_bttn.Anchor = AnchorStyles.None;
-            add_bttn.Font = new Font("Verdana", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            add_bttn.ImageAlign = ContentAlignment.BottomCenter;
-            add_bttn.Location = new Point(295, 491);
-            add_bttn.Name = "add_bttn";
-            add_bttn.Size = new Size(164, 38);
-            add_bttn.TabIndex = 39;
-            add_bttn.Text = "Add Card";
-            add_bttn.UseVisualStyleBackColor = true;
-            add_bttn.Click += add_bttn_Click;
+            this.add_bttn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.add_bttn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.add_bttn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_bttn.ForeColor = System.Drawing.Color.White;
+            this.add_bttn.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.add_bttn.Location = new System.Drawing.Point(325, 736);
+            this.add_bttn.Name = "add_bttn";
+            this.add_bttn.Size = new System.Drawing.Size(164, 43);
+            this.add_bttn.TabIndex = 44;
+            this.add_bttn.Text = "Add To Inventory";
+            this.add_bttn.UseVisualStyleBackColor = false;
+            this.add_bttn.Click += new System.EventHandler(this.add_bttn_Click);
             // 
             // image_url
             // 
-            image_url.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            image_url.Location = new Point(510, 35);
-            image_url.Name = "image_url";
-            image_url.ReadOnly = true;
-            image_url.Size = new Size(83, 23);
-            image_url.TabIndex = 38;
-            image_url.Visible = false;
+            this.image_url.Location = new System.Drawing.Point(608, 181);
+            this.image_url.Name = "image_url";
+            this.image_url.ReadOnly = true;
+            this.image_url.Size = new System.Drawing.Size(87, 23);
+            this.image_url.TabIndex = 43;
+            this.image_url.Visible = false;
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(215, 4);
-            label4.Name = "label4";
-            label4.Size = new Size(206, 16);
-            label4.TabIndex = 37;
-            label4.Text = "Store Price ";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label4.Location = new System.Drawing.Point(180, 245);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 17);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "Store Price ";
             // 
             // s_price
             // 
-            s_price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            s_price.Location = new Point(215, 36);
-            s_price.Name = "s_price";
-            s_price.Size = new Size(206, 23);
-            s_price.TabIndex = 36;
+            this.s_price.Location = new System.Drawing.Point(180, 264);
+            this.s_price.Name = "s_price";
+            this.s_price.Size = new System.Drawing.Size(100, 23);
+            this.s_price.TabIndex = 41;
             // 
             // api_setname
             // 
-            api_setname.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_setname.Location = new Point(159, 35);
-            api_setname.Name = "api_setname";
-            api_setname.ReadOnly = true;
-            api_setname.Size = new Size(241, 23);
-            api_setname.TabIndex = 35;
+            this.api_setname.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_setname.Location = new System.Drawing.Point(169, 181);
+            this.api_setname.Name = "api_setname";
+            this.api_setname.ReadOnly = true;
+            this.api_setname.Size = new System.Drawing.Size(300, 23);
+            this.api_setname.TabIndex = 40;
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(159, 4);
-            label3.Name = "label3";
-            label3.Size = new Size(241, 16);
-            label3.TabIndex = 34;
-            label3.Text = "Set Name";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label3.Location = new System.Drawing.Point(169, 162);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 17);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Set Name";
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 4);
-            label2.Name = "label2";
-            label2.Size = new Size(150, 16);
-            label2.TabIndex = 33;
-            label2.Text = "Set Code";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(35, 161);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Set Code";
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 1);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 16);
-            label1.TabIndex = 32;
-            label1.Text = "Card ID";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(35, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Card ID";
             // 
             // api_setcode
             // 
-            api_setcode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_setcode.Location = new Point(3, 35);
-            api_setcode.Name = "api_setcode";
-            api_setcode.ReadOnly = true;
-            api_setcode.Size = new Size(150, 23);
-            api_setcode.TabIndex = 31;
+            this.api_setcode.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_setcode.Location = new System.Drawing.Point(35, 181);
+            this.api_setcode.Name = "api_setcode";
+            this.api_setcode.ReadOnly = true;
+            this.api_setcode.Size = new System.Drawing.Size(100, 23);
+            this.api_setcode.TabIndex = 36;
             // 
             // api_id
             // 
-            api_id.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_id.Location = new Point(3, 24);
-            api_id.Name = "api_id";
-            api_id.ReadOnly = true;
-            api_id.Size = new Size(120, 23);
-            api_id.TabIndex = 30;
+            this.api_id.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_id.Location = new System.Drawing.Point(35, 128);
+            this.api_id.Name = "api_id";
+            this.api_id.ReadOnly = true;
+            this.api_id.Size = new System.Drawing.Size(100, 23);
+            this.api_id.TabIndex = 35;
             // 
             // rtv_card
             // 
-            rtv_card.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            rtv_card.AutoSize = true;
-            rtv_card.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            rtv_card.Location = new Point(474, 9);
-            rtv_card.Name = "rtv_card";
-            rtv_card.Size = new Size(119, 26);
-            rtv_card.TabIndex = 29;
-            rtv_card.Text = "Search Database";
-            rtv_card.UseVisualStyleBackColor = true;
-            rtv_card.Click += rtv_card_Click;
+            this.rtv_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(171)))), ((int)(((byte)(254)))));
+            this.rtv_card.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rtv_card.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtv_card.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.rtv_card.Location = new System.Drawing.Point(602, 44);
+            this.rtv_card.Name = "rtv_card";
+            this.rtv_card.Size = new System.Drawing.Size(126, 33);
+            this.rtv_card.TabIndex = 34;
+            this.rtv_card.Text = "Search";
+            this.rtv_card.UseVisualStyleBackColor = false;
+            this.rtv_card.Click += new System.EventHandler(this.rtv_card_Click);
             // 
             // card_srch
             // 
-            card_srch.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            card_srch.Location = new Point(3, 10);
-            card_srch.Name = "card_srch";
-            card_srch.PlaceholderText = "Card Name";
-            card_srch.Size = new Size(326, 23);
-            card_srch.TabIndex = 28;
+            this.card_srch.Location = new System.Drawing.Point(190, 50);
+            this.card_srch.Name = "card_srch";
+            this.card_srch.Size = new System.Drawing.Size(406, 23);
+            this.card_srch.TabIndex = 33;
             // 
             // api_cn
             // 
-            api_cn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            api_cn.Location = new Point(129, 24);
-            api_cn.Name = "api_cn";
-            api_cn.ReadOnly = true;
-            api_cn.Size = new Size(173, 23);
-            api_cn.TabIndex = 27;
+            this.api_cn.Cursor = System.Windows.Forms.Cursors.No;
+            this.api_cn.Location = new System.Drawing.Point(168, 128);
+            this.api_cn.Name = "api_cn";
+            this.api_cn.ReadOnly = true;
+            this.api_cn.Size = new System.Drawing.Size(300, 23);
+            this.api_cn.TabIndex = 32;
             // 
             // cn_label
             // 
-            cn_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cn_label.AutoSize = true;
-            cn_label.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            cn_label.Location = new Point(129, 1);
-            cn_label.Name = "cn_label";
-            cn_label.Size = new Size(173, 16);
-            cn_label.TabIndex = 26;
-            cn_label.Text = "Card Name";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.48832F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.51168F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
-            this.tableLayoutPanel1.Controls.Add(this.srch_option, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.card_srch, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rtv_card, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(80, 29);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(596, 44);
-            this.tableLayoutPanel1.TabIndex = 52;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.AutoSize = true;
-            tableLayoutPanel2.ColumnCount = 4;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.4835167F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 58.5164833F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 168F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 122F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Controls.Add(cn_label, 1, 0);
-            tableLayoutPanel2.Controls.Add(label5, 2, 0);
-            tableLayoutPanel2.Controls.Add(label6, 3, 0);
-            tableLayoutPanel2.Controls.Add(api_id, 0, 1);
-            tableLayoutPanel2.Controls.Add(api_cn, 1, 1);
-            tableLayoutPanel2.Controls.Add(api_ctype, 3, 1);
-            tableLayoutPanel2.Controls.Add(api_crace, 2, 1);
-            tableLayoutPanel2.Location = new Point(80, 79);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 35.294117F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 64.70588F));
-            tableLayoutPanel2.Size = new Size(596, 53);
-            tableLayoutPanel2.TabIndex = 53;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel3.AutoSize = true;
-            tableLayoutPanel3.ColumnCount = 4;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.83249F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 61.16751F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 104F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
-            tableLayoutPanel3.Controls.Add(image_url, 3, 1);
-            tableLayoutPanel3.Controls.Add(api_rare, 2, 1);
-            tableLayoutPanel3.Controls.Add(rare_label, 2, 0);
-            tableLayoutPanel3.Controls.Add(label3, 1, 0);
-            tableLayoutPanel3.Controls.Add(api_setname, 1, 1);
-            tableLayoutPanel3.Controls.Add(api_setcode, 0, 1);
-            tableLayoutPanel3.Controls.Add(label2, 0, 0);
-            tableLayoutPanel3.Location = new Point(80, 138);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 34.2857132F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 65.71429F));
-            tableLayoutPanel3.Size = new Size(596, 70);
-            tableLayoutPanel3.TabIndex = 54;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel4.AutoSize = true;
-            tableLayoutPanel4.ColumnCount = 3;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 172F));
-            tableLayoutPanel4.Controls.Add(label7, 2, 0);
-            tableLayoutPanel4.Controls.Add(card_qnty, 2, 1);
-            tableLayoutPanel4.Controls.Add(api_price, 0, 1);
-            tableLayoutPanel4.Controls.Add(label8, 0, 0);
-            tableLayoutPanel4.Controls.Add(label4, 1, 0);
-            tableLayoutPanel4.Controls.Add(s_price, 1, 1);
-            tableLayoutPanel4.Location = new Point(80, 214);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 35.7142868F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 64.28571F));
-            tableLayoutPanel4.Size = new Size(596, 70);
-            tableLayoutPanel4.TabIndex = 55;
-            // 
-            // tabControl1
-            // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(835, 576);
-            tabControl1.TabIndex = 56;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.set_gridview);
-            this.tabPage1.Controls.Add(this.add_bttn);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(827, 548);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(827, 548);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            this.cn_label.AutoSize = true;
+            this.cn_label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cn_label.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.cn_label.Location = new System.Drawing.Point(168, 108);
+            this.cn_label.Name = "cn_label";
+            this.cn_label.Size = new System.Drawing.Size(76, 17);
+            this.cn_label.TabIndex = 31;
+            this.cn_label.Text = "Card Name";
             // 
             // add_cards
             // 
-
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel1);
             this.Name = "add_cards";
-            this.Size = new System.Drawing.Size(835, 576);
+            this.Size = new System.Drawing.Size(934, 829);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.card_gridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.set_gridview)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
+        private Panel panel1;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private DataGridView card_gridview;
         private ComboBox srch_option;
         private Label label8;
         private TextBox api_price;
@@ -518,12 +532,5 @@
         private TextBox card_srch;
         private TextBox api_cn;
         private Label cn_label;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
     }
 }

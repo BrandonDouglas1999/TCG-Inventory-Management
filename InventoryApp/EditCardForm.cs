@@ -35,12 +35,6 @@ namespace InventoryApp
             }
         }
 
-        /*Update changes that has been made*/
-        private void upate_card_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /*Load card info from database*/
         private void load_cardInfo()
         {
