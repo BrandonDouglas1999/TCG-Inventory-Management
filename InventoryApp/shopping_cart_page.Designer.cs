@@ -28,17 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dataGridView1 = new DataGridView();
+            clear_button = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(75, 116);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(700, 348);
+            dataGridView1.TabIndex = 0;
+            // 
+            // clear_button
+            // 
+            clear_button.Location = new Point(581, 42);
+            clear_button.Name = "clear_button";
+            clear_button.Size = new Size(75, 23);
+            clear_button.TabIndex = 1;
+            clear_button.Text = "Clear Cart";
+            clear_button.UseVisualStyleBackColor = true;
             // 
             // shopping_cart_page
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(clear_button);
+            Controls.Add(dataGridView1);
             Name = "shopping_cart_page";
-            Size = new Size(720, 504);
+            Size = new Size(884, 510);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private Button clear_button;
     }
 }

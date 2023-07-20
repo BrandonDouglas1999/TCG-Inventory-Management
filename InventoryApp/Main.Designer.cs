@@ -252,7 +252,7 @@
             sales_uc.AutoSize = true;
             sales_uc.Location = new Point(826, 285);
             sales_uc.Name = "sales_uc";
-            sales_uc.Size = new Size(248, 220);
+            sales_uc.Size = new Size(719, 477);
             sales_uc.TabIndex = 5;
             sales_uc.Visible = false;
             // 
