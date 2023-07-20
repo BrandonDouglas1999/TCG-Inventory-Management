@@ -1,5 +1,4 @@
-﻿using InventoryApp.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,20 +10,16 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class catalog : UserControl
+    public partial class edit_inventory : UserControl
     {
-        SQLHelper db = new SQLHelper();
-
-        public catalog()
+        public edit_inventory()
         {
             InitializeComponent();
         }
 
-        private void load_catalog() //Load catalog of cards into catalog_gridview
+        private void edit_inventory_Load(object sender, EventArgs e)
         {
-            //String query = "";
+
         }
     }
-
-
 }
