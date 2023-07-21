@@ -204,5 +204,15 @@ namespace InventoryApp
             card_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
             card_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
