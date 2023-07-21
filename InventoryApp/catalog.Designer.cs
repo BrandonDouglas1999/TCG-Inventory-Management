@@ -516,6 +516,7 @@
             delete_card.TabIndex = 17;
             delete_card.Text = "Delete From Inventory";
             delete_card.UseVisualStyleBackColor = false;
+            delete_card.Click += delete_card_Click;
             // 
             // label13
             // 

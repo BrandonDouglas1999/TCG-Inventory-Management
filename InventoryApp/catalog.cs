@@ -265,7 +265,20 @@ namespace InventoryApp
             return filter_string;
         }
 
-
+        private void delete_card_Click(object sender, EventArgs e)
+        {
+            string message = "\tAre you sure? \nYou want to delete this product";
+            DialogResult result = MessageBox.Show(message, "Deleting Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                //delete card
+                return;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
 
