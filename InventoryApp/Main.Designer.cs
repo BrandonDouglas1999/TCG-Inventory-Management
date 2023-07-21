@@ -103,6 +103,7 @@
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.menuButton.TabIndex = 1;
             this.menuButton.TabStop = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // home_button
             // 
@@ -118,6 +119,7 @@
             this.home_button.Text = "Home";
             this.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.home_button.UseVisualStyleBackColor = true;
+            this.home_button.Click += new System.EventHandler(this.home_button_Click);
             // 
             // card_button
             // 
@@ -133,6 +135,7 @@
             this.card_button.Text = "Cards";
             this.card_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.card_button.UseVisualStyleBackColor = true;
+            this.card_button.Click += new System.EventHandler(this.catalog_Click);
             // 
             // view_inventory_button
             // 
@@ -148,6 +151,7 @@
             this.view_inventory_button.Text = "View Inventory";
             this.view_inventory_button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.view_inventory_button.UseVisualStyleBackColor = true;
+            this.view_inventory_button.Click += new System.EventHandler(this.card_button_Click);
             // 
             // edit_inven_button
             // 
@@ -205,9 +209,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.card_opt_tabs.AutoSize = true;
-            this.card_opt_tabs.Location = new System.Drawing.Point(236, 0);
+            this.card_opt_tabs.Location = new System.Drawing.Point(56, 0);
             this.card_opt_tabs.Name = "card_opt_tabs";
-            this.card_opt_tabs.Size = new System.Drawing.Size(934, 829);
+            this.card_opt_tabs.Size = new System.Drawing.Size(1333, 839);
             this.card_opt_tabs.TabIndex = 1;
             this.card_opt_tabs.Visible = false;
             // 
@@ -219,7 +223,7 @@
             this.home_page.AutoSize = true;
             this.home_page.Location = new System.Drawing.Point(263, 0);
             this.home_page.Name = "home_page";
-            this.home_page.Size = new System.Drawing.Size(731, 433);
+            this.home_page.Size = new System.Drawing.Size(959, 491);
             this.home_page.TabIndex = 2;
             // 
             // catalog_uc
@@ -230,7 +234,7 @@
             this.catalog_uc.AutoSize = true;
             this.catalog_uc.Location = new System.Drawing.Point(293, 108);
             this.catalog_uc.Name = "catalog_uc";
-            this.catalog_uc.Size = new System.Drawing.Size(350, 438);
+            this.catalog_uc.Size = new System.Drawing.Size(578, 491);
             this.catalog_uc.TabIndex = 3;
             this.catalog_uc.Visible = false;
             // 
@@ -238,7 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 798);
+            this.ClientSize = new System.Drawing.Size(1314, 851);
             this.Controls.Add(this.catalog_uc);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.home_page);

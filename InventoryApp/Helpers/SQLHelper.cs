@@ -10,7 +10,7 @@ using InventoryApp.Processors;
 using InventoryApp.API_Model;
 using System.IO;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
-
+using System.Xml.Schema;
 
 namespace InventoryApp.Helpers
 {
@@ -70,24 +70,39 @@ namespace InventoryApp.Helpers
 
         public int LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
+            SqlCommand myCommand;
             filters = null; //Comment out to test filter string
-            string query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo ";
+            int total;
+            int end = 0;
+            string num = "SELECT COUNT(card_id) as num from CardsInfo";
+            string query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
-            query += "ORDER BY card_name";
+            query += " ORDER BY card_name";
             
             SqlDataAdapter pagingAdapter;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myConnection.Open();
+                myCommand = new SqlCommand(num, myConnection);
+                total = (int)myCommand.ExecuteScalar();
                 pagingAdapter = new SqlDataAdapter(query, myConnection);
-                pagingAdapter.Fill(scrollVal, 20, catalog);
+                //Check if end of database is reached
+                if (scrollVal + 20 > total) 
+                {
+                    pagingAdapter.Fill(scrollVal, scrollVal + 20 - total, catalog);
+                    end = 1;
+                }
+                else
+                {
+                    pagingAdapter.Fill(scrollVal, 20, catalog);
+                }
             }
-            return scrollVal;
+            return end;
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Card Related---------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------Card Related-------------------------------------------------------------
         public int InsertCard(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price) //return status code 
         {
             SqlConnection myConnection = new SqlConnection(connectionString);
