@@ -8,12 +8,15 @@ namespace InventoryApp
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new Main());
-
+            Login login_screen = new Login();
+            Application.Run(login_screen);
+            if (login_screen.authenticated)
+            {
+                Application.Run(new Main());
+            }
         }
     }
 }

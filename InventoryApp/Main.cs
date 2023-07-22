@@ -105,17 +105,13 @@ namespace InventoryApp
         {
             transitionUC(3, catalog_uc);
         }
-        private void edit_inven_button_Click(object sender, EventArgs e)
-        {
-            transitionUC(4, edit_inven_uc);
-        }
         private void cart_button_Click(object sender, EventArgs e)
         {
-            transitionUC(5, cart_uc);
+            transitionUC(4, cart_uc);
         }
         private void sales_button_Click(object sender, EventArgs e)
         {
-            transitionUC(6, sales_uc);
+            transitionUC(5, sales_uc);
         }
 
         // Handles the transition between UserControls (buttons)
