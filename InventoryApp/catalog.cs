@@ -27,27 +27,20 @@ namespace InventoryApp
             InitializeComponent();
             ScrollVal = 0;
             prev_catalog.Enabled = false;
-            game_combobox.MouseWheel += (o, e) => ((HandledMouseEventArgs)e).Handled = true; //prevent mouse scrolling on combobox
+        }
+
+        private void CatalogForm_Load(object sender, EventArgs e)
+        {
+            paging_catalog();
         }
 
         //============================================================================Gridview Interaction================================================================== 
 
         private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0) 
-            {
-                string image= path + @"\" + catalog_view.Rows[e.RowIndex].Cells[2].Value.ToString();
-                //Show full image in a dialog box
-                using (Full_ImageForm full_image = new Full_ImageForm())
-                {
-                    full_image.image_path = image;
-                    full_image.ShowDialog();
-                } 
-            }
-
             if (e.ColumnIndex == 11 && e.RowIndex >= 0) //Update Online Price
             {
-                MessageBox.Show("Update");
+
                 return;
             }
             if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Edit Inventory
@@ -58,7 +51,7 @@ namespace InventoryApp
                 String card_id = catalog_view.Rows[e.RowIndex].Cells[3].Value.ToString();
                 String set_code = catalog_view.Rows[e.RowIndex].Cells[5].Value.ToString();
                 String rarity = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
-                String image_path = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[2].Value.ToString();
+                return;
             }
             if (e.ColumnIndex == 13 && e.RowIndex >= 0) //Add to shopping cart
             {
@@ -92,11 +85,6 @@ namespace InventoryApp
             {
                 prev_catalog.Enabled = false;
             }
-            if (setup_dttable() == 0)
-            {
-                next_catalog.Enabled = true;
-            }
-
         }
 
         private void next_catalog_Click(object sender, EventArgs e) //need to work on in case of hitting the end of result
@@ -106,21 +94,18 @@ namespace InventoryApp
             {
                 prev_catalog.Enabled = true;
             }
-            if (setup_dttable() == 1)
-            {
-                next_catalog.Enabled = false;
-            }
+            setup_dttable();
             format_view();
         }
 
-        private int setup_dttable() /*Set up datatable for query result*/
+        private void setup_dttable() /*Set up datatable for query result*/
         {
-            int end; //indicate that the table have reached the end of database
             dt = new DataTable();
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
-            end = db.LoadCatalog(dt, ScrollVal, Global.filters);
+            ScrollVal = db.LoadCatalog(dt, ScrollVal, Global.filters);
+            MessageBox.Show(ScrollVal.ToString());
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["Current_Price"].ColumnName = "Online Price";
@@ -134,7 +119,6 @@ namespace InventoryApp
                 String full_image = path + @"\" + row["Image"].ToString();
                 row["Card Image Full"] = File.ReadAllBytes(full_image);
             }
-            return end;
         }
 
         private void format_view() /*Setting up gridview*/
@@ -281,21 +265,18 @@ namespace InventoryApp
             return filter_string;
         }
 
-        private void search_button_Click(object sender, EventArgs e)
+        private void delete_card_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void game_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (game_combobox.SelectedIndex == 0)
+            string message = "\tAre you sure? \nYou want to delete this product";
+            DialogResult result = MessageBox.Show(message, "Deleting Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                paging_catalog();
+                //delete card
+                return;
+            }
+            else
+            {
+                return;
             }
         }
     }
