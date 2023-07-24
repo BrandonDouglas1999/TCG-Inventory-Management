@@ -23,7 +23,7 @@ namespace InventoryApp.Processors
             {
                 switch (option) {
                     case 0:
-                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?name={cardName}&tcgplayer_data";
+                        url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?fname={cardName}&tcgplayer_data";
                         break;
                     case 1:
                         url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?id={cardName}&tcgplayer_data";
