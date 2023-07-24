@@ -272,7 +272,6 @@
         private add_cards card_opt_tabs;
         private home_page home_page;
         private catalog catalog_uc;
-        private edit_inventory edit_inven_uc;
         private Button view_inventory_button;
         private sales_report sales_uc;
         private shopping_cart_page cart_uc;
