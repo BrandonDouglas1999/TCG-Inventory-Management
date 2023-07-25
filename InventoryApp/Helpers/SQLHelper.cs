@@ -19,7 +19,7 @@ namespace InventoryApp.Helpers
     {
         //change this to your server name and the path for the image folder
         //public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory; Trusted_Connection=yes";
-        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory; Trusted_Connection = yes";
+        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory3; Trusted_Connection = yes";
         public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
@@ -74,8 +74,9 @@ namespace InventoryApp.Helpers
             filters = null; //Comment out to test filter string
             int total;
             int end = 0;
-            string num = "SELECT COUNT(card_id) as num from CardsInfo";
-            string query = "SELECT image, card_id, card_name, set_code, rarity, set_name, current_price, store_price, copies FROM CardsInfo";
+            string num = "SELECT COUNT(store_id) as num from YGOStorePrice where store_id = 1";
+            string query = "select CM.image, S.card_id, S.set_code, S.rarity, CM.card_name, CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.store_id = 1";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             

@@ -20,17 +20,12 @@ namespace InventoryApp
 
         public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
+        int ScrollVal = 0;
         DataTable dt;
-        int ScrollVal; //Value for paging
         public catalog()
         {
             InitializeComponent();
-            ScrollVal = 0;
             prev_catalog.Enabled = false;
-        }
-
-        private void CatalogForm_Load(object sender, EventArgs e)
-        {
             paging_catalog();
         }
 
@@ -75,6 +70,7 @@ namespace InventoryApp
         private void prev_catalog_Click(object sender, EventArgs e)
         {
             ScrollVal = ScrollVal - 20;
+            MessageBox.Show(ScrollVal.ToString());
             if (ScrollVal < 0)
             {
                 ScrollVal = 0;
@@ -90,6 +86,7 @@ namespace InventoryApp
         private void next_catalog_Click(object sender, EventArgs e) //need to work on in case of hitting the end of result
         {
             ScrollVal = ScrollVal + 20;
+            MessageBox.Show(ScrollVal.ToString());
             if (ScrollVal > 0)
             {
                 prev_catalog.Enabled = true;
@@ -105,12 +102,13 @@ namespace InventoryApp
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
             ScrollVal = db.LoadCatalog(dt, ScrollVal, Global.filters);
-            MessageBox.Show(ScrollVal.ToString());
+            /*
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["Current_Price"].ColumnName = "Online Price";
             dt.Columns["Store_Price"].ColumnName = "Store Price";
             dt.Columns["Set_Name"].ColumnName = "Set Name";
+            */
             //get image into table
             foreach (DataRow row in dt.Rows)
             {
@@ -147,8 +145,8 @@ namespace InventoryApp
             catalog_view.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             catalog_view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             //Change prices decimal points
+            catalog_view.Columns[7].DefaultCellStyle.Format = "0.00##";
             catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
-            catalog_view.Columns[9].DefaultCellStyle.Format = "0.00##";
 
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();

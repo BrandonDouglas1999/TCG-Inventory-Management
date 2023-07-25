@@ -32,13 +32,15 @@ Begin
 				(@SID, @CID, @Set_Code, @Rarity, @s_price, @Copies)
 
 			/*Add market price to YGOMarketPrice*/
-			Insert into dbo.YGOMarketPrice
-				(update_date, card_id, set_code, rarity, market_price, set_name)
-			values
-				(@date, @CID, @Set_Code, @Rarity, @M_price, @Set_Name)
-
+			If not exists (select update_date, card_id, set_code, rarity from YGOMarketPrice where update_date = @date and card_id = @CID and set_code = @Set_Code and rarity= @Rarity)
+				Begin 
+					Insert into dbo.YGOMarketPrice
+						(update_date, card_id, set_code, rarity, market_price, set_name)
+					values
+						(@date, @CID, @Set_Code, @Rarity, @M_price, @Set_Name)
+				End
 			/*Check if cards info is in database*/
-			if not exists(select card_id from YGOCardsInfo where card_id = @CID)	
+			If not exists(select card_id from YGOCardsInfo where card_id = @CID)	
 				Begin
 					Insert into dbo.YGOCardsInfo 
 						(card_id, game,card_name, card_race, card_type, image)

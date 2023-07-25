@@ -12,7 +12,7 @@ namespace InventoryApp
 {
     public partial class Full_ImageForm : Form
     {
-        public string image_path { get; set; }
+        public string image_path { get; set; } = @"D:\Users\hang_\Documents\School\Capstone\CardAPITest\CardAPITest\Card_Images\3410461.jpg";
         public Full_ImageForm()
         {
             InitializeComponent();

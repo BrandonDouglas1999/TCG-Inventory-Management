@@ -34,4 +34,4 @@ print @image
 print @stat
 
 select * from CardsInfo
-
+select * from YGOMarketPrice

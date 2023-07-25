@@ -27,3 +27,4 @@ declare @stat as int, @userid as int
 exec LoginVerification 'Boss_man', '12345', @stat output, @userid output
 print @stat
 print @userid
+SELECT COUNT(card_id) as num from YGOStorePrice where store_id = 1

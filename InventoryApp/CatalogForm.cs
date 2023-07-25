@@ -78,6 +78,7 @@ namespace InventoryApp
         private void prev_catalog_Click(object sender, EventArgs e)
         {
             ScrollVal = ScrollVal - 20;
+            MessageBox.Show(ScrollVal.ToString());
             if (ScrollVal < 0) 
             {
                 ScrollVal= 0;
@@ -108,11 +109,13 @@ namespace InventoryApp
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
             db.LoadCatalog(dt, ScrollVal, Global.filters);
+            /*
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["Current_Price"].ColumnName = "Online Price";
             dt.Columns["Store_Price"].ColumnName = "Store Price";
             dt.Columns["Set_Name"].ColumnName = "Set Name";
+            */
             //get image into table
             foreach (DataRow row in dt.Rows)
             {
