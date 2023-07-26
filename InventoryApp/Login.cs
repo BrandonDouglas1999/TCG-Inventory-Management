@@ -48,8 +48,7 @@ namespace InventoryApp
 
         }
 
-        // async to grant await keyword to wait for response from google OAuth
-        private async void google_logo_Click(object sender, EventArgs e)
+        private void google_logo_Click(object sender, EventArgs e)
         {
 
             HttpListener get_code = new HttpListener();
@@ -73,11 +72,15 @@ namespace InventoryApp
             auth_url.UseShellExecute = true;
             Process.Start(auth_url);
 
+            // From the HttpListener, get the context and extract the authorized code
+            // Add some kind of error check here too
+            HttpListenerContext response = get_code.GetContext();
+            string code = response.Request.QueryString.Get("code");
+            Debug.Print(code);
 
-            var response = await get_code.GetContextAsync();
-            Debug.Print(response.ToString());
+            get_code.Stop();
 
-
+            return;
         }
     }
 }
