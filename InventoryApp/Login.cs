@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Net;
+using System.Diagnostics;
 
 namespace InventoryApp
 {
@@ -43,6 +45,37 @@ namespace InventoryApp
             {
                 incorrect_prompt.Visible = true;
             }
+
+        }
+
+        // async to grant await keyword to wait for response from google OAuth
+        private async void google_logo_Click(object sender, EventArgs e)
+        {
+
+            HttpListener get_code = new HttpListener();
+            string auth = $"https://accounts.google.com/o/oauth2/v2/auth?" +
+                $"scope=profile%20email" +
+                $"&response_type=code&" +
+                $"redirect_uri=http://{IPAddress.Loopback}:15000/&" +
+                $"client_id=657611740650-i9i8o0846cs58juodncpo44hgpj8ju6s.apps.googleusercontent.com";
+
+            // Create a URI to redirect the authorization code to on port 15000
+
+            string redirect_URI = $"http://{IPAddress.Loopback}:15000/";
+            Debug.Print(auth);
+
+            // Listen for the OAuth token.
+            get_code.Prefixes.Add(redirect_URI);
+            get_code.Start();
+
+            ProcessStartInfo auth_url = new ProcessStartInfo(auth);
+            auth_url.UseShellExecute = true;
+            Process.Start(auth_url);
+
+
+            var response = await get_code.GetContextAsync();
+
+            
 
         }
     }

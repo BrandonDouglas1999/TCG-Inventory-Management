@@ -36,6 +36,8 @@
             label1 = new Label();
             pw_input = new MaskedTextBox();
             user_input = new TextBox();
+            google_logo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)google_logo).BeginInit();
             SuspendLayout();
             // 
             // name_label
@@ -131,11 +133,23 @@
             user_input.Size = new Size(451, 26);
             user_input.TabIndex = 0;
             // 
+            // google_logo
+            // 
+            google_logo.Image = Properties.Resources.google_logo;
+            google_logo.Location = new Point(41, 398);
+            google_logo.Name = "google_logo";
+            google_logo.Size = new Size(58, 60);
+            google_logo.SizeMode = PictureBoxSizeMode.StretchImage;
+            google_logo.TabIndex = 7;
+            google_logo.TabStop = false;
+            google_logo.Click += google_logo_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(646, 498);
+            Controls.Add(google_logo);
             Controls.Add(incorrect_prompt);
             Controls.Add(name_label);
             Controls.Add(login_button);
@@ -147,6 +161,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Login";
             Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)google_logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -160,5 +175,6 @@
         private Label label4;
         private Button login_button;
         private Label incorrect_prompt;
+        private PictureBox google_logo;
     }
 }
