@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Net;
 using System.Diagnostics;
+using System.Collections.Specialized;
 
 namespace InventoryApp
 {
@@ -74,9 +75,19 @@ namespace InventoryApp
 
             // From the HttpListener, get the context and extract the authorized code
             // Add some kind of error check here too
-            HttpListenerContext response = get_code.GetContext();
-            string code = response.Request.QueryString.Get("code");
-            Debug.Print(code);
+            HttpListenerContext context = get_code.GetContext();
+
+            //string code = context.Request.QueryString.Get("code");
+
+            // Query string is a NameValueCollection (basically a dictionary)
+            // As of right now, contains the following keys:
+            // code: the authorization code
+            // scope: the resources we can access, only requesting email and profile for our app
+            // authuser: number of the user being auth'd
+            // prompt: The prompt for the user when signing in
+
+            // If there is an error, error is the only key.
+
 
             get_code.Stop();
 
