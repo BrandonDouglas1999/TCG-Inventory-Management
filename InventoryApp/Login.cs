@@ -59,10 +59,11 @@ namespace InventoryApp
                 $"redirect_uri=http://{IPAddress.Loopback}:15000/&" +
                 $"client_id=657611740650-i9i8o0846cs58juodncpo44hgpj8ju6s.apps.googleusercontent.com";
 
+            Debug.Print(auth);
+
             // Create a URI to redirect the authorization code to on port 15000
 
             string redirect_URI = $"http://{IPAddress.Loopback}:15000/";
-            Debug.Print(auth);
 
             // Listen for the OAuth token.
             get_code.Prefixes.Add(redirect_URI);
@@ -74,8 +75,8 @@ namespace InventoryApp
 
 
             var response = await get_code.GetContextAsync();
+            Debug.Print(response.ToString());
 
-            
 
         }
     }
