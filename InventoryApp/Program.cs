@@ -12,10 +12,12 @@ namespace InventoryApp
             ApplicationConfiguration.Initialize();
 
             Login login_screen = new Login();
+            Main main = new Main();
             Application.Run(login_screen);
             if (login_screen.authenticated)
             {
-                Application.Run(new Main());
+                main.user = login_screen.logged_user; 
+                Application.Run(main);
             }
         }
     }

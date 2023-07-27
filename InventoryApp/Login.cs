@@ -16,6 +16,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text.Encodings.Web;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace InventoryApp
 {
@@ -26,10 +27,9 @@ namespace InventoryApp
         const string secret = "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";
         const string redirect_uri = $"http://127.0.0.1:15000/";
 
-        HttpListener response_listen = new HttpListener();
-
 
         public bool authenticated = false;
+        public string logged_user = null;
         public Login()
         {
             InitializeComponent();
@@ -55,6 +55,7 @@ namespace InventoryApp
             }
             else
             {
+                incorrect_prompt.Text = "Incorrect Username or Password";
                 incorrect_prompt.Visible = true;
             }
 
@@ -64,6 +65,7 @@ namespace InventoryApp
         {
 
             string authCode = getAuthCode();
+            if (authCode == null) { return;}
             getToken(authCode);
 
             return;
@@ -77,6 +79,7 @@ namespace InventoryApp
                 $"&response_type=code&" +
                 $"redirect_uri={redirect_uri}&" +
                 $"client_id={clientID}";
+            HttpListener response_listen = new HttpListener();
 
             // Create a URI to redirect the authorization code to on port 15000
 
@@ -94,6 +97,18 @@ namespace InventoryApp
             // Add some kind of error check here too
             HttpListenerContext context = response_listen.GetContext();
 
+            // Change the text to prompt user to close window.
+            string prompt_html = "<html><body><font size=\"46\">Return to the app.</font></body></html>";
+            var encoded_html = Encoding.UTF8.GetBytes(prompt_html);
+            var response = context.Response;
+            var loopback_stream = response.OutputStream;
+            // make the response body length the same as the HTML code
+            response.ContentLength64 = encoded_html.Length;
+
+            loopback_stream.Write(encoded_html, 0, encoded_html.Length);
+
+            response_listen.Stop();
+
             // Query string is a NameValueCollection (basically a dictionary)
             // As of right now, contains the following keys:
             // code: the authorization code
@@ -103,8 +118,15 @@ namespace InventoryApp
 
             // If there is an error, error is the only key.
 
+            if (context.Request.QueryString.Get("error") != null)
+            {
+                incorrect_prompt.Text = "Failed to Login via Google";
+                incorrect_prompt.Visible = true;
+                return null;
+            }
+
             string code = context.Request.QueryString.Get("code");
-            response_listen.Stop();
+            
             return code;
         }
 
@@ -139,14 +161,17 @@ namespace InventoryApp
             String[] split_again = split[0].Split(":");
 
             string token = split_again[1].Trim();
-            Debug.WriteLine(token);
 
             
             // Make a GET call to obtain user profile
 
-            var email = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
+            var profile_info = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
 
-            Debug.WriteLine(email);
+            string user_name = profile_info.Replace("\"", "").Split(',')[3].Split(':')[1].Trim();
+
+            this.authenticated = true;
+            this.logged_user = user_name;
+            this.Close();
             
 
 

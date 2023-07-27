@@ -43,6 +43,7 @@
             home_page = new home_page();
             sales_uc = new sales_report();
             cart_uc = new shopping_cart_page();
+            catalog_uc = new catalog();
             sidebar.SuspendLayout();
             table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
@@ -224,11 +225,20 @@
             cart_uc.TabIndex = 5;
             cart_uc.Visible = false;
             // 
+            // catalog_uc
+            // 
+            catalog_uc.Location = new Point(74, 12);
+            catalog_uc.Name = "catalog_uc";
+            catalog_uc.Size = new Size(1280, 720);
+            catalog_uc.TabIndex = 6;
+            catalog_uc.Visible = false;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1314, 851);
+            Controls.Add(catalog_uc);
             Controls.Add(sales_uc);
             Controls.Add(sidebar);
             Controls.Add(home_page);
@@ -259,9 +269,9 @@
         private Label label1;
         private add_cards card_opt_tabs;
         private home_page home_page;
-        private catalog catalog_uc;
         private Button view_inventory_button;
         private sales_report sales_uc;
         private shopping_cart_page cart_uc;
+        private catalog catalog_uc;
     }
 }

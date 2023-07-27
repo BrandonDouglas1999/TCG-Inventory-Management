@@ -5,11 +5,13 @@ namespace InventoryApp
     public partial class Main : Form
     {
 
+        public string user;
         bool sidebarExpand = false;
         int activeWindowNumber = 1;
         UserControl activeWindow;
         Point sidebarCollapsedLocation;
         Point sidebarExpandedLocation;
+
         public Main()
         {
             InitializeComponent();
@@ -28,13 +30,13 @@ namespace InventoryApp
             activeWindow.Size = UCSize;
             activeWindow.Location = sidebarCollapsedLocation;
 
+            home_page.update_username(user);
             // Change size of all UC's to windows size
 
             card_opt_tabs.Size = UCSize;
             catalog_uc.Size = UCSize;
             cart_uc.Size = UCSize;
-            //sales_uc.Size = UCSize;
-            //edit_inven_uc.Size = UCSize;
+            sales_uc.Size = UCSize;
         }
 
 
