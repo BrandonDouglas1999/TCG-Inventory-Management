@@ -5,7 +5,7 @@ namespace InventoryApp
     public partial class Main : Form
     {
 
-        public string user;
+        public string user = "test user";
         bool sidebarExpand = false;
         int activeWindowNumber = 1;
         UserControl activeWindow;
