@@ -13,7 +13,7 @@ using System.Net;
 using System.Diagnostics;
 using System.Collections.Specialized;
 using System.Security.Cryptography.X509Certificates;
-using Google.Apis.Auth.AspNetCore3;
+using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text.Encodings.Web;
 
@@ -130,9 +130,27 @@ namespace InventoryApp
 
             var response = await client.PostAsync(endpoint, formatted_info);
 
-            var result = await response.Content.ReadAsStringAsync();
+            string result = await response.Content.ReadAsStringAsync();
 
-            Debug.WriteLine(result);
+            // Isolate the Token from the response.
+            // Do not need refresh token or type
+            result = result.Replace("\"", "");
+            String[] split = result.Split(',');
+            String[] split_again = split[0].Split(":");
+
+            string token = split_again[1].Trim();
+            Debug.WriteLine(token);
+
+            
+            // Make a GET call to obtain user profile
+
+            var email = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
+
+            Debug.WriteLine(email);
+            
+
+
+
 
         }
     }
