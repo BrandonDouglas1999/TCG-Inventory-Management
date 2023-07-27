@@ -16,5 +16,10 @@ namespace InventoryApp
         {
             InitializeComponent();
         }
+
+        public void update_username(string user_name)
+        {
+            logged_user.Text = user_name;
+        }
     }
 }
