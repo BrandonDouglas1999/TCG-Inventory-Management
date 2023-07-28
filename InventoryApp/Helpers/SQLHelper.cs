@@ -19,8 +19,8 @@ namespace InventoryApp.Helpers
     {
         //change this to your server name and the path for the image folder
         //public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory3; Trusted_Connection=yes";
-        public static readonly String connectionString = "Server = DESKTOP-7D95H9S\\SQLEXPRESS; Database = TCG_Inventory3; Trusted_Connection = yes";
-        public static readonly String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory3; Trusted_Connection = yes";
+        public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
@@ -69,15 +69,17 @@ namespace InventoryApp.Helpers
             return null;
         }
 
+
+
         public int LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
             SqlCommand myCommand;
             filters = null; //Comment out to test filter string
             int total;
             int end = 0;
-            string num = "SELECT COUNT(store_id) as num from YGOStorePrice where store_id = 1";
-            string query = "select CM.image, S.card_id, S.set_code, S.rarity, CM.card_name, CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
-                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.store_id = 1";
+            string num = "SELECT COUNT(user_id) as num from YGOStorePrice where user_id = 1";
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = 1";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             
@@ -169,6 +171,21 @@ namespace InventoryApp.Helpers
             }
         }
 
+        public DataTable GetCardMarket(string query)
+        {
+            DataTable ds = new DataTable();
+            SqlDataAdapter adapter;
+            SqlCommand myCommand;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                myCommand = new SqlCommand(query, myConnection);
+                adapter = new SqlDataAdapter(query, myConnection);
+                adapter.Fill(ds);
+            }
+            return ds;
+        }
+
         private async void SaveImage(string url, string card_ID)
         {
             String file_name = card_ID + ".jpg";
@@ -214,6 +231,8 @@ namespace InventoryApp.Helpers
                 File.Delete(thumbnail);
             }
         }
+
+
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
 

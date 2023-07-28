@@ -9,6 +9,10 @@ namespace InventoryApp
         static void Main()
         {
             
+            /*Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Main());
+            */
             ApplicationConfiguration.Initialize();
 
             Login login_screen = new Login();
@@ -19,6 +23,7 @@ namespace InventoryApp
                 main.user = login_screen.logged_user; 
                 Application.Run(main);
             }
+           
         }
     }
 }
