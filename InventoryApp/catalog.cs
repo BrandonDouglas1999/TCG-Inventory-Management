@@ -18,10 +18,17 @@ namespace InventoryApp
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage";
+        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
         SQLHelper db = new SQLHelper();
         int ScrollVal = 0;
         DataTable dt;
+
+        //for passing around between tabs
+        string cid;
+        string sc;
+        string r;
+        string image;
+        
         public catalog()
         {
             InitializeComponent();
@@ -33,22 +40,23 @@ namespace InventoryApp
 
         private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 11 && e.RowIndex >= 0) //Update Online Price
+            image = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[5].Value.ToString();
+            cid = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
+            sc = catalog_view.Rows[e.RowIndex].Cells[8].Value.ToString();
+            r = catalog_view.Rows[e.RowIndex].Cells[9].Value.ToString();
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0) //View Market Trend
             {
-
+                plot_market();
+                tabControl1.SelectedIndex = 2;
                 return;
             }
-            if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Edit Inventory
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0) //Edit Inventory
             {
-                /*
-                    Pass row info: Card ID, Set Code, Rarity and change user form edit_inventory
-                 */
-                String card_id = catalog_view.Rows[e.RowIndex].Cells[3].Value.ToString();
-                String set_code = catalog_view.Rows[e.RowIndex].Cells[5].Value.ToString();
-                String rarity = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
+                load_cardInfo();
+                tabControl1.SelectedIndex = 1;
                 return;
             }
-            if (e.ColumnIndex == 13 && e.RowIndex >= 0) //Add to shopping cart
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0) //Add to shopping cart
             {
                 return;
             }
@@ -102,13 +110,12 @@ namespace InventoryApp
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
             ScrollVal = db.LoadCatalog(dt, ScrollVal, Global.filters);
-            /*
+            
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
-            dt.Columns["Current_Price"].ColumnName = "Online Price";
+            dt.Columns["market_price"].ColumnName = "Market Price";
             dt.Columns["Store_Price"].ColumnName = "Store Price";
-            dt.Columns["Set_Name"].ColumnName = "Set Name";
-            */
+
             //get image into table
             foreach (DataRow row in dt.Rows)
             {
@@ -151,7 +158,7 @@ namespace InventoryApp
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
-            update_card.Text = "Update";
+            update_card.Text = "Market Info";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             catalog_view.Columns.Add(update_card);
@@ -262,7 +269,7 @@ namespace InventoryApp
 
             return filter_string;
         }
-
+//======================================================================Edit Card Tab===========================================================================================================
         private void delete_card_Click(object sender, EventArgs e)
         {
             string message = "\tAre you sure? \nYou want to delete this product";
@@ -276,6 +283,60 @@ namespace InventoryApp
             {
                 return;
             }
+        }
+
+        private void load_cardInfo()
+        {
+            CardImage.Image = Image.FromFile(image);
+            CardImage.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+        
+        private void cancel_bttn_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+//=====================================================================Graph view===============================================================================================================
+
+        private void plot_market()
+        {
+            marketChart.Plot.Clear();
+            GraphPic.Image = Image.FromFile(image);
+            GraphPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            string query = string.Format("Select update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}'", cid, sc, r);
+            DataTable marketdt = new DataTable();
+            marketdt = db.GetCardMarket(query);
+            
+            DateTime[] date = new DateTime[marketdt.Rows.Count];
+            double[] y = new double[marketdt.Rows.Count];
+            string[] y_label = new string[marketdt.Rows.Count];
+            for (int count = 0; count < marketdt.Rows.Count; count++)
+            {
+                date[count] = Convert.ToDateTime(marketdt.Rows[count]["update_date"].ToString());
+                y[count] = Math.Round(Convert.ToDouble(marketdt.Rows[count]["market_price"]), 2);
+                y_label[count] = "$" + y[count].ToString();
+            }
+            //convert date time to double
+            double[] x = date.Select(x => x.ToOADate()).ToArray();
+            var plot = marketChart.Plot.AddScatter(x, y);
+            marketChart.Plot.XAxis.DateTimeFormat(true);
+            marketChart.Plot.XAxis.Label("Date");
+            marketChart.Plot.YAxis.Label("Card Price (CAD)");
+            plot.DataPointLabels = y_label;
+            marketChart.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .7, y.Min() - 2, y.Max() + 1);
+            // disable left-click-drag pan
+            marketChart.Configuration.Pan = false;
+            // disable right-click-drag zoom
+            marketChart.Configuration.Zoom = false;
+            // disable scroll wheel zoom
+            marketChart.Configuration.ScrollWheelZoom = false;
+            // disable middle-click-drag zoom window
+            marketChart.Configuration.MiddleClickDragZoom = false;
+            marketChart.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
         }
     }
 

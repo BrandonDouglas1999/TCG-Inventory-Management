@@ -13,7 +13,6 @@ namespace InventoryApp
 {
     public partial class EditCardForm : Form
     {
-        SQLHelper db;
         public EditCardForm()
         {
             InitializeComponent();

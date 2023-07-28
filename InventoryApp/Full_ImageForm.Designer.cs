@@ -28,34 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.card_image = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.card_image)).BeginInit();
+            this.chart = new ScottPlot.FormsPlot();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // card_image
+            // chart
             // 
-            this.card_image.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.card_image.Location = new System.Drawing.Point(0, 0);
-            this.card_image.Name = "card_image";
-            this.card_image.Size = new System.Drawing.Size(355, 450);
-            this.card_image.TabIndex = 0;
-            this.card_image.TabStop = false;
+            this.chart.Location = new System.Drawing.Point(28, 56);
+            this.chart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chart.Name = "chart";
+            this.chart.Size = new System.Drawing.Size(783, 644);
+            this.chart.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(74, 822);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(885, 302);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(296, 340);
+            this.dataGridView1.TabIndex = 2;
             // 
             // Full_ImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 450);
-            this.Controls.Add(this.card_image);
+            this.ClientSize = new System.Drawing.Size(1224, 956);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.chart);
             this.Name = "Full_ImageForm";
             this.Text = "Full_ImageForm";
-            ((System.ComponentModel.ISupportInitialize)(this.card_image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private PictureBox card_image;
+        private ScottPlot.FormsPlot chart;
+        private Button button1;
+        private DataGridView dataGridView1;
     }
 }

@@ -17,6 +17,7 @@ using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text.Encodings.Web;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using InventoryApp.Helpers;
 
 namespace InventoryApp
 {
@@ -26,6 +27,7 @@ namespace InventoryApp
         const string clientID = "657611740650-i9i8o0846cs58juodncpo44hgpj8ju6s.apps.googleusercontent.com";
         const string secret = "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";
         const string redirect_uri = $"http://127.0.0.1:15000/";
+        SQLHelper db = new SQLHelper();
 
 
         public bool authenticated = false;
@@ -51,6 +53,7 @@ namespace InventoryApp
             // If correct, close form, if not, show error
             if (authenticated)
             {
+
                 this.Close();
             }
             else
