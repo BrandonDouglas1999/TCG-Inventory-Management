@@ -70,6 +70,11 @@
             this.update_card = new System.Windows.Forms.Button();
             this.cancel_bttn = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.refresh_chart = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.EndRange = new System.Windows.Forms.DateTimePicker();
+            this.StartRange = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.GraphPic = new System.Windows.Forms.PictureBox();
             this.marketChart = new ScottPlot.FormsPlot();
@@ -143,8 +148,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.filter_label);
-            this.splitContainer1.Size = new System.Drawing.Size(1035, 336);
-            this.splitContainer1.SplitterDistance = 718;
+            this.splitContainer1.Size = new System.Drawing.Size(1315, 436);
+            this.splitContainer1.SplitterDistance = 912;
             this.splitContainer1.TabIndex = 5;
             // 
             // catalog_view
@@ -154,10 +159,10 @@
             this.catalog_view.AllowUserToResizeColumns = false;
             this.catalog_view.AllowUserToResizeRows = false;
             this.catalog_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.catalog_view.Location = new System.Drawing.Point(3, 0);
+            this.catalog_view.Location = new System.Drawing.Point(6, 3);
             this.catalog_view.Name = "catalog_view";
             this.catalog_view.RowTemplate.Height = 25;
-            this.catalog_view.Size = new System.Drawing.Size(712, 336);
+            this.catalog_view.Size = new System.Drawing.Size(906, 433);
             this.catalog_view.TabIndex = 0;
             this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClick);
             // 
@@ -174,7 +179,7 @@
             // 
             this.filter_label.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.filter_label.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.filter_label.Location = new System.Drawing.Point(-18, -6);
+            this.filter_label.Location = new System.Drawing.Point(45, 218);
             this.filter_label.Name = "filter_label";
             this.filter_label.Size = new System.Drawing.Size(351, 63);
             this.filter_label.TabIndex = 3;
@@ -201,11 +206,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
             this.tableLayoutPanel1.Controls.Add(this.search_box, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.search_button, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(123, -63);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(111, 63);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 44);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(829, 44);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // search_box
@@ -214,7 +219,7 @@
             this.search_box.Location = new System.Drawing.Point(3, 3);
             this.search_box.Name = "search_box";
             this.search_box.PlaceholderText = "Card Name";
-            this.search_box.Size = new System.Drawing.Size(53, 23);
+            this.search_box.Size = new System.Drawing.Size(307, 23);
             this.search_box.TabIndex = 1;
             // 
             // search_button
@@ -222,7 +227,7 @@
             this.search_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.search_button.AutoSize = true;
-            this.search_button.Location = new System.Drawing.Point(67, 3);
+            this.search_button.Location = new System.Drawing.Point(347, 3);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(208, 25);
             this.search_button.TabIndex = 2;
@@ -466,19 +471,17 @@
             // 
             // card_copies
             // 
-            this.card_copies.Cursor = System.Windows.Forms.Cursors.No;
+            this.card_copies.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.card_copies.Location = new System.Drawing.Point(142, 38);
             this.card_copies.Name = "card_copies";
-            this.card_copies.ReadOnly = true;
             this.card_copies.Size = new System.Drawing.Size(100, 23);
             this.card_copies.TabIndex = 20;
             // 
             // store_price
             // 
-            this.store_price.Cursor = System.Windows.Forms.Cursors.No;
+            this.store_price.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.store_price.Location = new System.Drawing.Point(17, 38);
             this.store_price.Name = "store_price";
-            this.store_price.ReadOnly = true;
             this.store_price.Size = new System.Drawing.Size(100, 23);
             this.store_price.TabIndex = 19;
             // 
@@ -507,9 +510,9 @@
             // CardImage
             // 
             this.CardImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CardImage.Location = new System.Drawing.Point(110, 37);
+            this.CardImage.Location = new System.Drawing.Point(82, 28);
             this.CardImage.Name = "CardImage";
-            this.CardImage.Size = new System.Drawing.Size(349, 523);
+            this.CardImage.Size = new System.Drawing.Size(400, 546);
             this.CardImage.TabIndex = 16;
             this.CardImage.TabStop = false;
             // 
@@ -524,6 +527,7 @@
             this.delete_card.TabIndex = 17;
             this.delete_card.Text = "Delete From Inventory";
             this.delete_card.UseVisualStyleBackColor = false;
+            this.delete_card.Click += new System.EventHandler(this.delete_card_Click);
             // 
             // label13
             // 
@@ -563,6 +567,11 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.refresh_chart);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.EndRange);
+            this.tabPage3.Controls.Add(this.StartRange);
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.GraphPic);
             this.tabPage3.Controls.Add(this.marketChart);
@@ -574,9 +583,57 @@
             this.tabPage3.Text = "graph";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // refresh_chart
+            // 
+            this.refresh_chart.Location = new System.Drawing.Point(1058, 580);
+            this.refresh_chart.Name = "refresh_chart";
+            this.refresh_chart.Size = new System.Drawing.Size(106, 24);
+            this.refresh_chart.TabIndex = 7;
+            this.refresh_chart.Text = "Refresh";
+            this.refresh_chart.UseVisualStyleBackColor = true;
+            this.refresh_chart.Click += new System.EventHandler(this.refresh_chart_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(812, 580);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(26, 20);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "To";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(512, 580);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 20);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "From";
+            // 
+            // EndRange
+            // 
+            this.EndRange.CustomFormat = "yyyy-MM-dd";
+            this.EndRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.EndRange.Location = new System.Drawing.Point(844, 580);
+            this.EndRange.Name = "EndRange";
+            this.EndRange.Size = new System.Drawing.Size(200, 23);
+            this.EndRange.TabIndex = 4;
+            // 
+            // StartRange
+            // 
+            this.StartRange.CustomFormat = "yyyy-MM-dd";
+            this.StartRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.StartRange.Location = new System.Drawing.Point(564, 580);
+            this.StartRange.Name = "StartRange";
+            this.StartRange.Size = new System.Drawing.Size(200, 23);
+            this.StartRange.TabIndex = 3;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 588);
+            this.button1.Location = new System.Drawing.Point(6, 601);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 45);
             this.button1.TabIndex = 2;
@@ -587,15 +644,15 @@
             // GraphPic
             // 
             this.GraphPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GraphPic.Location = new System.Drawing.Point(201, 59);
+            this.GraphPic.Location = new System.Drawing.Point(82, 28);
             this.GraphPic.Name = "GraphPic";
-            this.GraphPic.Size = new System.Drawing.Size(349, 523);
+            this.GraphPic.Size = new System.Drawing.Size(400, 546);
             this.GraphPic.TabIndex = 1;
             this.GraphPic.TabStop = false;
             // 
             // marketChart
             // 
-            this.marketChart.Location = new System.Drawing.Point(567, 38);
+            this.marketChart.Location = new System.Drawing.Point(518, 19);
             this.marketChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.marketChart.Name = "marketChart";
             this.marketChart.Size = new System.Drawing.Size(616, 555);
@@ -627,6 +684,7 @@
             this.inventory_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CardImage)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GraphPic)).EndInit();
             this.ResumeLayout(false);
 
@@ -679,5 +737,10 @@
         private PictureBox GraphPic;
         private ScottPlot.FormsPlot marketChart;
         private Button button1;
+        private DateTimePicker EndRange;
+        private DateTimePicker StartRange;
+        private Button refresh_chart;
+        private Label label15;
+        private Label label14;
     }
 }

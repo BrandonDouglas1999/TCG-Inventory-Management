@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,19 @@ namespace InventoryApp
         string sc;
         string r;
         string image;
+        string sp; //Store price
+        string c;   //copies
         
         public catalog()
         {
             InitializeComponent();
+            //Hide Tabs
+            /*
+            tabControl1.Appearance = TabAppearance.FlatButtons;
+            tabControl1.ItemSize = new Size(0, 1);
+            tabControl1.SizeMode = TabSizeMode.Fixed;
             prev_catalog.Enabled = false;
+            */
             paging_catalog();
         }
 
@@ -40,10 +49,13 @@ namespace InventoryApp
 
         private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            MessageBox.Show(e.ColumnIndex.ToString());
             image = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[5].Value.ToString();
             cid = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
             sc = catalog_view.Rows[e.RowIndex].Cells[8].Value.ToString();
             r = catalog_view.Rows[e.RowIndex].Cells[9].Value.ToString();
+            sp = catalog_view.Rows[e.RowIndex].Cells[11].Value.ToString();
+            c = catalog_view.Rows[e.RowIndex].Cells[12].Value.ToString();
             if (e.ColumnIndex == 0 && e.RowIndex >= 0) //View Market Trend
             {
                 plot_market();
@@ -145,6 +157,7 @@ namespace InventoryApp
             catalog_view.Columns[1].Visible = false; //hide full image
             catalog_view.Columns[2].Visible = false; //hide image file name
             catalog_view.Columns[3].Visible = false; //hide card_id
+            catalog_view.Columns[10].Visible = false;
             //Resizing columns
             catalog_view.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             catalog_view.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -277,6 +290,7 @@ namespace InventoryApp
             if (result == DialogResult.Yes)
             {
                 //delete card
+                tabControl1.SelectedIndex = 0;
                 return;
             }
             else
@@ -287,8 +301,22 @@ namespace InventoryApp
 
         private void load_cardInfo()
         {
+            string query = String.Format("Select card_name, card_type, card_race, set_name, market_price from dbo.YGOCurrentMarket where card_id = {0} and set_code = '{1}' and rarity = '{2}'", cid, sc, r);
+            DataTable dt = new DataTable();
+            dt = db.Select(query);
             CardImage.Image = Image.FromFile(image);
             CardImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            card_id.Text = cid;
+            set_code.Text = sc;
+            card_rarity.Text = r;
+            store_price.Text = sp.Substring(0, sp.Length - 2);
+            card_copies.Text = c;
+            card_name.Text = dt.Rows[0]["card_name"].ToString();
+            card_type.Text = dt.Rows[0]["card_type"].ToString();
+            card_race.Text = dt.Rows[0]["card_race"].ToString();
+            set_name.Text = dt.Rows[0]["set_name"].ToString();
+            string mp = dt.Rows[0]["market_price"].ToString();
+            market_price.Text = mp.Substring(0, mp.Length - 2);
         }
         
         private void cancel_bttn_Click(object sender, EventArgs e)
@@ -297,29 +325,81 @@ namespace InventoryApp
         }
 //=====================================================================Graph view===============================================================================================================
 
+        /*Load the default plot and set up date boxes range*/
         private void plot_market()
         {
             marketChart.Plot.Clear();
+            marketChart.Plot.XAxis.Label("Market Price For The Past 7 Days");
             GraphPic.Image = Image.FromFile(image);
             GraphPic.SizeMode = PictureBoxSizeMode.StretchImage;
-            string query = string.Format("Select update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}'", cid, sc, r);
+            string query = string.Format("Select Top 7 update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}' order by update_date desc", 
+                cid, sc, r);
             DataTable marketdt = new DataTable();
             marketdt = db.GetCardMarket(query);
-            
-            DateTime[] date = new DateTime[marketdt.Rows.Count];
-            double[] y = new double[marketdt.Rows.Count];
-            string[] y_label = new string[marketdt.Rows.Count];
-            for (int count = 0; count < marketdt.Rows.Count; count++)
+            if (marketdt == null)
             {
-                date[count] = Convert.ToDateTime(marketdt.Rows[count]["update_date"].ToString());
-                y[count] = Math.Round(Convert.ToDouble(marketdt.Rows[count]["market_price"]), 2);
+                StartRange.CustomFormat = "yyyy-MM-dd";
+                EndRange.CustomFormat = "yyyy-MM-dd";
+                StartRange.MaxDate = DateTime.Today;
+                StartRange.MinDate = DateTime.Today;
+                EndRange.MaxDate = DateTime.Today;
+                EndRange.MinDate = DateTime.Today;
+                return;
+            }
+            plot_data(marketdt);
+            dateBoxes();
+        }
+
+        /*Setting range for datebox*/
+        private void dateBoxes()
+        {
+            var range = db.DateRange(cid, sc, r);
+            StartRange.MinDate = Convert.ToDateTime(range.start);
+            StartRange.MaxDate = Convert.ToDateTime(range.end);
+            EndRange.MinDate = Convert.ToDateTime(range.start);
+            EndRange.MaxDate = Convert.ToDateTime(range.end);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void refresh_chart_Click(object sender, EventArgs e)
+        {
+            if (StartRange.Value > EndRange.Value)
+            {
+                return;
+            }
+            string start = StartRange.Value.ToString("yyy-MM-dd");
+            string end = EndRange.Value.ToString("yyyy-MM-dd");
+            DataTable dt = new DataTable();
+            dt = db.CPriceHistory(cid, sc, r, start, end);
+            if (dt == null) 
+            {
+                return; 
+            }
+            marketChart.Plot.Clear();
+            marketChart.Plot.XAxis.Label(String.Format("Market Price From {0} to {1}", start, end));
+            plot_data(dt);
+        }
+
+        private void plot_data(DataTable dt)
+        {
+            DateTime[] date = new DateTime[dt.Rows.Count];
+            double[] y = new double[dt.Rows.Count];
+            string[] y_label = new string[dt.Rows.Count];
+            for (int count = 0; count < dt.Rows.Count; count++)
+            {
+                date[count] = Convert.ToDateTime(dt.Rows[count]["update_date"].ToString());
+                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["market_price"]), 2);
                 y_label[count] = "$" + y[count].ToString();
             }
             //convert date time to double
             double[] x = date.Select(x => x.ToOADate()).ToArray();
+
             var plot = marketChart.Plot.AddScatter(x, y);
             marketChart.Plot.XAxis.DateTimeFormat(true);
-            marketChart.Plot.XAxis.Label("Date");
             marketChart.Plot.YAxis.Label("Card Price (CAD)");
             plot.DataPointLabels = y_label;
             marketChart.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .7, y.Min() - 2, y.Max() + 1);
@@ -332,11 +412,8 @@ namespace InventoryApp
             // disable middle-click-drag zoom window
             marketChart.Configuration.MiddleClickDragZoom = false;
             marketChart.Refresh();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 0;
+            EndRange.Value = date[0];
+            StartRange.Value = date[dt.Rows.Count - 1];
         }
     }
 
