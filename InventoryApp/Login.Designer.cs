@@ -38,6 +38,7 @@
             pw_input = new MaskedTextBox();
             user_input = new TextBox();
             google_login = new Button();
+            new_account = new Label();
             SuspendLayout();
             // 
             // name_label
@@ -145,13 +146,27 @@
             google_login.Text = "Login with Google";
             google_login.TextAlign = ContentAlignment.MiddleRight;
             google_login.UseVisualStyleBackColor = true;
-            google_login.Click += button1_Click;
+            google_login.Click += google_login_Click;
+            // 
+            // new_account
+            // 
+            new_account.AutoSize = true;
+            new_account.Cursor = Cursors.Hand;
+            new_account.Font = new Font("Segoe UI", 11.25F, FontStyle.Underline, GraphicsUnit.Point);
+            new_account.ForeColor = Color.DodgerBlue;
+            new_account.Location = new Point(450, 362);
+            new_account.Name = "new_account";
+            new_account.Size = new Size(139, 20);
+            new_account.TabIndex = 9;
+            new_account.Text = "Create new account";
+            new_account.Click += new_account_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(646, 498);
+            Controls.Add(new_account);
             Controls.Add(google_login);
             Controls.Add(incorrect_prompt);
             Controls.Add(name_label);
@@ -178,5 +193,6 @@
         private Button login_button;
         private Label incorrect_prompt;
         private Button google_login;
+        private Label new_account;
     }
 }

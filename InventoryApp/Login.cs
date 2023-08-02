@@ -64,12 +64,6 @@ namespace InventoryApp
 
         }
 
-        private void google_logo_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private string getAuthCode()
         {
 
@@ -165,11 +159,25 @@ namespace InventoryApp
             // Make a GET call to obtain user profile
 
             var profile_info = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
-
+            string google_id = profile_info.Replace("\"", "").Split(',')[0].Split(':')[1].Trim();
+            string email = profile_info.Replace("\"", "").Split(',')[1].Split(':')[1].Trim();
             string user_name = profile_info.Replace("\"", "").Split(',')[3].Split(':')[1].Trim();
 
-            this.authenticated = true;
+            SQLHelper sqlHelper = new SQLHelper();
+            string UID = sqlHelper.ExternalLogin(google_id, "google");
+            Debug.WriteLine(UID);
+            if (UID == "0")
+            {
+                int success = sqlHelper.CreateExternalAccount(google_id, "google", email, user_name);
+
+                if (success == 0)
+                {
+                    return;
+                }
+            }
+
             this.logged_user = user_name;
+            this.authenticated = true;
             this.Close();
 
 
@@ -178,13 +186,18 @@ namespace InventoryApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void google_login_Click(object sender, EventArgs e)
         {
             string authCode = getAuthCode();
             if (authCode == null) { return; }
             getToken(authCode);
 
             return;
+        }
+
+        private void new_account_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
