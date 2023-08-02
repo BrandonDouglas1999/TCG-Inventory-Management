@@ -11,6 +11,9 @@ using InventoryApp.API_Model;
 using System.IO;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Xml.Schema;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Web;
+using System.Collections;
 
 namespace InventoryApp.Helpers
 {
@@ -51,22 +54,30 @@ namespace InventoryApp.Helpers
         /*
          This function will return the result of a query 
         */
-        public SqlDataReader Select(string Query)
+        public DataTable Select(string query)
         {
-            SqlConnection myConnection = new SqlConnection(connectionString);
             SqlCommand myCommand;
-            try
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                myConnection.Open();
-                myCommand = new SqlCommand(Query, myConnection); //preparing the query string
-                //read database output and close connection
-                return myCommand.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                try
+                {
+                    myConnection.Open();
+                    myCommand = new SqlCommand(query, myConnection); //preparing the query string
+                    myCommand = new SqlCommand(query, myConnection);
+                    adapter = new SqlDataAdapter(query, myConnection);
+                    adapter.Fill(dt);
+                    myConnection.Close();
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    myConnection.Close();
+                    return null;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return null;
         }
 
 
@@ -78,7 +89,7 @@ namespace InventoryApp.Helpers
             int total;
             int end = 0;
             string num = "SELECT COUNT(user_id) as num from YGOStorePrice where user_id = 1";
-            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, S.rarity,  CM.market_price, S.store_price, S.copies, CM.set_name from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
                 "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = 1";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
@@ -107,6 +118,8 @@ namespace InventoryApp.Helpers
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //--------------------------------------------------------------------Card Related-------------------------------------------------------------
+        
+        //Need to add user id as parameter
         public int InsertCard(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price) //return status code 
         {
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -135,21 +148,22 @@ namespace InventoryApp.Helpers
             }
         }
 
-        public void DeleteCard(string cid, string setcode, string rarity)
+        /*Need to redo this*/
+        public void DeleteCard(string sid, string cid, string setcode, string rarity)
         {
             SqlCommand myCommand;
             SqlDataReader myReader;
             String image_file = "";
             int status;
-            String query = "Exec deleteCard @CID, @Setcode, @Rarity, @image output, @stat output";
+            String query = "Exec deleteCard @SID, @CID, @Setcode, @Rarity, @stat output";
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 /* This way will prevent sql injection attack*/
                 myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@SID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@Setcode", SqlDbType.VarChar, 20).Value = setcode;
                 myCommand.Parameters.Add("@Rarity", SqlDbType.VarChar, 20).Value = rarity;
-                myCommand.Parameters.Add("@image", SqlDbType.VarChar, -1).Direction = ParameterDirection.Output; //-1 for max
                 myCommand.Parameters.Add("@stat", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {
@@ -165,25 +179,6 @@ namespace InventoryApp.Helpers
                     return;
                 }
             }
-            if (status == 1) /*delete the image corresponding to the card data if it is the only one using the image file*/
-            {
-                DeleteImage(image_file);
-            }
-        }
-
-        public DataTable GetCardMarket(string query)
-        {
-            DataTable ds = new DataTable();
-            SqlDataAdapter adapter;
-            SqlCommand myCommand;
-            using (SqlConnection myConnection = new SqlConnection(connectionString))
-            {
-                myConnection.Open();
-                myCommand = new SqlCommand(query, myConnection);
-                adapter = new SqlDataAdapter(query, myConnection);
-                adapter.Fill(ds);
-            }
-            return ds;
         }
 
         private async void SaveImage(string url, string card_ID)
@@ -215,25 +210,93 @@ namespace InventoryApp.Helpers
             Image myThumbnail = img.GetThumbnailImage(105, 153, () => false, IntPtr.Zero);
             myThumbnail.Save(save_path + file_name);
         }
-
-        /*Delete card image and thumbnail*/
-        private void DeleteImage(string image_file)
+        
+        public DataTable GetCardMarket(string query)
         {
-            String file_path = path + @"\" + image_file;
-            String thumbnail = path + @"\Card_Thumbnails\" + image_file;
-            if (File.Exists(file_path))
+            DataTable ds = new DataTable();
+            SqlDataAdapter adapter;
+            SqlCommand myCommand;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                MessageBox.Show(file_path);
-                File.Delete(file_path);
+                try 
+                {
+                    myConnection.Open();
+                    myCommand = new SqlCommand(query, myConnection);
+                    adapter = new SqlDataAdapter(query, myConnection);
+                    adapter.Fill(ds); 
+                }
+                catch (Exception ex)
+                {
+                    ds = null;
+                    myConnection.Close();
+                }         
             }
-            if (File.Exists(thumbnail)) 
+            return ds;
+        }
+
+        public DataTable CPriceHistory(string cid, string setcode, string rarity, string startdate, string enddate)
+        {
+            DataTable dt = new DataTable();
+            string query = "Exec CardPriceHistory @CID, @SC, @R, @Start, @End";
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                File.Delete(thumbnail);
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value= cid;
+                myCommand.Parameters.Add("@SC", SqlDbType.VarChar, 50).Value = setcode;
+                myCommand.Parameters.Add("@R", SqlDbType.VarChar, 50).Value = rarity;
+                myCommand.Parameters.Add("@Start", SqlDbType.Date).Value= startdate;
+                myCommand.Parameters.Add("@End", SqlDbType.Date).Value = enddate;
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                    myConnection.Close();
+                }
             }
+            return dt;
         }
 
 
-
+        public (string start, string end) DateRange(string cid, string setcode, string rarity)
+        {
+            string query = "Exec DateRange @CID, @SC, @R, @Start output, @End output";
+            string start = null;
+            string end = null;
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@SC", SqlDbType.VarChar, 50).Value = setcode;
+                myCommand.Parameters.Add("@R", SqlDbType.VarChar, 50).Value = rarity;
+                myCommand.Parameters.Add("@Start", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                myCommand.Parameters.Add("@End", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    start = myCommand.Parameters["@Start"].Value.ToString();
+                    end = myCommand.Parameters["@End"].Value.ToString();
+                    myConnection.Close();
+                    return (start, end);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    myConnection.Close();
+                    return (start, end);
+                }
+            }
+        }
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------Conversion Rate Related-----------------------------------------------------
@@ -278,5 +341,72 @@ namespace InventoryApp.Helpers
             return db_rate;
         }
         //---------------------------------------------------------------------------------------------------------------------------------------------
+
+        //-------------------------------------------------------------User Login----------------------------------------------------------------------
+
+        public string ExternalLogin(string GID, string auth_type)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            int status;
+            string UID;
+            string query = "Exec ExternalLogin @GID, @auth_type, @status output, @UID output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand= new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@GID", SqlDbType.VarChar, 64).Value = GID;
+                myCommand.Parameters.Add("@auth_type", SqlDbType.VarChar, 50).Value = auth_type;
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Direction = ParameterDirection.Output;
+                try
+                {
+                    //status should be 1 if success
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                    UID = myCommand.Parameters["@UID"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+                    status = 0;
+                    UID = null;
+                }
+                finally 
+                { 
+                    myConnection.Close(); 
+                }
+            }
+            return UID;
+        }
+
+        public int CreateExternalAccount(string GID, string auth_type, string email, string username)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            int status;
+            string query = "Exec CreateExternalLogin @GID, @auth_type, @Email, @Username, @status output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@GID", SqlDbType.VarChar, 64).Value = GID;
+                myCommand.Parameters.Add("@auth_type", SqlDbType.VarChar, 50).Value = auth_type;
+                myCommand.Parameters.Add("@Email", SqlDbType.VarChar, -1).Value = auth_type;
+                myCommand.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = auth_type;
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    /*should be 1 if successfully create an account*/
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                }
+                catch
+                {
+                    status = 0;
+                }
+                finally { myConnection.Close(); }
+            }
+            return status;
+        }
     }
 }
