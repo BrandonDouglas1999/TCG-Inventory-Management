@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic.Logging;
+using System.Drawing.Design;
 
 namespace InventoryApp
 {
@@ -23,6 +24,7 @@ namespace InventoryApp
             sidebar.MaximumSize = new Size(200, int.MaxValue);
             Size UCSize = new Size(this.Width - 50, this.Height);
 
+
             sidebarCollapsedLocation = new Point(50, 0);
             sidebarExpandedLocation = new Point(200, 0);
 
@@ -37,14 +39,6 @@ namespace InventoryApp
             catalog_uc.Size = UCSize;
             cart_uc.Size = UCSize;
             sales_uc.Size = UCSize;
-        }
-
-
-        private void Main_Resize(object sender, EventArgs e)
-        {
-
-            // Should decide soon if sidebar open causes everything to scale, or if 
-            // Interaction only occurs when sidebar is closed.
         }
 
         // Menu functions
@@ -95,39 +89,37 @@ namespace InventoryApp
 
         private void home_button_Click(object sender, EventArgs e)
         {
-            transitionUC(1, home_page);
+            transitionUC(home_page);
         }
 
         private void card_button_Click(object sender, EventArgs e)
         {
-            transitionUC(2, card_opt_tabs);
+            transitionUC(card_opt_tabs);
         }
 
         private void catalog_Click(object sender, EventArgs e)
         {
-            transitionUC(3, catalog_uc);
+            transitionUC(catalog_uc);
         }
         private void cart_button_Click(object sender, EventArgs e)
         {
-            transitionUC(4, cart_uc);
+            transitionUC(cart_uc);
         }
         private void sales_button_Click(object sender, EventArgs e)
         {
-            transitionUC(5, sales_uc);
+            transitionUC(sales_uc);
         }
 
         // Handles the transition between UserControls (buttons)
-        // UCNumber is the number of the scene transitioning to
         // UCSwitchTo is the UC to become the active window.
-        private void transitionUC(int UCNumber, UserControl UCSwitchTo)
+        private void transitionUC(UserControl UCSwitchTo)
         {
-            if (activeWindowNumber == UCNumber) { return; }
+            if (activeWindow == UCSwitchTo) { return; }
 
             activeWindow.Hide();
             activeWindow = UCSwitchTo;
             resizeActiveWindow();
             activeWindow.Show();
-            activeWindowNumber = UCNumber;
 
         }
 

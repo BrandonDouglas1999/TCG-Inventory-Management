@@ -194,7 +194,7 @@
             // 
             card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             card_opt_tabs.AutoSize = true;
-            card_opt_tabs.Location = new Point(-88, 364);
+            card_opt_tabs.Location = new Point(-115, 219);
             card_opt_tabs.Name = "card_opt_tabs";
             card_opt_tabs.Size = new Size(1273, 833);
             card_opt_tabs.TabIndex = 1;
@@ -204,14 +204,14 @@
             // 
             home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             home_page.AutoSize = true;
-            home_page.Location = new Point(12, 246);
+            home_page.Location = new Point(114, 58);
             home_page.Name = "home_page";
-            home_page.Size = new Size(714, 285);
+            home_page.Size = new Size(714, 341);
             home_page.TabIndex = 2;
             // 
             // sales_uc
             // 
-            sales_uc.Location = new Point(74, -22);
+            sales_uc.Location = new Point(194, 30);
             sales_uc.Name = "sales_uc";
             sales_uc.Size = new Size(406, 224);
             sales_uc.TabIndex = 4;
@@ -219,7 +219,7 @@
             // 
             // cart_uc
             // 
-            cart_uc.Location = new Point(566, -32);
+            cart_uc.Location = new Point(478, 30);
             cart_uc.Name = "cart_uc";
             cart_uc.Size = new Size(718, 390);
             cart_uc.TabIndex = 5;
@@ -227,9 +227,9 @@
             // 
             // catalog_uc
             // 
-            catalog_uc.Location = new Point(74, 12);
+            catalog_uc.Location = new Point(114, 21);
             catalog_uc.Name = "catalog_uc";
-            catalog_uc.Size = new Size(1280, 720);
+            catalog_uc.Size = new Size(630, 242);
             catalog_uc.TabIndex = 6;
             catalog_uc.Visible = false;
             // 
