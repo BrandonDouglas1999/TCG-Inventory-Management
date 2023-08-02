@@ -67,11 +67,7 @@ namespace InventoryApp
         private void google_logo_Click(object sender, EventArgs e)
         {
 
-            string authCode = getAuthCode();
-            if (authCode == null) { return;}
-            getToken(authCode);
 
-            return;
         }
 
         private string getAuthCode()
@@ -129,7 +125,7 @@ namespace InventoryApp
             }
 
             string code = context.Request.QueryString.Get("code");
-            
+
             return code;
         }
 
@@ -139,7 +135,7 @@ namespace InventoryApp
 
             string endpoint = "https://oauth2.googleapis.com/token";
 
-            var needed_info= new Dictionary<string, string>
+            var needed_info = new Dictionary<string, string>
             {
                 {"code", authCode},
                 {"client_id", clientID},
@@ -165,7 +161,7 @@ namespace InventoryApp
 
             string token = split_again[1].Trim();
 
-            
+
             // Make a GET call to obtain user profile
 
             var profile_info = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
@@ -175,11 +171,20 @@ namespace InventoryApp
             this.authenticated = true;
             this.logged_user = user_name;
             this.Close();
-            
 
 
 
 
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string authCode = getAuthCode();
+            if (authCode == null) { return; }
+            getToken(authCode);
+
+            return;
         }
     }
 }
