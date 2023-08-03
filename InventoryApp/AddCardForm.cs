@@ -112,7 +112,7 @@ namespace InventoryApp
         private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            int status = db.InsertCard(cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
+            int status = db.InsertCard("1", cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
             if (status == 0) { MessageBox.Show("Card already in database"); }
             else if (status == 1) { MessageBox.Show("Successfully added card to Inventory"); }
             return;

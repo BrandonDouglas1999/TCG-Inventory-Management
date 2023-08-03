@@ -30,7 +30,7 @@ namespace InventoryApp
         SQLHelper db = new SQLHelper();
 
 
-        public bool authenticated = true;
+        public bool authenticated = false;
         public string logged_user = null;
         public Login()
         {
