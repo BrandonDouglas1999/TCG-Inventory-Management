@@ -14,6 +14,7 @@ namespace InventoryApp
 {
     public partial class catalog : UserControl
     {
+        
         class Global
         {
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
@@ -40,35 +41,55 @@ namespace InventoryApp
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
-            prev_catalog.Enabled = false;
             */
+            paging_catalog();
+            // disable left-click-drag pan
+            marketChart.Configuration.Pan = false;
+            // disable right-click-drag zoom
+            marketChart.Configuration.Zoom = false;
+            // disable scroll wheel zoom
+            marketChart.Configuration.ScrollWheelZoom = false;
+            // disable middle-click-drag zoom window
+            marketChart.Configuration.MiddleClickDragZoom = false;
+        }
+
+        private void load_table(Object sender, EventArgs e)
+        {
             paging_catalog();
         }
 
         //============================================================================Gridview Interaction================================================================== 
 
+
         private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show(e.ColumnIndex.ToString());
-            image = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[5].Value.ToString();
-            cid = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
-            sc = catalog_view.Rows[e.RowIndex].Cells[8].Value.ToString();
-            r = catalog_view.Rows[e.RowIndex].Cells[9].Value.ToString();
-            sp = catalog_view.Rows[e.RowIndex].Cells[11].Value.ToString();
-            c = catalog_view.Rows[e.RowIndex].Cells[12].Value.ToString();
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0) //View Market Trend
+            if (e.ColumnIndex >= 10 && e.RowIndex >= 0)
             {
-                plot_market();
-                tabControl1.SelectedIndex = 2;
-                return;
+                image = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cid = catalog_view.Rows[e.RowIndex].Cells[2].Value.ToString();
+                sc = catalog_view.Rows[e.RowIndex].Cells[4].Value.ToString();
+                r = catalog_view.Rows[e.RowIndex].Cells[6].Value.ToString();
+                sp = catalog_view.Rows[e.RowIndex].Cells[8].Value.ToString();
+                c = catalog_view.Rows[e.RowIndex].Cells[9].Value.ToString();
+                if (e.ColumnIndex == 10 && e.RowIndex >= 0) //View Market Trend
+                {
+                    plot_market();
+                    tabControl1.SelectedIndex = 2;
+                    return;
+                }
+                if (e.ColumnIndex == 11 && e.RowIndex >= 0) //Edit Inventory
+                {
+                    load_cardInfo();
+                    tabControl1.SelectedIndex = 1;
+                    return;
+                }
+                if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Add to shopping cart
+                {
+                    return;
+                }
             }
-            if (e.ColumnIndex == 1 && e.RowIndex >= 0) //Edit Inventory
-            {
-                load_cardInfo();
-                tabControl1.SelectedIndex = 1;
-                return;
-            }
-            if (e.ColumnIndex == 2 && e.RowIndex >= 0) //Add to shopping cart
+            else
             {
                 return;
             }
@@ -89,8 +110,7 @@ namespace InventoryApp
 
         private void prev_catalog_Click(object sender, EventArgs e)
         {
-            ScrollVal = ScrollVal - 20;
-            MessageBox.Show(ScrollVal.ToString());
+            ScrollVal -= 20;
             if (ScrollVal < 0)
             {
                 ScrollVal = 0;
@@ -105,36 +125,43 @@ namespace InventoryApp
 
         private void next_catalog_Click(object sender, EventArgs e) //need to work on in case of hitting the end of result
         {
-            ScrollVal = ScrollVal + 20;
-            MessageBox.Show(ScrollVal.ToString());
+            ScrollVal += 20;
             if (ScrollVal > 0)
             {
                 prev_catalog.Enabled = true;
             }
             setup_dttable();
             format_view();
+            
         }
 
         private void setup_dttable() /*Set up datatable for query result*/
         {
             dt = new DataTable();
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
-            dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
-            ScrollVal = db.LoadCatalog(dt, ScrollVal, Global.filters);
-            
+            int end = db.LoadCatalog(dt, ScrollVal, Global.filters);
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
+            dt.Columns["set_name"].ColumnName = "Set Name";
+            dt.Columns["rarity"].ColumnName = "Rarity";
             dt.Columns["market_price"].ColumnName = "Market Price";
             dt.Columns["Store_Price"].ColumnName = "Store Price";
+            dt.Columns["Copies"].ColumnName = "Copies";
 
             //get image into table
             foreach (DataRow row in dt.Rows)
             {
                 String image_thumbnail = path + @"\Card_Thumbnails\" + row["Image"].ToString();
                 row["Card Image"] = File.ReadAllBytes(image_thumbnail);
-                String full_image = path + @"\" + row["Image"].ToString();
-                row["Card Image Full"] = File.ReadAllBytes(full_image);
+            }
+            if (end == 1)
+            {
+                next_catalog.Enabled = false;
+            }
+            else
+            {
+                next_catalog.Enabled = true;
             }
         }
 
@@ -152,22 +179,16 @@ namespace InventoryApp
             catalog_view.Columns.Clear();
             catalog_view.DataSource = dt;
             catalog_view.EnableHeadersVisualStyles = false;
-            catalog_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60); //change header cell color
+            catalog_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 47, 76, 100); //change header cell color
             catalog_view.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;                 //change header text color
-            catalog_view.Columns[1].Visible = false; //hide full image
-            catalog_view.Columns[2].Visible = false; //hide image file name
-            catalog_view.Columns[3].Visible = false; //hide card_id
-            catalog_view.Columns[10].Visible = false;
-            //Resizing columns
-            catalog_view.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            catalog_view.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            catalog_view.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            catalog_view.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            catalog_view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+           
+            catalog_view.Columns[1].Visible = false; //hide image file name
+            catalog_view.Columns[2].Visible = false; //hide card id
+            
             //Change prices decimal points
             catalog_view.Columns[7].DefaultCellStyle.Format = "0.00##";
             catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
-
+            
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
@@ -177,7 +198,7 @@ namespace InventoryApp
             catalog_view.Columns.Add(update_card);
 
             DataGridViewButtonColumn edit_card = new DataGridViewButtonColumn();
-            edit_card.Text = "Edit";
+            edit_card.Text = "Edit Inventory";
             edit_card.UseColumnTextForButtonValue = true; //display text for button 
             catalog_view.Columns.Add(edit_card);
 
@@ -185,6 +206,15 @@ namespace InventoryApp
             add_to_cart.Text = "Add to Cart";
             add_to_cart.UseColumnTextForButtonValue = true;
             catalog_view.Columns.Add(add_to_cart);
+
+            //Edit cell and column size
+            catalog_view.RowTemplate.Height = 153;
+            catalog_view.Columns[0].Width = 105;
+            catalog_view.Columns[3].Width = 220;
+            catalog_view.Columns[6].Width = 50;
+            catalog_view.Columns[7].Width = 65;
+            catalog_view.Columns[8].Width = 65;
+            catalog_view.Columns[9].Width = 50;
         }
 
         //===============================================================================================================================================================   
@@ -290,8 +320,13 @@ namespace InventoryApp
             if (result == DialogResult.Yes)
             {
                 //delete card
-                tabControl1.SelectedIndex = 0;
-                return;
+                int status = db.DeleteCard("1", card_id.Text, set_code.Text, card_rarity.Text);
+                if (status == 1)
+                {
+                    MessageBox.Show("Product Successfully Removed From Your Inventory");
+                    paging_catalog();
+                    tabControl1.SelectedIndex = 0;
+                }
             }
             else
             {
@@ -302,6 +337,7 @@ namespace InventoryApp
         private void load_cardInfo()
         {
             string query = String.Format("Select card_name, card_type, card_race, set_name, market_price from dbo.YGOCurrentMarket where card_id = {0} and set_code = '{1}' and rarity = '{2}'", cid, sc, r);
+            warning_label.Visible = false;
             DataTable dt = new DataTable();
             dt = db.Select(query);
             CardImage.Image = Image.FromFile(image);
@@ -318,12 +354,40 @@ namespace InventoryApp
             string mp = dt.Rows[0]["market_price"].ToString();
             market_price.Text = mp.Substring(0, mp.Length - 2);
         }
-        
+
+        private void update_card_Click(object sender, EventArgs e)
+        {
+            int num;
+            float num2;
+            if (store_price.Text == "" || card_copies.Text =="")
+            {
+                warning_label.Text = "* Invalid input for Store Price and/or Card Copies.";
+                warning_label.Visible = true;
+                return;
+            }
+            else if (int.TryParse(card_copies.Text, out num) == false || float.TryParse(store_price.Text, out num2) == false)
+            {
+                warning_label.Text = "* Invalid value for Store Price and/or Card Copies";
+                warning_label.Visible = true;
+                return;
+            }
+            int status = db.UpdateInventory("1", card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
+            if (status == 1)
+            {
+                paging_catalog();
+                tabControl1.SelectedIndex = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         private void cancel_bttn_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
         }
-//=====================================================================Graph view===============================================================================================================
+//=============================================================================Graph view===============================================================================================================
 
         /*Load the default plot and set up date boxes range*/
         private void plot_market()
@@ -360,6 +424,7 @@ namespace InventoryApp
             EndRange.MaxDate = Convert.ToDateTime(range.end);
         }
 
+        //return to catalog page
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
@@ -403,19 +468,11 @@ namespace InventoryApp
             marketChart.Plot.YAxis.Label("Card Price (CAD)");
             plot.DataPointLabels = y_label;
             marketChart.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .7, y.Min() - 2, y.Max() + 1);
-            // disable left-click-drag pan
-            marketChart.Configuration.Pan = false;
-            // disable right-click-drag zoom
-            marketChart.Configuration.Zoom = false;
-            // disable scroll wheel zoom
-            marketChart.Configuration.ScrollWheelZoom = false;
-            // disable middle-click-drag zoom window
-            marketChart.Configuration.MiddleClickDragZoom = false;
             marketChart.Refresh();
             EndRange.Value = date[0];
             StartRange.Value = date[dt.Rows.Count - 1];
         }
+
+        
     }
-
-
 }

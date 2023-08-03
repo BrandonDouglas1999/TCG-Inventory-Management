@@ -69,18 +69,16 @@ namespace InventoryApp.Helpers
                     adapter = new SqlDataAdapter(query, myConnection);
                     adapter.Fill(dt);
                     myConnection.Close();
-                    return dt;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    myConnection.Close();
-                    return null;
+                    dt = null;
                 }
+                finally {myConnection.Close(); }
             }
+            return dt;
         }
-
-
 
         public int LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
@@ -89,7 +87,7 @@ namespace InventoryApp.Helpers
             int total;
             int end = 0;
             string num = "SELECT COUNT(user_id) as num from YGOStorePrice where user_id = 1";
-            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, S.rarity,  CM.market_price, S.store_price, S.copies, CM.set_name from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
                 "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = 1";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
@@ -111,6 +109,7 @@ namespace InventoryApp.Helpers
                 {
                     pagingAdapter.Fill(scrollVal, 20, catalog);
                 }
+                myConnection.Close();
             }
             return end;
         }
@@ -118,49 +117,63 @@ namespace InventoryApp.Helpers
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //--------------------------------------------------------------------Card Related-------------------------------------------------------------
-        
-        //Need to add user id as parameter
-        public int InsertCard(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price) //return status code 
+        public int InsertCard(string uid, string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string m_price, string copies, string image, string s_price) //return status code 
         {
-            SqlConnection myConnection = new SqlConnection(connectionString);
             SqlCommand myCommand;
             SqlDataReader myReader;
+            int status;
             cname = cname.Replace("'", "''");
             set_name = set_name.Replace("'", "''");
             String image_file = cid + ".jpg";
-            String query = String.Format("Execute AddCard {0}, '{1}',  '{2}', 'YGO','{3}', '{4}', '{5}', '{6}', {7}, {8}, '{9}', '{10}', @stat output",
-                           cid, set_code, rarity, cname, ctype, crace, set_name, price, s_price, inv, image_file);
-            try
+            String query = "Execute AddCard @UID, @CID, @Set_Code, @Rarity, @Game, @C_name, @C_type, @C_race, @Set_name, @M_price, @S_price, @Copies, @image, @Status output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                myConnection.Open();
                 myCommand = new SqlCommand(query, myConnection);
-                myCommand.Parameters.Add("@stat", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
-                myReader = myCommand.ExecuteReader();
-                int status = (int)myCommand.Parameters["@stat"].Value;
-                SaveImage(image, cid);
-                return status;
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid; 
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@Set_Code", SqlDbType.VarChar, 50).Value = set_code;
+                myCommand.Parameters.Add("@Rarity", SqlDbType.VarChar, 20).Value = rarity;
+                myCommand.Parameters.Add("@Game", SqlDbType.VarChar, 20).Value = "YGO";
+                myCommand.Parameters.Add("@C_name", SqlDbType.VarChar, -1).Value = cname;
+                myCommand.Parameters.Add("@C_type", SqlDbType.VarChar, -1).Value = ctype;
+                myCommand.Parameters.Add("@C_race", SqlDbType.VarChar, -1).Value = crace;
+                myCommand.Parameters.Add("@Set_name", SqlDbType.VarChar, -1).Value = set_name;
+                myCommand.Parameters.Add("@M_price", SqlDbType.Money).Value = m_price;
+                myCommand.Parameters.Add("@S_price", SqlDbType.Money).Value = s_price;
+                myCommand.Parameters.Add("@Copies", SqlDbType.Int).Value = copies;
+                myCommand.Parameters.Add("@Image", SqlDbType.VarChar, -1).Value = image_file;
+                myCommand.Parameters.Add("@Status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@Status"].Value;
+                    SaveImage(image, cid);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    status = -1; //db connection error
+                }
+                finally 
+                { 
+                     myConnection.Close(); 
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                myConnection.Close();
-                return -1;
-            }
+            return status;
         }
 
-        /*Need to redo this*/
-        public void DeleteCard(string sid, string cid, string setcode, string rarity)
+        public int DeleteCard(string uid, string cid, string setcode, string rarity)
         {
             SqlCommand myCommand;
             SqlDataReader myReader;
-            String image_file = "";
             int status;
-            String query = "Exec deleteCard @SID, @CID, @Setcode, @Rarity, @stat output";
+            String query = "Exec deleteCard @UID, @CID, @Setcode, @Rarity, @stat output";
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 /* This way will prevent sql injection attack*/
                 myCommand = new SqlCommand(query, myConnection);
-                myCommand.Parameters.Add("@SID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
                 myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@Setcode", SqlDbType.VarChar, 20).Value = setcode;
                 myCommand.Parameters.Add("@Rarity", SqlDbType.VarChar, 20).Value = rarity;
@@ -169,16 +182,20 @@ namespace InventoryApp.Helpers
                 {
                     myConnection.Open();
                     myReader = myCommand.ExecuteReader();
-                    image_file = myCommand.Parameters["@image"].Value.ToString();
                     status = (int)myCommand.Parameters["@stat"].Value;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    myConnection.Close();
-                    return;
+                    status = -1;
+                    
+                }
+                finally 
+                { 
+                    myConnection.Close(); 
                 }
             }
+            return status;
         }
 
         private async void SaveImage(string url, string card_ID)
@@ -186,19 +203,22 @@ namespace InventoryApp.Helpers
             String file_name = card_ID + ".jpg";
             String file_path = path + @"\" + file_name;
             var uri = new Uri(url);
-            HttpClient client = new HttpClient();
-            using (var stream = await client.GetStreamAsync(uri))
+            if (File.Exists(file_path)) //check if file exist
             {
-                if (File.Exists(file_path)) //check if file exist
-                {
-                    return;
-                }
-                using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
-                {
-                    await stream.CopyToAsync(file_stream);
-                }
+                return;
             }
-            create_thumbnail(file_name);
+            else
+            {
+                HttpClient client = new HttpClient();
+                    using (var stream = await client.GetStreamAsync(uri))
+                    {
+                        using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
+                        {
+                            await stream.CopyToAsync(file_stream);
+                        }
+                    }
+                create_thumbnail(file_name);
+            }
         }
 
         /*Create thumbnail from image*/
@@ -228,8 +248,8 @@ namespace InventoryApp.Helpers
                 catch (Exception ex)
                 {
                     ds = null;
-                    myConnection.Close();
-                }         
+                }   
+                finally { myConnection.Close(); }
             }
             return ds;
         }
@@ -258,12 +278,43 @@ namespace InventoryApp.Helpers
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dt = null;
-                    myConnection.Close();
                 }
+                finally { myConnection.Close(); }
             }
             return dt;
         }
 
+        public int UpdateInventory(string uid, string cid, string setcode, string rarity, string s_price, string copies)
+        {
+            int status;
+            string query = "Exec UpdateInventory @UID, @CID, @Set_code, @Rarity, @S_price, @Copies, @Status output";
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, -1).Value = uid;
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@Set_code", SqlDbType.VarChar, 50).Value = setcode;
+                myCommand.Parameters.Add("@Rarity", SqlDbType.VarChar, 50).Value = rarity;
+                myCommand.Parameters.Add("@S_price", SqlDbType.Money).Value = s_price;
+                myCommand.Parameters.Add("@Copies", SqlDbType.Int).Value = copies;
+                myCommand.Parameters.Add("@Status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@Status"].Value;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    status = -1;
+                }
+                finally { myConnection.Close(); }
+            }
+            return status;
+        }
 
         public (string start, string end) DateRange(string cid, string setcode, string rarity)
         {
