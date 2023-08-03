@@ -69,7 +69,7 @@
             Controls.Add(time_frame_combo);
             Controls.Add(filter_label);
             Name = "sales_report";
-            Size = new Size(836, 560);
+            Size = new Size(858, 560);
             ((System.ComponentModel.ISupportInitialize)filter_view).EndInit();
             ResumeLayout(false);
             PerformLayout();

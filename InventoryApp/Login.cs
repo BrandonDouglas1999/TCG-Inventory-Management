@@ -30,7 +30,7 @@ namespace InventoryApp
         SQLHelper db = new SQLHelper();
 
 
-        public bool authenticated = false;
+        public bool authenticated = true;
         public string logged_user = null;
         public Login()
         {
@@ -62,16 +62,6 @@ namespace InventoryApp
                 incorrect_prompt.Visible = true;
             }
 
-        }
-
-        private void google_logo_Click(object sender, EventArgs e)
-        {
-
-            string authCode = getAuthCode();
-            if (authCode == null) { return;}
-            getToken(authCode);
-
-            return;
         }
 
         private string getAuthCode()
@@ -129,7 +119,7 @@ namespace InventoryApp
             }
 
             string code = context.Request.QueryString.Get("code");
-            
+
             return code;
         }
 
@@ -139,7 +129,7 @@ namespace InventoryApp
 
             string endpoint = "https://oauth2.googleapis.com/token";
 
-            var needed_info= new Dictionary<string, string>
+            var needed_info = new Dictionary<string, string>
             {
                 {"code", authCode},
                 {"client_id", clientID},
@@ -165,21 +155,49 @@ namespace InventoryApp
 
             string token = split_again[1].Trim();
 
-            
+
             // Make a GET call to obtain user profile
 
             var profile_info = await client.GetStringAsync($"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}");
-
+            string google_id = profile_info.Replace("\"", "").Split(',')[0].Split(':')[1].Trim();
+            string email = profile_info.Replace("\"", "").Split(',')[1].Split(':')[1].Trim();
             string user_name = profile_info.Replace("\"", "").Split(',')[3].Split(':')[1].Trim();
 
-            this.authenticated = true;
+            SQLHelper sqlHelper = new SQLHelper();
+            string UID = sqlHelper.ExternalLogin(google_id, "google");
+            Debug.WriteLine(UID);
+            if (UID == "0")
+            {
+                int success = sqlHelper.CreateExternalAccount(google_id, "google", email, user_name);
+
+                if (success == 0)
+                {
+                    return;
+                }
+            }
+
             this.logged_user = user_name;
+            this.authenticated = true;
             this.Close();
+
+
+
+
+
+        }
+
+        private void google_login_Click(object sender, EventArgs e)
+        {
+            string authCode = getAuthCode();
+            if (authCode == null) { return; }
+            getToken(authCode);
+
+            return;
+        }
+
+        private void new_account_Click(object sender, EventArgs e)
+        {
             
-
-
-
-
         }
     }
 }

@@ -20,7 +20,7 @@ namespace InventoryApp
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
+        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
         SQLHelper db = new SQLHelper();
         int ScrollVal = 0;
         DataTable dt;
@@ -32,7 +32,7 @@ namespace InventoryApp
         string image;
         string sp; //Store price
         string c;   //copies
-        
+
         public catalog()
         {
             InitializeComponent();
@@ -140,7 +140,9 @@ namespace InventoryApp
             dt = new DataTable();
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             //dt.Load(myreader); //load sql result into datatable
+
             int end = db.LoadCatalog(dt, ScrollVal, Global.filters);
+
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["set_name"].ColumnName = "Set Name";
@@ -312,7 +314,7 @@ namespace InventoryApp
 
             return filter_string;
         }
-//======================================================================Edit Card Tab===========================================================================================================
+        //======================================================================Edit Card Tab===========================================================================================================
         private void delete_card_Click(object sender, EventArgs e)
         {
             string message = "\tAre you sure? \nYou want to delete this product";
@@ -387,7 +389,9 @@ namespace InventoryApp
         {
             tabControl1.SelectedIndex = 0;
         }
+
 //=============================================================================Graph view===============================================================================================================
+
 
         /*Load the default plot and set up date boxes range*/
         private void plot_market()
@@ -396,7 +400,7 @@ namespace InventoryApp
             marketChart.Plot.XAxis.Label("Market Price For The Past 7 Days");
             GraphPic.Image = Image.FromFile(image);
             GraphPic.SizeMode = PictureBoxSizeMode.StretchImage;
-            string query = string.Format("Select Top 7 update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}' order by update_date desc", 
+            string query = string.Format("Select Top 7 update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}' order by update_date desc",
                 cid, sc, r);
             DataTable marketdt = new DataTable();
             marketdt = db.GetCardMarket(query);
@@ -440,9 +444,9 @@ namespace InventoryApp
             string end = EndRange.Value.ToString("yyyy-MM-dd");
             DataTable dt = new DataTable();
             dt = db.CPriceHistory(cid, sc, r, start, end);
-            if (dt == null) 
+            if (dt == null)
             {
-                return; 
+                return;
             }
             marketChart.Plot.Clear();
             marketChart.Plot.XAxis.Label(String.Format("Market Price From {0} to {1}", start, end));

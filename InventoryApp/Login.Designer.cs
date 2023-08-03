@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             name_label = new Label();
             incorrect_prompt = new Label();
             login_button = new Button();
@@ -36,8 +37,8 @@
             label1 = new Label();
             pw_input = new MaskedTextBox();
             user_input = new TextBox();
-            google_logo = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)google_logo).BeginInit();
+            google_login = new Button();
+            new_account = new Label();
             SuspendLayout();
             // 
             // name_label
@@ -133,23 +134,40 @@
             user_input.Size = new Size(451, 26);
             user_input.TabIndex = 0;
             // 
-            // google_logo
+            // google_login
             // 
-            google_logo.Image = Properties.Resources.google_logo;
-            google_logo.Location = new Point(41, 398);
-            google_logo.Name = "google_logo";
-            google_logo.Size = new Size(58, 60);
-            google_logo.SizeMode = PictureBoxSizeMode.StretchImage;
-            google_logo.TabIndex = 7;
-            google_logo.TabStop = false;
-            google_logo.Click += google_logo_Click;
+            google_login.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            google_login.Image = (Image)resources.GetObject("google_login.Image");
+            google_login.ImageAlign = ContentAlignment.MiddleLeft;
+            google_login.Location = new Point(18, 418);
+            google_login.Name = "google_login";
+            google_login.Size = new Size(148, 40);
+            google_login.TabIndex = 8;
+            google_login.Text = "Login with Google";
+            google_login.TextAlign = ContentAlignment.MiddleRight;
+            google_login.UseVisualStyleBackColor = true;
+            google_login.Click += google_login_Click;
+            // 
+            // new_account
+            // 
+            new_account.AutoSize = true;
+            new_account.Cursor = Cursors.Hand;
+            new_account.Font = new Font("Segoe UI", 11.25F, FontStyle.Underline, GraphicsUnit.Point);
+            new_account.ForeColor = Color.DodgerBlue;
+            new_account.Location = new Point(450, 362);
+            new_account.Name = "new_account";
+            new_account.Size = new Size(139, 20);
+            new_account.TabIndex = 9;
+            new_account.Text = "Create new account";
+            new_account.Click += new_account_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(646, 498);
-            Controls.Add(google_logo);
+            Controls.Add(new_account);
+            Controls.Add(google_login);
             Controls.Add(incorrect_prompt);
             Controls.Add(name_label);
             Controls.Add(login_button);
@@ -161,7 +179,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Login";
             Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)google_logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,6 +192,7 @@
         private Label label4;
         private Button login_button;
         private Label incorrect_prompt;
-        private PictureBox google_logo;
+        private Button google_login;
+        private Label new_account;
     }
 }

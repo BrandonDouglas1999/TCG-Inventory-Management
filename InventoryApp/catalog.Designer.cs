@@ -91,25 +91,25 @@
             // 
             // catalog_panel
             // 
-            this.catalog_panel.Controls.Add(this.tabControl1);
-            this.catalog_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.catalog_panel.Location = new System.Drawing.Point(0, 0);
-            this.catalog_panel.Name = "catalog_panel";
-            this.catalog_panel.Size = new System.Drawing.Size(1280, 720);
-            this.catalog_panel.TabIndex = 0;
+            catalog_panel.Controls.Add(tabControl1);
+            catalog_panel.Dock = DockStyle.Fill;
+            catalog_panel.Location = new Point(0, 0);
+            catalog_panel.Name = "catalog_panel";
+            catalog_panel.Size = new Size(1280, 720);
+            catalog_panel.TabIndex = 0;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ItemSize = new System.Drawing.Size(60, 60);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1280, 720);
-            this.tabControl1.TabIndex = 9;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.ItemSize = new Size(60, 60);
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1280, 720);
+            tabControl1.TabIndex = 9;
             // 
             // tabPage1
             // 
@@ -184,237 +184,236 @@
             // 
             // search_box
             // 
-            this.search_box.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.search_box.Location = new System.Drawing.Point(3, 3);
-            this.search_box.Name = "search_box";
-            this.search_box.PlaceholderText = "Card Name";
-            this.search_box.Size = new System.Drawing.Size(307, 23);
-            this.search_box.TabIndex = 1;
+            search_box.Dock = DockStyle.Fill;
+            search_box.Location = new Point(3, 3);
+            search_box.Name = "search_box";
+            search_box.PlaceholderText = "Card Name";
+            search_box.Size = new Size(307, 23);
+            search_box.TabIndex = 1;
             // 
             // search_button
             // 
-            this.search_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.search_button.AutoSize = true;
-            this.search_button.Location = new System.Drawing.Point(347, 3);
-            this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(208, 25);
-            this.search_button.TabIndex = 2;
-            this.search_button.Text = "Search";
-            this.search_button.UseVisualStyleBackColor = true;
+            search_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            search_button.AutoSize = true;
+            search_button.Location = new Point(347, 3);
+            search_button.Name = "search_button";
+            search_button.Size = new Size(208, 25);
+            search_button.TabIndex = 2;
+            search_button.Text = "Search";
+            search_button.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.card_details_panel);
-            this.tabPage2.Controls.Add(this.inventory_panel);
-            this.tabPage2.Controls.Add(this.CardImage);
-            this.tabPage2.Controls.Add(this.delete_card);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.update_card);
-            this.tabPage2.Controls.Add(this.cancel_bttn);
-            this.tabPage2.Location = new System.Drawing.Point(4, 64);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1272, 652);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(label3);
+            tabPage2.Controls.Add(card_details_panel);
+            tabPage2.Controls.Add(inventory_panel);
+            tabPage2.Controls.Add(CardImage);
+            tabPage2.Controls.Add(delete_card);
+            tabPage2.Controls.Add(label13);
+            tabPage2.Controls.Add(update_card);
+            tabPage2.Controls.Add(cancel_bttn);
+            tabPage2.Location = new Point(4, 64);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1272, 652);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.label3.Location = new System.Drawing.Point(516, 354);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 23);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Inventory:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.FromArgb(26, 28, 60);
+            label3.Location = new Point(516, 354);
+            label3.Name = "label3";
+            label3.Size = new Size(92, 23);
+            label3.TabIndex = 23;
+            label3.Text = "Inventory:";
             // 
             // card_details_panel
             // 
-            this.card_details_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.card_details_panel.Controls.Add(this.market_price);
-            this.card_details_panel.Controls.Add(this.card_rarity);
-            this.card_details_panel.Controls.Add(this.set_name);
-            this.card_details_panel.Controls.Add(this.label10);
-            this.card_details_panel.Controls.Add(this.set_code);
-            this.card_details_panel.Controls.Add(this.card_race);
-            this.card_details_panel.Controls.Add(this.card_type);
-            this.card_details_panel.Controls.Add(this.card_name);
-            this.card_details_panel.Controls.Add(this.card_id);
-            this.card_details_panel.Controls.Add(this.label9);
-            this.card_details_panel.Controls.Add(this.label8);
-            this.card_details_panel.Controls.Add(this.label7);
-            this.card_details_panel.Controls.Add(this.label6);
-            this.card_details_panel.Controls.Add(this.label5);
-            this.card_details_panel.Controls.Add(this.label4);
-            this.card_details_panel.Controls.Add(this.label2);
-            this.card_details_panel.Location = new System.Drawing.Point(516, 54);
-            this.card_details_panel.Name = "card_details_panel";
-            this.card_details_panel.Size = new System.Drawing.Size(508, 284);
-            this.card_details_panel.TabIndex = 22;
+            card_details_panel.BorderStyle = BorderStyle.FixedSingle;
+            card_details_panel.Controls.Add(market_price);
+            card_details_panel.Controls.Add(card_rarity);
+            card_details_panel.Controls.Add(set_name);
+            card_details_panel.Controls.Add(label10);
+            card_details_panel.Controls.Add(set_code);
+            card_details_panel.Controls.Add(card_race);
+            card_details_panel.Controls.Add(card_type);
+            card_details_panel.Controls.Add(card_name);
+            card_details_panel.Controls.Add(card_id);
+            card_details_panel.Controls.Add(label9);
+            card_details_panel.Controls.Add(label8);
+            card_details_panel.Controls.Add(label7);
+            card_details_panel.Controls.Add(label6);
+            card_details_panel.Controls.Add(label5);
+            card_details_panel.Controls.Add(label4);
+            card_details_panel.Controls.Add(label2);
+            card_details_panel.Location = new Point(516, 54);
+            card_details_panel.Name = "card_details_panel";
+            card_details_panel.Size = new Size(508, 284);
+            card_details_panel.TabIndex = 22;
             // 
             // market_price
             // 
-            this.market_price.Cursor = System.Windows.Forms.Cursors.No;
-            this.market_price.Location = new System.Drawing.Point(142, 233);
-            this.market_price.Name = "market_price";
-            this.market_price.ReadOnly = true;
-            this.market_price.Size = new System.Drawing.Size(100, 23);
-            this.market_price.TabIndex = 19;
+            market_price.Cursor = Cursors.No;
+            market_price.Location = new Point(142, 233);
+            market_price.Name = "market_price";
+            market_price.ReadOnly = true;
+            market_price.Size = new Size(100, 23);
+            market_price.TabIndex = 19;
             // 
             // card_rarity
             // 
-            this.card_rarity.Cursor = System.Windows.Forms.Cursors.No;
-            this.card_rarity.Location = new System.Drawing.Point(17, 233);
-            this.card_rarity.Name = "card_rarity";
-            this.card_rarity.ReadOnly = true;
-            this.card_rarity.Size = new System.Drawing.Size(100, 23);
-            this.card_rarity.TabIndex = 18;
+            card_rarity.Cursor = Cursors.No;
+            card_rarity.Location = new Point(17, 233);
+            card_rarity.Name = "card_rarity";
+            card_rarity.ReadOnly = true;
+            card_rarity.Size = new Size(100, 23);
+            card_rarity.TabIndex = 18;
             // 
             // set_name
             // 
-            this.set_name.Cursor = System.Windows.Forms.Cursors.No;
-            this.set_name.Location = new System.Drawing.Point(142, 168);
-            this.set_name.Name = "set_name";
-            this.set_name.ReadOnly = true;
-            this.set_name.Size = new System.Drawing.Size(300, 23);
-            this.set_name.TabIndex = 17;
+            set_name.Cursor = Cursors.No;
+            set_name.Location = new Point(142, 168);
+            set_name.Name = "set_name";
+            set_name.ReadOnly = true;
+            set_name.Size = new Size(300, 23);
+            set_name.TabIndex = 17;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label10.Location = new System.Drawing.Point(143, 209);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 21);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Market Price";
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = SystemColors.ControlDark;
+            label10.Location = new Point(143, 209);
+            label10.Name = "label10";
+            label10.Size = new Size(102, 21);
+            label10.TabIndex = 11;
+            label10.Text = "Market Price";
             // 
             // set_code
             // 
-            this.set_code.Cursor = System.Windows.Forms.Cursors.No;
-            this.set_code.Location = new System.Drawing.Point(17, 168);
-            this.set_code.Name = "set_code";
-            this.set_code.ReadOnly = true;
-            this.set_code.Size = new System.Drawing.Size(100, 23);
-            this.set_code.TabIndex = 16;
+            set_code.Cursor = Cursors.No;
+            set_code.Location = new Point(17, 168);
+            set_code.Name = "set_code";
+            set_code.ReadOnly = true;
+            set_code.Size = new Size(100, 23);
+            set_code.TabIndex = 16;
             // 
             // card_race
             // 
-            this.card_race.Cursor = System.Windows.Forms.Cursors.No;
-            this.card_race.Location = new System.Drawing.Point(17, 98);
-            this.card_race.Name = "card_race";
-            this.card_race.ReadOnly = true;
-            this.card_race.Size = new System.Drawing.Size(100, 23);
-            this.card_race.TabIndex = 15;
+            card_race.Cursor = Cursors.No;
+            card_race.Location = new Point(17, 98);
+            card_race.Name = "card_race";
+            card_race.ReadOnly = true;
+            card_race.Size = new Size(100, 23);
+            card_race.TabIndex = 15;
             // 
             // card_type
             // 
-            this.card_type.Cursor = System.Windows.Forms.Cursors.No;
-            this.card_type.Location = new System.Drawing.Point(142, 98);
-            this.card_type.Name = "card_type";
-            this.card_type.ReadOnly = true;
-            this.card_type.Size = new System.Drawing.Size(100, 23);
-            this.card_type.TabIndex = 14;
+            card_type.Cursor = Cursors.No;
+            card_type.Location = new Point(142, 98);
+            card_type.Name = "card_type";
+            card_type.ReadOnly = true;
+            card_type.Size = new Size(100, 23);
+            card_type.TabIndex = 14;
             // 
             // card_name
             // 
-            this.card_name.Cursor = System.Windows.Forms.Cursors.No;
-            this.card_name.Location = new System.Drawing.Point(142, 33);
-            this.card_name.Name = "card_name";
-            this.card_name.ReadOnly = true;
-            this.card_name.Size = new System.Drawing.Size(300, 23);
-            this.card_name.TabIndex = 13;
+            card_name.Cursor = Cursors.No;
+            card_name.Location = new Point(142, 33);
+            card_name.Name = "card_name";
+            card_name.ReadOnly = true;
+            card_name.Size = new Size(300, 23);
+            card_name.TabIndex = 13;
             // 
             // card_id
             // 
-            this.card_id.Cursor = System.Windows.Forms.Cursors.No;
-            this.card_id.Location = new System.Drawing.Point(17, 33);
-            this.card_id.Name = "card_id";
-            this.card_id.ReadOnly = true;
-            this.card_id.Size = new System.Drawing.Size(100, 23);
-            this.card_id.TabIndex = 12;
+            card_id.Cursor = Cursors.No;
+            card_id.Location = new Point(17, 33);
+            card_id.Name = "card_id";
+            card_id.ReadOnly = true;
+            card_id.Size = new Size(100, 23);
+            card_id.TabIndex = 12;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label9.Location = new System.Drawing.Point(17, 209);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 21);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Rarity";
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ControlDark;
+            label9.Location = new Point(17, 209);
+            label9.Name = "label9";
+            label9.Size = new Size(52, 21);
+            label9.TabIndex = 11;
+            label9.Text = "Rarity";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label8.Location = new System.Drawing.Point(143, 144);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 21);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Set Name";
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.ControlDark;
+            label8.Location = new Point(143, 144);
+            label8.Name = "label8";
+            label8.Size = new Size(81, 21);
+            label8.TabIndex = 10;
+            label8.Text = "Set Name";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label7.Location = new System.Drawing.Point(16, 144);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 21);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Set Code";
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ControlDark;
+            label7.Location = new Point(16, 144);
+            label7.Name = "label7";
+            label7.Size = new Size(77, 21);
+            label7.TabIndex = 9;
+            label7.Text = "Set Code";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(142, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 21);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Card Type";
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ControlDark;
+            label6.Location = new Point(142, 74);
+            label6.Name = "label6";
+            label6.Size = new Size(83, 21);
+            label6.TabIndex = 8;
+            label6.Text = "Card Type";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(15, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 21);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Card Race";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.ControlDark;
+            label5.Location = new Point(15, 74);
+            label5.Name = "label5";
+            label5.Size = new Size(83, 21);
+            label5.TabIndex = 7;
+            label5.Text = "Card Race";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label4.Location = new System.Drawing.Point(142, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 21);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Card Name";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlDark;
+            label4.Location = new Point(142, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(91, 21);
+            label4.TabIndex = 6;
+            label4.Text = "Card Name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(15, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Card ID";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlDark;
+            label2.Location = new Point(15, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 21);
+            label2.TabIndex = 5;
+            label2.Text = "Card ID";
             // 
             // inventory_panel
             // 
@@ -431,74 +430,74 @@
             // 
             // card_copies
             // 
-            this.card_copies.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.card_copies.Location = new System.Drawing.Point(142, 38);
-            this.card_copies.Name = "card_copies";
-            this.card_copies.Size = new System.Drawing.Size(100, 23);
-            this.card_copies.TabIndex = 20;
+            card_copies.Cursor = Cursors.IBeam;
+            card_copies.Location = new Point(142, 38);
+            card_copies.Name = "card_copies";
+            card_copies.Size = new Size(100, 23);
+            card_copies.TabIndex = 20;
             // 
             // store_price
             // 
-            this.store_price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.store_price.Location = new System.Drawing.Point(17, 38);
-            this.store_price.Name = "store_price";
-            this.store_price.Size = new System.Drawing.Size(100, 23);
-            this.store_price.TabIndex = 19;
+            store_price.Cursor = Cursors.IBeam;
+            store_price.Location = new Point(17, 38);
+            store_price.Name = "store_price";
+            store_price.Size = new Size(100, 23);
+            store_price.TabIndex = 19;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label12.Location = new System.Drawing.Point(142, 14);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 21);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Copies";
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = SystemColors.ControlDark;
+            label12.Location = new Point(142, 14);
+            label12.Name = "label12";
+            label12.Size = new Size(60, 21);
+            label12.TabIndex = 13;
+            label12.Text = "Copies";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label11.Location = new System.Drawing.Point(17, 14);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 21);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Store Price";
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.ControlDark;
+            label11.Location = new Point(17, 14);
+            label11.Name = "label11";
+            label11.Size = new Size(90, 21);
+            label11.TabIndex = 12;
+            label11.Text = "Store Price";
             // 
             // CardImage
             // 
-            this.CardImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CardImage.Location = new System.Drawing.Point(82, 28);
-            this.CardImage.Name = "CardImage";
-            this.CardImage.Size = new System.Drawing.Size(400, 546);
-            this.CardImage.TabIndex = 16;
-            this.CardImage.TabStop = false;
+            CardImage.BorderStyle = BorderStyle.FixedSingle;
+            CardImage.Location = new Point(82, 28);
+            CardImage.Name = "CardImage";
+            CardImage.Size = new Size(400, 546);
+            CardImage.TabIndex = 16;
+            CardImage.TabStop = false;
             // 
             // delete_card
             // 
-            this.delete_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.delete_card.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delete_card.ForeColor = System.Drawing.Color.White;
-            this.delete_card.Location = new System.Drawing.Point(500, 515);
-            this.delete_card.Name = "delete_card";
-            this.delete_card.Size = new System.Drawing.Size(160, 45);
-            this.delete_card.TabIndex = 17;
-            this.delete_card.Text = "Delete From Inventory";
-            this.delete_card.UseVisualStyleBackColor = false;
-            this.delete_card.Click += new System.EventHandler(this.delete_card_Click);
+            delete_card.BackColor = Color.FromArgb(26, 28, 60);
+            delete_card.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            delete_card.ForeColor = Color.White;
+            delete_card.Location = new Point(500, 515);
+            delete_card.Name = "delete_card";
+            delete_card.Size = new Size(160, 45);
+            delete_card.TabIndex = 17;
+            delete_card.Text = "Delete From Inventory";
+            delete_card.UseVisualStyleBackColor = false;
+            delete_card.Click += delete_card_Click;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.label13.Location = new System.Drawing.Point(516, 28);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(113, 23);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Card Details:";
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = Color.FromArgb(26, 28, 60);
+            label13.Location = new Point(516, 28);
+            label13.Name = "label13";
+            label13.Size = new Size(113, 23);
+            label13.TabIndex = 20;
+            label13.Text = "Card Details:";
             // 
             // update_card
             // 
@@ -515,109 +514,109 @@
             // 
             // cancel_bttn
             // 
-            this.cancel_bttn.BackColor = System.Drawing.SystemColors.Control;
-            this.cancel_bttn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cancel_bttn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.cancel_bttn.Location = new System.Drawing.Point(876, 515);
-            this.cancel_bttn.Name = "cancel_bttn";
-            this.cancel_bttn.Size = new System.Drawing.Size(160, 45);
-            this.cancel_bttn.TabIndex = 19;
-            this.cancel_bttn.Text = "Cancel";
-            this.cancel_bttn.UseVisualStyleBackColor = false;
-            this.cancel_bttn.Click += new System.EventHandler(this.cancel_bttn_Click);
+            cancel_bttn.BackColor = SystemColors.Control;
+            cancel_bttn.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            cancel_bttn.ForeColor = Color.FromArgb(26, 28, 60);
+            cancel_bttn.Location = new Point(876, 515);
+            cancel_bttn.Name = "cancel_bttn";
+            cancel_bttn.Size = new Size(160, 45);
+            cancel_bttn.TabIndex = 19;
+            cancel_bttn.Text = "Cancel";
+            cancel_bttn.UseVisualStyleBackColor = false;
+            cancel_bttn.Click += cancel_bttn_Click;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.refresh_chart);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.EndRange);
-            this.tabPage3.Controls.Add(this.StartRange);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.GraphPic);
-            this.tabPage3.Controls.Add(this.marketChart);
-            this.tabPage3.Location = new System.Drawing.Point(4, 64);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1272, 652);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "graph";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Controls.Add(refresh_chart);
+            tabPage3.Controls.Add(label15);
+            tabPage3.Controls.Add(label14);
+            tabPage3.Controls.Add(EndRange);
+            tabPage3.Controls.Add(StartRange);
+            tabPage3.Controls.Add(button1);
+            tabPage3.Controls.Add(GraphPic);
+            tabPage3.Controls.Add(marketChart);
+            tabPage3.Location = new Point(4, 64);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1272, 652);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "graph";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // refresh_chart
             // 
-            this.refresh_chart.Location = new System.Drawing.Point(1058, 580);
-            this.refresh_chart.Name = "refresh_chart";
-            this.refresh_chart.Size = new System.Drawing.Size(106, 24);
-            this.refresh_chart.TabIndex = 7;
-            this.refresh_chart.Text = "Refresh";
-            this.refresh_chart.UseVisualStyleBackColor = true;
-            this.refresh_chart.Click += new System.EventHandler(this.refresh_chart_Click);
+            refresh_chart.Location = new Point(1058, 580);
+            refresh_chart.Name = "refresh_chart";
+            refresh_chart.Size = new Size(106, 24);
+            refresh_chart.TabIndex = 7;
+            refresh_chart.Text = "Refresh";
+            refresh_chart.UseVisualStyleBackColor = true;
+            refresh_chart.Click += refresh_chart_Click;
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(812, 580);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(26, 20);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "To";
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(812, 580);
+            label15.Name = "label15";
+            label15.Size = new Size(26, 20);
+            label15.TabIndex = 6;
+            label15.Text = "To";
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(512, 580);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 20);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "From";
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Location = new Point(512, 580);
+            label14.Name = "label14";
+            label14.Size = new Size(46, 20);
+            label14.TabIndex = 5;
+            label14.Text = "From";
             // 
             // EndRange
             // 
-            this.EndRange.CustomFormat = "yyyy-MM-dd";
-            this.EndRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.EndRange.Location = new System.Drawing.Point(844, 580);
-            this.EndRange.Name = "EndRange";
-            this.EndRange.Size = new System.Drawing.Size(200, 23);
-            this.EndRange.TabIndex = 4;
+            EndRange.CustomFormat = "yyyy-MM-dd";
+            EndRange.Format = DateTimePickerFormat.Custom;
+            EndRange.Location = new Point(844, 580);
+            EndRange.Name = "EndRange";
+            EndRange.Size = new Size(200, 23);
+            EndRange.TabIndex = 4;
             // 
             // StartRange
             // 
-            this.StartRange.CustomFormat = "yyyy-MM-dd";
-            this.StartRange.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.StartRange.Location = new System.Drawing.Point(564, 580);
-            this.StartRange.Name = "StartRange";
-            this.StartRange.Size = new System.Drawing.Size(200, 23);
-            this.StartRange.TabIndex = 3;
+            StartRange.CustomFormat = "yyyy-MM-dd";
+            StartRange.Format = DateTimePickerFormat.Custom;
+            StartRange.Location = new Point(564, 580);
+            StartRange.Name = "StartRange";
+            StartRange.Size = new Size(200, 23);
+            StartRange.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 601);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 45);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Return";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(6, 601);
+            button1.Name = "button1";
+            button1.Size = new Size(160, 45);
+            button1.TabIndex = 2;
+            button1.Text = "Return";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // GraphPic
             // 
-            this.GraphPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GraphPic.Location = new System.Drawing.Point(82, 28);
-            this.GraphPic.Name = "GraphPic";
-            this.GraphPic.Size = new System.Drawing.Size(400, 546);
-            this.GraphPic.TabIndex = 1;
-            this.GraphPic.TabStop = false;
+            GraphPic.BorderStyle = BorderStyle.FixedSingle;
+            GraphPic.Location = new Point(82, 28);
+            GraphPic.Name = "GraphPic";
+            GraphPic.Size = new Size(400, 546);
+            GraphPic.TabIndex = 1;
+            GraphPic.TabStop = false;
             // 
             // marketChart
             // 
-            this.marketChart.Location = new System.Drawing.Point(518, 19);
-            this.marketChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.marketChart.Name = "marketChart";
-            this.marketChart.Size = new System.Drawing.Size(616, 555);
-            this.marketChart.TabIndex = 0;
+            marketChart.Location = new Point(518, 19);
+            marketChart.Margin = new Padding(4, 3, 4, 3);
+            marketChart.Name = "marketChart";
+            marketChart.Size = new Size(616, 555);
+            marketChart.TabIndex = 0;
             // 
             // warning_label
             // 
@@ -654,7 +653,6 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GraphPic)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
