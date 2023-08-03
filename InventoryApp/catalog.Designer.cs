@@ -28,72 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            catalog_panel = new Panel();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            splitContainer1 = new SplitContainer();
-            catalog_view = new DataGridView();
-            label1 = new Label();
-            filter_label = new Label();
-            next_catalog = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            search_box = new TextBox();
-            search_button = new Button();
-            prev_catalog = new Button();
-            tabPage2 = new TabPage();
-            label3 = new Label();
-            card_details_panel = new Panel();
-            market_price = new TextBox();
-            card_rarity = new TextBox();
-            set_name = new TextBox();
-            label10 = new Label();
-            set_code = new TextBox();
-            card_race = new TextBox();
-            card_type = new TextBox();
-            card_name = new TextBox();
-            card_id = new TextBox();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label2 = new Label();
-            inventory_panel = new Panel();
-            card_copies = new TextBox();
-            store_price = new TextBox();
-            label12 = new Label();
-            label11 = new Label();
-            CardImage = new PictureBox();
-            delete_card = new Button();
-            label13 = new Label();
-            update_card = new Button();
-            cancel_bttn = new Button();
-            tabPage3 = new TabPage();
-            refresh_chart = new Button();
-            label15 = new Label();
-            label14 = new Label();
-            EndRange = new DateTimePicker();
-            StartRange = new DateTimePicker();
-            button1 = new Button();
-            GraphPic = new PictureBox();
-            marketChart = new ScottPlot.FormsPlot();
-            catalog_panel.SuspendLayout();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.Panel2.SuspendLayout();
-            splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)catalog_view).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            card_details_panel.SuspendLayout();
-            inventory_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)CardImage).BeginInit();
-            tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)GraphPic).BeginInit();
-            SuspendLayout();
+            this.catalog_panel = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.next_catalog = new System.Windows.Forms.Button();
+            this.prev_catalog = new System.Windows.Forms.Button();
+            this.catalog_view = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.search_box = new System.Windows.Forms.TextBox();
+            this.search_button = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.card_details_panel = new System.Windows.Forms.Panel();
+            this.market_price = new System.Windows.Forms.TextBox();
+            this.card_rarity = new System.Windows.Forms.TextBox();
+            this.set_name = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.set_code = new System.Windows.Forms.TextBox();
+            this.card_race = new System.Windows.Forms.TextBox();
+            this.card_type = new System.Windows.Forms.TextBox();
+            this.card_name = new System.Windows.Forms.TextBox();
+            this.card_id = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.inventory_panel = new System.Windows.Forms.Panel();
+            this.card_copies = new System.Windows.Forms.TextBox();
+            this.store_price = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CardImage = new System.Windows.Forms.PictureBox();
+            this.delete_card = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.update_card = new System.Windows.Forms.Button();
+            this.cancel_bttn = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.refresh_chart = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.EndRange = new System.Windows.Forms.DateTimePicker();
+            this.StartRange = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.GraphPic = new System.Windows.Forms.PictureBox();
+            this.marketChart = new ScottPlot.FormsPlot();
+            this.warning_label = new System.Windows.Forms.Label();
+            this.catalog_panel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.catalog_view)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.card_details_panel.SuspendLayout();
+            this.inventory_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CardImage)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraphPic)).BeginInit();
+            this.SuspendLayout();
             // 
             // catalog_panel
             // 
@@ -119,97 +113,74 @@
             // 
             // tabPage1
             // 
-            tabPage1.AccessibleRole = AccessibleRole.None;
-            tabPage1.Controls.Add(splitContainer1);
-            tabPage1.Controls.Add(next_catalog);
-            tabPage1.Controls.Add(tableLayoutPanel1);
-            tabPage1.Controls.Add(prev_catalog);
-            tabPage1.Location = new Point(4, 64);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1272, 652);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer1
-            // 
-            splitContainer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            splitContainer1.Location = new Point(108, 162);
-            splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Controls.Add(catalog_view);
-            // 
-            // splitContainer1.Panel2
-            // 
-            splitContainer1.Panel2.Controls.Add(label1);
-            splitContainer1.Panel2.Controls.Add(filter_label);
-            splitContainer1.Size = new Size(1315, 436);
-            splitContainer1.SplitterDistance = 912;
-            splitContainer1.TabIndex = 5;
-            // 
-            // catalog_view
-            // 
-            catalog_view.AllowUserToAddRows = false;
-            catalog_view.AllowUserToDeleteRows = false;
-            catalog_view.AllowUserToResizeColumns = false;
-            catalog_view.AllowUserToResizeRows = false;
-            catalog_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            catalog_view.Location = new Point(6, 3);
-            catalog_view.Name = "catalog_view";
-            catalog_view.RowTemplate.Height = 25;
-            catalog_view.Size = new Size(906, 433);
-            catalog_view.TabIndex = 0;
-            catalog_view.CellContentClick += catalog_view_CellContentClick;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(37, 98);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 4;
-            label1.Text = "label1";
-            // 
-            // filter_label
-            // 
-            filter_label.Anchor = AnchorStyles.None;
-            filter_label.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            filter_label.Location = new Point(45, 218);
-            filter_label.Name = "filter_label";
-            filter_label.Size = new Size(351, 63);
-            filter_label.TabIndex = 3;
-            filter_label.Text = "Filters";
-            filter_label.TextAlign = ContentAlignment.MiddleCenter;
+            this.tabPage1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tabPage1.Controls.Add(this.next_catalog);
+            this.tabPage1.Controls.Add(this.prev_catalog);
+            this.tabPage1.Controls.Add(this.catalog_view);
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 64);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1272, 652);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // next_catalog
             // 
-            next_catalog.Location = new Point(476, 504);
-            next_catalog.Name = "next_catalog";
-            next_catalog.Size = new Size(99, 23);
-            next_catalog.TabIndex = 8;
-            next_catalog.Text = "Next Page";
-            next_catalog.UseVisualStyleBackColor = true;
-            next_catalog.Click += next_catalog_Click;
+            this.next_catalog.Location = new System.Drawing.Point(596, 621);
+            this.next_catalog.Name = "next_catalog";
+            this.next_catalog.Size = new System.Drawing.Size(99, 23);
+            this.next_catalog.TabIndex = 9;
+            this.next_catalog.Text = "Next Page";
+            this.next_catalog.UseVisualStyleBackColor = true;
+            this.next_catalog.Click += new System.EventHandler(this.next_catalog_Click);
+            // 
+            // prev_catalog
+            // 
+            this.prev_catalog.Enabled = false;
+            this.prev_catalog.Location = new System.Drawing.Point(479, 621);
+            this.prev_catalog.Name = "prev_catalog";
+            this.prev_catalog.Size = new System.Drawing.Size(99, 23);
+            this.prev_catalog.TabIndex = 8;
+            this.prev_catalog.Text = "Previous Page";
+            this.prev_catalog.UseVisualStyleBackColor = true;
+            this.prev_catalog.Click += new System.EventHandler(this.prev_catalog_Click);
+            // 
+            // catalog_view
+            // 
+            this.catalog_view.AllowUserToAddRows = false;
+            this.catalog_view.AllowUserToDeleteRows = false;
+            this.catalog_view.AllowUserToResizeColumns = false;
+            this.catalog_view.AllowUserToResizeRows = false;
+            this.catalog_view.BackgroundColor = System.Drawing.Color.White;
+            this.catalog_view.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.catalog_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.catalog_view.GridColor = System.Drawing.SystemColors.Control;
+            this.catalog_view.Location = new System.Drawing.Point(6, 76);
+            this.catalog_view.Name = "catalog_view";
+            this.catalog_view.RowHeadersVisible = false;
+            this.catalog_view.RowTemplate.Height = 25;
+            this.catalog_view.Size = new System.Drawing.Size(1080, 528);
+            this.catalog_view.TabIndex = 7;
+            this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClick);
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90.84112F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.158878F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 214F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 270F));
-            tableLayoutPanel1.Controls.Add(search_box, 0, 0);
-            tableLayoutPanel1.Controls.Add(search_button, 2, 0);
-            tableLayoutPanel1.Location = new Point(111, 63);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(829, 44);
-            tableLayoutPanel1.TabIndex = 6;
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.84112F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.158878F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
+            this.tableLayoutPanel1.Controls.Add(this.search_box, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.search_button, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 6);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(829, 44);
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // search_box
             // 
@@ -230,16 +201,6 @@
             search_button.TabIndex = 2;
             search_button.Text = "Search";
             search_button.UseVisualStyleBackColor = true;
-            // 
-            // prev_catalog
-            // 
-            prev_catalog.Location = new Point(359, 504);
-            prev_catalog.Name = "prev_catalog";
-            prev_catalog.Size = new Size(99, 23);
-            prev_catalog.TabIndex = 7;
-            prev_catalog.Text = "Previous Page";
-            prev_catalog.UseVisualStyleBackColor = true;
-            prev_catalog.Click += prev_catalog_Click;
             // 
             // tabPage2
             // 
@@ -456,15 +417,16 @@
             // 
             // inventory_panel
             // 
-            inventory_panel.BorderStyle = BorderStyle.FixedSingle;
-            inventory_panel.Controls.Add(card_copies);
-            inventory_panel.Controls.Add(store_price);
-            inventory_panel.Controls.Add(label12);
-            inventory_panel.Controls.Add(label11);
-            inventory_panel.Location = new Point(516, 380);
-            inventory_panel.Name = "inventory_panel";
-            inventory_panel.Size = new Size(508, 99);
-            inventory_panel.TabIndex = 21;
+            this.inventory_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inventory_panel.Controls.Add(this.warning_label);
+            this.inventory_panel.Controls.Add(this.card_copies);
+            this.inventory_panel.Controls.Add(this.store_price);
+            this.inventory_panel.Controls.Add(this.label12);
+            this.inventory_panel.Controls.Add(this.label11);
+            this.inventory_panel.Location = new System.Drawing.Point(516, 380);
+            this.inventory_panel.Name = "inventory_panel";
+            this.inventory_panel.Size = new System.Drawing.Size(508, 99);
+            this.inventory_panel.TabIndex = 21;
             // 
             // card_copies
             // 
@@ -539,15 +501,16 @@
             // 
             // update_card
             // 
-            update_card.BackColor = Color.FromArgb(26, 28, 60);
-            update_card.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            update_card.ForeColor = Color.White;
-            update_card.Location = new Point(691, 515);
-            update_card.Name = "update_card";
-            update_card.Size = new Size(160, 45);
-            update_card.TabIndex = 18;
-            update_card.Text = "Save Changes";
-            update_card.UseVisualStyleBackColor = false;
+            this.update_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.update_card.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.update_card.ForeColor = System.Drawing.Color.White;
+            this.update_card.Location = new System.Drawing.Point(691, 515);
+            this.update_card.Name = "update_card";
+            this.update_card.Size = new System.Drawing.Size(160, 45);
+            this.update_card.TabIndex = 18;
+            this.update_card.Text = "Save Changes";
+            this.update_card.UseVisualStyleBackColor = false;
+            this.update_card.Click += new System.EventHandler(this.update_card_Click);
             // 
             // cancel_bttn
             // 
@@ -655,49 +618,49 @@
             marketChart.Size = new Size(616, 555);
             marketChart.TabIndex = 0;
             // 
+            // warning_label
+            // 
+            this.warning_label.AutoSize = true;
+            this.warning_label.ForeColor = System.Drawing.Color.Red;
+            this.warning_label.Location = new System.Drawing.Point(17, 64);
+            this.warning_label.Name = "warning_label";
+            this.warning_label.Size = new System.Drawing.Size(38, 15);
+            this.warning_label.TabIndex = 21;
+            this.warning_label.Text = "label1";
+            this.warning_label.Visible = false;
+            // 
             // catalog
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(catalog_panel);
-            Name = "catalog";
-            Size = new Size(1280, 720);
-            catalog_panel.ResumeLayout(false);
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel2.ResumeLayout(false);
-            splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
-            splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)catalog_view).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            card_details_panel.ResumeLayout(false);
-            card_details_panel.PerformLayout();
-            inventory_panel.ResumeLayout(false);
-            inventory_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)CardImage).EndInit();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GraphPic).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.catalog_panel);
+            this.Name = "catalog";
+            this.Size = new System.Drawing.Size(1280, 720);
+            this.catalog_panel.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.catalog_view)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.card_details_panel.ResumeLayout(false);
+            this.card_details_panel.PerformLayout();
+            this.inventory_panel.ResumeLayout(false);
+            this.inventory_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CardImage)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GraphPic)).EndInit();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
         private Panel catalog_panel;
-        private DataGridView catalog_view;
         private TextBox search_box;
         private Button search_button;
-        private SplitContainer splitContainer1;
-        private Label label1;
-        private Label filter_label;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button next_catalog;
-        private Button prev_catalog;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
@@ -738,5 +701,9 @@
         private Button refresh_chart;
         private Label label15;
         private Label label14;
+        private Button next_catalog;
+        private Button prev_catalog;
+        private DataGridView catalog_view;
+        private Label warning_label;
     }
 }

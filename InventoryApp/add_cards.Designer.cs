@@ -117,7 +117,6 @@
             this.label12.Size = new System.Drawing.Size(105, 16);
             this.label12.TabIndex = 61;
             this.label12.Text = "Card Version:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label11
             // 
@@ -129,7 +128,6 @@
             this.label11.Size = new System.Drawing.Size(79, 16);
             this.label11.TabIndex = 60;
             this.label11.Text = "Card Info:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 

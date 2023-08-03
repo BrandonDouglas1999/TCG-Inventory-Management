@@ -109,10 +109,10 @@ namespace InventoryApp
         }
 
         //---------------------------------Functions for inserting card into database---------------------------------------------
-        private void InsertCardYGO(string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
+        private void InsertCardYGO(string uid, string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
             SQLHelper db = new SQLHelper();
-            int status = db.InsertCard(cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
+            int status = db.InsertCard(uid, cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
             if (status == 0) { MessageBox.Show("Card already in database"); }
             else if (status == 1) { MessageBox.Show("Successfully added card to Inventory"); }
             return;
@@ -133,7 +133,7 @@ namespace InventoryApp
             }
             else 
             {
-                InsertCardYGO(api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
+                InsertCardYGO("1", api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
                 api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Text.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
@@ -203,16 +203,6 @@ namespace InventoryApp
             //card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
             card_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
