@@ -1,4 +1,4 @@
-create proc LoginVerification
+(stringcreate proc LoginVerification
 @user_name varchar(50),
 @pw varchar(50),
 @status int output, /*output or validation*/
@@ -66,4 +66,4 @@ declare @stat as int, @userid as int
 exec LoginVerification 'Boss_man', '12345', @stat output, @userid output
 print @stat
 print @userid
-SELECT COUNT(card_id) as num from YGOStorePrice where store_id = 1
+SELECT COUNT(card_id) as num from YGOStorePrice where user_id = 1

@@ -1,4 +1,5 @@
-﻿using InventoryApp.Helpers;
+﻿using InventoryApp.API_Model;
+using InventoryApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,8 @@ namespace InventoryApp
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
+        //public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
+        public string path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         int ScrollVal = 0;
         DataTable dt;
@@ -429,7 +431,7 @@ namespace InventoryApp
         }
 
         //return to catalog page
-        private void button1_Click(object sender, EventArgs e)
+        private void graphReturn_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
         }

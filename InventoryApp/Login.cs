@@ -44,16 +44,22 @@ namespace InventoryApp
 
         private void login_button_Click(object sender, EventArgs e)
         {
+            if (user_input.Text =="" || pw_input.Text == "")
+            {
+                return;
+            }
             string username = user_input.Text;
             string password = pw_input.Text;
 
 
             // Hash the inputs and compare against the db stored value
-
+            var login = db.AppLogin(username, password);
+            
             // If correct, close form, if not, show error
-            if (authenticated)
+            if (login.status == 1)
             {
-
+                MessageBox.Show(login.uid.ToString());
+                this.authenticated = true;
                 this.Close();
             }
             else
@@ -61,7 +67,6 @@ namespace InventoryApp
                 incorrect_prompt.Text = "Incorrect Username or Password";
                 incorrect_prompt.Visible = true;
             }
-
         }
 
         private string getAuthCode()
@@ -164,9 +169,9 @@ namespace InventoryApp
             string user_name = profile_info.Replace("\"", "").Split(',')[3].Split(':')[1].Trim();
 
             SQLHelper sqlHelper = new SQLHelper();
-            string UID = sqlHelper.ExternalLogin(google_id, "google");
-            Debug.WriteLine(UID);
-            if (UID == "0")
+            var login = sqlHelper.ExternalLogin(google_id, "google");
+            Debug.WriteLine(login.uid);
+            if (login.status == 0)
             {
                 int success = sqlHelper.CreateExternalAccount(google_id, "google", email, user_name);
 
@@ -175,15 +180,9 @@ namespace InventoryApp
                     return;
                 }
             }
-
             this.logged_user = user_name;
             this.authenticated = true;
             this.Close();
-
-
-
-
-
         }
 
         private void google_login_Click(object sender, EventArgs e)
