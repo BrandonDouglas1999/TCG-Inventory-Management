@@ -1,4 +1,6 @@
-﻿using InventoryApp.Helpers;
+﻿using InventoryApp.API_Model;
+using InventoryApp.Helpers;
+using InventoryApp.Processors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,18 +11,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace InventoryApp
 {
     public partial class catalog : UserControl
     {
-        
+
         class Global
         {
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
+        public String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage"; //change this too
         SQLHelper db = new SQLHelper();
         int ScrollVal = 0;
         DataTable dt;
@@ -61,9 +64,22 @@ namespace InventoryApp
         //============================================================================Gridview Interaction================================================================== 
 
 
-        private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(e.ColumnIndex.ToString());
+            //MessageBox.Show(e.ColumnIndex.ToString());
+            if (e.ColumnIndex == 2)
+            {
+                ShoppingCartProcessor shoppingCartProcessor = new ShoppingCartProcessor();
+                Token access_token = await shoppingCartProcessor.GetConnectionToken();
+                MessageBox.Show(access_token.access_token);
+                //access token not alllowing connections, but token from cli works?
+
+                //ShoppingCart cart = await shoppingCartProcessor.CreateShoppingCart(access_token.access_token);
+                //MessageBox.Show(cart.data[0].id.ToString()); 
+                //LineItem lineitem = await ShoppingCartProcessor.AddToCart(2, "nzPQSeDGol", "qkykhnrnVj", access_token.access_token);
+            }
+            
+            //Code fails unless you move to next page then go back
             if (e.ColumnIndex >= 10 && e.RowIndex >= 0)
             {
                 image = path + @"\" + catalog_view.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -132,7 +148,7 @@ namespace InventoryApp
             }
             setup_dttable();
             format_view();
-            
+
         }
 
         private void setup_dttable() /*Set up datatable for query result*/
@@ -183,14 +199,14 @@ namespace InventoryApp
             catalog_view.EnableHeadersVisualStyles = false;
             catalog_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 47, 76, 100); //change header cell color
             catalog_view.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;                 //change header text color
-           
+
             catalog_view.Columns[1].Visible = false; //hide image file name
             catalog_view.Columns[2].Visible = false; //hide card id
-            
+
             //Change prices decimal points
             catalog_view.Columns[7].DefaultCellStyle.Format = "0.00##";
             catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
-            
+
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
@@ -361,7 +377,7 @@ namespace InventoryApp
         {
             int num;
             float num2;
-            if (store_price.Text == "" || card_copies.Text =="")
+            if (store_price.Text == "" || card_copies.Text == "")
             {
                 warning_label.Text = "* Invalid input for Store Price and/or Card Copies.";
                 warning_label.Visible = true;
@@ -390,7 +406,7 @@ namespace InventoryApp
             tabControl1.SelectedIndex = 0;
         }
 
-//=============================================================================Graph view===============================================================================================================
+        //=============================================================================Graph view===============================================================================================================
 
 
         /*Load the default plot and set up date boxes range*/
@@ -477,6 +493,6 @@ namespace InventoryApp
             StartRange.Value = date[dt.Rows.Count - 1];
         }
 
-        
+
     }
 }
