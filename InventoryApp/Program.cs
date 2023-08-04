@@ -8,11 +8,12 @@ namespace InventoryApp
         [STAThread]
         static void Main()
         {
-            
-            /*Application.EnableVisualStyles();
+            /*
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
             */
+            
             ApplicationConfiguration.Initialize();
 
             Login login_screen = new Login();
@@ -20,7 +21,8 @@ namespace InventoryApp
             Application.Run(login_screen);
             if (login_screen.authenticated)
             {
-                main.user = login_screen.logged_user; 
+                main.user = login_screen.logged_user;
+                main.uid = login_screen.uid;
                 Application.Run(main);
             }
            

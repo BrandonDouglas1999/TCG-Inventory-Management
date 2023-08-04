@@ -121,7 +121,7 @@ namespace InventoryApp
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 64);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1272, 652);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
@@ -135,6 +135,7 @@ namespace InventoryApp
             this.next_catalog.TabIndex = 9;
             this.next_catalog.Text = "Next Page";
             this.next_catalog.UseVisualStyleBackColor = true;
+            this.next_catalog.Click += new System.EventHandler(this.next_catalog_Click);
             // 
             // prev_catalog
             // 
@@ -145,6 +146,7 @@ namespace InventoryApp
             this.prev_catalog.TabIndex = 8;
             this.prev_catalog.Text = "Previous Page";
             this.prev_catalog.UseVisualStyleBackColor = true;
+            this.prev_catalog.Click += new System.EventHandler(this.prev_catalog_Click);
             // 
             // catalog_view
             // 
@@ -156,13 +158,14 @@ namespace InventoryApp
             this.catalog_view.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.catalog_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.catalog_view.GridColor = System.Drawing.SystemColors.Control;
-            this.catalog_view.Location = new System.Drawing.Point(6, 76);
+            this.catalog_view.Location = new System.Drawing.Point(6, 70);
             this.catalog_view.Name = "catalog_view";
             this.catalog_view.RowHeadersVisible = false;
             this.catalog_view.RowHeadersWidth = 51;
             this.catalog_view.RowTemplate.Height = 25;
             this.catalog_view.Size = new System.Drawing.Size(1080, 528);
             this.catalog_view.TabIndex = 7;
+            this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClick);
             // 
             // tableLayoutPanel1
             // 
@@ -214,7 +217,7 @@ namespace InventoryApp
             this.tabPage2.Controls.Add(this.cancel_bttn);
             this.tabPage2.Location = new System.Drawing.Point(4, 64);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1272, 652);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
@@ -497,6 +500,7 @@ namespace InventoryApp
             this.delete_card.TabIndex = 17;
             this.delete_card.Text = "Delete From Inventory";
             this.delete_card.UseVisualStyleBackColor = false;
+            this.delete_card.Click += new System.EventHandler(this.delete_card_Click);
             // 
             // label13
             // 
@@ -520,6 +524,7 @@ namespace InventoryApp
             this.update_card.TabIndex = 18;
             this.update_card.Text = "Save Changes";
             this.update_card.UseVisualStyleBackColor = false;
+            this.update_card.Click += new System.EventHandler(this.update_card_Click);
             // 
             // cancel_bttn
             // 
@@ -532,6 +537,7 @@ namespace InventoryApp
             this.cancel_bttn.TabIndex = 19;
             this.cancel_bttn.Text = "Cancel";
             this.cancel_bttn.UseVisualStyleBackColor = false;
+            this.cancel_bttn.Click += new System.EventHandler(this.cancel_bttn_Click);
             // 
             // tabPage3
             // 
@@ -545,7 +551,7 @@ namespace InventoryApp
             this.tabPage3.Controls.Add(this.marketChart);
             this.tabPage3.Location = new System.Drawing.Point(4, 64);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1272, 652);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "graph";
@@ -559,6 +565,7 @@ namespace InventoryApp
             this.refresh_chart.TabIndex = 7;
             this.refresh_chart.Text = "Refresh";
             this.refresh_chart.UseVisualStyleBackColor = true;
+            this.refresh_chart.Click += new System.EventHandler(this.refresh_chart_Click);
             // 
             // label15
             // 
@@ -606,6 +613,7 @@ namespace InventoryApp
             this.button1.TabIndex = 2;
             this.button1.Text = "Return";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.graphReturn_Click);
             // 
             // GraphPic
             // 

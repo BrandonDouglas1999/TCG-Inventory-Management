@@ -82,15 +82,15 @@ namespace InventoryApp.Helpers
             return dt;
         }
 
-        public int LoadCatalog(DataTable catalog, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
+        public int LoadCatalog(DataTable catalog, string uid, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
             SqlCommand myCommand;
             filters = null; //Comment out to test filter string
             int total;
             int end = 0;
-            string num = "SELECT COUNT(store_id) as num from YGOStorePrice where store_id = 1";
-            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
-                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.store_id = 1";
+            string num = String.Format("SELECT COUNT(user_id) as num from YGOStorePrice where user_id = '{0}'", uid);
+            string query = String.Format("select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = '{0}'", uid);
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             

@@ -42,7 +42,7 @@ namespace InventoryApp
 
 //============================================================================Gridview Interaction================================================================== 
 
-        private async void catalog_view_CellContentClickAsync(object sender, DataGridViewCellEventArgs e)
+        private void catalog_view_CellContentClickAsync(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 11) //Update Online Price
             {
@@ -111,7 +111,7 @@ namespace InventoryApp
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             dt.Columns.Add("Card Image Full", Type.GetType("System.Byte[]")); //full image
             //dt.Load(myreader); //load sql result into datatable
-            db.LoadCatalog(dt, ScrollVal, Global.filters);
+            db.LoadCatalog(dt, "1", ScrollVal, Global.filters);
             /*
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
