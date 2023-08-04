@@ -7,6 +7,7 @@ namespace InventoryApp
     {
 
         public string user = "test user";
+        public string uid = null;
         bool sidebarExpand = false;
         int activeWindowNumber = 1;
         UserControl activeWindow;
@@ -33,6 +34,10 @@ namespace InventoryApp
             activeWindow.Location = sidebarCollapsedLocation;
 
             home_page.update_username(user);
+            //passing uid to other control
+            card_opt_tabs.uid = uid;
+            catalog_uc.uid = uid;
+            catalog_uc.paging_catalog();
             // Change size of all UC's to windows size
 
             card_opt_tabs.Size = UCSize;
@@ -100,6 +105,8 @@ namespace InventoryApp
         private void catalog_Click(object sender, EventArgs e)
         {
             transitionUC(catalog_uc);
+            //need to load twice for the proper look
+            catalog_uc.paging_catalog();
         }
         private void cart_button_Click(object sender, EventArgs e)
         {

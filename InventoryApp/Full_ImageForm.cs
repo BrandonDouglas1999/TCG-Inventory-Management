@@ -34,10 +34,7 @@ namespace InventoryApp
         {
             //Fill chart 
             DataTable dt = new DataTable();
-            string card_id = "3410461";
-            string set_code = "DIFO-EN035";
-            string r = "(StR)";
-            string query = string.Format("Select update_date, market_price from dbo.YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}'", card_id, set_code, r);
+            string query = "Select top 7 update_date, rate from dbo.ConversionRate order by update_date desc";
             dt = db.GetCardMarket(query);
             dataGridView1.DataSource = dt;
 
@@ -47,7 +44,7 @@ namespace InventoryApp
             for (int count = 0; count < dt.Rows.Count; count++)
             {
                 date[count] = Convert.ToDateTime(dt.Rows[count]["update_date"].ToString());
-                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["market_price"]), 2);
+                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["rate"]), 2);
                 y_label[count] = y[count].ToString();
             }
             //convert date time to double
@@ -57,7 +54,7 @@ namespace InventoryApp
             chart.Plot.XAxis.Label("Date");
             chart.Plot.YAxis.Label("Card Price (CAD)");
             plot.DataPointLabels = y_label;
-            chart.Plot.SetAxisLimits(x.Min(), x.Max() + 1, y.Min() - 10, y.Max() + 10);
+            chart.Plot.SetAxisLimits(x.Min(), x.Max() + 1, y.Min() - 0.01, y.Max() + 0.01);
             // disable left-click-drag pan
             chart.Configuration.Pan = false;
             // disable right-click-drag zoom

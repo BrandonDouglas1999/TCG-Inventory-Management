@@ -17,7 +17,7 @@ namespace InventoryApp
 {
     public partial class catalog : UserControl
     {
-
+        public string uid = null;
         class Global
         {
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
@@ -35,18 +35,17 @@ namespace InventoryApp
         string r;
         string image;
         string sp; //Store price
-        string c;   //copies
+        string c;  //copies
 
         public catalog()
         {
             InitializeComponent();
             //Hide Tabs
-            /*
+            
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
-            */
-            paging_catalog();
+           
             // disable left-click-drag pan
             marketChart.Configuration.Pan = false;
             // disable right-click-drag zoom
@@ -57,28 +56,12 @@ namespace InventoryApp
             marketChart.Configuration.MiddleClickDragZoom = false;
         }
 
-        private void load_table(Object sender, EventArgs e)
-        {
-            paging_catalog();
-        }
-
         //============================================================================Gridview Interaction================================================================== 
 
 
         private async void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.ColumnIndex.ToString());
-            if (e.ColumnIndex == 2)
-            {
-                ShoppingCartProcessor shoppingCartProcessor = new ShoppingCartProcessor();
-                Token access_token = await shoppingCartProcessor.GetConnectionToken();
-                MessageBox.Show(access_token.access_token);
-                //access token not alllowing connections, but token from cli works?
-
-                //ShoppingCart cart = await shoppingCartProcessor.CreateShoppingCart(access_token.access_token);
-                //MessageBox.Show(cart.data[0].id.ToString()); 
-                //LineItem lineitem = await ShoppingCartProcessor.AddToCart(2, "nzPQSeDGol", "qkykhnrnVj", access_token.access_token);
-            }
             
             //Code fails unless you move to next page then go back
             if (e.ColumnIndex >= 10 && e.RowIndex >= 0)
@@ -103,6 +86,14 @@ namespace InventoryApp
                 }
                 if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Add to shopping cart
                 {
+                    ShoppingCartProcessor shoppingCartProcessor = new ShoppingCartProcessor();
+                    Token access_token = await shoppingCartProcessor.GetConnectionToken();
+                    MessageBox.Show(access_token.access_token);
+                    //access token not alllowing connections, but token from cli works?
+
+                    //ShoppingCart cart = await shoppingCartProcessor.CreateShoppingCart(access_token.access_token);
+                    //MessageBox.Show(cart.data[0].id.ToString()); 
+                    //LineItem lineitem = await ShoppingCartProcessor.AddToCart(2, "nzPQSeDGol", "qkykhnrnVj", access_token.access_token);
                     return;
                 }
             }
@@ -119,7 +110,7 @@ namespace InventoryApp
         }
 
         //============================================================================Catalog Gridview===================================================================
-        private void paging_catalog() /*Default load for catalog*/
+        public void paging_catalog() /*Default load for catalog*/
         {
             setup_dttable();
             format_view();
@@ -158,7 +149,7 @@ namespace InventoryApp
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             //dt.Load(myreader); //load sql result into datatable
 
-            int end = db.LoadCatalog(dt, ScrollVal, Global.filters);
+            int end = db.LoadCatalog(dt, uid, ScrollVal, Global.filters);
 
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
@@ -339,7 +330,7 @@ namespace InventoryApp
             if (result == DialogResult.Yes)
             {
                 //delete card
-                int status = db.DeleteCard("1", card_id.Text, set_code.Text, card_rarity.Text);
+                int status = db.DeleteCard(uid, card_id.Text, set_code.Text, card_rarity.Text);
                 if (status == 1)
                 {
                     MessageBox.Show("Product Successfully Removed From Your Inventory");
@@ -390,7 +381,7 @@ namespace InventoryApp
                 warning_label.Visible = true;
                 return;
             }
-            int status = db.UpdateInventory("1", card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
+            int status = db.UpdateInventory(uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
             if (status == 1)
             {
                 paging_catalog();

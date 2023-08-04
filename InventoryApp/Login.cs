@@ -32,6 +32,7 @@ namespace InventoryApp
 
         public bool authenticated = false;
         public string logged_user = null;
+        public string uid = null;
         public Login()
         {
             InitializeComponent();
@@ -58,7 +59,9 @@ namespace InventoryApp
             // If correct, close form, if not, show error
             if (login.status == 1)
             {
-                MessageBox.Show(login.uid.ToString());
+                MessageBox.Show(login.uid);
+                this.logged_user = username;
+                this.uid = login.uid;
                 this.authenticated = true;
                 this.Close();
             }
@@ -181,6 +184,7 @@ namespace InventoryApp
                 }
             }
             this.logged_user = user_name;
+            this.uid = login.uid;
             this.authenticated = true;
             this.Close();
         }
