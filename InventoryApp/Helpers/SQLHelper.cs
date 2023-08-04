@@ -27,6 +27,7 @@ namespace InventoryApp.Helpers
         public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
 
 
+
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
         /*
          This function only execute the sql query, it does not read the result from SELECT query
@@ -87,9 +88,9 @@ namespace InventoryApp.Helpers
             filters = null; //Comment out to test filter string
             int total;
             int end = 0;
-            string num = "SELECT COUNT(user_id) as num from YGOStorePrice where user_id = 1";
+            string num = "SELECT COUNT(store_id) as num from YGOStorePrice where store_id = 1";
             string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
-                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = 1";
+                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.store_id = 1";
             if (filters !=  null) { query += "WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             
@@ -493,6 +494,26 @@ namespace InventoryApp.Helpers
                 finally { myConnection.Close(); }
             }
             return status;
+        }
+
+        public string GetCartID(string shop_id)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            string cart_id = "";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myConnection.Open();
+                String query = "Select shopping_cart_id from StoreLogin where user_id =" + shop_id;
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@cartID", System.Data.SqlDbType.VarChar, 50);
+                myReader = myCommand.ExecuteReader();
+                if (myReader.HasRows)
+                {
+                    cart_id = Convert.ToString(myReader.GetChar(0));
+                }
+            }
+            return cart_id;
         }
     }
 }

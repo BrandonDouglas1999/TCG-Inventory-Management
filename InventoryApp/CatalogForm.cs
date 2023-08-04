@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using static System.Net.Mime.MediaTypeNames;
 using InventoryApp.API_Model;
 using System.Xml.Linq;
+using InventoryApp.Processors;
 
 namespace InventoryApp
 {
@@ -23,7 +24,7 @@ namespace InventoryApp
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
+        public String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         DataTable dt;
         int ScrollVal; //Value for paging
@@ -41,7 +42,7 @@ namespace InventoryApp
 
 //============================================================================Gridview Interaction================================================================== 
 
-        private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void catalog_view_CellContentClickAsync(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 11) //Update Online Price
             {
@@ -58,6 +59,8 @@ namespace InventoryApp
             }
             if (e.ColumnIndex == 13) //Add to shopping cart
             {
+                //LineItem lineitem = await ShoppingCartProcessor.AddToCart(2, "nzPQSeDGol", "qkykhnrnVj");
+                //MessageBox.Show(lineitem.data[0].id);
                 return;
             }
         }
@@ -261,5 +264,6 @@ namespace InventoryApp
 
             return filter_string;
         }
+
     }
 }

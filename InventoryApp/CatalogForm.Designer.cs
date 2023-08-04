@@ -52,7 +52,7 @@
             this.catalog_view.RowTemplate.Height = 25;
             this.catalog_view.Size = new System.Drawing.Size(1080, 528);
             this.catalog_view.TabIndex = 0;
-            this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClick);
+            this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClickAsync);
             // 
             // prev_catalog
             // 
