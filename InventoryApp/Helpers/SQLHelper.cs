@@ -22,8 +22,10 @@ namespace InventoryApp.Helpers
     {
         //change this to your server name and the path for the image folder
         //public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory3; Trusted_Connection=yes";
-        public static readonly String connectionString = "Server = localhost\\SQLEXPRESS01; Database = TCG_Inventory3; Trusted_Connection = yes";
-        public static readonly String path = @"C:\Users\Brandon\Desktop\TCG-Inventory-Management-Application-main\InventoryApp\CardImage"; //change this to your!!!
+        //public static readonly String connectionString = "Server = DESKTOP-7D95H9S\\SQLEXPRESS; Database = TCG_Inventory3; Trusted_Connection = yes";
+        public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory3; Trusted_Connection = yes";
+        public static readonly String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+
 
 
         //-------------------------------------------------------------------Basic Functionality-------------------------------------------------------
@@ -394,8 +396,42 @@ namespace InventoryApp.Helpers
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //-------------------------------------------------------------User Login----------------------------------------------------------------------
+        public (string uid, int status) AppLogin(string username, string password)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            int status;
+            string UID;
+            string query = "Exec LoginVerification @user_name, @pw, @status output, @UID output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@user_name", SqlDbType.VarChar, 50).Value = username;
+                myCommand.Parameters.Add("@pw", SqlDbType.VarChar, 50).Value = password;
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Direction = ParameterDirection.Output;
+                try
+                {
+                    //status should be 1 if success
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                    UID = myCommand.Parameters["@UID"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+                    status = 0;
+                    UID = null;
+                }
+                finally
+                {
+                    myConnection.Close();
+                }
+            }
+            return (UID, status);
 
-        public string ExternalLogin(string GID, string auth_type)
+        }
+        public (string uid, int status) ExternalLogin(string GID, string auth_type)
         {
             SqlCommand myCommand;
             SqlDataReader myReader;
@@ -427,7 +463,7 @@ namespace InventoryApp.Helpers
                     myConnection.Close(); 
                 }
             }
-            return UID;
+            return (UID, status);
         }
 
         public int CreateExternalAccount(string GID, string auth_type, string email, string username)
@@ -441,8 +477,8 @@ namespace InventoryApp.Helpers
                 myCommand = new SqlCommand(query, myConnection);
                 myCommand.Parameters.Add("@GID", SqlDbType.VarChar, 64).Value = GID;
                 myCommand.Parameters.Add("@auth_type", SqlDbType.VarChar, 50).Value = auth_type;
-                myCommand.Parameters.Add("@Email", SqlDbType.VarChar, -1).Value = auth_type;
-                myCommand.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = auth_type;
+                myCommand.Parameters.Add("@Email", SqlDbType.VarChar, -1).Value = email;
+                myCommand.Parameters.Add("@Username", SqlDbType.VarChar, 50).Value = username;
                 myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {

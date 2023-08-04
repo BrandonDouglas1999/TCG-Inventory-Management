@@ -460,6 +460,17 @@
             warning_label.Text = "label1";
             warning_label.Visible = false;
             // 
+            // warning_label
+            // 
+            this.warning_label.AutoSize = true;
+            this.warning_label.ForeColor = System.Drawing.Color.Red;
+            this.warning_label.Location = new System.Drawing.Point(17, 64);
+            this.warning_label.Name = "warning_label";
+            this.warning_label.Size = new System.Drawing.Size(38, 15);
+            this.warning_label.TabIndex = 21;
+            this.warning_label.Text = "label1";
+            this.warning_label.Visible = false;
+            // 
             // card_copies
             // 
             card_copies.Cursor = Cursors.IBeam;
