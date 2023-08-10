@@ -60,7 +60,6 @@ namespace InventoryApp
             // If correct, close form, if not, show error
             if (login.status == 1)
             {
-                MessageBox.Show(login.uid);
                 this.logged_user = username;
                 this.uid = login.uid;
                 this.authenticated = true;

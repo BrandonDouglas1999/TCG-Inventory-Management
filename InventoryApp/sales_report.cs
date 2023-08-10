@@ -12,9 +12,12 @@ namespace InventoryApp
 {
     public partial class sales_report : UserControl
     {
+        public string uid = null;
         public sales_report()
         {
             InitializeComponent();
         }
+
+
     }
 }

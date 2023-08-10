@@ -202,8 +202,8 @@ namespace InventoryApp
             catalog_view.Columns[2].Visible = false; //hide card id
 
             //Change prices decimal points
-            catalog_view.Columns[7].DefaultCellStyle.Format = "0.00##";
-            catalog_view.Columns[8].DefaultCellStyle.Format = "0.00##";
+            catalog_view.Columns[7].DefaultCellStyle.Format = "$0.00##";
+            catalog_view.Columns[8].DefaultCellStyle.Format = "$0.00##";
 
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();

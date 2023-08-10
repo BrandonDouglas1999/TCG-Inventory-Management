@@ -12,6 +12,7 @@ namespace InventoryApp
 {
     public partial class home_page : UserControl
     {
+        public string uid = null;
         public home_page()
         {
             InitializeComponent();
