@@ -28,56 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            user_label = new Label();
-            logged_user = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.user_label = new System.Windows.Forms.Label();
+            this.logged_user = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(480, 338);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.Image = global::InventoryApp.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(480, 338);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // user_label
             // 
-            user_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            user_label.AutoSize = true;
-            user_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            user_label.Location = new Point(571, 162);
-            user_label.Name = "user_label";
-            user_label.Size = new Size(58, 25);
-            user_label.TabIndex = 1;
-            user_label.Text = "User:";
+            this.user_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.user_label.AutoSize = true;
+            this.user_label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.user_label.Location = new System.Drawing.Point(571, 162);
+            this.user_label.Name = "user_label";
+            this.user_label.Size = new System.Drawing.Size(58, 25);
+            this.user_label.TabIndex = 1;
+            this.user_label.Text = "User:";
             // 
             // logged_user
             // 
-            logged_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            logged_user.AutoSize = true;
-            logged_user.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            logged_user.Location = new Point(635, 162);
-            logged_user.Name = "logged_user";
-            logged_user.Size = new Size(65, 25);
-            logged_user.TabIndex = 2;
-            logged_user.Text = "label1";
+            this.logged_user.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logged_user.AutoSize = true;
+            this.logged_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.logged_user.Location = new System.Drawing.Point(635, 162);
+            this.logged_user.Name = "logged_user";
+            this.logged_user.Size = new System.Drawing.Size(65, 25);
+            this.logged_user.TabIndex = 2;
+            this.logged_user.Text = "label1";
             // 
             // home_page
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox1);
-            Controls.Add(logged_user);
-            Controls.Add(user_label);
-            Name = "home_page";
-            Size = new Size(835, 576);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logged_user);
+            this.Controls.Add(this.user_label);
+            this.Name = "home_page";
+            this.Size = new System.Drawing.Size(835, 576);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
