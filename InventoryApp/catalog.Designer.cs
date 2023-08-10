@@ -107,6 +107,7 @@ namespace InventoryApp
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.ItemSize = new Size(60, 60);
             tabControl1.Location = new Point(0, 0);
+            tabControl1.Margin = new Padding(0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1280, 720);
@@ -120,8 +121,8 @@ namespace InventoryApp
             tabPage1.Controls.Add(catalog_view);
             tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Location = new Point(4, 64);
+            tabPage1.Margin = new Padding(0);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1272, 652);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
@@ -158,7 +159,7 @@ namespace InventoryApp
             catalog_view.BorderStyle = BorderStyle.None;
             catalog_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             catalog_view.GridColor = SystemColors.Control;
-            catalog_view.Location = new Point(6, 70);
+            catalog_view.Location = new Point(126, 70);
             catalog_view.Name = "catalog_view";
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
@@ -177,11 +178,11 @@ namespace InventoryApp
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 272F));
             tableLayoutPanel1.Controls.Add(search_box, 0, 0);
             tableLayoutPanel1.Controls.Add(search_button, 2, 0);
-            tableLayoutPanel1.Location = new Point(108, 6);
+            tableLayoutPanel1.Location = new Point(208, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(829, 44);
+            tableLayoutPanel1.Size = new Size(835, 44);
             tableLayoutPanel1.TabIndex = 6;
             // 
             // search_box
@@ -190,14 +191,14 @@ namespace InventoryApp
             search_box.Location = new Point(3, 3);
             search_box.Name = "search_box";
             search_box.PlaceholderText = "Card Name";
-            search_box.Size = new Size(305, 23);
+            search_box.Size = new Size(311, 23);
             search_box.TabIndex = 1;
             // 
             // search_button
             // 
             search_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             search_button.AutoSize = true;
-            search_button.Location = new Point(345, 3);
+            search_button.Location = new Point(351, 3);
             search_button.Name = "search_button";
             search_button.Size = new Size(208, 30);
             search_button.TabIndex = 2;

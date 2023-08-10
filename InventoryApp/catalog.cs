@@ -54,6 +54,12 @@ namespace InventoryApp
             marketChart.Configuration.ScrollWheelZoom = false;
             // disable middle-click-drag zoom window
             marketChart.Configuration.MiddleClickDragZoom = false;
+
+            // Set BG colours
+
+            tabPage1.BackColor = Color.FromArgb(255, 50, 55, 143);
+            tabPage2.BackColor = Color.FromArgb(255, 50, 55, 143);
+            tabPage3.BackColor = Color.FromArgb(255, 50, 55, 143);
         }
 
         //============================================================================Gridview Interaction================================================================== 

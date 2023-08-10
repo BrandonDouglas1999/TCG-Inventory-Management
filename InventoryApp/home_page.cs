@@ -15,6 +15,10 @@ namespace InventoryApp
         public home_page()
         {
             InitializeComponent();
+
+            logged_user.ForeColor = Color.White;
+            user_label.ForeColor = Color.White;
+
         }
 
         public void update_username(string user_name)

@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             sidebar = new FlowLayoutPanel();
+            menu_button = new Button();
             home_button = new Button();
             card_button = new Button();
             view_inventory_button = new Button();
@@ -43,7 +44,6 @@
             cart_uc = new shopping_cart_page();
             catalog_uc = new catalog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            menu_button = new Button();
             sidebar.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,12 +65,30 @@
             sidebar.Size = new Size(50, 556);
             sidebar.TabIndex = 0;
             // 
+            // menu_button
+            // 
+            menu_button.FlatAppearance.BorderSize = 0;
+            menu_button.FlatStyle = FlatStyle.Flat;
+            menu_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            menu_button.ForeColor = Color.White;
+            menu_button.Image = Properties.Resources.menu;
+            menu_button.ImageAlign = ContentAlignment.MiddleLeft;
+            menu_button.Location = new Point(3, 25);
+            menu_button.Margin = new Padding(3, 25, 3, 3);
+            menu_button.Name = "menu_button";
+            menu_button.Size = new Size(164, 46);
+            menu_button.TabIndex = 7;
+            menu_button.Text = "Menu";
+            menu_button.TextAlign = ContentAlignment.MiddleRight;
+            menu_button.UseVisualStyleBackColor = true;
+            menu_button.Click += menuButton_Click;
+            // 
             // home_button
             // 
             home_button.FlatAppearance.BorderSize = 0;
             home_button.FlatStyle = FlatStyle.Flat;
             home_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            home_button.ForeColor = Color.LightCoral;
+            home_button.ForeColor = Color.White;
             home_button.Image = (Image)resources.GetObject("home_button.Image");
             home_button.ImageAlign = ContentAlignment.MiddleLeft;
             home_button.Location = new Point(3, 94);
@@ -88,7 +106,7 @@
             card_button.FlatAppearance.BorderSize = 0;
             card_button.FlatStyle = FlatStyle.Flat;
             card_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            card_button.ForeColor = Color.LightCoral;
+            card_button.ForeColor = Color.White;
             card_button.Image = (Image)resources.GetObject("card_button.Image");
             card_button.ImageAlign = ContentAlignment.MiddleLeft;
             card_button.Location = new Point(3, 163);
@@ -106,7 +124,7 @@
             view_inventory_button.FlatAppearance.BorderSize = 0;
             view_inventory_button.FlatStyle = FlatStyle.Flat;
             view_inventory_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            view_inventory_button.ForeColor = Color.LightCoral;
+            view_inventory_button.ForeColor = Color.White;
             view_inventory_button.Image = (Image)resources.GetObject("view_inventory_button.Image");
             view_inventory_button.ImageAlign = ContentAlignment.MiddleLeft;
             view_inventory_button.Location = new Point(3, 232);
@@ -124,7 +142,7 @@
             cart_button.FlatAppearance.BorderSize = 0;
             cart_button.FlatStyle = FlatStyle.Flat;
             cart_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            cart_button.ForeColor = Color.LightCoral;
+            cart_button.ForeColor = Color.White;
             cart_button.Image = (Image)resources.GetObject("cart_button.Image");
             cart_button.ImageAlign = ContentAlignment.MiddleLeft;
             cart_button.Location = new Point(3, 301);
@@ -142,7 +160,7 @@
             sales_button.FlatAppearance.BorderSize = 0;
             sales_button.FlatStyle = FlatStyle.Flat;
             sales_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            sales_button.ForeColor = Color.LightCoral;
+            sales_button.ForeColor = Color.White;
             sales_button.Image = (Image)resources.GetObject("sales_button.Image");
             sales_button.ImageAlign = ContentAlignment.MiddleLeft;
             sales_button.Location = new Point(3, 370);
@@ -162,9 +180,8 @@
             // 
             // card_opt_tabs
             // 
-            card_opt_tabs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             card_opt_tabs.AutoSize = true;
-            card_opt_tabs.Location = new Point(-115, 219);
+            card_opt_tabs.Location = new Point(125, 183);
             card_opt_tabs.Name = "card_opt_tabs";
             card_opt_tabs.Size = new Size(1273, 833);
             card_opt_tabs.TabIndex = 1;
@@ -174,14 +191,14 @@
             // 
             home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             home_page.AutoSize = true;
-            home_page.Location = new Point(114, 58);
+            home_page.Location = new Point(76, 6);
             home_page.Name = "home_page";
-            home_page.Size = new Size(714, 341);
+            home_page.Size = new Size(1354, 701);
             home_page.TabIndex = 2;
             // 
             // sales_uc
             // 
-            sales_uc.Location = new Point(194, 30);
+            sales_uc.Location = new Point(591, 94);
             sales_uc.Name = "sales_uc";
             sales_uc.Size = new Size(406, 224);
             sales_uc.TabIndex = 4;
@@ -197,35 +214,17 @@
             // 
             // catalog_uc
             // 
-            catalog_uc.Location = new Point(56, 0);
+            catalog_uc.Location = new Point(380, 2);
             catalog_uc.Name = "catalog_uc";
             catalog_uc.Size = new Size(737, 276);
             catalog_uc.TabIndex = 6;
             catalog_uc.Visible = false;
             // 
-            // menu_button
-            // 
-            menu_button.FlatAppearance.BorderSize = 0;
-            menu_button.FlatStyle = FlatStyle.Flat;
-            menu_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            menu_button.ForeColor = Color.LightCoral;
-            menu_button.Image = Properties.Resources.menu;
-            menu_button.ImageAlign = ContentAlignment.MiddleLeft;
-            menu_button.Location = new Point(3, 25);
-            menu_button.Margin = new Padding(3, 25, 3, 3);
-            menu_button.Name = "menu_button";
-            menu_button.Size = new Size(164, 46);
-            menu_button.TabIndex = 7;
-            menu_button.Text = "Menu";
-            menu_button.TextAlign = ContentAlignment.MiddleRight;
-            menu_button.UseVisualStyleBackColor = true;
-            menu_button.Click += menuButton_Click;
-            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1314, 851);
+            ClientSize = new Size(1484, 661);
             Controls.Add(catalog_uc);
             Controls.Add(sales_uc);
             Controls.Add(sidebar);
