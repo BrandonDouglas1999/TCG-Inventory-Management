@@ -23,8 +23,8 @@ namespace InventoryApp
             public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
         }
 
-        //public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
-        public string path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
+        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
+        //public string path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
         SQLHelper db = new SQLHelper();
         int ScrollVal = 0;
         DataTable dt;
@@ -41,11 +41,11 @@ namespace InventoryApp
         {
             InitializeComponent();
             //Hide Tabs
-            
+
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
-           
+
             // disable left-click-drag pan
             marketChart.Configuration.Pan = false;
             // disable right-click-drag zoom
@@ -62,7 +62,7 @@ namespace InventoryApp
         private async void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.ColumnIndex.ToString());
-            
+
             //Code fails unless you move to next page then go back
             if (e.ColumnIndex >= 10 && e.RowIndex >= 0)
             {

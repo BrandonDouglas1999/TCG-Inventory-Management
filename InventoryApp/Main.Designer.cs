@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             sidebar = new FlowLayoutPanel();
-            table = new TableLayoutPanel();
-            label1 = new Label();
-            menuButton = new PictureBox();
             home_button = new Button();
             card_button = new Button();
             view_inventory_button = new Button();
@@ -44,15 +42,15 @@
             sales_uc = new sales_report();
             cart_uc = new shopping_cart_page();
             catalog_uc = new catalog();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            menu_button = new Button();
             sidebar.SuspendLayout();
-            table.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
             SuspendLayout();
             // 
             // sidebar
             // 
             sidebar.BackColor = Color.FromArgb(47, 76, 100);
-            sidebar.Controls.Add(table);
+            sidebar.Controls.Add(menu_button);
             sidebar.Controls.Add(home_button);
             sidebar.Controls.Add(card_button);
             sidebar.Controls.Add(view_inventory_button);
@@ -67,52 +65,16 @@
             sidebar.Size = new Size(50, 556);
             sidebar.TabIndex = 0;
             // 
-            // table
-            // 
-            table.ColumnCount = 2;
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 108F));
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            table.Controls.Add(label1, 1, 1);
-            table.Controls.Add(menuButton, 0, 1);
-            table.Location = new Point(3, 3);
-            table.Name = "table";
-            table.RowCount = 2;
-            table.RowStyles.Add(new RowStyle(SizeType.Percent, 57.89474F));
-            table.RowStyles.Add(new RowStyle(SizeType.Percent, 42.10526F));
-            table.Size = new Size(167, 95);
-            table.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(111, 55);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 18);
-            label1.TabIndex = 2;
-            label1.Text = "Menu";
-            label1.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // menuButton
-            // 
-            menuButton.Cursor = Cursors.Hand;
-            menuButton.Image = Properties.Resources.menu;
-            menuButton.Location = new Point(3, 58);
-            menuButton.Name = "menuButton";
-            menuButton.Size = new Size(31, 34);
-            menuButton.SizeMode = PictureBoxSizeMode.StretchImage;
-            menuButton.TabIndex = 1;
-            menuButton.TabStop = false;
-            menuButton.Click += menuButton_Click;
-            // 
             // home_button
             // 
             home_button.FlatAppearance.BorderSize = 0;
             home_button.FlatStyle = FlatStyle.Flat;
-            home_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            home_button.Image = Properties.Resources.home;
+            home_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            home_button.ForeColor = Color.LightCoral;
+            home_button.Image = (Image)resources.GetObject("home_button.Image");
             home_button.ImageAlign = ContentAlignment.MiddleLeft;
-            home_button.Location = new Point(3, 104);
+            home_button.Location = new Point(3, 94);
+            home_button.Margin = new Padding(3, 20, 3, 3);
             home_button.Name = "home_button";
             home_button.Size = new Size(164, 46);
             home_button.TabIndex = 0;
@@ -125,10 +87,12 @@
             // 
             card_button.FlatAppearance.BorderSize = 0;
             card_button.FlatStyle = FlatStyle.Flat;
-            card_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            card_button.Image = Properties.Resources.trading_card;
+            card_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            card_button.ForeColor = Color.LightCoral;
+            card_button.Image = (Image)resources.GetObject("card_button.Image");
             card_button.ImageAlign = ContentAlignment.MiddleLeft;
-            card_button.Location = new Point(3, 156);
+            card_button.Location = new Point(3, 163);
+            card_button.Margin = new Padding(3, 20, 3, 3);
             card_button.Name = "card_button";
             card_button.Size = new Size(164, 46);
             card_button.TabIndex = 0;
@@ -141,10 +105,12 @@
             // 
             view_inventory_button.FlatAppearance.BorderSize = 0;
             view_inventory_button.FlatStyle = FlatStyle.Flat;
-            view_inventory_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            view_inventory_button.Image = Properties.Resources.inventory;
+            view_inventory_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            view_inventory_button.ForeColor = Color.LightCoral;
+            view_inventory_button.Image = (Image)resources.GetObject("view_inventory_button.Image");
             view_inventory_button.ImageAlign = ContentAlignment.MiddleLeft;
-            view_inventory_button.Location = new Point(3, 208);
+            view_inventory_button.Location = new Point(3, 232);
+            view_inventory_button.Margin = new Padding(3, 20, 3, 3);
             view_inventory_button.Name = "view_inventory_button";
             view_inventory_button.Size = new Size(164, 46);
             view_inventory_button.TabIndex = 0;
@@ -157,10 +123,12 @@
             // 
             cart_button.FlatAppearance.BorderSize = 0;
             cart_button.FlatStyle = FlatStyle.Flat;
-            cart_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            cart_button.Image = Properties.Resources.shopping_cart1;
+            cart_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            cart_button.ForeColor = Color.LightCoral;
+            cart_button.Image = (Image)resources.GetObject("cart_button.Image");
             cart_button.ImageAlign = ContentAlignment.MiddleLeft;
-            cart_button.Location = new Point(3, 260);
+            cart_button.Location = new Point(3, 301);
+            cart_button.Margin = new Padding(3, 20, 3, 3);
             cart_button.Name = "cart_button";
             cart_button.Size = new Size(164, 46);
             cart_button.TabIndex = 0;
@@ -173,10 +141,12 @@
             // 
             sales_button.FlatAppearance.BorderSize = 0;
             sales_button.FlatStyle = FlatStyle.Flat;
-            sales_button.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            sales_button.Image = Properties.Resources.line_chart;
+            sales_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            sales_button.ForeColor = Color.LightCoral;
+            sales_button.Image = (Image)resources.GetObject("sales_button.Image");
             sales_button.ImageAlign = ContentAlignment.MiddleLeft;
-            sales_button.Location = new Point(3, 312);
+            sales_button.Location = new Point(3, 370);
+            sales_button.Margin = new Padding(3, 20, 3, 3);
             sales_button.Name = "sales_button";
             sales_button.Size = new Size(164, 46);
             sales_button.TabIndex = 0;
@@ -227,11 +197,29 @@
             // 
             // catalog_uc
             // 
-            catalog_uc.Location = new Point(114, 21);
+            catalog_uc.Location = new Point(56, 0);
             catalog_uc.Name = "catalog_uc";
-            catalog_uc.Size = new Size(630, 242);
+            catalog_uc.Size = new Size(737, 276);
             catalog_uc.TabIndex = 6;
             catalog_uc.Visible = false;
+            // 
+            // menu_button
+            // 
+            menu_button.FlatAppearance.BorderSize = 0;
+            menu_button.FlatStyle = FlatStyle.Flat;
+            menu_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            menu_button.ForeColor = Color.LightCoral;
+            menu_button.Image = Properties.Resources.menu;
+            menu_button.ImageAlign = ContentAlignment.MiddleLeft;
+            menu_button.Location = new Point(3, 25);
+            menu_button.Margin = new Padding(3, 25, 3, 3);
+            menu_button.Name = "menu_button";
+            menu_button.Size = new Size(164, 46);
+            menu_button.TabIndex = 7;
+            menu_button.Text = "Menu";
+            menu_button.TextAlign = ContentAlignment.MiddleRight;
+            menu_button.UseVisualStyleBackColor = true;
+            menu_button.Click += menuButton_Click;
             // 
             // Main
             // 
@@ -249,9 +237,6 @@
             Load += Main_Load;
             Click += menuButton_Click;
             sidebar.ResumeLayout(false);
-            table.ResumeLayout(false);
-            table.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)menuButton).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -264,14 +249,13 @@
         private Button cart_button;
         private Button sales_button;
         private System.Windows.Forms.Timer sidebarTimer;
-        private TableLayoutPanel table;
-        private PictureBox menuButton;
-        private Label label1;
         private add_cards card_opt_tabs;
         private home_page home_page;
         private Button view_inventory_button;
         private sales_report sales_uc;
         private shopping_cart_page cart_uc;
         private catalog catalog_uc;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button menu_button;
     }
 }

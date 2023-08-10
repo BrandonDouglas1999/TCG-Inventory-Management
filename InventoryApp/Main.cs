@@ -44,6 +44,22 @@ namespace InventoryApp
             catalog_uc.Size = UCSize;
             cart_uc.Size = UCSize;
             sales_uc.Size = UCSize;
+
+            // Set the colour schemes
+            set_colours();
+        }
+
+        private void set_colours()
+        {
+            // Sidebar colours
+            sidebar.BackColor = Color.FromArgb(255, 26, 28, 60);
+            menu_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+            card_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+            cart_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+            home_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+            sales_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+            view_inventory_button.ForeColor = Color.FromArgb(255, 237, 33, 125);
+
         }
 
         // Menu functions
