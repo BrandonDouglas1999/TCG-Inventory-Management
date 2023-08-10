@@ -17,6 +17,7 @@ namespace InventoryApp
         public Main()
         {
             InitializeComponent();
+            this.Activate();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace InventoryApp
             //passing uid to other control
             card_opt_tabs.uid = uid;
             catalog_uc.uid = uid;
+            home_page.load_dashboard();
             catalog_uc.paging_catalog();
             sales_uc.uid = uid;
             // Change size of all UC's to windows size
@@ -113,6 +115,7 @@ namespace InventoryApp
         private void home_button_Click(object sender, EventArgs e)
         {
             transitionUC(home_page);
+            home_page.load_dashboard();
         }
 
         private void card_button_Click(object sender, EventArgs e)
