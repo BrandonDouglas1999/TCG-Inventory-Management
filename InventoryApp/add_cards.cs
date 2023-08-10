@@ -21,7 +21,7 @@ namespace InventoryApp
 {
     public partial class add_cards : UserControl
     {
-        public String path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
         public double c_rate = 0;
         public string uid = null;
         YGOProCard card;

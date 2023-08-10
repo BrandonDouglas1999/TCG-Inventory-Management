@@ -82,12 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label user_label;
         private Label logged_user;
     }

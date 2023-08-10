@@ -46,6 +46,22 @@ namespace InventoryApp
             catalog_uc.Size = UCSize;
             cart_uc.Size = UCSize;
             sales_uc.Size = UCSize;
+
+            // Set the colour schemes
+            set_colours();
+        }
+
+        private void set_colours()
+        {
+            // Sidebar colours
+            sidebar.BackColor = Color.FromArgb(255, 26, 28, 60);
+            // Backdrop of the UC's
+            // Anything specific to the UC's, probably change their colours there.
+            home_page.BackColor = Color.FromArgb(255, 50, 55, 143);
+            card_opt_tabs.BackColor = Color.FromArgb(255, 50, 55, 143);
+            cart_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
+            sales_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
+
         }
 
         // Menu functions
@@ -109,6 +125,7 @@ namespace InventoryApp
             transitionUC(catalog_uc);
             //need to load twice for the proper look
             catalog_uc.paging_catalog();
+            activeWindow.SendToBack();
         }
         private void cart_button_Click(object sender, EventArgs e)
         {
@@ -129,6 +146,12 @@ namespace InventoryApp
             activeWindow = UCSwitchTo;
             resizeActiveWindow();
             activeWindow.Show();
+
+            // This is here to hide the white border since colour cant be changed in tab control.
+            if (activeWindow == catalog_uc)
+            {
+                activeWindow.Location = new Point(activeWindow.Location.X - 4, activeWindow.Location.Y - 5); ;
+            }
 
         }
 
