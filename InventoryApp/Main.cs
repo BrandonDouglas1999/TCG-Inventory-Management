@@ -17,7 +17,6 @@ namespace InventoryApp
         public Main()
         {
             InitializeComponent();
-            this.Activate();
         }
 
         private void Main_Load(object sender, EventArgs e)

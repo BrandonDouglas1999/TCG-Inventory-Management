@@ -40,6 +40,9 @@
             chart2 = new ScottPlot.FormsPlot();
             chart = new ScottPlot.FormsPlot();
             increaseTable = new DataGridView();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)increaseTable).BeginInit();
             SuspendLayout();
             // 
@@ -47,10 +50,10 @@
             // 
             user_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             user_label.AutoSize = true;
-            user_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            user_label.Location = new Point(40, 32);
+            user_label.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            user_label.Location = new Point(31, 22);
             user_label.Name = "user_label";
-            user_label.Size = new Size(58, 25);
+            user_label.Size = new Size(57, 23);
             user_label.TabIndex = 1;
             user_label.Text = "User:";
             // 
@@ -58,61 +61,73 @@
             // 
             logged_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logged_user.AutoSize = true;
-            logged_user.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            logged_user.Location = new Point(104, 32);
+            logged_user.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            logged_user.Location = new Point(95, 22);
             logged_user.Name = "logged_user";
-            logged_user.Size = new Size(65, 25);
+            logged_user.Size = new Size(61, 23);
             logged_user.TabIndex = 2;
             logged_user.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(930, 42);
+            label2.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(970, 51);
             label2.Name = "label2";
-            label2.Size = new Size(33, 15);
+            label2.Size = new Size(49, 19);
             label2.TabIndex = 15;
             label2.Text = "Rate:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(787, 42);
+            label1.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(764, 51);
             label1.Name = "label1";
-            label1.Size = new Size(37, 15);
+            label1.Size = new Size(55, 19);
             label1.TabIndex = 14;
             label1.Text = "Date: ";
             // 
             // rate_label
             // 
             rate_label.AutoSize = true;
-            rate_label.Location = new Point(966, 42);
+            rate_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            rate_label.ForeColor = Color.White;
+            rate_label.Location = new Point(1019, 51);
             rate_label.Name = "rate_label";
-            rate_label.Size = new Size(0, 15);
+            rate_label.Size = new Size(73, 19);
             rate_label.TabIndex = 13;
+            rate_label.Text = "fdsgsdfg";
             // 
             // date_label
             // 
             date_label.AutoSize = true;
-            date_label.Location = new Point(830, 42);
+            date_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            date_label.ForeColor = Color.White;
+            date_label.Location = new Point(816, 51);
             date_label.Name = "date_label";
-            date_label.Size = new Size(0, 15);
+            date_label.Size = new Size(73, 19);
             date_label.TabIndex = 12;
+            date_label.Text = "fdsgsdfg";
             // 
             // chart2
             // 
-            chart2.Location = new Point(740, 60);
+            chart2.ForeColor = SystemColors.Control;
+            chart2.Location = new Point(77, 65);
             chart2.Margin = new Padding(4, 3, 4, 3);
             chart2.Name = "chart2";
-            chart2.Size = new Size(497, 339);
+            chart2.Size = new Size(525, 359);
             chart2.TabIndex = 11;
             // 
             // chart
             // 
-            chart.Location = new Point(29, 60);
+            chart.ForeColor = SystemColors.Control;
+            chart.Location = new Point(625, 65);
             chart.Margin = new Padding(4, 3, 4, 3);
             chart.Name = "chart";
-            chart.Size = new Size(611, 281);
+            chart.Size = new Size(611, 359);
             chart.TabIndex = 10;
             // 
             // increaseTable
@@ -146,19 +161,55 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
-            increaseTable.Location = new Point(52, 300);
+            increaseTable.Location = new Point(95, 430);
             increaseTable.Name = "increaseTable";
             increaseTable.ReadOnly = true;
             increaseTable.RowHeadersVisible = false;
             increaseTable.RowTemplate.Height = 25;
-            increaseTable.Size = new Size(1200, 276);
+            increaseTable.Size = new Size(1248, 237);
             increaseTable.TabIndex = 16;
             increaseTable.CellContentClick += increaseTable_CellContentClick;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(95, 468);
+            label3.Name = "label3";
+            label3.Size = new Size(241, 23);
+            label3.TabIndex = 17;
+            label3.Text = "Noticeable Price Changes:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(248, 51);
+            label4.Name = "label4";
+            label4.Size = new Size(211, 23);
+            label4.TabIndex = 18;
+            label4.Text = "Exchange Rate History";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(849, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(170, 23);
+            label5.TabIndex = 19;
+            label5.Text = "Card Rate History";
             // 
             // home_page
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(increaseTable);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -169,7 +220,7 @@
             Controls.Add(logged_user);
             Controls.Add(user_label);
             Name = "home_page";
-            Size = new Size(1302, 576);
+            Size = new Size(1500, 850);
             ((System.ComponentModel.ISupportInitialize)increaseTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -185,5 +236,8 @@
         private ScottPlot.FormsPlot chart2;
         private ScottPlot.FormsPlot chart;
         private DataGridView increaseTable;
+        private Label label3;
+        private Label label4;
+        private Label label5;
     }
 }

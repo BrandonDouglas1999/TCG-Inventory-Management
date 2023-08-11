@@ -62,7 +62,7 @@ namespace InventoryApp
             }
             if (card.data == null)
             {
-                card_gridview.ColumnCount= 1;
+                card_gridview.ColumnCount = 1;
                 card_gridview.Columns[0].Name = "No card data matching your query was found in the database";
                 return;
             }
@@ -72,7 +72,7 @@ namespace InventoryApp
             cardinfo_columns();
         }
 
-        private void card_view_CellContentClick(object sender, DataGridViewCellEventArgs e) 
+        private void card_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4 && e.RowIndex >= 0)
             {
@@ -85,12 +85,12 @@ namespace InventoryApp
                 foreach (DataGridViewRow r in card_gridview.Rows)
                 {
                     r.DefaultCellStyle.BackColor = Color.White;
-                } 
+                }
                 card_gridview.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Aqua;
                 load_set(e.RowIndex);
                 setinfo_column();
             }
-        } 
+        }
 
         private void api_gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -123,19 +123,19 @@ namespace InventoryApp
         {
             int num;
             float num2;
-            if (api_rare.Text == "" || api_setcode.Text == "" || api_setname.Text == "" || api_price.Text == "" || card_qnty.Text == "" || s_price.Text == "")
+            if (api_rare.Text == "" || api_setcode.Text == "" || api_setname.Text == "" || api_price.Text == "" || s_price.Text == "")
             {
                 MessageBox.Show("Missing card information");
                 return;
             }
-            else if (int.TryParse(card_qnty.Text, out num) == false || float.TryParse(s_price.Text, out num2) == false)
+            else if (int.TryParse(card_qnty.Value.ToString(), out num) == false || float.TryParse(s_price.Text, out num2) == false)
             {
                 MessageBox.Show("Invalid value for quantity/store price.");
             }
-            else 
+            else
             {
                 InsertCardYGO(uid, api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
-                api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Text.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
+                api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Value.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
 
@@ -154,7 +154,6 @@ namespace InventoryApp
             api_ctype.Text = "";
             image_url.Text = "";
             s_price.Text = "";
-            card_qnty.Text = "";
             api_setcode.Text = "";
             api_setname.Text = "";
             api_price.Text = "";
@@ -162,7 +161,7 @@ namespace InventoryApp
         }
 
         //Function to load set info of the selected card
-        private void load_set(int index) 
+        private void load_set(int index)
         {
             set_gridview.DataSource = null;
             api_setcode.Text = "";
@@ -191,7 +190,7 @@ namespace InventoryApp
             set_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
-        private void cardinfo_columns ()
+        private void cardinfo_columns()
         {
             card_gridview.Columns["id"].HeaderText = "Card ID";
             card_gridview.Columns["name"].HeaderText = "Card Name";

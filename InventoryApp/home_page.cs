@@ -27,12 +27,27 @@ namespace InventoryApp
         {
             InitializeComponent();
 
-            logged_user.ForeColor = Color.White;
-            user_label.ForeColor = Color.White;
+            set_colours();
+
 
         }
 
+        private void set_colours()
+        {
+            logged_user.ForeColor = Color.White;
+            user_label.ForeColor = Color.White;
 
+            // Set the graph colours
+            chart.Plot.YAxis.Color(Color.White);
+            chart.Plot.YAxis.Label(size: 16, bold: true);
+            chart.Plot.XAxis.Color(Color.White);
+            chart.Plot.XAxis.Label(size: 16, bold: true);
+
+            chart2.Plot.YAxis.Label(size: 16, bold: true);
+            chart2.Plot.YAxis.Color(Color.White);
+            chart2.Plot.XAxis.Label(size: 16, bold: true);
+            chart2.Plot.XAxis.Color(Color.White);
+        }
 
         /*Load currency exchange rate for the last 7 days*/
         private void load_rateChart()
@@ -114,7 +129,7 @@ namespace InventoryApp
             string query = "select SP.card_id, AP.card_name, SP.set_code, SP.rarity, AP.lastWeekAVG, AP.thisWeekAVG, AP.differ from YGOStorePrice as SP inner join " +
                 "(select C.card_name, A.card_id, A.set_code, A.rarity, A.lastWeekAVG, A.thisWeekAVG, A.differ from YGOPriceAVG as A inner join " +
                 "YGOCardsInfo as C on  A.card_id = C.card_id where A.differ > 5 or A.differ < -4) as AP on SP.card_id = AP.card_id and SP.set_code " +
-                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '{uid}'";
+                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '1'";
             dt = db.Select(query);
             increaseTable.DataSource = dt;
             increaseTable.Columns[0].Visible = false;

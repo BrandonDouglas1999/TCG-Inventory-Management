@@ -193,7 +193,7 @@
             home_page.AutoSize = true;
             home_page.Location = new Point(76, 6);
             home_page.Name = "home_page";
-            home_page.Size = new Size(1354, 701);
+            home_page.Size = new Size(1368, 1001);
             home_page.TabIndex = 2;
             // 
             // sales_uc
@@ -224,13 +224,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1484, 661);
+            ClientSize = new Size(1484, 811);
             Controls.Add(catalog_uc);
             Controls.Add(sales_uc);
             Controls.Add(sidebar);
             Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
             Controls.Add(cart_uc);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Main";
             Text = "Main";
             Load += Main_Load;
