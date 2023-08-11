@@ -17,12 +17,14 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Drawing;
 
+
 namespace InventoryApp.Helpers
 {
 
     class SQLHelper
     {
         //change this to your server name and the path for the image folder
+
         public static readonly String connectionString = Global.connectionString;
         public static readonly String path = Global.path;
 
@@ -114,6 +116,24 @@ namespace InventoryApp.Helpers
                 myConnection.Close();
             }
             return end;
+        }
+
+        public void search_card(string search, string uid)
+        {
+           
+
+        }
+
+        public void search_autoFill(string search, string uid)
+        {
+            SqlCommand myCommand;
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
+               $"CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = '{uid}' and CM.card_name like ?";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.AddWithValue("CM.card_name", search + "%");
+            }
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------

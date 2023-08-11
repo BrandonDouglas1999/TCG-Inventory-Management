@@ -42,11 +42,29 @@ namespace InventoryApp
             chart.Plot.YAxis.Label(size: 16, bold: true);
             chart.Plot.XAxis.Color(Color.White);
             chart.Plot.XAxis.Label(size: 16, bold: true);
+            
+            // disable left-click-drag pan
+            chart.Configuration.Pan = false;
+            // disable right-click-drag zoom
+            chart.Configuration.Zoom = false;
+            // disable scroll wheel zoom
+            chart.Configuration.ScrollWheelZoom = false;
+            // disable middle-click-drag zoom window
+            chart.Configuration.MiddleClickDragZoom = false;
 
             chart2.Plot.YAxis.Label(size: 16, bold: true);
             chart2.Plot.YAxis.Color(Color.White);
             chart2.Plot.XAxis.Label(size: 16, bold: true);
             chart2.Plot.XAxis.Color(Color.White);
+
+            // disable left-click-drag pan
+            chart2.Configuration.Pan = false;
+            // disable right-click-drag zoom
+            chart2.Configuration.Zoom = false;
+            // disable scroll wheel zoom
+            chart2.Configuration.ScrollWheelZoom = false;
+            // disable middle-click-drag zoom window
+            chart2.Configuration.MiddleClickDragZoom = false;
         }
 
         /*Load currency exchange rate for the last 7 days*/
@@ -76,16 +94,8 @@ namespace InventoryApp
             chart2.Plot.XAxis.DateTimeFormat(true);
             chart2.Plot.XAxis.Label("Date");
             chart2.Plot.YAxis.Label("Conversion Rate (CAD to USD)");
-            //plot.DataPointLabels = y_label;
+            CurrencyPlot.DataPointLabels = y_label;
             chart2.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .5, y.Min() - 0.01, y.Max() + 0.01);
-            // disable left-click-drag pan
-            chart2.Configuration.Pan = false;
-            // disable right-click-drag zoom
-            chart2.Configuration.Zoom = false;
-            // disable scroll wheel zoom
-            chart2.Configuration.ScrollWheelZoom = false;
-            // disable middle-click-drag zoom window
-            chart2.Configuration.MiddleClickDragZoom = false;
             chart2.Plot.Grid(false);
             chart2.Plot.XAxis.TickLabelStyle(rotation: 45);
 
@@ -126,10 +136,11 @@ namespace InventoryApp
         {
             increaseTable.Columns.Clear();
             DataTable dt = new DataTable();
-            string query = "select SP.card_id, AP.card_name, SP.set_code, SP.rarity, AP.lastWeekAVG, AP.thisWeekAVG, AP.differ from YGOStorePrice as SP inner join " +
+            string query = "select SP.card_id, AP.card_name as 'Card Name', SP.set_code as 'Set Code', SP.rarity as 'Rarity', AP.lastWeekAVG as 'Last Week Average Price', AP.thisWeekAVG as 'This Week Average Price'" +
+                ", AP.differ as 'Price Difference' from YGOStorePrice as SP inner join " +
                 "(select C.card_name, A.card_id, A.set_code, A.rarity, A.lastWeekAVG, A.thisWeekAVG, A.differ from YGOPriceAVG as A inner join " +
                 "YGOCardsInfo as C on  A.card_id = C.card_id where A.differ > 5 or A.differ < -4) as AP on SP.card_id = AP.card_id and SP.set_code " +
-                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '1'";
+                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '{uid}'";
             dt = db.Select(query);
             increaseTable.DataSource = dt;
             increaseTable.Columns[0].Visible = false;

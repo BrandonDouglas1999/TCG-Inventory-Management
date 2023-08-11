@@ -20,6 +20,9 @@ namespace InventoryApp
         public string uid = null;
         public string path = Global.path;
         SQLHelper db = new SQLHelper();
+        private ScottPlot.Plottable.ScatterPlot CardPlot;
+        private ScottPlot.Plottable.MarkerPlot HighlightedPoint;
+        private int LastHighlightedIndex2 = -1;
         int ScrollVal = 0;
         DataTable dt;
 
@@ -48,6 +51,10 @@ namespace InventoryApp
             marketChart.Configuration.ScrollWheelZoom = false;
             // disable middle-click-drag zoom window
             marketChart.Configuration.MiddleClickDragZoom = false;
+            marketChart.Plot.YAxis.Label(size: 16, bold: true);
+            marketChart.Plot.YAxis.Color(Color.White);
+            marketChart.Plot.XAxis.Label(size: 16, bold: true);
+            marketChart.Plot.XAxis.Color(Color.White);
 
             // Set BG colours
 
@@ -485,15 +492,66 @@ namespace InventoryApp
             //convert date time to double
             double[] x = date.Select(x => x.ToOADate()).ToArray();
 
-            var plot = marketChart.Plot.AddScatter(x, y);
+            CardPlot = marketChart.Plot.AddScatter(x, y);
             marketChart.Plot.XAxis.DateTimeFormat(true);
             marketChart.Plot.YAxis.Label("Card Price (CAD)");
-            plot.DataPointLabels = y_label;
             marketChart.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .7, y.Min() - 2, y.Max() + 1);
+
+            marketChart.Plot.XAxis.TickLabelStyle(rotation: 45);
+
+            //Add red circle as highlight point indicator
+            HighlightedPoint = marketChart.Plot.AddPoint(0, 0);
+            HighlightedPoint.Color = Color.Green;
+            HighlightedPoint.MarkerSize = 10;
+            HighlightedPoint.MarkerShape = ScottPlot.MarkerShape.openCircle;
+            HighlightedPoint.IsVisible = false;
+            marketChart.MouseMove += card_MouseMove;
+
             marketChart.Refresh();
             EndRange.Value = date[0];
             StartRange.Value = date[dt.Rows.Count - 1];
         }
 
+        private void card_MouseMove(object sender, MouseEventArgs e)
+        {
+            // determine point nearest the cursor
+            (double mouseCoordX, double mouseCoordY) = marketChart.GetMouseCoordinates();
+            double xyRatio = marketChart.Plot.XAxis.Dims.PxPerUnit / marketChart.Plot.YAxis.Dims.PxPerUnit;
+            (double pointX, double pointY, int pointIndex) = CardPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
+
+            // place the highlight over the point of interest
+            HighlightedPoint.X = pointX;
+            HighlightedPoint.Y = pointY;
+            HighlightedPoint.IsVisible = true;
+            DateTime date = DateTime.FromOADate(pointX);
+            date_label.Text = date.ToString("yyyy-MM-dd");
+            price_label.Text = "$" + pointY.ToString();
+
+            // render if the highlighted point chnaged
+            if (LastHighlightedIndex2 != pointIndex)
+            {
+                LastHighlightedIndex2 = pointIndex;
+                marketChart.Render();
+            }
+        }
+        private void search_button_Click(object sender, EventArgs e)
+        {
+            if (search_box.Text == "")
+            {
+                return;
+            }
+
+
+        }
+
+        private void search_box_TextChanged(object sender, EventArgs e)
+        {
+            DataTable search = new DataTable();
+            string query; 
+            if (search_box.TextLength >= 5) 
+            {    
+                    return;
+            } 
+        }
     }
 }
