@@ -39,16 +39,3 @@ Begin
 			select @Status = 0
 		End
 End
-
---drop procedure AddCard
---delete from CardsInfo where card_id = 123
-
-Declare @stat as int;
-Execute AddCard @CID = 456, @Set_Code = 'Set', @Rarity = 'rare', @Game = 'YGO', @C_name = 'name', @C_type = 'type', @C_race = 'race', @Set_Name = 'SetName', @C_price = 2.33, @image = 'image.jpg', @Status = @stat output
-print @stat
-
-Declare @stat as int;
-Execute AddCard 123, 'Set', 'rare', 'YGO', 'name', 'type', 'race', 'SetName', 2.33, 2.00, 3,'image.jpg', @stat output
-print @stat
-
-select * from CardsInfo where card_id = 123 or card_id = 456

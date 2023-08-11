@@ -1,9 +1,3 @@
-/* 
-Insert card info into the YGOCardsInfo
-Insert Market price into YGOMarketPrice
-Insert store price and copies into YGOStorePrice
-*/
-
 Create Proc AddCard
 @UID varchar(64), /*Store id*/
 @CID int,
@@ -54,24 +48,3 @@ Begin
 			select @Status = 0
 		End
 End
-
-/*
-drop proc AddCard
-delete from YGOCardsInfo
-delete from YGOMarketPrice
-delete from YGOStorePrice
-*/
-
-/*May materialized view on this join*/
-select I.image, I.card_id, M.set_code, M.rarity,I.card_name, I.card_race, I.card_type, M.set_name, M.market_price
-from YGOCardsInfo as I
-inner join (select * from YGOMarketPrice where update_date = '2023-07-21') as M on M.card_id = I.card_id
-
-select MI.image, MI.card_id, MI.card_name, MI.set_code, S.rarity, MI.set_name, MI.market_price, S.store_price, S.copies from YGOStorePrice as S inner join (select I.image, I.card_id, M.set_code, M.rarity,I.card_name, I.card_race, I.card_type, M.set_name, M.market_price from YGOCardsInfo as I inner join (select * from YGOMarketPrice where update_date = '2023-07-21') as M on M.card_id = I.card_id) as MI on S.card_id = MI.card_id and S.set_code = MI.set_code and S.rarity = MI.rarity where store_id = 2
-
-
-select * from YGOMarketPrice
-
-select * from YGOCardsInfo
-
-select * from YGOStorePrice

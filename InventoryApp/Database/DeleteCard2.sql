@@ -15,8 +15,3 @@ as Begin
 		set @status = 0
 	End Catch
 End
-
-drop proc deleteCard
-select * from YGOCardsInfo
-select * from YGOCards
-select * from YGOCardsJoin
