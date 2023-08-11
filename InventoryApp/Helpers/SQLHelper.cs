@@ -602,5 +602,59 @@ namespace InventoryApp.Helpers
             }
             return status;
         }
+
+        /*Generate receipt, takes uid and the shopping card datatable as input*/
+        public int Check_Out(string uid, DataTable datatable)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            SqlParameter myParameter;
+            DataTable dt = datatable.Copy();
+            dt.Columns.Remove("Card Name");
+            dt.Columns.Remove("Card Image");
+            dt.Columns.Remove("image");
+            int status = 0;
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            int tid = rand.Next(1, 100000000); //generate transaction id 
+            dt.Columns.Add("transaction_id", typeof(System.Int32));
+            dt.Columns.Add("user_id", typeof(System.String));
+            foreach (DataRow r in dt.Rows)
+            {
+                r["transaction_id"] = tid;
+                r["user_id"] = uid;
+            }
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand("AddReceipt", myConnection);
+                myCommand.CommandType = CommandType.StoredProcedure;
+                myCommand.Parameters.Add("@tid", SqlDbType.Int).Value = tid;
+                myCommand.Parameters.Add("@uid", SqlDbType.VarChar, 64).Value = uid;
+                myParameter = new SqlParameter();
+                myParameter.ParameterName = "@table";
+                myParameter.Value = dt;
+                myCommand.Parameters.Add(myParameter);
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    /*should be 1 if successfully create an account*/
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    status = -1;
+                }
+                finally { myConnection.Close(); }
+            }
+            if (status == 1)
+            {
+                MessageBox.Show("Success");
+            } 
+            if(status == 0) { MessageBox.Show("failed"); }
+
+            return status;
+        }
     }
 }

@@ -28,49 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            shopping_cart_view = new DataGridView();
-            clear_button = new Button();
-            ((System.ComponentModel.ISupportInitialize)shopping_cart_view).BeginInit();
-            SuspendLayout();
+            this.shopping_cart_view = new System.Windows.Forms.DataGridView();
+            this.clear_button = new System.Windows.Forms.Button();
+            this.check_out = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.shopping_cart_view)).BeginInit();
+            this.SuspendLayout();
             // 
             // shopping_cart_view
             // 
-            shopping_cart_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            shopping_cart_view.Location = new Point(86, 155);
-            shopping_cart_view.Margin = new Padding(3, 4, 3, 4);
-            shopping_cart_view.Name = "shopping_cart_view";
-            shopping_cart_view.RowHeadersWidth = 51;
-            shopping_cart_view.RowTemplate.Height = 25;
-            shopping_cart_view.Size = new Size(1280, 720);
-            shopping_cart_view.TabIndex = 0;
+            this.shopping_cart_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.shopping_cart_view.Location = new System.Drawing.Point(75, 116);
+            this.shopping_cart_view.Name = "shopping_cart_view";
+            this.shopping_cart_view.RowHeadersWidth = 51;
+            this.shopping_cart_view.RowTemplate.Height = 25;
+            this.shopping_cart_view.Size = new System.Drawing.Size(1120, 540);
+            this.shopping_cart_view.TabIndex = 0;
             // 
             // clear_button
             // 
-            clear_button.Location = new Point(664, 56);
-            clear_button.Margin = new Padding(3, 4, 3, 4);
-            clear_button.Name = "clear_button";
-            clear_button.Size = new Size(86, 31);
-            clear_button.TabIndex = 1;
-            clear_button.Text = "Clear Cart";
-            clear_button.UseVisualStyleBackColor = true;
-            clear_button.Click += clear_button_Click;
+            this.clear_button.Location = new System.Drawing.Point(581, 42);
+            this.clear_button.Name = "clear_button";
+            this.clear_button.Size = new System.Drawing.Size(75, 23);
+            this.clear_button.TabIndex = 1;
+            this.clear_button.Text = "Clear Cart";
+            this.clear_button.UseVisualStyleBackColor = true;
+            // 
+            // check_out
+            // 
+            this.check_out.Location = new System.Drawing.Point(716, 42);
+            this.check_out.Name = "check_out";
+            this.check_out.Size = new System.Drawing.Size(75, 23);
+            this.check_out.TabIndex = 2;
+            this.check_out.Text = "Checkout";
+            this.check_out.UseVisualStyleBackColor = true;
+            this.check_out.Click += new System.EventHandler(this.check_out_Click);
             // 
             // shopping_cart_page
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(clear_button);
-            Controls.Add(shopping_cart_view);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "shopping_cart_page";
-            Size = new Size(800, 680);
-            ((System.ComponentModel.ISupportInitialize)shopping_cart_view).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.check_out);
+            this.Controls.Add(this.clear_button);
+            this.Controls.Add(this.shopping_cart_view);
+            this.Name = "shopping_cart_page";
+            this.Size = new System.Drawing.Size(1315, 771);
+            ((System.ComponentModel.ISupportInitialize)(this.shopping_cart_view)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
         private DataGridView shopping_cart_view;
         private Button clear_button;
+        private Button check_out;
     }
 }

@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,7 +88,7 @@ namespace InventoryApp
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
-            update_card.Text = "Edit Inventory";
+            update_card.Text = "Edit Quantity";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             shopping_cart_view.Columns.Add(update_card);
@@ -112,6 +113,11 @@ namespace InventoryApp
                 MessageBox.Show("An error has occured");
             }
             return;
+        }
+
+        private void check_out_Click(object sender, EventArgs e)
+        {
+            db.Check_Out(Global.uid, dt);
         }
     }
 }
