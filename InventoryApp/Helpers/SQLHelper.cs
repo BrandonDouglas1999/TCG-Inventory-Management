@@ -14,6 +14,8 @@ using System.Xml.Schema;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Web;
 using System.Collections;
+using System.Security.Cryptography;
+using System.Drawing;
 
 namespace InventoryApp.Helpers
 {
@@ -21,10 +23,8 @@ namespace InventoryApp.Helpers
     class SQLHelper
     {
         //change this to your server name and the path for the image folder
-        //public static readonly String connectionString = "Server=localhost\\SQLEXPRESS01; Database=TCG_Inventory3; Trusted_Connection=yes";
-        public static readonly String connectionString = "Server = DESKTOP-7D95H9S\\SQLEXPRESS; Database = TCG_Inventory3; Trusted_Connection = yes";
-        //public static readonly String connectionString = "Server = JACKACE-PCMARK1\\MSSQLSERVER01; Database = TCG_Inventory3; Trusted_Connection = yes";
-        public static readonly String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
+        public static readonly String connectionString = Global.connectionString;
+        public static readonly String path = Global.path;
 
 
 
@@ -91,7 +91,7 @@ namespace InventoryApp.Helpers
             string num = String.Format("SELECT COUNT(user_id) as num from YGOStorePrice where user_id = '{0}'", uid);
             string query = String.Format("select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
                 "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = '{0}'", uid);
-            if (filters !=  null) { query += "WHERE " + filters + " "; }
+            if (filters !=  null) { query += " WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             
             SqlDataAdapter pagingAdapter;
@@ -496,24 +496,91 @@ namespace InventoryApp.Helpers
             return status;
         }
 
-        public string GetCartID(string shop_id)
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+
+        //-------------------------------------------------------------Shopping Cart----------------------------------------------------------------------
+        //Inputs = userid
+        //Outputs = datatable of card id, set code, rarity, quantity, price
+        public DataTable GetShoppingCart(string uid)
         {
+            string query = "Exec GetCart @UID";
+            DataTable dt = new DataTable();
             SqlCommand myCommand;
-            SqlDataReader myReader;
-            string cart_id = "";
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                myConnection.Open();
-                String query = "Select shopping_cart_id from StoreLogin where user_id =" + shop_id;
                 myCommand = new SqlCommand(query, myConnection);
-                myCommand.Parameters.Add("@cartID", System.Data.SqlDbType.VarChar, 50);
-                myReader = myCommand.ExecuteReader();
-                if (myReader.HasRows)
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
+                try
                 {
-                    cart_id = Convert.ToString(myReader.GetChar(0));
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
+
+        public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity)
+        {
+            int status = 1;
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity ";
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
+                myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
+                myCommand.Parameters.Add("@setcode", SqlDbType.VarChar, 50).Value = setcode;
+                myCommand.Parameters.Add("@rarity", SqlDbType.VarChar, 50).Value = rarity;
+                myCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = quantity;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    myConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    myConnection.Close();
+                    status = -1;
                 }
             }
-            return cart_id;
+            return status;
+        }
+
+
+        public int ClearShoppingCart(string uid)
+        {
+            int status = 1;
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                string query = "Delete from dbo.ShoppingCart where user_id = @UID";
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    status = -1;
+                }
+                finally { myConnection.Close(); }
+            }
+            return status;
         }
     }
 }
