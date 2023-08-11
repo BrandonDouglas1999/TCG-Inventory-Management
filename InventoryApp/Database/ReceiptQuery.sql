@@ -22,10 +22,13 @@ Create Proc AddReceipt
 as 
 Begin
 	Begin Try 
-		Begin Transaction 
-
-		End Transaction 
+		Begin Transaction
+			Insert into dbo.Receipt(transaction_id, user_id, date, items, total_price) values (@tid, @uid, @date, @count, @total) /*Insert receipt info*/
+			Insert into dbo.Receipt Select * from @table
+		Commit Transaction /*Commit action*/
+		set @status = 1 /*Successfully insert receipt info*/
 	End Try
+
 	Begin Catch
 		ROLLBACK TRANSACTION
 		set @status = 0 /*Failed to complete transaction, restore all table to before insert*/
