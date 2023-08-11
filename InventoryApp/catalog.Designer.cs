@@ -32,12 +32,11 @@ namespace InventoryApp
             catalog_panel = new Panel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            search_box = new TextBox();
+            search_button = new Button();
             next_catalog = new Button();
             prev_catalog = new Button();
             catalog_view = new DataGridView();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            search_box = new TextBox();
-            search_button = new Button();
             tabPage2 = new TabPage();
             label3 = new Label();
             card_details_panel = new Panel();
@@ -81,7 +80,6 @@ namespace InventoryApp
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)catalog_view).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
             tabPage2.SuspendLayout();
             card_details_panel.SuspendLayout();
             inventory_panel.SuspendLayout();
@@ -116,10 +114,11 @@ namespace InventoryApp
             // tabPage1
             // 
             tabPage1.AccessibleRole = AccessibleRole.None;
+            tabPage1.Controls.Add(search_box);
+            tabPage1.Controls.Add(search_button);
             tabPage1.Controls.Add(next_catalog);
             tabPage1.Controls.Add(prev_catalog);
             tabPage1.Controls.Add(catalog_view);
-            tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Location = new Point(4, 64);
             tabPage1.Margin = new Padding(0);
             tabPage1.Name = "tabPage1";
@@ -128,9 +127,28 @@ namespace InventoryApp
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // search_box
+            // 
+            search_box.Location = new Point(325, 59);
+            search_box.Name = "search_box";
+            search_box.PlaceholderText = "Card Name";
+            search_box.Size = new Size(272, 23);
+            search_box.TabIndex = 1;
+            // 
+            // search_button
+            // 
+            search_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            search_button.AutoSize = true;
+            search_button.Location = new Point(628, 59);
+            search_button.Name = "search_button";
+            search_button.Size = new Size(208, 25);
+            search_button.TabIndex = 2;
+            search_button.Text = "Search";
+            search_button.UseVisualStyleBackColor = true;
+            // 
             // next_catalog
             // 
-            next_catalog.Location = new Point(596, 621);
+            next_catalog.Location = new Point(587, 675);
             next_catalog.Name = "next_catalog";
             next_catalog.Size = new Size(99, 23);
             next_catalog.TabIndex = 9;
@@ -141,7 +159,7 @@ namespace InventoryApp
             // prev_catalog
             // 
             prev_catalog.Enabled = false;
-            prev_catalog.Location = new Point(479, 621);
+            prev_catalog.Location = new Point(470, 675);
             prev_catalog.Name = "prev_catalog";
             prev_catalog.Size = new Size(99, 23);
             prev_catalog.TabIndex = 8;
@@ -159,7 +177,7 @@ namespace InventoryApp
             catalog_view.BorderStyle = BorderStyle.None;
             catalog_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             catalog_view.GridColor = SystemColors.Control;
-            catalog_view.Location = new Point(126, 70);
+            catalog_view.Location = new Point(117, 124);
             catalog_view.Name = "catalog_view";
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
@@ -167,43 +185,6 @@ namespace InventoryApp
             catalog_view.Size = new Size(1080, 528);
             catalog_view.TabIndex = 7;
             catalog_view.CellContentClick += catalog_view_CellContentClick;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90.84112F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.158878F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 214F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 272F));
-            tableLayoutPanel1.Controls.Add(search_box, 0, 0);
-            tableLayoutPanel1.Controls.Add(search_button, 2, 0);
-            tableLayoutPanel1.Location = new Point(208, 3);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(835, 44);
-            tableLayoutPanel1.TabIndex = 6;
-            // 
-            // search_box
-            // 
-            search_box.Dock = DockStyle.Fill;
-            search_box.Location = new Point(3, 3);
-            search_box.Name = "search_box";
-            search_box.PlaceholderText = "Card Name";
-            search_box.Size = new Size(311, 23);
-            search_box.TabIndex = 1;
-            // 
-            // search_button
-            // 
-            search_button.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            search_button.AutoSize = true;
-            search_button.Location = new Point(351, 3);
-            search_button.Name = "search_button";
-            search_button.Size = new Size(208, 30);
-            search_button.TabIndex = 2;
-            search_button.Text = "Search";
-            search_button.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -642,9 +623,8 @@ namespace InventoryApp
             catalog_panel.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)catalog_view).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             card_details_panel.ResumeLayout(false);
@@ -663,7 +643,6 @@ namespace InventoryApp
         private Panel catalog_panel;
         private TextBox search_box;
         private Button search_button;
-        private TableLayoutPanel tableLayoutPanel1;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;

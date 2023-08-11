@@ -30,7 +30,7 @@ namespace InventoryApp
         SQLHelper db = new SQLHelper();
 
 
-        public bool authenticated = true;
+        public bool authenticated = false;
         public string logged_user = null;
         public string uid = null;
         public Login()
@@ -45,7 +45,7 @@ namespace InventoryApp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            if (user_input.Text =="" || pw_input.Text == "")
+            if (user_input.Text == "" || pw_input.Text == "")
             {
                 incorrect_prompt.Text = "Incorrect Username or Password";
                 incorrect_prompt.Visible = true;
@@ -56,7 +56,7 @@ namespace InventoryApp
 
             // Hash the inputs and compare against the db stored value
             var login = db.AppLogin(username, password);
-            
+
             // If correct, close form, if not, show error
             if (login.status == 1)
             {
@@ -200,7 +200,8 @@ namespace InventoryApp
 
         private void new_account_Click(object sender, EventArgs e)
         {
-            
+
         }
+
     }
 }
