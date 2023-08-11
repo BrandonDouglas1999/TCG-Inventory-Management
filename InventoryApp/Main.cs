@@ -40,6 +40,7 @@ namespace InventoryApp
             catalog_uc.uid = uid;
             home_page.load_dashboard();
             catalog_uc.paging_catalog();
+            cart_uc.paging_catalog();
             sales_uc.uid = uid;
             // Change size of all UC's to windows size
 
@@ -132,6 +133,9 @@ namespace InventoryApp
         private void cart_button_Click(object sender, EventArgs e)
         {
             transitionUC(cart_uc);
+            //need to load twice for the proper look
+            cart_uc.paging_catalog();
+            activeWindow.SendToBack();
         }
         private void sales_button_Click(object sender, EventArgs e)
         {

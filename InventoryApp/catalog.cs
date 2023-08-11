@@ -18,13 +18,7 @@ namespace InventoryApp
     public partial class catalog : UserControl
     {
         public string uid = null;
-        class Global
-        {
-            public static string filters = CatalogForm.return_filter_string(1, "card_name = 'Alghoul Mazera'", null, null, null, null, null, null);
-        }
-
-       //public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this too
-        public string path = @"D:\Users\hang_\Documents\School\Capstone\GitHub\TCG-Inventory-Management-Application\InventoryApp\CardImage";
+        public string path = Global.path;
         SQLHelper db = new SQLHelper();
         private ScottPlot.Plottable.ScatterPlot CardPlot;
         private ScottPlot.Plottable.MarkerPlot HighlightedPoint;
@@ -72,7 +66,7 @@ namespace InventoryApp
         //============================================================================Gridview Interaction================================================================== 
 
 
-        private async void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void catalog_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.ColumnIndex.ToString());
 
@@ -99,14 +93,15 @@ namespace InventoryApp
                 }
                 if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Add to shopping cart
                 {
-                    ShoppingCartProcessor shoppingCartProcessor = new ShoppingCartProcessor();
-                    Token access_token = await shoppingCartProcessor.GetConnectionToken();
-                    MessageBox.Show(access_token.access_token);
-                    //access token not alllowing connections, but token from cli works?
-
-                    //ShoppingCart cart = await shoppingCartProcessor.CreateShoppingCart(access_token.access_token);
-                    //MessageBox.Show(cart.data[0].id.ToString()); 
-                    //LineItem lineitem = await ShoppingCartProcessor.AddToCart(2, "nzPQSeDGol", "qkykhnrnVj", access_token.access_token);
+                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, 1);
+                    if (success == 1)
+                    {
+                        MessageBox.Show("Card added to cart");
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error has occured");
+                    }
                     return;
                 }
             }
@@ -162,7 +157,7 @@ namespace InventoryApp
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             //dt.Load(myreader); //load sql result into datatable
 
-            int end = db.LoadCatalog(dt, uid, ScrollVal, Global.filters);
+            int end = db.LoadCatalog(dt, Global.uid, ScrollVal, Global.filters);
 
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
@@ -176,7 +171,16 @@ namespace InventoryApp
             foreach (DataRow row in dt.Rows)
             {
                 String image_thumbnail = path + @"\Card_Thumbnails\" + row["Image"].ToString();
-                row["Card Image"] = File.ReadAllBytes(image_thumbnail);
+                try
+                {
+                    row["Card Image"] = File.ReadAllBytes(image_thumbnail);
+                }
+                catch
+                {
+                    image_thumbnail = path + @"\Card_Thumbnails\21727231.jpg";
+                    row["Card Image"] = File.ReadAllBytes(image_thumbnail);
+                }
+
             }
             if (end == 1)
             {
@@ -343,7 +347,7 @@ namespace InventoryApp
             if (result == DialogResult.Yes)
             {
                 //delete card
-                int status = db.DeleteCard(uid, card_id.Text, set_code.Text, card_rarity.Text);
+                int status = db.DeleteCard(Global.uid, card_id.Text, set_code.Text, card_rarity.Text);
                 if (status == 1)
                 {
                     MessageBox.Show("Product Successfully Removed From Your Inventory");
@@ -394,7 +398,7 @@ namespace InventoryApp
                 warning_label.Visible = true;
                 return;
             }
-            int status = db.UpdateInventory(uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
+            int status = db.UpdateInventory(Global.uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
             if (status == 1)
             {
                 paging_catalog();
