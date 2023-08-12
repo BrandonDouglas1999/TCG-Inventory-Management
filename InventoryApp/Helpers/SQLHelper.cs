@@ -547,20 +547,21 @@ namespace InventoryApp.Helpers
             return dt;
         }
 
-        public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity)
+        public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity, string price)
         {
             int status = 1;
             SqlCommand myCommand;
             SqlDataReader myReader;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity ";
+                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity, @price";
                 myCommand = new SqlCommand(query, myConnection);
                 myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
                 myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@setcode", SqlDbType.VarChar, 50).Value = setcode;
                 myCommand.Parameters.Add("@rarity", SqlDbType.VarChar, 50).Value = rarity;
                 myCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = quantity;
+                myCommand.Parameters.Add("@price", SqlDbType.Money).Value = price;
                 try
                 {
                     myConnection.Open();

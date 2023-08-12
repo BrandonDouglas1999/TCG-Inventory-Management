@@ -28,51 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            filter_label = new Label();
-            time_frame_combo = new ComboBox();
-            filter_view = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)filter_view).BeginInit();
-            SuspendLayout();
+            this.filter_label = new System.Windows.Forms.Label();
+            this.time_frame_combo = new System.Windows.Forms.ComboBox();
+            this.filter_view = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.filter_view)).BeginInit();
+            this.SuspendLayout();
             // 
             // filter_label
             // 
-            filter_label.AutoSize = true;
-            filter_label.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            filter_label.Location = new Point(201, 62);
-            filter_label.Name = "filter_label";
-            filter_label.Size = new Size(63, 30);
-            filter_label.TabIndex = 0;
-            filter_label.Text = "Filter";
+            this.filter_label.AutoSize = true;
+            this.filter_label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.filter_label.Location = new System.Drawing.Point(201, 62);
+            this.filter_label.Name = "filter_label";
+            this.filter_label.Size = new System.Drawing.Size(63, 30);
+            this.filter_label.TabIndex = 0;
+            this.filter_label.Text = "Filter";
             // 
             // time_frame_combo
             // 
-            time_frame_combo.FormattingEnabled = true;
-            time_frame_combo.Location = new Point(292, 69);
-            time_frame_combo.Name = "time_frame_combo";
-            time_frame_combo.Size = new Size(121, 23);
-            time_frame_combo.TabIndex = 1;
+            this.time_frame_combo.FormattingEnabled = true;
+            this.time_frame_combo.Location = new System.Drawing.Point(292, 69);
+            this.time_frame_combo.Name = "time_frame_combo";
+            this.time_frame_combo.Size = new System.Drawing.Size(121, 23);
+            this.time_frame_combo.TabIndex = 1;
             // 
             // filter_view
             // 
-            filter_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            filter_view.Location = new Point(98, 156);
-            filter_view.Name = "filter_view";
-            filter_view.RowTemplate.Height = 25;
-            filter_view.Size = new Size(618, 318);
-            filter_view.TabIndex = 2;
+            this.filter_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.filter_view.Location = new System.Drawing.Point(98, 156);
+            this.filter_view.Name = "filter_view";
+            this.filter_view.RowTemplate.Height = 25;
+            this.filter_view.Size = new System.Drawing.Size(618, 318);
+            this.filter_view.TabIndex = 2;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(430, 69);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.Value = new System.DateTime(2023, 8, 11, 0, 0, 0, 0);
             // 
             // sales_report
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(filter_view);
-            Controls.Add(time_frame_combo);
-            Controls.Add(filter_label);
-            Name = "sales_report";
-            Size = new Size(858, 560);
-            ((System.ComponentModel.ISupportInitialize)filter_view).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.filter_view);
+            this.Controls.Add(this.time_frame_combo);
+            this.Controls.Add(this.filter_label);
+            this.Name = "sales_report";
+            this.Size = new System.Drawing.Size(858, 560);
+            ((System.ComponentModel.ISupportInitialize)(this.filter_view)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -80,5 +91,6 @@
         private Label filter_label;
         private ComboBox time_frame_combo;
         private DataGridView filter_view;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -41,7 +41,7 @@ namespace InventoryApp
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
             dt.Columns["rarity"].ColumnName = "Rarity";
-            dt.Columns["market_price"].ColumnName = "Market Price";
+            dt.Columns["price"].ColumnName = "Price";
             dt.Columns["Quantity"].ColumnName = "Quantity";
 
             //get image into table

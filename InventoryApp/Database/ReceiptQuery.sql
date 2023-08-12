@@ -29,7 +29,9 @@ Begin
 			set @total = (select SUM(price) from @table)
 			Insert into dbo.Receipt(transaction_id, user_id, date, items, total_price) values (@tid, @uid, @date, @count, @total) /*Insert receipt info*/
 			Insert into dbo.ReceiptInfo(transaction_id, user_id, card_id, set_code, rarity, quantity, price) Select transaction_id, user_id, card_id, set_code, rarity, quantity, price from @table
-			delete from dbo.ShoppingCart where user_id = @uid /*remove info from shoppingcart*/
+			Update dbo.YGOStorePrice set copies = (copies - quantity)
+					from dbo.YGOStorePrice SP inner join dbo.ReceiptInfo R on SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = @tid and SP.user_id = @uid
+			Delete from dbo.ShoppingCart where user_id = @uid /*remove info from shoppingcart*/
 		Commit Transaction /*Commit action*/
 		set @status = 1 /*Successfully insert receipt info*/
 	End Try
@@ -52,3 +54,13 @@ End
 select * from dbo.ShoppingCart where user_id = '1'
 select * from Receipt
 select * from ReceiptInfo
+
+Select SP.card_id, SP.set_code, SP.rarity, SP.copies, R.quantity
+from YGOStorePrice as SP inner join
+ReceiptInfo as R on
+SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = 20388194 and SP.user_id = '1'
+
+Update dbo.YGOStorePrice set copies = (copies - quantity)
+from dbo.YGOStorePrice SP inner join dbo.ReceiptInfo R on SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = 20388194 and SP.user_id = '1'
+
+select * from dbo.YGOStorePrice where user_id = '1'
