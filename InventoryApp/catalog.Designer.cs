@@ -29,6 +29,7 @@ namespace InventoryApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.catalog_panel = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -80,6 +81,7 @@ namespace InventoryApp
             this.StartRange = new System.Windows.Forms.DateTimePicker();
             this.GraphPic = new System.Windows.Forms.PictureBox();
             this.marketChart = new ScottPlot.FormsPlot();
+            this.message = new System.Windows.Forms.ToolTip(this.components);
             this.catalog_panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -670,6 +672,11 @@ namespace InventoryApp
             this.marketChart.Size = new System.Drawing.Size(616, 555);
             this.marketChart.TabIndex = 0;
             // 
+            // message
+            // 
+            this.message.IsBalloon = true;
+            this.message.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -749,5 +756,6 @@ namespace InventoryApp
         private Label label16;
         private Label date_label;
         private Button Return;
+        private ToolTip message;
     }
 }

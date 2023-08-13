@@ -93,7 +93,7 @@ namespace InventoryApp
                 }
                 if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Add to shopping cart
                 {
-                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, 1, sp);
+                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, 1);
                     if (success == 1)
                     {
                         MessageBox.Show("Card added to cart");

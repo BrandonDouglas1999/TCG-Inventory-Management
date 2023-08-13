@@ -41,7 +41,7 @@ namespace InventoryApp
             home_page.load_dashboard();
             catalog_uc.paging_catalog();
             cart_uc.paging_catalog();
-            sales_uc.uid = uid;
+            sales_uc.load_sales();
             // Change size of all UC's to windows size
 
             card_opt_tabs.Size = UCSize;
@@ -140,6 +140,7 @@ namespace InventoryApp
         private void sales_button_Click(object sender, EventArgs e)
         {
             transitionUC(sales_uc);
+            sales_uc.load_sales();
         }
 
         // Handles the transition between UserControls (buttons)
