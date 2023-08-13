@@ -9,11 +9,23 @@ ALTER Proc [dbo].[GetCart]
 @UID varchar(64) /*Store id*/
 as
 Begin
-    Select C.card_name, C.image, S.card_id, S.set_code, S.rarity, S.quantity, S.price
-	from dbo.ShoppingCart as S inner join dbo.YGOCardsInfo as C on S.card_id = C.card_id where user_id = @UID
+		Select P.card_name, P.image, SH.card_id, SH.set_code, SH.rarity, SH.quantity, (SH.quantity * P.store_price) as price
+		from dbo.ShoppingCart as SH
+		inner join (Select C.card_name, C.image, S.card_id, S.set_code, S.rarity, S.store_price, S.user_id from dbo.YGOStorePrice as S inner join dbo.YGOCardsInfo as C on S.card_id = C.card_id and user_id = @UID) as P on 
+		SH.card_id = P.card_id and SH.set_code = P.set_code and SH.rarity = P.rarity
 End
 
-Select C.card_name, C.image, S.card_id, S.set_code, S.rarity, S.quantity, S.price
+Select C.card_name, C.image, S.card_id, S.set_code, S.rarity, S.quantity
 from dbo.ShoppingCart as S inner join dbo.YGOCardsInfo as C on S.card_id = C.card_id where user_id = '101164323405038069020'
 
-select * from ShoppingCart
+
+
+Select P.card_name, P.image, SH.card_id, SH.set_code, SH.rarity, SH.quantity, (SH.quantity * P.store_price) as total
+from dbo.ShoppingCart as SH
+inner join 
+(Select C.card_name, C.image, S.card_id, S.set_code, S.rarity, S.store_price, S.user_id
+from dbo.YGOStorePrice as S
+inner join dbo.YGOCardsInfo as C on S.card_id = C.card_id and user_id = '101164323405038069020') as P on 
+SH.card_id = P.card_id and SH.set_code = P.set_code and SH.rarity = P.rarity
+
+exec GetCart 101164323405038069020

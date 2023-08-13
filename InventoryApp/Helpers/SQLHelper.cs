@@ -547,21 +547,20 @@ namespace InventoryApp.Helpers
             return dt;
         }
 
-        public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity, string price)
+        public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity)
         {
             int status = 1;
             SqlCommand myCommand;
             SqlDataReader myReader;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity, @price";
+                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity";
                 myCommand = new SqlCommand(query, myConnection);
                 myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
                 myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@setcode", SqlDbType.VarChar, 50).Value = setcode;
                 myCommand.Parameters.Add("@rarity", SqlDbType.VarChar, 50).Value = rarity;
                 myCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = quantity;
-                myCommand.Parameters.Add("@price", SqlDbType.Money).Value = price;
                 try
                 {
                     myConnection.Open();
@@ -656,6 +655,34 @@ namespace InventoryApp.Helpers
             if(status == 0) { MessageBox.Show("failed"); }
 
             return status;
+        }
+    //---------------------------------------------------Sales Report-----------------------------------------------------------------------------------
+        public DataSet load_receipt(string start, string end, string uid)
+        {
+            DataSet ds = new DataSet();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter;
+            SqlParameter myParameter;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand("SalesHistory", myConnection);
+                myCommand.CommandType = CommandType.StoredProcedure;
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
+                myCommand.Parameters.Add("@Start", SqlDbType.Date).Value = start;
+                myCommand.Parameters.Add("@End", SqlDbType.Date).Value = end;
+                try
+                {
+                    myConnection.Open();
+                    myAdapter = new SqlDataAdapter(myCommand);
+                    myAdapter.Fill(ds);
+                }
+                catch (Exception ex)
+                {
+                    ds = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return ds;
         }
     }
 }
