@@ -37,6 +37,10 @@ namespace InventoryApp
         {
 
             dt = db.GetShoppingCart(Global.uid);
+            if (dt == null)
+            {
+                return;
+            }
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]"));
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
@@ -57,8 +61,13 @@ namespace InventoryApp
                     image_thumbnail = path + @"\Card_Thumbnails\21727231.jpg";
                     row["Card Image"] = File.ReadAllBytes(image_thumbnail);
                 }
-
             }
+            
+            if (dt.Rows.Count > 0)
+            {
+                Decimal totalprice = Convert.ToDecimal(dt.Compute("SUM(Price)", string.Empty));
+                total_price.Text = totalprice.ToString("0.00");
+            }      
         }
 
         private void format_view() /*Setting up gridview*/
@@ -73,6 +82,12 @@ namespace InventoryApp
             shopping_cart_view.DataSource = null;
             shopping_cart_view.Rows.Clear();
             shopping_cart_view.Columns.Clear();
+            if (dt == null || dt.Rows.Count <= 0)
+            {
+                shopping_cart_view.ColumnCount = 1;
+                shopping_cart_view.Columns[0].Name = "Shopping Cart is Currently Empty";
+                return;
+            }
             shopping_cart_view.DataSource = dt;
             shopping_cart_view.EnableHeadersVisualStyles = false;
             shopping_cart_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 47, 76, 100); //change header cell color
@@ -83,7 +98,6 @@ namespace InventoryApp
 
             //Change prices decimal points
             shopping_cart_view.Columns[6].DefaultCellStyle.Format = "$0.00##";
-            //shopping_cart_view.Columns[8].DefaultCellStyle.Format = "$0.00##";
 
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
@@ -114,6 +128,7 @@ namespace InventoryApp
             }
             return;
         }
+
 
         private void check_out_Click(object sender, EventArgs e)
         {

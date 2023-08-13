@@ -15,13 +15,13 @@ drop proc AddReceipt
 Create Proc AddReceipt
 @tid int, /*transaction id*/
 @uid varchar(64),
-@table ReceiptContent Readonly ,
+@table ReceiptContent Readonly,
+@total money,
 @status int output
 as 
 Begin
 	declare @date date
 	declare @count int
-	declare @total money
 	Begin Try 
 		Begin Transaction
 			set @date = GETDATE()
@@ -50,17 +50,3 @@ Begin
 		set @status = 0 /*Failed to complete transaction, restore all table to before insert*/
 	End Catch 
 End
-
-select * from dbo.ShoppingCart where user_id = '1'
-select * from Receipt
-select * from ReceiptInfo
-
-Select SP.card_id, SP.set_code, SP.rarity, SP.copies, R.quantity
-from YGOStorePrice as SP inner join
-ReceiptInfo as R on
-SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = 20388194 and SP.user_id = '1'
-
-Update dbo.YGOStorePrice set copies = (copies - quantity)
-from dbo.YGOStorePrice SP inner join dbo.ReceiptInfo R on SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = 20388194 and SP.user_id = '1'
-
-select * from dbo.YGOStorePrice where user_id = '1'

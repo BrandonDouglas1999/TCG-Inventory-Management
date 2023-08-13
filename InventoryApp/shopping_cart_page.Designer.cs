@@ -31,6 +31,8 @@
             this.shopping_cart_view = new System.Windows.Forms.DataGridView();
             this.clear_button = new System.Windows.Forms.Button();
             this.check_out = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.total_price = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.shopping_cart_view)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +54,7 @@
             this.clear_button.TabIndex = 1;
             this.clear_button.Text = "Clear Cart";
             this.clear_button.UseVisualStyleBackColor = true;
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // check_out
             // 
@@ -63,10 +66,31 @@
             this.check_out.UseVisualStyleBackColor = true;
             this.check_out.Click += new System.EventHandler(this.check_out_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(75, 674);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Total: ";
+            // 
+            // total_price
+            // 
+            this.total_price.AutoSize = true;
+            this.total_price.Location = new System.Drawing.Point(134, 679);
+            this.total_price.Name = "total_price";
+            this.total_price.Size = new System.Drawing.Size(38, 15);
+            this.total_price.TabIndex = 4;
+            this.total_price.Text = "label2";
+            // 
             // shopping_cart_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.total_price);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.check_out);
             this.Controls.Add(this.clear_button);
             this.Controls.Add(this.shopping_cart_view);
@@ -74,6 +98,7 @@
             this.Size = new System.Drawing.Size(1315, 771);
             ((System.ComponentModel.ISupportInitialize)(this.shopping_cart_view)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +107,7 @@
         private DataGridView shopping_cart_view;
         private Button clear_button;
         private Button check_out;
+        private Label label1;
+        private Label total_price;
     }
 }
