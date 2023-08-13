@@ -59,7 +59,7 @@ namespace InventoryApp
             sidebar.BackColor = Color.FromArgb(255, 26, 28, 60);
             // Backdrop of the UC's
             // Anything specific to the UC's, probably change their colours there.
-            home_page.BackColor = Color.FromArgb(255, 50, 55, 143);
+
             card_opt_tabs.BackColor = Color.FromArgb(255, 50, 55, 143);
             cart_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
             sales_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
