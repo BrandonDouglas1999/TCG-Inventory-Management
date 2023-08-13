@@ -549,22 +549,24 @@ namespace InventoryApp.Helpers
 
         public int AddToShoppingCart(string uid, string cid, string setcode, string rarity, int quantity)
         {
-            int status = 1;
+            int status;
             SqlCommand myCommand;
             SqlDataReader myReader;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity";
+                string query = "Exec AddToCart @UID, @CID, @setcode, @rarity, @quantity, @status output";
                 myCommand = new SqlCommand(query, myConnection);
                 myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
                 myCommand.Parameters.Add("@CID", SqlDbType.Int).Value = cid;
                 myCommand.Parameters.Add("@setcode", SqlDbType.VarChar, 50).Value = setcode;
                 myCommand.Parameters.Add("@rarity", SqlDbType.VarChar, 50).Value = rarity;
                 myCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = quantity;
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {
                     myConnection.Open();
                     myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
                     myConnection.Close();
                 }
                 catch (Exception ex)
@@ -573,6 +575,7 @@ namespace InventoryApp.Helpers
                     myConnection.Close();
                     status = -1;
                 }
+                finally { myConnection.Close(); }
             }
             return status;
         }
@@ -604,7 +607,7 @@ namespace InventoryApp.Helpers
         }
 
         /*Generate receipt, takes uid and the shopping card datatable as input*/
-        public int Check_Out(string uid, DataTable datatable)
+        public int Check_Out(string uid, DataTable datatable, string total)
         {
             SqlCommand myCommand;
             SqlDataReader myReader;
@@ -633,6 +636,7 @@ namespace InventoryApp.Helpers
                 myParameter.ParameterName = "@table";
                 myParameter.Value = dt;
                 myCommand.Parameters.Add(myParameter);
+                myCommand.Parameters.Add("@total", SqlDbType.Money).Value = total;
                 myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {

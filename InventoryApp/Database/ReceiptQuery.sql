@@ -12,7 +12,7 @@ Create Type ReceiptContent as Table
 drop Type ReceiptContent
 drop proc AddReceipt
 
-Create Proc AddReceipt
+Alter Proc AddReceipt
 @tid int, /*transaction id*/
 @uid varchar(64),
 @table ReceiptContent Readonly,
@@ -26,7 +26,6 @@ Begin
 		Begin Transaction
 			set @date = GETDATE()
 			set @count = (select SUM(quantity) from @table)
-			set @total = (select SUM(price) from @table)
 			Insert into dbo.Receipt(transaction_id, user_id, date, items, total_price) values (@tid, @uid, @date, @count, @total) /*Insert receipt info*/
 			Insert into dbo.ReceiptInfo(transaction_id, user_id, card_id, set_code, rarity, quantity, price) Select transaction_id, user_id, card_id, set_code, rarity, quantity, price from @table
 			Update dbo.YGOStorePrice set copies = (copies - quantity)
