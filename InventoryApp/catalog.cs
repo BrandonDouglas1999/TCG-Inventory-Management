@@ -91,16 +91,16 @@ namespace InventoryApp
                     tabControl1.SelectedIndex = 1;
                     return;
                 }
-                if (e.ColumnIndex == 12 && e.RowIndex >= 0) //Add to shopping cart
+                if (e.ColumnIndex == 13 && e.RowIndex >= 0) //Add to shopping cart
                 {
-                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, 1);
+                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, (int)catalog_view.Rows[e.RowIndex].Cells[12].Value);
                     if (success == 1)
                     {
                         MessageBox.Show("Card added to cart");
                     }
-                    else
+                    else if (success == 0)
                     {
-                        MessageBox.Show("An error has occured");
+                        MessageBox.Show("Quantity amount exceed the amount of copies on-hand.");
                     }
                     return;
                 }
@@ -109,12 +109,6 @@ namespace InventoryApp
             {
                 return;
             }
-        }
-
-        //mouse over event
-        private void catalog_view_mouseover(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            return;
         }
 
         //============================================================================Catalog Gridview===================================================================
@@ -229,6 +223,11 @@ namespace InventoryApp
             edit_card.UseColumnTextForButtonValue = true; //display text for button 
             catalog_view.Columns.Add(edit_card);
 
+            catalog_view.Columns.Add("Qty.", "Qty.");
+            catalog_view.Columns[12].ValueType = typeof(int);
+            catalog_view.Columns[12].ReadOnly = false;
+            
+
             DataGridViewButtonColumn add_to_cart = new DataGridViewButtonColumn();
             add_to_cart.Text = "Add to Cart";
             add_to_cart.UseColumnTextForButtonValue = true;
@@ -242,6 +241,12 @@ namespace InventoryApp
             catalog_view.Columns[7].Width = 65;
             catalog_view.Columns[8].Width = 65;
             catalog_view.Columns[9].Width = 50;
+            catalog_view.Columns[12].Width = 35;
+
+            foreach (DataGridViewRow r in catalog_view.Rows)
+            {
+                r.Cells[12].Value = 1;
+            }
         }
 
         //===============================================================================================================================================================   
