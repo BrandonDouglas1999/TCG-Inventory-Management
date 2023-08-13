@@ -191,7 +191,7 @@ namespace InventoryApp
             this.catalog_view.RowHeadersVisible = false;
             this.catalog_view.RowHeadersWidth = 51;
             this.catalog_view.RowTemplate.Height = 25;
-            this.catalog_view.Size = new System.Drawing.Size(1080, 528);
+            this.catalog_view.Size = new System.Drawing.Size(1109, 528);
             this.catalog_view.TabIndex = 7;
             this.catalog_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.catalog_view_CellContentClick);
             // 

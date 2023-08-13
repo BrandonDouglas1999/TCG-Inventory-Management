@@ -97,7 +97,7 @@ namespace InventoryApp
         {
             receipt_info.DataSource = null;
             DataTable dt = new DataTable();
-            string query = "Select C.image, C.card_name as 'Card Name', R.set_code as 'Set Code', R.rarity as 'Rarity', R.quantity as Quantity, R.price as Price from " +
+            string query = "Select C.image, C.card_name as 'Card Name', R.set_code as 'Set Code', R.rarity as 'Rarity', R.quantity as Qty, R.price as Price from " +
                 "(Select card_id, set_code, rarity, quantity, price from dbo.ReceiptInfo " +
                     $"where user_id = '{Global.uid}' and transaction_id = {transaction_id}) R inner join dbo.YGOCardsInfo as C on C.card_id = R.card_id";
             
@@ -118,7 +118,7 @@ namespace InventoryApp
             }
             receipt_info.DataSource = dt;
             receipt_info.Columns[0].Visible = false;
-            receipt_info.Columns[4].DefaultCellStyle.Format = "$0.00##";
+            receipt_info.Columns[5].DefaultCellStyle.Format = "$0.00##";
         }
 
         private void button1_Click(object sender, EventArgs e)

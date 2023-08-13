@@ -20,7 +20,7 @@ namespace InventoryApp
         SQLHelper db = new SQLHelper();
         DataTable dt;
         public string path = Global.path;
-        int ScrollVal = 0;
+
         public shopping_cart_page()
         {
             InitializeComponent();
@@ -39,6 +39,7 @@ namespace InventoryApp
             dt = db.GetShoppingCart(Global.uid);
             if (dt == null)
             {
+                total_price.Text = taxes.Text = sub_total.Text = "$0.00";
                 return;
             }
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]"));
@@ -63,22 +64,17 @@ namespace InventoryApp
                 }
             }
             
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0) //get total price before GST
             {
-                Decimal totalprice = Convert.ToDecimal(dt.Compute("SUM(Price)", string.Empty));
-                total_price.Text = totalprice.ToString("0.00");
+                Double totalprice = Convert.ToDouble(dt.Compute("SUM(Price)", string.Empty));
+                sub_total.Text = totalprice.ToString("$0.00");
+                taxes.Text = (totalprice * 0.05).ToString("$0.00");
+                total_price.Text = (totalprice + (totalprice * 0.05)).ToString("$0.00");
             }      
         }
 
         private void format_view() /*Setting up gridview*/
         {
-            //Header Cell index in display: 0, 4-10
-            /*Topdeck Color Code (ARGB): 
-                * 255, 237, 33, 125 
-                * 255, 26, 28, 60
-                * 254, 38, 171, 254
-                * White(obviously)
-            */
             shopping_cart_view.DataSource = null;
             shopping_cart_view.Rows.Clear();
             shopping_cart_view.Columns.Clear();
@@ -92,9 +88,12 @@ namespace InventoryApp
             shopping_cart_view.EnableHeadersVisualStyles = false;
             shopping_cart_view.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 47, 76, 100); //change header cell color
             shopping_cart_view.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;                 //change header text color
-
+            shopping_cart_view.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            shopping_cart_view.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             shopping_cart_view.Columns[1].Visible = false; //hide image file name
             shopping_cart_view.Columns[2].Visible = false; //hide card id
+            
+            shopping_cart_view.Columns[5].ReadOnly = false; //allow quantity to be edited
 
             //Change prices decimal points
             shopping_cart_view.Columns[6].DefaultCellStyle.Format = "$0.00##";
@@ -106,12 +105,6 @@ namespace InventoryApp
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             shopping_cart_view.Columns.Add(update_card);
-
-            //Edit cell and column size
-            shopping_cart_view.RowTemplate.Height = 153;
-            shopping_cart_view.Columns[0].Width = 220;
-            shopping_cart_view.Columns[4].Width = 50;
-            shopping_cart_view.Columns[5].Width = 50;
         }
 
         private void clear_button_Click(object sender, EventArgs e)
@@ -121,6 +114,7 @@ namespace InventoryApp
             {
                 MessageBox.Show("Cart cleared");
                 paging_catalog();
+                total_price.Text = taxes.Text = sub_total.Text = "$0.00";
             }
             else
             {
@@ -132,7 +126,17 @@ namespace InventoryApp
 
         private void check_out_Click(object sender, EventArgs e)
         {
-            db.Check_Out(Global.uid, dt);
+            db.Check_Out(Global.uid, dt, total_price.Text);
+            paging_catalog();
+            total_price.Text = taxes.Text = sub_total.Text = "$0.00";
+        }
+
+        private void shopping_cart_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 7) 
+            {
+                return;
+            }
         }
     }
 }
