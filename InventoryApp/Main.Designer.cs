@@ -45,6 +45,7 @@
             cart_uc = new shopping_cart_page();
             catalog_uc = new catalog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            panel1 = new Panel();
             sidebar.SuspendLayout();
             SuspendLayout();
             // 
@@ -125,7 +126,7 @@
             card_button.Name = "card_button";
             card_button.Size = new Size(164, 46);
             card_button.TabIndex = 0;
-            card_button.Text = "Cards";
+            card_button.Text = "View Inventory";
             card_button.TextAlign = ContentAlignment.MiddleRight;
             card_button.UseVisualStyleBackColor = true;
             card_button.Click += catalog_Click;
@@ -143,7 +144,7 @@
             view_inventory_button.Name = "view_inventory_button";
             view_inventory_button.Size = new Size(164, 46);
             view_inventory_button.TabIndex = 0;
-            view_inventory_button.Text = "View Inventory";
+            view_inventory_button.Text = "Add Cards";
             view_inventory_button.TextAlign = ContentAlignment.MiddleRight;
             view_inventory_button.UseVisualStyleBackColor = true;
             view_inventory_button.Click += card_button_Click;
@@ -231,11 +232,21 @@
             catalog_uc.TabIndex = 6;
             catalog_uc.Visible = false;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Location = new Point(50, 780);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1466, 58);
+            panel1.TabIndex = 7;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1484, 811);
+            Controls.Add(panel1);
             Controls.Add(catalog_uc);
             Controls.Add(sales_uc);
             Controls.Add(sidebar);
@@ -269,5 +280,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button menu_button;
         private Label separator;
+        private Panel panel1;
     }
 }

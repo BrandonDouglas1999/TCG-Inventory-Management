@@ -52,15 +52,11 @@ namespace InventoryApp
             // disable middle-click-drag zoom window
             marketChart.Configuration.MiddleClickDragZoom = false;
             marketChart.Plot.YAxis.Label(size: 16, bold: true);
-            marketChart.Plot.YAxis.Color(Color.White);
             marketChart.Plot.XAxis.Label(size: 16, bold: true);
-            marketChart.Plot.XAxis.Color(Color.White);
 
-            // Set BG colours
-
-            tabPage1.BackColor = Color.FromArgb(255, 50, 55, 143);
-            tabPage2.BackColor = Color.FromArgb(255, 50, 55, 143);
-            tabPage3.BackColor = Color.FromArgb(255, 50, 55, 143);
+            panel1.BackColor = Color.FromArgb(255, 50, 55, 143);
+            panel2.BackColor = Color.FromArgb(255, 50, 55, 143);
+            panel3.BackColor = Color.FromArgb(255, 50, 55, 143);
         }
 
         //============================================================================Gridview Interaction================================================================== 
@@ -547,11 +543,11 @@ namespace InventoryApp
         private void search_box_TextChanged(object sender, EventArgs e)
         {
             DataTable search = new DataTable();
-            string query; 
-            if (search_box.TextLength >= 5) 
-            {    
-                    return;
-            } 
+            string query;
+            if (search_box.TextLength >= 5)
+            {
+                return;
+            }
         }
     }
 }
