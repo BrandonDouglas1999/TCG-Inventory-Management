@@ -37,7 +37,7 @@ namespace InventoryApp
         {
 
             dt = db.GetShoppingCart(Global.uid);
-            if (dt == null)
+            if (dt == null || dt.Rows.Count == 0)
             {
                 total_price.Text = taxes.Text = sub_total.Text = "$0.00";
                 return;

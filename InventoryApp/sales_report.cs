@@ -1,15 +1,18 @@
 ﻿using InventoryApp.Helpers;
+using ScottPlot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataSet = System.Data.DataSet;
 
 namespace InventoryApp
 {
@@ -24,6 +27,15 @@ namespace InventoryApp
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
+
+            // disable left-click-drag pan
+            cardPlot.Configuration.Pan = false;
+            // disable right-click-drag zoom
+            cardPlot.Configuration.Zoom = false;
+            // disable scroll wheel zoom
+            cardPlot.Configuration.ScrollWheelZoom = false;
+            // disable middle-click-drag zoom window
+            cardPlot.Configuration.MiddleClickDragZoom = false;
         }
 
         public void load_sales()
@@ -64,8 +76,10 @@ namespace InventoryApp
             pop_cards.DataSource = ds.Tables[1];
             if (ds.Tables[1].Rows.Count > 0)
             {
-                pie_chart(ds.Tables[1]);
+                bar_chart(ds.Tables[1]);
             }
+            pop_cards.ClearSelection();
+            receipt_view.ClearSelection();
         }
 
         private void receipt_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +105,35 @@ namespace InventoryApp
             pie.ShowValues = true;
             cardPlot.Refresh();
         } 
+        
+        private void bar_chart(DataTable dt)
+        {
+            List<ScottPlot.Plottable.Bar> bars = new();
+            int[] y = new int[dt.Rows.Count];
+            string[] x = new string[dt.Rows.Count];
+            for (int count = 0; count < dt.Rows.Count; count++)
+            {
+                int value = Convert.ToInt32(dt.Rows[count]["Unit Sold"]);
+                string card = dt.Rows[count]["Card Name"].ToString();
+                ScottPlot.Plottable.Bar b = new()
+                {
+                    Value = value,
+                    Position = count,
+                    FillColor = ScottPlot.Palette.Category10.GetColor(count),
+                    Label = value.ToString(),
+                    LineWidth = 2,         
+                };
+                bars.Add(b);
+                pop_cards.Rows[count].DefaultCellStyle.BackColor = ScottPlot.Palette.Category10.GetColor(count);
+            }
+            var bar = cardPlot.Plot;
+            bar.AddBarSeries(bars);
+            bar.Legend(location: Alignment.UpperRight);
+            bar.SetAxisLimitsY(0, Convert.ToInt32(dt.Rows[0]["Unit Sold"]) + 2);
+            bar.YAxis.AxisTicks.MajorLineWidth = 2;
+            bar.YAxis.AxisTicks.MinorLineWidth = 1;
+            cardPlot.Refresh();
+        }
 
         //-------------------------------------------------------------------Receipt Info Tab------------------------------------------------------------------------------
         public void load_receiptInfo(string transaction_id)
@@ -117,6 +160,7 @@ namespace InventoryApp
                 }
             }
             receipt_info.DataSource = dt;
+            receipt_info.ClearSelection();
             receipt_info.Columns[0].Visible = false;
             receipt_info.Columns[5].DefaultCellStyle.Format = "$0.00##";
         }
