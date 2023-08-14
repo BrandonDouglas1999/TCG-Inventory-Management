@@ -36,13 +36,16 @@ namespace InventoryApp
         {
             logged_user.ForeColor = Color.White;
             user_label.ForeColor = Color.White;
+            top_back_panel.BackColor = Color.FromArgb(255, 50, 55, 143);
+            user_label.BackColor = Color.FromArgb(255, 50, 55, 143);
+            logged_user.BackColor = Color.FromArgb(255, 50, 55, 143);
 
             // Set the graph colours
-            chart.Plot.YAxis.Color(Color.White);
+            //chart.Plot.YAxis.Color(Color.White);
             chart.Plot.YAxis.Label(size: 16, bold: true);
-            chart.Plot.XAxis.Color(Color.White);
+            //chart.Plot.XAxis.Color(Color.White);
             chart.Plot.XAxis.Label(size: 16, bold: true);
-            
+
             // disable left-click-drag pan
             chart.Configuration.Pan = false;
             // disable right-click-drag zoom
@@ -53,9 +56,9 @@ namespace InventoryApp
             chart.Configuration.MiddleClickDragZoom = false;
 
             chart2.Plot.YAxis.Label(size: 16, bold: true);
-            chart2.Plot.YAxis.Color(Color.White);
+            //chart2.Plot.YAxis.Color(Color.White);
             chart2.Plot.XAxis.Label(size: 16, bold: true);
-            chart2.Plot.XAxis.Color(Color.White);
+            //chart2.Plot.XAxis.Color(Color.White);
 
             // disable left-click-drag pan
             chart2.Configuration.Pan = false;

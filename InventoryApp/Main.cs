@@ -55,14 +55,10 @@ namespace InventoryApp
 
         private void set_colours()
         {
-            // Sidebar colours
             sidebar.BackColor = Color.FromArgb(255, 26, 28, 60);
-            // Backdrop of the UC's
-            // Anything specific to the UC's, probably change their colours there.
-            home_page.BackColor = Color.FromArgb(255, 50, 55, 143);
-            card_opt_tabs.BackColor = Color.FromArgb(255, 50, 55, 143);
-            cart_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
-            sales_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
+
+            // bottom horizontal bar. lays over all UC's since tab controls are kinda weird
+            panel1.BackColor = Color.FromArgb(255, 50, 55, 143);
 
         }
 
@@ -80,6 +76,7 @@ namespace InventoryApp
             {
                 sidebar.Width -= 10;
                 activeWindow.Location = new Point(activeWindow.Location.X - 10, activeWindow.Location.Y);
+                panel1.Location = new Point(panel1.Location.X - 10, panel1.Location.Y);
                 if (sidebar.Width == sidebar.MinimumSize.Width)
                 {
                     sidebarExpand = false;
@@ -90,6 +87,7 @@ namespace InventoryApp
             {
                 sidebar.Width += 10;
                 activeWindow.Location = new Point(activeWindow.Location.X + 10, activeWindow.Location.Y);
+                panel1.Location = new Point(panel1.Location.X + 10, panel1.Location.Y);
                 if (sidebar.Width == sidebar.MaximumSize.Width)
                 {
                     sidebarExpand = true;

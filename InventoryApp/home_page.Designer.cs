@@ -28,210 +28,222 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.user_label = new System.Windows.Forms.Label();
-            this.logged_user = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rate_label = new System.Windows.Forms.Label();
-            this.date_label = new System.Windows.Forms.Label();
-            this.chart2 = new ScottPlot.FormsPlot();
-            this.chart = new ScottPlot.FormsPlot();
-            this.increaseTable = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.increaseTable)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // user_label
-            // 
-            this.user_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.user_label.AutoSize = true;
-            this.user_label.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.user_label.Location = new System.Drawing.Point(31, 22);
-            this.user_label.Name = "user_label";
-            this.user_label.Size = new System.Drawing.Size(57, 23);
-            this.user_label.TabIndex = 1;
-            this.user_label.Text = "User:";
-            // 
-            // logged_user
-            // 
-            this.logged_user.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.logged_user.AutoSize = true;
-            this.logged_user.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.logged_user.Location = new System.Drawing.Point(95, 22);
-            this.logged_user.Name = "logged_user";
-            this.logged_user.Size = new System.Drawing.Size(61, 23);
-            this.logged_user.TabIndex = 2;
-            this.logged_user.Text = "label1";
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            label2 = new Label();
+            label1 = new Label();
+            rate_label = new Label();
+            date_label = new Label();
+            chart2 = new ScottPlot.FormsPlot();
+            chart = new ScottPlot.FormsPlot();
+            increaseTable = new DataGridView();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            separator = new Label();
+            logged_user = new Label();
+            user_label = new Label();
+            top_back_panel = new Panel();
+            ((System.ComponentModel.ISupportInitialize)increaseTable).BeginInit();
+            SuspendLayout();
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(970, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 19);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Price:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(369, 391);
+            label2.Name = "label2";
+            label2.Size = new Size(53, 19);
+            label2.TabIndex = 15;
+            label2.Text = "Price:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(764, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Date: ";
+            label1.AutoSize = true;
+            label1.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(163, 391);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 19);
+            label1.TabIndex = 14;
+            label1.Text = "Date: ";
             // 
             // rate_label
             // 
-            this.rate_label.AutoSize = true;
-            this.rate_label.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rate_label.ForeColor = System.Drawing.Color.White;
-            this.rate_label.Location = new System.Drawing.Point(1019, 51);
-            this.rate_label.Name = "rate_label";
-            this.rate_label.Size = new System.Drawing.Size(0, 19);
-            this.rate_label.TabIndex = 13;
+            rate_label.AutoSize = true;
+            rate_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            rate_label.ForeColor = Color.Black;
+            rate_label.Location = new Point(422, 391);
+            rate_label.Name = "rate_label";
+            rate_label.Size = new Size(0, 19);
+            rate_label.TabIndex = 13;
             // 
             // date_label
             // 
-            this.date_label.AutoSize = true;
-            this.date_label.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.date_label.ForeColor = System.Drawing.Color.White;
-            this.date_label.Location = new System.Drawing.Point(816, 51);
-            this.date_label.Name = "date_label";
-            this.date_label.Size = new System.Drawing.Size(0, 19);
-            this.date_label.TabIndex = 12;
+            date_label.AutoSize = true;
+            date_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            date_label.ForeColor = Color.Black;
+            date_label.Location = new Point(215, 391);
+            date_label.Name = "date_label";
+            date_label.Size = new Size(0, 19);
+            date_label.TabIndex = 12;
             // 
             // chart2
             // 
-            this.chart2.ForeColor = System.Drawing.SystemColors.Control;
-            this.chart2.Location = new System.Drawing.Point(77, 65);
-            this.chart2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.chart2.Name = "chart2";
-            this.chart2.Size = new System.Drawing.Size(525, 359);
-            this.chart2.TabIndex = 11;
+            chart2.ForeColor = SystemColors.Control;
+            chart2.Location = new Point(764, 413);
+            chart2.Margin = new Padding(4, 3, 4, 3);
+            chart2.Name = "chart2";
+            chart2.Size = new Size(630, 359);
+            chart2.TabIndex = 11;
             // 
             // chart
             // 
-            this.chart.ForeColor = System.Drawing.SystemColors.Control;
-            this.chart.Location = new System.Drawing.Point(625, 65);
-            this.chart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.chart.Name = "chart";
-            this.chart.Size = new System.Drawing.Size(611, 359);
-            this.chart.TabIndex = 10;
+            chart.ForeColor = SystemColors.Control;
+            chart.Location = new Point(17, 413);
+            chart.Margin = new Padding(4, 3, 4, 3);
+            chart.Name = "chart";
+            chart.Size = new Size(611, 359);
+            chart.TabIndex = 10;
             // 
             // increaseTable
             // 
-            this.increaseTable.AllowUserToAddRows = false;
-            this.increaseTable.AllowUserToDeleteRows = false;
-            this.increaseTable.AllowUserToResizeColumns = false;
-            this.increaseTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
-            this.increaseTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.increaseTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.increaseTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.increaseTable.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.increaseTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.increaseTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(76)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.increaseTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.increaseTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            increaseTable.AllowUserToAddRows = false;
+            increaseTable.AllowUserToDeleteRows = false;
+            increaseTable.AllowUserToResizeColumns = false;
+            increaseTable.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(239, 239, 249);
+            increaseTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            increaseTable.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            increaseTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            increaseTable.BorderStyle = BorderStyle.None;
+            increaseTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(47, 76, 100);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            increaseTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            increaseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
-            this.increaseTable.Location = new System.Drawing.Point(95, 430);
-            this.increaseTable.Name = "increaseTable";
-            this.increaseTable.ReadOnly = true;
-            this.increaseTable.RowHeadersVisible = false;
-            this.increaseTable.RowTemplate.Height = 25;
-            this.increaseTable.Size = new System.Drawing.Size(1248, 237);
-            this.increaseTable.TabIndex = 16;
-            this.increaseTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.increaseTable_CellContentClick);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
+            increaseTable.Location = new Point(17, 37);
+            increaseTable.Name = "increaseTable";
+            increaseTable.ReadOnly = true;
+            increaseTable.RowHeadersVisible = false;
+            increaseTable.RowTemplate.Height = 25;
+            increaseTable.Size = new Size(895, 215);
+            increaseTable.TabIndex = 16;
+            increaseTable.CellContentClick += increaseTable_CellContentClick;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(95, 468);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(241, 23);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Noticeable Price Changes:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(17, 76);
+            label3.Name = "label3";
+            label3.Size = new Size(216, 23);
+            label3.TabIndex = 17;
+            label3.Text = "Notable Price Changes:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(248, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(211, 23);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Exchange Rate History";
+            label4.AutoSize = true;
+            label4.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(997, 370);
+            label4.Name = "label4";
+            label4.Size = new Size(211, 23);
+            label4.TabIndex = 18;
+            label4.Text = "Exchange Rate History";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(849, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(170, 23);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Card Rate History";
+            label5.AutoSize = true;
+            label5.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(243, 358);
+            label5.Name = "label5";
+            label5.Size = new Size(170, 23);
+            label5.TabIndex = 19;
+            label5.Text = "Card Rate History";
+            // 
+            // separator
+            // 
+            separator.BorderStyle = BorderStyle.Fixed3D;
+            separator.Location = new Point(707, 438);
+            separator.Name = "separator";
+            separator.Size = new Size(2, 300);
+            separator.TabIndex = 20;
+            // 
+            // logged_user
+            // 
+            logged_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            logged_user.AutoSize = true;
+            logged_user.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            logged_user.Location = new Point(154, 22);
+            logged_user.Name = "logged_user";
+            logged_user.Size = new Size(61, 23);
+            logged_user.TabIndex = 2;
+            logged_user.Text = "label1";
+            // 
+            // user_label
+            // 
+            user_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            user_label.AutoSize = true;
+            user_label.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            user_label.Location = new Point(17, 22);
+            user_label.Name = "user_label";
+            user_label.Size = new Size(145, 23);
+            user_label.TabIndex = 1;
+            user_label.Text = "Welcome back,";
+            // 
+            // top_back_panel
+            // 
+            top_back_panel.BackColor = SystemColors.ControlDark;
+            top_back_panel.Location = new Point(0, 0);
+            top_back_panel.Name = "top_back_panel";
+            top_back_panel.Size = new Size(1497, 63);
+            top_back_panel.TabIndex = 21;
             // 
             // home_page
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.increaseTable);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.rate_label);
-            this.Controls.Add(this.date_label);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart);
-            this.Controls.Add(this.logged_user);
-            this.Controls.Add(this.user_label);
-            this.Name = "home_page";
-            this.Size = new System.Drawing.Size(1500, 850);
-            ((System.ComponentModel.ISupportInitialize)(this.increaseTable)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(logged_user);
+            Controls.Add(user_label);
+            Controls.Add(separator);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(increaseTable);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(rate_label);
+            Controls.Add(date_label);
+            Controls.Add(chart2);
+            Controls.Add(chart);
+            Controls.Add(top_back_panel);
+            Name = "home_page";
+            Size = new Size(1500, 850);
+            ((System.ComponentModel.ISupportInitialize)increaseTable).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private Label user_label;
-        private Label logged_user;
         private Label label2;
         private Label label1;
         private Label rate_label;
@@ -242,5 +254,9 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label separator;
+        private Label logged_user;
+        private Label user_label;
+        private Panel top_back_panel;
     }
 }
