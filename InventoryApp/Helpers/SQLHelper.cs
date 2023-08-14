@@ -104,7 +104,7 @@ namespace InventoryApp.Helpers
                 total = (int)myCommand.ExecuteScalar();
                 pagingAdapter = new SqlDataAdapter(query, myConnection);
                 //Check if end of database is reached
-                if (scrollVal + 20 > total) 
+                if (scrollVal > 0 && scrollVal + 20 > total) 
                 {
                     pagingAdapter.Fill(scrollVal, scrollVal + 20 - total, catalog);
                     end = 1;
