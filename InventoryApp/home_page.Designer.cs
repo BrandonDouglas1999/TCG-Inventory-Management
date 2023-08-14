@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             label2 = new Label();
             label1 = new Label();
             rate_label = new Label();
@@ -46,6 +46,7 @@
             user_label = new Label();
             top_back_panel = new Panel();
             ((System.ComponentModel.ISupportInitialize)increaseTable).BeginInit();
+            top_back_panel.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -114,30 +115,30 @@
             increaseTable.AllowUserToDeleteRows = false;
             increaseTable.AllowUserToResizeColumns = false;
             increaseTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(239, 239, 249);
-            increaseTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(239, 239, 249);
+            increaseTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             increaseTable.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             increaseTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             increaseTable.BorderStyle = BorderStyle.None;
             increaseTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(47, 76, 100);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            increaseTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(47, 76, 100);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            increaseTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             increaseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.NullValue = null;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            increaseTable.DefaultCellStyle = dataGridViewCellStyle9;
             increaseTable.Location = new Point(17, 37);
             increaseTable.Name = "increaseTable";
             increaseTable.ReadOnly = true;
@@ -192,10 +193,10 @@
             // 
             logged_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logged_user.AutoSize = true;
-            logged_user.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            logged_user.Location = new Point(154, 22);
+            logged_user.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            logged_user.Location = new Point(163, 22);
             logged_user.Name = "logged_user";
-            logged_user.Size = new Size(61, 23);
+            logged_user.Size = new Size(67, 25);
             logged_user.TabIndex = 2;
             logged_user.Text = "label1";
             // 
@@ -203,16 +204,17 @@
             // 
             user_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             user_label.AutoSize = true;
-            user_label.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            user_label.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             user_label.Location = new Point(17, 22);
             user_label.Name = "user_label";
-            user_label.Size = new Size(145, 23);
+            user_label.Size = new Size(149, 25);
             user_label.TabIndex = 1;
             user_label.Text = "Welcome back,";
             // 
             // top_back_panel
             // 
             top_back_panel.BackColor = SystemColors.ControlDark;
+            top_back_panel.Controls.Add(logged_user);
             top_back_panel.Location = new Point(0, 0);
             top_back_panel.Name = "top_back_panel";
             top_back_panel.Size = new Size(1497, 63);
@@ -222,7 +224,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(logged_user);
             Controls.Add(user_label);
             Controls.Add(separator);
             Controls.Add(label5);
@@ -239,6 +240,8 @@
             Name = "home_page";
             Size = new Size(1500, 850);
             ((System.ComponentModel.ISupportInitialize)increaseTable).EndInit();
+            top_back_panel.ResumeLayout(false);
+            top_back_panel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

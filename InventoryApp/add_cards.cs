@@ -30,6 +30,13 @@ namespace InventoryApp
         {
             InitializeComponent();
             APIHelper.InitializeClient();
+            srch_option.SelectedIndex = 0;
+            set_colours();
+        }
+
+        private void set_colours()
+        {
+            panel2.BackColor = Color.FromArgb(255, 50, 55, 143);
         }
 
         //load conversion rate on opening
@@ -203,6 +210,25 @@ namespace InventoryApp
             //card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 26, 28, 60);
             card_gridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
+
+        //  Change Placeholder Text in text box to better reflect what is expected
+        private void srch_option_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (srch_option.SelectedIndex)
+            {
+                case 0:
+                    card_srch.PlaceholderText = "Eg. Dark Magician Girl";
+                    break;
+                case 1:
+                    card_srch.PlaceholderText = "Eg. 38033121";
+                    break;
+                case 2:
+                    card_srch.PlaceholderText = "Eg. Duel Overload";
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }

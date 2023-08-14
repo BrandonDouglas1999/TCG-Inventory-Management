@@ -42,6 +42,25 @@ namespace InventoryApp
             panel3 = new Panel();
             label22 = new Label();
             panel4 = new Panel();
+            label37 = new Label();
+            store_price_max = new TextBox();
+            store_price_min = new TextBox();
+            label35 = new Label();
+            label36 = new Label();
+            market_price_max = new TextBox();
+            label34 = new Label();
+            market_price_min = new TextBox();
+            label32 = new Label();
+            label33 = new Label();
+            label31 = new Label();
+            store_copies_max = new NumericUpDown();
+            store_copies_min = new NumericUpDown();
+            label30 = new Label();
+            label29 = new Label();
+            label28 = new Label();
+            label27 = new Label();
+            set_code_combobox = new ComboBox();
+            label26 = new Label();
             button1 = new Button();
             label1 = new Label();
             label20 = new Label();
@@ -73,7 +92,6 @@ namespace InventoryApp
             label2 = new Label();
             inventory_panel = new Panel();
             warning_label = new Label();
-            card_copies = new TextBox();
             store_price = new TextBox();
             label12 = new Label();
             label11 = new Label();
@@ -101,31 +119,15 @@ namespace InventoryApp
             label24 = new Label();
             Return = new Button();
             message = new ToolTip(components);
-            set_code_combobox = new ComboBox();
-            label26 = new Label();
-            label27 = new Label();
-            label28 = new Label();
-            label29 = new Label();
-            label30 = new Label();
-            store_copies_min = new NumericUpDown();
-            store_copies_max = new NumericUpDown();
-            label31 = new Label();
-            label32 = new Label();
-            label33 = new Label();
-            market_price_min = new TextBox();
-            label34 = new Label();
-            market_price_max = new TextBox();
-            store_price_max = new TextBox();
-            store_price_min = new TextBox();
-            label35 = new Label();
-            label36 = new Label();
-            label37 = new Label();
+            card_copies = new NumericUpDown();
             catalog_panel.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)catalog_view).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)store_copies_max).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)store_copies_min).BeginInit();
             tabPage2.SuspendLayout();
             card_details_panel.SuspendLayout();
             inventory_panel.SuspendLayout();
@@ -135,8 +137,7 @@ namespace InventoryApp
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GraphPic).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)store_copies_min).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)store_copies_max).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)card_copies).BeginInit();
             SuspendLayout();
             // 
             // catalog_panel
@@ -248,11 +249,11 @@ namespace InventoryApp
             // label22
             // 
             label22.AutoSize = true;
-            label22.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label22.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label22.ForeColor = Color.White;
             label22.Location = new Point(17, 22);
             label22.Name = "label22";
-            label22.Size = new Size(97, 23);
+            label22.Size = new Size(103, 25);
             label22.TabIndex = 0;
             label22.Text = "Inventory";
             // 
@@ -292,6 +293,173 @@ namespace InventoryApp
             panel4.Name = "panel4";
             panel4.Size = new Size(251, 640);
             panel4.TabIndex = 31;
+            // 
+            // label37
+            // 
+            label37.BorderStyle = BorderStyle.Fixed3D;
+            label37.Location = new Point(55, 555);
+            label37.Name = "label37";
+            label37.Size = new Size(150, 2);
+            label37.TabIndex = 50;
+            // 
+            // store_price_max
+            // 
+            store_price_max.Location = new Point(151, 513);
+            store_price_max.Name = "store_price_max";
+            store_price_max.PlaceholderText = "$0.00";
+            store_price_max.Size = new Size(65, 23);
+            store_price_max.TabIndex = 49;
+            // 
+            // store_price_min
+            // 
+            store_price_min.Location = new Point(50, 513);
+            store_price_min.Name = "store_price_min";
+            store_price_min.PlaceholderText = "$0.00";
+            store_price_min.Size = new Size(65, 23);
+            store_price_min.TabIndex = 48;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label35.Location = new Point(121, 511);
+            label35.Name = "label35";
+            label35.Size = new Size(24, 21);
+            label35.TabIndex = 47;
+            label35.Text = "to";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label36.Location = new Point(90, 477);
+            label36.Name = "label36";
+            label36.Size = new Size(87, 21);
+            label36.TabIndex = 46;
+            label36.Text = "Store Price:";
+            // 
+            // market_price_max
+            // 
+            market_price_max.Location = new Point(151, 438);
+            market_price_max.Name = "market_price_max";
+            market_price_max.PlaceholderText = "$0.00";
+            market_price_max.Size = new Size(65, 23);
+            market_price_max.TabIndex = 45;
+            // 
+            // label34
+            // 
+            label34.BorderStyle = BorderStyle.Fixed3D;
+            label34.Location = new Point(55, 384);
+            label34.Name = "label34";
+            label34.Size = new Size(150, 2);
+            label34.TabIndex = 44;
+            // 
+            // market_price_min
+            // 
+            market_price_min.Location = new Point(50, 438);
+            market_price_min.Name = "market_price_min";
+            market_price_min.PlaceholderText = "$0.00";
+            market_price_min.Size = new Size(65, 23);
+            market_price_min.TabIndex = 43;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.Location = new Point(121, 436);
+            label32.Name = "label32";
+            label32.Size = new Size(24, 21);
+            label32.TabIndex = 42;
+            label32.Text = "to";
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label33.Location = new Point(84, 404);
+            label33.Name = "label33";
+            label33.Size = new Size(100, 21);
+            label33.TabIndex = 39;
+            label33.Text = "Market Price:";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label31.Location = new Point(160, 335);
+            label31.Name = "label31";
+            label31.Size = new Size(24, 21);
+            label31.TabIndex = 38;
+            label31.Text = "to";
+            // 
+            // store_copies_max
+            // 
+            store_copies_max.Location = new Point(190, 335);
+            store_copies_max.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            store_copies_max.Name = "store_copies_max";
+            store_copies_max.Size = new Size(48, 23);
+            store_copies_max.TabIndex = 37;
+            store_copies_max.Value = new decimal(new int[] { 999, 0, 0, 0 });
+            // 
+            // store_copies_min
+            // 
+            store_copies_min.Location = new Point(106, 335);
+            store_copies_min.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            store_copies_min.Name = "store_copies_min";
+            store_copies_min.Size = new Size(48, 23);
+            store_copies_min.TabIndex = 36;
+            // 
+            // label30
+            // 
+            label30.BorderStyle = BorderStyle.Fixed3D;
+            label30.Location = new Point(55, 56);
+            label30.Name = "label30";
+            label30.Size = new Size(150, 2);
+            label30.TabIndex = 35;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label29.Location = new Point(3, 335);
+            label29.Name = "label29";
+            label29.Size = new Size(100, 21);
+            label29.TabIndex = 34;
+            label29.Text = "Store Copies:";
+            // 
+            // label28
+            // 
+            label28.BorderStyle = BorderStyle.Fixed3D;
+            label28.Location = new Point(55, 300);
+            label28.Name = "label28";
+            label28.Size = new Size(150, 2);
+            label28.TabIndex = 33;
+            // 
+            // label27
+            // 
+            label27.BorderStyle = BorderStyle.Fixed3D;
+            label27.Location = new Point(55, 175);
+            label27.Name = "label27";
+            label27.Size = new Size(150, 2);
+            label27.TabIndex = 32;
+            // 
+            // set_code_combobox
+            // 
+            set_code_combobox.FormattingEnabled = true;
+            set_code_combobox.Location = new Point(98, 203);
+            set_code_combobox.Name = "set_code_combobox";
+            set_code_combobox.Size = new Size(118, 23);
+            set_code_combobox.TabIndex = 32;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label26.Location = new Point(14, 205);
+            label26.Name = "label26";
+            label26.Size = new Size(75, 21);
+            label26.TabIndex = 31;
+            label26.Text = "Set Code:";
             // 
             // button1
             // 
@@ -604,8 +772,8 @@ namespace InventoryApp
             // 
             inventory_panel.BackColor = Color.White;
             inventory_panel.BorderStyle = BorderStyle.Fixed3D;
-            inventory_panel.Controls.Add(warning_label);
             inventory_panel.Controls.Add(card_copies);
+            inventory_panel.Controls.Add(warning_label);
             inventory_panel.Controls.Add(store_price);
             inventory_panel.Controls.Add(label12);
             inventory_panel.Controls.Add(label11);
@@ -625,14 +793,6 @@ namespace InventoryApp
             warning_label.TabIndex = 21;
             warning_label.Text = "label1";
             warning_label.Visible = false;
-            // 
-            // card_copies
-            // 
-            card_copies.Cursor = Cursors.IBeam;
-            card_copies.Location = new Point(142, 38);
-            card_copies.Name = "card_copies";
-            card_copies.Size = new Size(100, 23);
-            card_copies.TabIndex = 20;
             // 
             // store_price
             // 
@@ -742,11 +902,11 @@ namespace InventoryApp
             // label23
             // 
             label23.AutoSize = true;
-            label23.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label23.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label23.ForeColor = Color.White;
             label23.Location = new Point(78, 22);
             label23.Name = "label23";
-            label23.Size = new Size(202, 23);
+            label23.Size = new Size(213, 25);
             label23.TabIndex = 1;
             label23.Text = "Edit Inventory Values";
             // 
@@ -905,11 +1065,11 @@ namespace InventoryApp
             // label24
             // 
             label24.AutoSize = true;
-            label24.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label24.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label24.ForeColor = Color.White;
             label24.Location = new Point(78, 22);
             label24.Name = "label24";
-            label24.Size = new Size(193, 23);
+            label24.Size = new Size(193, 25);
             label24.TabIndex = 24;
             label24.Text = "Historical Card Data";
             // 
@@ -935,172 +1095,13 @@ namespace InventoryApp
             message.IsBalloon = true;
             message.ToolTipIcon = ToolTipIcon.Info;
             // 
-            // set_code_combobox
+            // card_copies
             // 
-            set_code_combobox.FormattingEnabled = true;
-            set_code_combobox.Location = new Point(98, 203);
-            set_code_combobox.Name = "set_code_combobox";
-            set_code_combobox.Size = new Size(118, 23);
-            set_code_combobox.TabIndex = 32;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label26.Location = new Point(14, 205);
-            label26.Name = "label26";
-            label26.Size = new Size(75, 21);
-            label26.TabIndex = 31;
-            label26.Text = "Set Code:";
-            // 
-            // label27
-            // 
-            label27.BorderStyle = BorderStyle.Fixed3D;
-            label27.Location = new Point(55, 175);
-            label27.Name = "label27";
-            label27.Size = new Size(150, 2);
-            label27.TabIndex = 32;
-            // 
-            // label28
-            // 
-            label28.BorderStyle = BorderStyle.Fixed3D;
-            label28.Location = new Point(55, 300);
-            label28.Name = "label28";
-            label28.Size = new Size(150, 2);
-            label28.TabIndex = 33;
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label29.Location = new Point(3, 335);
-            label29.Name = "label29";
-            label29.Size = new Size(100, 21);
-            label29.TabIndex = 34;
-            label29.Text = "Store Copies:";
-            // 
-            // label30
-            // 
-            label30.BorderStyle = BorderStyle.Fixed3D;
-            label30.Location = new Point(55, 56);
-            label30.Name = "label30";
-            label30.Size = new Size(150, 2);
-            label30.TabIndex = 35;
-            // 
-            // store_copies_min
-            // 
-            store_copies_min.Location = new Point(106, 335);
-            store_copies_min.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
-            store_copies_min.Name = "store_copies_min";
-            store_copies_min.Size = new Size(48, 23);
-            store_copies_min.TabIndex = 36;
-            // 
-            // store_copies_max
-            // 
-            store_copies_max.Location = new Point(190, 335);
-            store_copies_max.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
-            store_copies_max.Name = "store_copies_max";
-            store_copies_max.Size = new Size(48, 23);
-            store_copies_max.TabIndex = 37;
-            store_copies_max.Value = new decimal(new int[] { 999, 0, 0, 0 });
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label31.Location = new Point(160, 335);
-            label31.Name = "label31";
-            label31.Size = new Size(24, 21);
-            label31.TabIndex = 38;
-            label31.Text = "to";
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.Location = new Point(121, 436);
-            label32.Name = "label32";
-            label32.Size = new Size(24, 21);
-            label32.TabIndex = 42;
-            label32.Text = "to";
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label33.Location = new Point(84, 404);
-            label33.Name = "label33";
-            label33.Size = new Size(100, 21);
-            label33.TabIndex = 39;
-            label33.Text = "Market Price:";
-            // 
-            // market_price_min
-            // 
-            market_price_min.Location = new Point(50, 438);
-            market_price_min.Name = "market_price_min";
-            market_price_min.PlaceholderText = "$0.00";
-            market_price_min.Size = new Size(65, 23);
-            market_price_min.TabIndex = 43;
-            // 
-            // label34
-            // 
-            label34.BorderStyle = BorderStyle.Fixed3D;
-            label34.Location = new Point(55, 384);
-            label34.Name = "label34";
-            label34.Size = new Size(150, 2);
-            label34.TabIndex = 44;
-            // 
-            // market_price_max
-            // 
-            market_price_max.Location = new Point(151, 438);
-            market_price_max.Name = "market_price_max";
-            market_price_max.PlaceholderText = "$0.00";
-            market_price_max.Size = new Size(65, 23);
-            market_price_max.TabIndex = 45;
-            // 
-            // store_price_max
-            // 
-            store_price_max.Location = new Point(151, 513);
-            store_price_max.Name = "store_price_max";
-            store_price_max.PlaceholderText = "$0.00";
-            store_price_max.Size = new Size(65, 23);
-            store_price_max.TabIndex = 49;
-            // 
-            // store_price_min
-            // 
-            store_price_min.Location = new Point(50, 513);
-            store_price_min.Name = "store_price_min";
-            store_price_min.PlaceholderText = "$0.00";
-            store_price_min.Size = new Size(65, 23);
-            store_price_min.TabIndex = 48;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label35.Location = new Point(121, 511);
-            label35.Name = "label35";
-            label35.Size = new Size(24, 21);
-            label35.TabIndex = 47;
-            label35.Text = "to";
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label36.Location = new Point(90, 477);
-            label36.Name = "label36";
-            label36.Size = new Size(87, 21);
-            label36.TabIndex = 46;
-            label36.Text = "Store Price:";
-            // 
-            // label37
-            // 
-            label37.BorderStyle = BorderStyle.Fixed3D;
-            label37.Location = new Point(55, 555);
-            label37.Name = "label37";
-            label37.Size = new Size(150, 2);
-            label37.TabIndex = 50;
+            card_copies.Location = new Point(142, 39);
+            card_copies.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            card_copies.Name = "card_copies";
+            card_copies.Size = new Size(102, 23);
+            card_copies.TabIndex = 22;
             // 
             // catalog
             // 
@@ -1117,6 +1118,8 @@ namespace InventoryApp
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)store_copies_max).EndInit();
+            ((System.ComponentModel.ISupportInitialize)store_copies_min).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             card_details_panel.ResumeLayout(false);
@@ -1133,8 +1136,7 @@ namespace InventoryApp
             ((System.ComponentModel.ISupportInitialize)GraphPic).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)store_copies_min).EndInit();
-            ((System.ComponentModel.ISupportInitialize)store_copies_max).EndInit();
+            ((System.ComponentModel.ISupportInitialize)card_copies).EndInit();
             ResumeLayout(false);
         }
 
@@ -1198,7 +1200,6 @@ namespace InventoryApp
         private Label label2;
         private Panel inventory_panel;
         private Label warning_label;
-        private TextBox card_copies;
         private TextBox store_price;
         private Label label12;
         private Label label11;
@@ -1229,5 +1230,6 @@ namespace InventoryApp
         private Label label35;
         private Label label36;
         private Label label37;
+        private NumericUpDown card_copies;
     }
 }
