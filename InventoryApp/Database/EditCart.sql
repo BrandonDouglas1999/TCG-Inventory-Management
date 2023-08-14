@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Proc [dbo].[EditCart]
+Alter Proc [dbo].[EditCart]
 @UID varchar(64), /*Store id*/
 @CID int,
 @Set_Code varchar(50),
@@ -16,7 +16,7 @@ as
 Begin
     if (@Quantity = 0)
     Begin
-        Delete from dbo.ShoppingCart where card_id = @CID and set_code = @CID and rarity = @rarity
+        Delete from dbo.ShoppingCart where card_id = @CID and set_code = @Set_Code and rarity = @rarity
         set @status = 2
     End
     else

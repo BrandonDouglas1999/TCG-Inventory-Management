@@ -118,7 +118,7 @@ namespace InventoryApp
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
-            update_card.Text = "Edit Quantity";
+            update_card.Text = "Update Quantity";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             shopping_cart_view.Columns.Add(update_card);
