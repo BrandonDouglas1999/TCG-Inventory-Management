@@ -48,7 +48,7 @@ namespace InventoryApp
             search_button = new Button();
             rarity_combobox = new ComboBox();
             search_box = new TextBox();
-            set_combobox = new ComboBox();
+            set_name_combobox = new ComboBox();
             label18 = new Label();
             label19 = new Label();
             tabPage2 = new TabPage();
@@ -101,6 +101,25 @@ namespace InventoryApp
             label24 = new Label();
             Return = new Button();
             message = new ToolTip(components);
+            set_code_combobox = new ComboBox();
+            label26 = new Label();
+            label27 = new Label();
+            label28 = new Label();
+            label29 = new Label();
+            label30 = new Label();
+            store_copies_min = new NumericUpDown();
+            store_copies_max = new NumericUpDown();
+            label31 = new Label();
+            label32 = new Label();
+            label33 = new Label();
+            market_price_min = new TextBox();
+            label34 = new Label();
+            market_price_max = new TextBox();
+            store_price_max = new TextBox();
+            store_price_min = new TextBox();
+            label35 = new Label();
+            label36 = new Label();
+            label37 = new Label();
             catalog_panel.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -116,6 +135,8 @@ namespace InventoryApp
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GraphPic).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)store_copies_min).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)store_copies_max).BeginInit();
             SuspendLayout();
             // 
             // catalog_panel
@@ -162,7 +183,7 @@ namespace InventoryApp
             // label21
             // 
             label21.BorderStyle = BorderStyle.Fixed3D;
-            label21.Location = new Point(74, 91);
+            label21.Location = new Point(74, 77);
             label21.Name = "label21";
             label21.Size = new Size(150, 2);
             label21.TabIndex = 30;
@@ -239,25 +260,44 @@ namespace InventoryApp
             // 
             panel4.BackColor = Color.White;
             panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.Controls.Add(label37);
+            panel4.Controls.Add(store_price_max);
+            panel4.Controls.Add(store_price_min);
+            panel4.Controls.Add(label35);
+            panel4.Controls.Add(label36);
+            panel4.Controls.Add(market_price_max);
+            panel4.Controls.Add(label34);
+            panel4.Controls.Add(market_price_min);
+            panel4.Controls.Add(label32);
+            panel4.Controls.Add(label33);
+            panel4.Controls.Add(label31);
+            panel4.Controls.Add(store_copies_max);
+            panel4.Controls.Add(store_copies_min);
+            panel4.Controls.Add(label30);
+            panel4.Controls.Add(label29);
+            panel4.Controls.Add(label28);
+            panel4.Controls.Add(label27);
+            panel4.Controls.Add(set_code_combobox);
+            panel4.Controls.Add(label26);
             panel4.Controls.Add(button1);
             panel4.Controls.Add(label1);
             panel4.Controls.Add(label20);
             panel4.Controls.Add(search_button);
             panel4.Controls.Add(rarity_combobox);
             panel4.Controls.Add(search_box);
-            panel4.Controls.Add(set_combobox);
+            panel4.Controls.Add(set_name_combobox);
             panel4.Controls.Add(label18);
             panel4.Controls.Add(label19);
-            panel4.Location = new Point(17, 109);
+            panel4.Location = new Point(17, 91);
             panel4.Name = "panel4";
-            panel4.Size = new Size(251, 462);
+            panel4.Size = new Size(251, 640);
             panel4.TabIndex = 31;
             // 
             // button1
             // 
-            button1.Location = new Point(57, 395);
+            button1.Location = new Point(138, 587);
             button1.Name = "button1";
-            button1.Size = new Size(129, 23);
+            button1.Size = new Size(78, 25);
             button1.TabIndex = 30;
             button1.Text = "Clear Filters";
             button1.UseVisualStyleBackColor = true;
@@ -276,7 +316,7 @@ namespace InventoryApp
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(38, 186);
+            label20.Location = new Point(38, 124);
             label20.Name = "label20";
             label20.Size = new Size(54, 21);
             label20.TabIndex = 29;
@@ -284,11 +324,10 @@ namespace InventoryApp
             // 
             // search_button
             // 
-            search_button.Anchor = AnchorStyles.None;
             search_button.AutoSize = true;
-            search_button.Location = new Point(55, 337);
+            search_button.Location = new Point(35, 587);
             search_button.Name = "search_button";
-            search_button.Size = new Size(129, 25);
+            search_button.Size = new Size(80, 25);
             search_button.TabIndex = 2;
             search_button.Text = "Search";
             search_button.UseVisualStyleBackColor = true;
@@ -297,7 +336,7 @@ namespace InventoryApp
             // rarity_combobox
             // 
             rarity_combobox.FormattingEnabled = true;
-            rarity_combobox.Location = new Point(98, 184);
+            rarity_combobox.Location = new Point(98, 122);
             rarity_combobox.Name = "rarity_combobox";
             rarity_combobox.Size = new Size(118, 23);
             rarity_combobox.TabIndex = 28;
@@ -311,19 +350,19 @@ namespace InventoryApp
             search_box.TabIndex = 1;
             search_box.TextChanged += search_box_TextChanged;
             // 
-            // set_combobox
+            // set_name_combobox
             // 
-            set_combobox.FormattingEnabled = true;
-            set_combobox.Location = new Point(98, 132);
-            set_combobox.Name = "set_combobox";
-            set_combobox.Size = new Size(118, 23);
-            set_combobox.TabIndex = 27;
+            set_name_combobox.FormattingEnabled = true;
+            set_name_combobox.Location = new Point(98, 247);
+            set_name_combobox.Name = "set_name_combobox";
+            set_name_combobox.Size = new Size(118, 23);
+            set_name_combobox.TabIndex = 27;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(0, 76);
+            label18.Location = new Point(3, 76);
             label18.Name = "label18";
             label18.Size = new Size(92, 21);
             label18.TabIndex = 25;
@@ -333,11 +372,11 @@ namespace InventoryApp
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(57, 134);
+            label19.Location = new Point(14, 249);
             label19.Name = "label19";
-            label19.Size = new Size(35, 21);
+            label19.Size = new Size(81, 21);
             label19.TabIndex = 26;
-            label19.Text = "Set:";
+            label19.Text = "Set Name:";
             // 
             // tabPage2
             // 
@@ -564,7 +603,7 @@ namespace InventoryApp
             // inventory_panel
             // 
             inventory_panel.BackColor = Color.White;
-            inventory_panel.BorderStyle = BorderStyle.FixedSingle;
+            inventory_panel.BorderStyle = BorderStyle.Fixed3D;
             inventory_panel.Controls.Add(warning_label);
             inventory_panel.Controls.Add(card_copies);
             inventory_panel.Controls.Add(store_price);
@@ -896,6 +935,173 @@ namespace InventoryApp
             message.IsBalloon = true;
             message.ToolTipIcon = ToolTipIcon.Info;
             // 
+            // set_code_combobox
+            // 
+            set_code_combobox.FormattingEnabled = true;
+            set_code_combobox.Location = new Point(98, 203);
+            set_code_combobox.Name = "set_code_combobox";
+            set_code_combobox.Size = new Size(118, 23);
+            set_code_combobox.TabIndex = 32;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label26.Location = new Point(14, 205);
+            label26.Name = "label26";
+            label26.Size = new Size(75, 21);
+            label26.TabIndex = 31;
+            label26.Text = "Set Code:";
+            // 
+            // label27
+            // 
+            label27.BorderStyle = BorderStyle.Fixed3D;
+            label27.Location = new Point(55, 175);
+            label27.Name = "label27";
+            label27.Size = new Size(150, 2);
+            label27.TabIndex = 32;
+            // 
+            // label28
+            // 
+            label28.BorderStyle = BorderStyle.Fixed3D;
+            label28.Location = new Point(55, 300);
+            label28.Name = "label28";
+            label28.Size = new Size(150, 2);
+            label28.TabIndex = 33;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label29.Location = new Point(3, 335);
+            label29.Name = "label29";
+            label29.Size = new Size(100, 21);
+            label29.TabIndex = 34;
+            label29.Text = "Store Copies:";
+            // 
+            // label30
+            // 
+            label30.BorderStyle = BorderStyle.Fixed3D;
+            label30.Location = new Point(55, 56);
+            label30.Name = "label30";
+            label30.Size = new Size(150, 2);
+            label30.TabIndex = 35;
+            // 
+            // store_copies_min
+            // 
+            store_copies_min.Location = new Point(106, 335);
+            store_copies_min.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            store_copies_min.Name = "store_copies_min";
+            store_copies_min.Size = new Size(48, 23);
+            store_copies_min.TabIndex = 36;
+            // 
+            // store_copies_max
+            // 
+            store_copies_max.Location = new Point(190, 335);
+            store_copies_max.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            store_copies_max.Name = "store_copies_max";
+            store_copies_max.Size = new Size(48, 23);
+            store_copies_max.TabIndex = 37;
+            store_copies_max.Value = new decimal(new int[] { 999, 0, 0, 0 });
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label31.Location = new Point(160, 335);
+            label31.Name = "label31";
+            label31.Size = new Size(24, 21);
+            label31.TabIndex = 38;
+            label31.Text = "to";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.Location = new Point(121, 436);
+            label32.Name = "label32";
+            label32.Size = new Size(24, 21);
+            label32.TabIndex = 42;
+            label32.Text = "to";
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label33.Location = new Point(84, 404);
+            label33.Name = "label33";
+            label33.Size = new Size(100, 21);
+            label33.TabIndex = 39;
+            label33.Text = "Market Price:";
+            // 
+            // market_price_min
+            // 
+            market_price_min.Location = new Point(50, 438);
+            market_price_min.Name = "market_price_min";
+            market_price_min.PlaceholderText = "$0.00";
+            market_price_min.Size = new Size(65, 23);
+            market_price_min.TabIndex = 43;
+            // 
+            // label34
+            // 
+            label34.BorderStyle = BorderStyle.Fixed3D;
+            label34.Location = new Point(55, 384);
+            label34.Name = "label34";
+            label34.Size = new Size(150, 2);
+            label34.TabIndex = 44;
+            // 
+            // market_price_max
+            // 
+            market_price_max.Location = new Point(151, 438);
+            market_price_max.Name = "market_price_max";
+            market_price_max.PlaceholderText = "$0.00";
+            market_price_max.Size = new Size(65, 23);
+            market_price_max.TabIndex = 45;
+            // 
+            // store_price_max
+            // 
+            store_price_max.Location = new Point(151, 513);
+            store_price_max.Name = "store_price_max";
+            store_price_max.PlaceholderText = "$0.00";
+            store_price_max.Size = new Size(65, 23);
+            store_price_max.TabIndex = 49;
+            // 
+            // store_price_min
+            // 
+            store_price_min.Location = new Point(50, 513);
+            store_price_min.Name = "store_price_min";
+            store_price_min.PlaceholderText = "$0.00";
+            store_price_min.Size = new Size(65, 23);
+            store_price_min.TabIndex = 48;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label35.Location = new Point(121, 511);
+            label35.Name = "label35";
+            label35.Size = new Size(24, 21);
+            label35.TabIndex = 47;
+            label35.Text = "to";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label36.Location = new Point(90, 477);
+            label36.Name = "label36";
+            label36.Size = new Size(87, 21);
+            label36.TabIndex = 46;
+            label36.Text = "Store Price:";
+            // 
+            // label37
+            // 
+            label37.BorderStyle = BorderStyle.Fixed3D;
+            label37.Location = new Point(55, 555);
+            label37.Name = "label37";
+            label37.Size = new Size(150, 2);
+            label37.TabIndex = 50;
+            // 
             // catalog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -927,6 +1133,8 @@ namespace InventoryApp
             ((System.ComponentModel.ISupportInitialize)GraphPic).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)store_copies_min).EndInit();
+            ((System.ComponentModel.ISupportInitialize)store_copies_max).EndInit();
             ResumeLayout(false);
         }
 
@@ -959,7 +1167,7 @@ namespace InventoryApp
         private Label label1;
         private Label separator;
         private Label label18;
-        private ComboBox set_combobox;
+        private ComboBox set_name_combobox;
         private Label label19;
         private Label label20;
         private ComboBox rarity_combobox;
@@ -1002,5 +1210,24 @@ namespace InventoryApp
         private Button button2;
         private Label label23;
         private Label label25;
+        private ComboBox set_code_combobox;
+        private Label label26;
+        private Label label28;
+        private Label label27;
+        private NumericUpDown store_copies_max;
+        private NumericUpDown store_copies_min;
+        private Label label30;
+        private Label label29;
+        private Label label31;
+        private TextBox market_price_max;
+        private Label label34;
+        private TextBox market_price_min;
+        private Label label32;
+        private Label label33;
+        private TextBox store_price_max;
+        private TextBox store_price_min;
+        private Label label35;
+        private Label label36;
+        private Label label37;
     }
 }

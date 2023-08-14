@@ -222,7 +222,7 @@ namespace InventoryApp
             catalog_view.Columns.Add("Qty.", "Qty.");
             catalog_view.Columns[12].ValueType = typeof(int);
             catalog_view.Columns[12].ReadOnly = false;
-            
+
 
             DataGridViewButtonColumn add_to_cart = new DataGridViewButtonColumn();
             add_to_cart.Text = "Add to Cart";

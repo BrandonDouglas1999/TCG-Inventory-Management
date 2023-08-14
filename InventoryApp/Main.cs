@@ -55,15 +55,10 @@ namespace InventoryApp
 
         private void set_colours()
         {
-            // Sidebar colours
             sidebar.BackColor = Color.FromArgb(255, 26, 28, 60);
-            panel1.BackColor = Color.FromArgb(255, 50, 55, 143);
-            // Backdrop of the UC's
-            // Anything specific to the UC's, probably change their colours there.
 
-            card_opt_tabs.BackColor = Color.FromArgb(255, 50, 55, 143);
-            cart_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
-            sales_uc.BackColor = Color.FromArgb(255, 50, 55, 143);
+            // bottom horizontal bar. lays over all UC's since tab controls are kinda weird
+            panel1.BackColor = Color.FromArgb(255, 50, 55, 143);
 
         }
 

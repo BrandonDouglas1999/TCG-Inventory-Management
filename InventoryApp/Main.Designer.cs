@@ -193,9 +193,10 @@
             // card_opt_tabs
             // 
             card_opt_tabs.AutoSize = true;
+            card_opt_tabs.BackColor = Color.WhiteSmoke;
             card_opt_tabs.Location = new Point(125, 183);
             card_opt_tabs.Name = "card_opt_tabs";
-            card_opt_tabs.Size = new Size(1273, 833);
+            card_opt_tabs.Size = new Size(1503, 833);
             card_opt_tabs.TabIndex = 1;
             card_opt_tabs.Visible = false;
             // 
