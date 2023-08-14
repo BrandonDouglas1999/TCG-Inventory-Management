@@ -98,9 +98,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(6, 351);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(273, 25);
+            this.label3.Size = new System.Drawing.Size(321, 25);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Top 5 Cards During This Period";
+            this.label3.Text = "Top 5 Best Sellers During This Period";
             // 
             // pop_cards
             // 

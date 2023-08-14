@@ -139,7 +139,7 @@ namespace InventoryApp
             string query = "select SP.card_id, AP.card_name as 'Card Name', SP.set_code as 'Set Code', SP.rarity as 'Rarity', AP.lastWeekAVG as 'Last Week Average Price', AP.thisWeekAVG as 'This Week Average Price'" +
                 ", AP.differ as 'Price Difference' from YGOStorePrice as SP inner join " +
                 "(select C.card_name, A.card_id, A.set_code, A.rarity, A.lastWeekAVG, A.thisWeekAVG, A.differ from YGOPriceAVG as A inner join " +
-                "YGOCardsInfo as C on  A.card_id = C.card_id where A.differ > 3 or A.differ < -2) as AP on SP.card_id = AP.card_id and SP.set_code " +
+                "YGOCardsInfo as C on  A.card_id = C.card_id where ((A.thisWeekAVG - A.lastWeekAVG)/lastWeekAVG) * 100 <= -10 or ((A.thisWeekAVG - A.lastWeekAVG)/lastWeekAVG) * 100 >= 10) as AP on SP.card_id = AP.card_id and SP.set_code " +
                 $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '{uid}'";
             dt = db.Select(query);
             increaseTable.DataSource = dt;
