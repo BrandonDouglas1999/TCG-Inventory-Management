@@ -17,7 +17,6 @@ namespace InventoryApp
 {
     public partial class catalog : UserControl
     {
-        public string uid = null;
         public string path = Global.path;
         SQLHelper db = new SQLHelper();
         private ScottPlot.Plottable.ScatterPlot CardPlot;
@@ -89,14 +88,40 @@ namespace InventoryApp
                 }
                 if (e.ColumnIndex == 13 && e.RowIndex >= 0) //Add to shopping cart
                 {
-                    int success = db.AddToShoppingCart(Global.uid, cid, sc, r, (int)catalog_view.Rows[e.RowIndex].Cells[12].Value);
-                    if (success == 1)
+                    int quantity;
+                    object quantity_value = catalog_view.Rows[e.RowIndex].Cells[12].Value;
+                    string quantity_string;
+                    if (quantity_value == null)
                     {
-                        MessageBox.Show("Card added to cart");
+                        MessageBox.Show("Quantity Must Not Be Empty");
+                        return;
                     }
-                    else if (success == 0)
+
+                    quantity_string = catalog_view.Rows[e.RowIndex].Cells[12].Value.ToString();
+
+                    if (String.IsNullOrEmpty(quantity_string))
                     {
-                        MessageBox.Show("Quantity amount exceed the amount of copies on-hand.");
+                        MessageBox.Show("Quantity Must Not Be Empty");
+                    }
+                    else if (!int.TryParse(quantity_string, out quantity))
+                    {
+                        MessageBox.Show("Quantity Must Be Numeric");
+                    }
+                    else if (quantity <= 0)
+                    {
+                        MessageBox.Show("Quantity Must Be Positive");
+                    }
+                    else
+                    {
+                        int success = db.AddToShoppingCart(Global.uid, cid, sc, r, quantity);
+                        if (success == 1)
+                        {
+                            MessageBox.Show("Card added to cart");
+                        }
+                        else if (success == 0)
+                        {
+                            MessageBox.Show("Quantity amount exceed the amount of copies on-hand.");
+                        }
                     }
                     return;
                 }
@@ -220,8 +245,9 @@ namespace InventoryApp
             catalog_view.Columns.Add(edit_card);
 
             catalog_view.Columns.Add("Qty.", "Qty.");
-            catalog_view.Columns[12].ValueType = typeof(int);
+            catalog_view.Columns[12].ValueType = typeof(string);
             catalog_view.Columns[12].ReadOnly = false;
+            //catalog_view.Columns[12].AllowNumericOnly = true;
 
 
             DataGridViewButtonColumn add_to_cart = new DataGridViewButtonColumn();
@@ -257,87 +283,86 @@ namespace InventoryApp
          *                       
          * Outputs: filter_string - String to be used for SQL select statement where clause
          */
-        public static string return_filter_string(int total_filters, string card_name, string card_type, string card_race, string card_price, string rarity, string inventory, string set_name)
+        public static string return_filter_string(string search_string, string card_type, string card_race, string rarity, string card_price_upper, string card_price_lower, string inventory_lower, string inventory_upper)
         {
-            if (total_filters == 0) { return null; }
 
-            int current_filter = 0; //Way to check current number of implemented filters
             string filter_string = ""; //empty string to be used for filters for SQL select statement
 
-            //Repeated for each category that can be filtered
             //If card_name has a filter string
-            if (!string.IsNullOrEmpty(card_name))
+            if (!string.IsNullOrEmpty(search_string))
             {
-                //Increase current filter and add card_name to filter string
-                current_filter += 1;
-                filter_string += card_name;
-                //If there's another filter to be added, add " and " to SQL filter string
-                if (current_filter < total_filters)
-                {
-                    filter_string += " and ";
-                }
+                filter_string += "UPPER(card_name) like UPPER('%" + search_string + "%')";
+                filter_string += " and UPPER(set_name) like UPPER('%" + search_string +"%')";
+                filter_string += " and UPPER(set_code) like UPPER('%" + search_string +"%')";
             }
 
             if (!string.IsNullOrEmpty(card_type))
             {
-                current_filter += 1;
-                filter_string += card_type;
-                if (current_filter < total_filters)
+                if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
+                filter_string += "card_type = " + card_type;
             }
 
             if (!string.IsNullOrEmpty(card_race))
             {
-                current_filter += 1;
-                filter_string += card_race;
-                if (current_filter < total_filters)
+                if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
-            }
-
-            if (!string.IsNullOrEmpty(card_price))
-            {
-                current_filter += 1;
-                filter_string += card_price;
-                if (current_filter < total_filters)
-                {
-                    filter_string += " and ";
-                }
+                filter_string += "card_race = " + card_race;
             }
 
             if (!string.IsNullOrEmpty(rarity))
             {
-                current_filter += 1;
-                filter_string += rarity;
-                if (current_filter < total_filters)
+                if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
+                filter_string += "rarity = " + rarity;
             }
 
-            if (!string.IsNullOrEmpty(inventory))
+            if (!string.IsNullOrEmpty(card_price_lower))
             {
-                current_filter += 1;
-                filter_string += inventory;
-                if (current_filter < total_filters)
+                if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
+                filter_string += "store_price >= " + card_price_lower;
             }
 
-            if (!string.IsNullOrEmpty(set_name))
+            if (!string.IsNullOrEmpty(card_price_upper))
             {
-                current_filter += 1;
-                filter_string += set_name;
-                if (current_filter < total_filters)
+                if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
+                filter_string += "store_price <= " + card_price_upper;
             }
 
+            if (!string.IsNullOrEmpty(inventory_upper))
+            {
+                if (!string.IsNullOrEmpty(filter_string))
+                {
+                    filter_string += " and ";
+                }
+                filter_string += "copies >= " + inventory_upper;
+            }
+
+            if (!string.IsNullOrEmpty(inventory_lower))
+            {
+                if (!string.IsNullOrEmpty(filter_string))
+                {
+                    filter_string += " and ";
+                }
+                filter_string += "copies <= " + inventory_lower;
+            }
+
+            if (!string.IsNullOrEmpty(filter_string))
+            {
+                return null;
+            }
             return filter_string;
         }
         //======================================================================Edit Card Tab===========================================================================================================

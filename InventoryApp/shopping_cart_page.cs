@@ -55,7 +55,7 @@ namespace InventoryApp
             dt.Columns["price"].ColumnName = "Price";
             dt.Columns["Quantity"].ColumnName = "Quantity";
 
-            //dt.Columns.Add("Copies", Type.GetType("System.Int32"));
+            dt.Columns.Add("Copies", Type.GetType("System.String"));
 
             //get image into table
             foreach (DataRow row in dt.Rows)
@@ -64,13 +64,13 @@ namespace InventoryApp
                 try
                 {
                     row["Card Image"] = File.ReadAllBytes(image_thumbnail);
-                    //row["Copies"] = row["Quantity"];
+                    row["Copies"] = row["Quantity"].ToString();
                 }
                 catch
                 {
                     image_thumbnail = path + @"\Card_Thumbnails\21727231.jpg";
                     row["Card Image"] = File.ReadAllBytes(image_thumbnail);
-                    //row["Copies"] = row["Quantity"];
+                    row["Copies"] = row["Quantity"].ToString();
                 }
             }
 
@@ -100,17 +100,21 @@ namespace InventoryApp
             shopping_cart_view.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;                 //change header text color
             shopping_cart_view.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             shopping_cart_view.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
             shopping_cart_view.Columns[1].Visible = false; //hide image file name
             shopping_cart_view.Columns[2].Visible = false; //hide card id
+            shopping_cart_view.Columns[5].Visible = false; //hide quantity as type int not string
 
             //Make everything but the quantity read only
-            shopping_cart_view.Columns[0].ReadOnly = true;
-            shopping_cart_view.Columns[1].ReadOnly = true;
-            shopping_cart_view.Columns[2].ReadOnly = true;
-            shopping_cart_view.Columns[3].ReadOnly = true;
-            shopping_cart_view.Columns[4].ReadOnly = true;
-            shopping_cart_view.Columns[6].ReadOnly = true;
-            
+            shopping_cart_view.Columns[0].ReadOnly = true; //card name
+            shopping_cart_view.Columns[1].ReadOnly = true; //image file name
+            shopping_cart_view.Columns[2].ReadOnly = true; //card id
+            shopping_cart_view.Columns[3].ReadOnly = true; //set code
+            shopping_cart_view.Columns[4].ReadOnly = true; //rarity
+            shopping_cart_view.Columns[5].ReadOnly = true; //quantity
+            shopping_cart_view.Columns[6].ReadOnly = true; //price
+            shopping_cart_view.Columns[7].ReadOnly = true; //image
+
 
             //Change prices decimal points
             shopping_cart_view.Columns[6].DefaultCellStyle.Format = "$0.00##";
@@ -118,10 +122,12 @@ namespace InventoryApp
             //Add buttons to gridview
             DataGridViewButtonColumn update_card = new DataGridViewButtonColumn();
             update_card.FlatStyle = FlatStyle.Standard;
-            update_card.Text = "Edit Quantity";
+            update_card.Text = "Update Quantity";
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             shopping_cart_view.Columns.Add(update_card);
+
+            shopping_cart_view.Columns[0].Width = 210;
         }
 
         private void clear_button_Click(object sender, EventArgs e)
@@ -150,23 +156,37 @@ namespace InventoryApp
 
         private void shopping_cart_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 8)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 9)
             {
                 cid = shopping_cart_view.Rows[e.RowIndex].Cells[2].Value.ToString();
                 set_code = shopping_cart_view.Rows[e.RowIndex].Cells[3].Value.ToString();
                 rarity = shopping_cart_view.Rows[e.RowIndex].Cells[4].Value.ToString();
-                quantity = shopping_cart_view.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                int status = db.EditShoppingCart(Global.uid, cid, set_code, rarity, Convert.ToInt32(quantity));
-                if (status == 2)
+                quantity = shopping_cart_view.Rows[e.RowIndex].Cells[8].Value.ToString();
+                if (string.IsNullOrEmpty(quantity))
                 {
-                    MessageBox.Show("Card Removed From Cart");
+                    MessageBox.Show("Quantity Must Not Be Empty");
                 }
-                else if(status == 1)
+                else if (!int.TryParse(quantity, out int num_quantity))
                 {
-                    MessageBox.Show("Quantity Has Been Updated");
-                }   
-                paging_catalog();
+                    MessageBox.Show("Quantity Must Be Numeric");
+                }
+                else if (num_quantity < 0)
+                {
+                    MessageBox.Show("Quantity Must Be Non-Negative");
+                }
+                else
+                {
+                    int status = db.EditShoppingCart(Global.uid, cid, set_code, rarity, num_quantity);
+                    if (status == 2)
+                    {
+                        MessageBox.Show("Card Removed From Cart");
+                    }
+                    else if (status == 1)
+                    {
+                        MessageBox.Show("Quantity Has Been Updated");
+                    }
+                    paging_catalog();
+                }
                 return;
             }
         }

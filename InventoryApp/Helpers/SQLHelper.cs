@@ -24,7 +24,6 @@ namespace InventoryApp.Helpers
     class SQLHelper
     {
         //change this to your server name and the path for the image folder
-
         public static readonly String connectionString = Global.connectionString;
         public static readonly String path = Global.path;
 
@@ -104,7 +103,7 @@ namespace InventoryApp.Helpers
                 total = (int)myCommand.ExecuteScalar();
                 pagingAdapter = new SqlDataAdapter(query, myConnection);
                 //Check if end of database is reached
-                if (scrollVal + 20 > total) 
+                if (scrollVal > 0 && scrollVal + 20 > total) 
                 {
                     pagingAdapter.Fill(scrollVal, scrollVal + 20 - total, catalog);
                     end = 1;
@@ -648,9 +647,12 @@ namespace InventoryApp.Helpers
             SqlDataReader myReader;
             SqlParameter myParameter;
             DataTable dt = datatable.Copy();
+
+            //Removing columns to match table-valued parameter, refer to ReceiptQuery
             dt.Columns.Remove("Card Name");
             dt.Columns.Remove("Card Image");
             dt.Columns.Remove("image");
+            dt.Columns.Remove("copies");
             int status = 0;
             Random rand = new Random((int)DateTime.Now.Ticks);
             int tid = rand.Next(1, 100000000); //generate transaction id 
@@ -700,8 +702,7 @@ namespace InventoryApp.Helpers
         {
             DataSet ds = new DataSet();
             SqlCommand myCommand;
-            SqlDataAdapter myAdapter;
-            SqlParameter myParameter;
+            SqlDataAdapter myAdapter;;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myCommand = new SqlCommand("SalesHistory", myConnection);

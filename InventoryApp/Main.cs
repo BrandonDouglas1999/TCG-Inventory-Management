@@ -34,10 +34,6 @@ namespace InventoryApp
             activeWindow.Location = sidebarCollapsedLocation;
 
             home_page.update_username(user);
-            home_page.uid = uid;
-            //passing uid to other control
-            card_opt_tabs.uid = uid;
-            catalog_uc.uid = uid;
             home_page.load_dashboard();
             catalog_uc.paging_catalog();
             cart_uc.paging_catalog();
