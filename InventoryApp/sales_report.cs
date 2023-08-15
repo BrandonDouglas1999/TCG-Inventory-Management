@@ -84,7 +84,6 @@ namespace InventoryApp
 
         private void receipt_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(e.ColumnIndex.ToString());
             if (e.ColumnIndex == 4)
             {
                 string transaction_id = receipt_view.Rows[e.RowIndex].Cells[1].Value.ToString();

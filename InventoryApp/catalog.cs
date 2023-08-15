@@ -17,7 +17,6 @@ namespace InventoryApp
 {
     public partial class catalog : UserControl
     {
-        public string uid = null;
         public string path = Global.path;
         SQLHelper db = new SQLHelper();
         private ScottPlot.Plottable.ScatterPlot CardPlot;

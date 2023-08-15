@@ -22,7 +22,7 @@ namespace InventoryApp
         private ScottPlot.Plottable.ScatterPlot CardPlot;
         private int LastHighlightedIndex = -1; //for currency chart
         private int LastHighlightedIndex2 = -1; //for card chart
-        public string uid = null;
+
         public home_page()
         {
             InitializeComponent();
@@ -143,11 +143,10 @@ namespace InventoryApp
                 ", AP.differ as 'Price Difference' from YGOStorePrice as SP inner join " +
                 "(select C.card_name, A.card_id, A.set_code, A.rarity, A.lastWeekAVG, A.thisWeekAVG, A.differ from YGOPriceAVG as A inner join " +
                 "YGOCardsInfo as C on  A.card_id = C.card_id where ((A.thisWeekAVG - A.lastWeekAVG)/lastWeekAVG) * 100 <= -10 or ((A.thisWeekAVG - A.lastWeekAVG)/lastWeekAVG) * 100 >= 10) as AP on SP.card_id = AP.card_id and SP.set_code " +
-                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '{uid}'";
+                $"= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '{Global.uid}'";
             dt = db.Select(query);
             increaseTable.DataSource = dt;
             increaseTable.Columns[0].Visible = false;
-            increaseTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             increaseTable.Columns[4].DefaultCellStyle.Format = "$0.00##";
             increaseTable.Columns[5].DefaultCellStyle.Format = "$0.00##";
             increaseTable.Columns[6].DefaultCellStyle.Format = "$0.00##";
@@ -155,6 +154,8 @@ namespace InventoryApp
             graph_card.Text = "See Market Trend";
             graph_card.UseColumnTextForButtonValue = true;
             increaseTable.Columns.Add(graph_card);
+            increaseTable.Columns[1].Width = 200;
+
         }
 
         private void increaseTable_CellContentClick(object sender, DataGridViewCellEventArgs e)

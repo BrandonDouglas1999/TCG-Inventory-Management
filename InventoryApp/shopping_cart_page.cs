@@ -126,6 +126,8 @@ namespace InventoryApp
             update_card.UseColumnTextForButtonValue = true; //display text for button 
             update_card.CellTemplate.Style.ForeColor = Color.FromArgb(254, 38, 171, 254);
             shopping_cart_view.Columns.Add(update_card);
+
+            shopping_cart_view.Columns[0].Width = 210;
         }
 
         private void clear_button_Click(object sender, EventArgs e)
