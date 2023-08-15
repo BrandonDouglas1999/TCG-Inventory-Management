@@ -130,7 +130,7 @@
             api_ctype.Location = new Point(127, 124);
             api_ctype.Name = "api_ctype";
             api_ctype.ReadOnly = true;
-            api_ctype.Size = new Size(100, 25);
+            api_ctype.Size = new Size(300, 25);
             api_ctype.TabIndex = 51;
             // 
             // s_price
@@ -329,7 +329,7 @@
             card_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.GridColor = SystemColors.ActiveCaption;
-            card_gridview.Location = new Point(49, 341);
+            card_gridview.Location = new Point(49, 342);
             card_gridview.MultiSelect = false;
             card_gridview.Name = "card_gridview";
             card_gridview.ReadOnly = true;
@@ -343,7 +343,7 @@
             card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             card_gridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             card_gridview.RowTemplate.Height = 25;
-            card_gridview.Size = new Size(696, 177);
+            card_gridview.Size = new Size(698, 177);
             card_gridview.TabIndex = 57;
             card_gridview.CellClick += card_view_CellContentClick;
             // 
@@ -393,13 +393,14 @@
             set_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             set_gridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             set_gridview.RowTemplate.Height = 25;
-            set_gridview.Size = new Size(696, 179);
+            set_gridview.Size = new Size(698, 179);
             set_gridview.TabIndex = 45;
             set_gridview.CellClick += api_gridview_CellContentClick;
             // 
             // add_bttn
             // 
-            add_bttn.BackColor = Color.FromArgb(26, 28, 60);
+            add_bttn.BackColor = Color.FromArgb(50, 55, 143);
+            add_bttn.FlatStyle = FlatStyle.Popup;
             add_bttn.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             add_bttn.ForeColor = Color.White;
             add_bttn.ImageAlign = ContentAlignment.BottomCenter;
@@ -413,10 +414,11 @@
             // 
             // rtv_card
             // 
-            rtv_card.BackColor = Color.FromArgb(38, 171, 254);
+            rtv_card.BackColor = Color.FromArgb(50, 55, 143);
             rtv_card.Cursor = Cursors.Hand;
+            rtv_card.FlatStyle = FlatStyle.Popup;
             rtv_card.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            rtv_card.ForeColor = Color.FromArgb(26, 28, 60);
+            rtv_card.ForeColor = Color.White;
             rtv_card.Location = new Point(386, 28);
             rtv_card.Name = "rtv_card";
             rtv_card.Size = new Size(130, 29);

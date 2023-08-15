@@ -70,6 +70,7 @@
             // 
             // menu_button
             // 
+            menu_button.Cursor = Cursors.Hand;
             menu_button.FlatAppearance.BorderSize = 0;
             menu_button.FlatStyle = FlatStyle.Flat;
             menu_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -97,6 +98,7 @@
             // 
             // home_button
             // 
+            home_button.Cursor = Cursors.Hand;
             home_button.FlatAppearance.BorderSize = 0;
             home_button.FlatStyle = FlatStyle.Flat;
             home_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -115,6 +117,7 @@
             // 
             // card_button
             // 
+            card_button.Cursor = Cursors.Hand;
             card_button.FlatAppearance.BorderSize = 0;
             card_button.FlatStyle = FlatStyle.Flat;
             card_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -133,6 +136,7 @@
             // 
             // view_inventory_button
             // 
+            view_inventory_button.Cursor = Cursors.Hand;
             view_inventory_button.FlatAppearance.BorderSize = 0;
             view_inventory_button.FlatStyle = FlatStyle.Flat;
             view_inventory_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -151,6 +155,7 @@
             // 
             // cart_button
             // 
+            cart_button.Cursor = Cursors.Hand;
             cart_button.FlatAppearance.BorderSize = 0;
             cart_button.FlatStyle = FlatStyle.Flat;
             cart_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -169,6 +174,7 @@
             // 
             // sales_button
             // 
+            sales_button.Cursor = Cursors.Hand;
             sales_button.FlatAppearance.BorderSize = 0;
             sales_button.FlatStyle = FlatStyle.Flat;
             sales_button.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);

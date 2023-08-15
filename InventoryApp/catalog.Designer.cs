@@ -91,6 +91,7 @@ namespace InventoryApp
             label4 = new Label();
             label2 = new Label();
             inventory_panel = new Panel();
+            card_copies = new NumericUpDown();
             warning_label = new Label();
             store_price = new TextBox();
             label12 = new Label();
@@ -119,7 +120,6 @@ namespace InventoryApp
             label24 = new Label();
             Return = new Button();
             message = new ToolTip(components);
-            card_copies = new NumericUpDown();
             catalog_panel.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -131,13 +131,13 @@ namespace InventoryApp
             tabPage2.SuspendLayout();
             card_details_panel.SuspendLayout();
             inventory_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)card_copies).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CardImage).BeginInit();
             panel1.SuspendLayout();
             tabPage3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GraphPic).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)card_copies).BeginInit();
             SuspendLayout();
             // 
             // catalog_panel
@@ -463,12 +463,16 @@ namespace InventoryApp
             // 
             // button1
             // 
-            button1.Location = new Point(138, 587);
+            button1.BackColor = Color.WhiteSmoke;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.ForeColor = Color.FromArgb(26, 28, 60);
+            button1.Location = new Point(37, 585);
             button1.Name = "button1";
             button1.Size = new Size(78, 25);
             button1.TabIndex = 30;
             button1.Text = "Clear Filters";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -493,12 +497,16 @@ namespace InventoryApp
             // search_button
             // 
             search_button.AutoSize = true;
-            search_button.Location = new Point(35, 587);
+            search_button.BackColor = Color.FromArgb(50, 55, 143);
+            search_button.Cursor = Cursors.Hand;
+            search_button.FlatStyle = FlatStyle.Popup;
+            search_button.ForeColor = Color.White;
+            search_button.Location = new Point(136, 585);
             search_button.Name = "search_button";
             search_button.Size = new Size(80, 25);
             search_button.TabIndex = 2;
             search_button.Text = "Search";
-            search_button.UseVisualStyleBackColor = true;
+            search_button.UseVisualStyleBackColor = false;
             search_button.Click += search_button_Click;
             // 
             // rarity_combobox
@@ -781,6 +789,14 @@ namespace InventoryApp
             inventory_panel.Name = "inventory_panel";
             inventory_panel.Size = new Size(508, 99);
             inventory_panel.TabIndex = 21;
+            // 
+            // card_copies
+            // 
+            card_copies.Location = new Point(142, 39);
+            card_copies.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            card_copies.Name = "card_copies";
+            card_copies.Size = new Size(102, 23);
+            card_copies.TabIndex = 22;
             // 
             // warning_label
             // 
@@ -1095,14 +1111,6 @@ namespace InventoryApp
             message.IsBalloon = true;
             message.ToolTipIcon = ToolTipIcon.Info;
             // 
-            // card_copies
-            // 
-            card_copies.Location = new Point(142, 39);
-            card_copies.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
-            card_copies.Name = "card_copies";
-            card_copies.Size = new Size(102, 23);
-            card_copies.TabIndex = 22;
-            // 
             // catalog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1126,6 +1134,7 @@ namespace InventoryApp
             card_details_panel.PerformLayout();
             inventory_panel.ResumeLayout(false);
             inventory_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)card_copies).EndInit();
             ((System.ComponentModel.ISupportInitialize)CardImage).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1136,7 +1145,6 @@ namespace InventoryApp
             ((System.ComponentModel.ISupportInitialize)GraphPic).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)card_copies).EndInit();
             ResumeLayout(false);
         }
 

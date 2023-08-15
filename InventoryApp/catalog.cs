@@ -292,8 +292,8 @@ namespace InventoryApp
             if (!string.IsNullOrEmpty(search_string))
             {
                 filter_string += "UPPER(card_name) like UPPER('%" + search_string + "%')";
-                filter_string += " and UPPER(set_name) like UPPER('%" + search_string +"%')";
-                filter_string += " and UPPER(set_code) like UPPER('%" + search_string +"%')";
+                filter_string += " and UPPER(set_name) like UPPER('%" + search_string + "%')";
+                filter_string += " and UPPER(set_code) like UPPER('%" + search_string + "%')";
             }
 
             if (!string.IsNullOrEmpty(card_type))
@@ -424,7 +424,7 @@ namespace InventoryApp
                 warning_label.Visible = true;
                 return;
             }
-            int status = db.UpdateInventory(Global.uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Value.ToString()) ;
+            int status = db.UpdateInventory(Global.uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Value.ToString());
             if (status == 1)
             {
                 paging_catalog();
