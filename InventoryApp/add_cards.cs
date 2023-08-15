@@ -21,9 +21,7 @@ namespace InventoryApp
 {
     public partial class add_cards : UserControl
     {
-        public String path = @"D:\School-Work\Capstone\TCG-Inventory-Management-Application\InventoryApp\CardImage"; //change this to your!!!
         public double c_rate = 0;
-        public string uid = null;
         YGOProCard card;
 
         public add_cards()
@@ -134,7 +132,7 @@ namespace InventoryApp
             }
             else
             {
-                InsertCardYGO(uid, api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
+                InsertCardYGO(Global.uid, api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
                 api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Value.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
