@@ -292,8 +292,8 @@ namespace InventoryApp
             if (!string.IsNullOrEmpty(search_string))
             {
                 filter_string += "UPPER(card_name) like UPPER('%" + search_string + "%')";
-                filter_string += " and UPPER(set_name) like UPPER('%" + search_string +"%')";
-                filter_string += " and UPPER(set_code) like UPPER('%" + search_string +"%')";
+                filter_string += " and UPPER(set_name) like UPPER('%" + search_string + "%')";
+                filter_string += " and UPPER(set_code) like UPPER('%" + search_string + "%')";
             }
 
             if (!string.IsNullOrEmpty(card_type))
@@ -412,19 +412,19 @@ namespace InventoryApp
         {
             int num;
             float num2;
-            if (store_price.Text == "" || card_copies.Text == "")
+            if (store_price.Text == "")
             {
                 warning_label.Text = "* Invalid input for Store Price and/or Card Copies.";
                 warning_label.Visible = true;
                 return;
             }
-            else if (int.TryParse(card_copies.Text, out num) == false || float.TryParse(store_price.Text, out num2) == false)
+            else if (float.TryParse(store_price.Text, out num2) == false)
             {
                 warning_label.Text = "* Invalid value for Store Price and/or Card Copies";
                 warning_label.Visible = true;
                 return;
             }
-            int status = db.UpdateInventory(Global.uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Text);
+            int status = db.UpdateInventory(Global.uid, card_id.Text, set_code.Text, card_rarity.Text, store_price.Text, card_copies.Value.ToString());
             if (status == 1)
             {
                 paging_catalog();

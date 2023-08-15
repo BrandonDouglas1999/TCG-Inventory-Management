@@ -92,6 +92,7 @@ namespace InventoryApp
             {
                 shopping_cart_view.ColumnCount = 1;
                 shopping_cart_view.Columns[0].Name = "Shopping Cart is Currently Empty";
+                cart_qnty_label.Text = "Your Shopping Cart is empty.";
                 return;
             }
             shopping_cart_view.DataSource = dt;

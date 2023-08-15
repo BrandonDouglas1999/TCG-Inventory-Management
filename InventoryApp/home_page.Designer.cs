@@ -46,6 +46,7 @@
             user_label = new Label();
             top_back_panel = new Panel();
             ((System.ComponentModel.ISupportInitialize)increaseTable).BeginInit();
+            top_back_panel.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -138,7 +139,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
-            increaseTable.Location = new Point(17, 37);
+            increaseTable.Location = new Point(60, 37);
             increaseTable.Name = "increaseTable";
             increaseTable.ReadOnly = true;
             increaseTable.RowHeadersVisible = false;
@@ -152,7 +153,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(17, 76);
+            label3.Location = new Point(60, 76);
             label3.Name = "label3";
             label3.Size = new Size(216, 23);
             label3.TabIndex = 17;
@@ -192,10 +193,10 @@
             // 
             logged_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             logged_user.AutoSize = true;
-            logged_user.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            logged_user.Location = new Point(154, 22);
+            logged_user.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            logged_user.Location = new Point(163, 22);
             logged_user.Name = "logged_user";
-            logged_user.Size = new Size(61, 23);
+            logged_user.Size = new Size(67, 25);
             logged_user.TabIndex = 2;
             logged_user.Text = "label1";
             // 
@@ -203,16 +204,17 @@
             // 
             user_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             user_label.AutoSize = true;
-            user_label.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            user_label.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             user_label.Location = new Point(17, 22);
             user_label.Name = "user_label";
-            user_label.Size = new Size(145, 23);
+            user_label.Size = new Size(149, 25);
             user_label.TabIndex = 1;
             user_label.Text = "Welcome back,";
             // 
             // top_back_panel
             // 
             top_back_panel.BackColor = SystemColors.ControlDark;
+            top_back_panel.Controls.Add(logged_user);
             top_back_panel.Location = new Point(0, 0);
             top_back_panel.Name = "top_back_panel";
             top_back_panel.Size = new Size(1497, 63);
@@ -222,7 +224,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(logged_user);
             Controls.Add(user_label);
             Controls.Add(separator);
             Controls.Add(label5);
@@ -239,6 +240,8 @@
             Name = "home_page";
             Size = new Size(1500, 850);
             ((System.ComponentModel.ISupportInitialize)increaseTable).EndInit();
+            top_back_panel.ResumeLayout(false);
+            top_back_panel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
