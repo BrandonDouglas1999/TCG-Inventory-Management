@@ -120,10 +120,10 @@
             // sub_total
             // 
             sub_total.AutoSize = true;
-            sub_total.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            sub_total.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             sub_total.Location = new Point(233, 9);
             sub_total.Name = "sub_total";
-            sub_total.Size = new Size(57, 21);
+            sub_total.Size = new Size(52, 21);
             sub_total.TabIndex = 8;
             sub_total.Text = "label2";
             // 
@@ -150,10 +150,10 @@
             // taxes
             // 
             taxes.AutoSize = true;
-            taxes.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            taxes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             taxes.Location = new Point(233, 40);
             taxes.Name = "taxes";
-            taxes.Size = new Size(57, 21);
+            taxes.Size = new Size(52, 21);
             taxes.TabIndex = 6;
             taxes.Text = "label2";
             // 
