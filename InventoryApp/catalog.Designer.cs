@@ -241,7 +241,7 @@ namespace InventoryApp
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
             catalog_view.RowTemplate.Height = 25;
-            catalog_view.Size = new Size(1100, 528);
+            catalog_view.Size = new Size(1108, 528);
             catalog_view.TabIndex = 7;
             catalog_view.CellContentClick += catalog_view_CellContentClick;
             // 

@@ -210,14 +210,14 @@
             // 
             home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             home_page.AutoSize = true;
-            home_page.Location = new Point(76, 6);
+            home_page.Location = new Point(150, 116);
             home_page.Name = "home_page";
             home_page.Size = new Size(1503, 1001);
             home_page.TabIndex = 2;
             // 
             // sales_uc
             // 
-            sales_uc.Location = new Point(591, 94);
+            sales_uc.Location = new Point(289, 134);
             sales_uc.Name = "sales_uc";
             sales_uc.Size = new Size(406, 224);
             sales_uc.TabIndex = 4;
@@ -225,6 +225,8 @@
             // 
             // cart_uc
             // 
+            cart_uc.BackColor = Color.WhiteSmoke;
+            cart_uc.BorderStyle = BorderStyle.FixedSingle;
             cart_uc.Location = new Point(478, 30);
             cart_uc.Name = "cart_uc";
             cart_uc.Size = new Size(718, 390);
@@ -233,7 +235,7 @@
             // 
             // catalog_uc
             // 
-            catalog_uc.Location = new Point(380, 2);
+            catalog_uc.Location = new Point(379, 144);
             catalog_uc.Name = "catalog_uc";
             catalog_uc.Size = new Size(737, 276);
             catalog_uc.TabIndex = 6;
@@ -255,11 +257,11 @@
             ClientSize = new Size(1484, 811);
             Controls.Add(panel1);
             Controls.Add(catalog_uc);
-            Controls.Add(sales_uc);
             Controls.Add(sidebar);
             Controls.Add(home_page);
             Controls.Add(card_opt_tabs);
             Controls.Add(cart_uc);
+            Controls.Add(sales_uc);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Main";
             Text = "Main";

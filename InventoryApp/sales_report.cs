@@ -20,7 +20,7 @@ namespace InventoryApp
     {
         public string uid = null;
         SQLHelper db = new SQLHelper();
-        
+
         public sales_report()
         {
             InitializeComponent();
@@ -103,24 +103,28 @@ namespace InventoryApp
             pie.Explode = true;
             pie.ShowValues = true;
             cardPlot.Refresh();
-        } 
-        
+        }
+
         private void bar_chart(DataTable dt)
         {
             List<ScottPlot.Plottable.Bar> bars = new();
             int[] y = new int[dt.Rows.Count];
             string[] x = new string[dt.Rows.Count];
+            string[] x_labels = new string[dt.Rows.Count];
+            double[] positions = new double[dt.Rows.Count];
             for (int count = 0; count < dt.Rows.Count; count++)
             {
                 int value = Convert.ToInt32(dt.Rows[count]["Unit Sold"]);
                 string card = dt.Rows[count]["Card Name"].ToString();
+                x_labels[count] = card.Split(' ')[0];
+                positions[count] = count;
                 ScottPlot.Plottable.Bar b = new()
                 {
                     Value = value,
                     Position = count,
                     FillColor = ScottPlot.Palette.Category10.GetColor(count),
                     Label = value.ToString(),
-                    LineWidth = 2,         
+                    LineWidth = 2,
                 };
                 bars.Add(b);
                 pop_cards.Rows[count].DefaultCellStyle.BackColor = ScottPlot.Palette.Category10.GetColor(count);
@@ -131,6 +135,7 @@ namespace InventoryApp
             bar.SetAxisLimitsY(0, Convert.ToInt32(dt.Rows[0]["Unit Sold"]) + 2);
             bar.YAxis.AxisTicks.MajorLineWidth = 2;
             bar.YAxis.AxisTicks.MinorLineWidth = 1;
+            bar.XTicks(positions, x_labels);
             cardPlot.Refresh();
         }
 
@@ -142,7 +147,7 @@ namespace InventoryApp
             string query = "Select C.image, C.card_name as 'Card Name', R.set_code as 'Set Code', R.rarity as 'Rarity', R.quantity as Qty, R.price as Price from " +
                 "(Select card_id, set_code, rarity, quantity, price from dbo.ReceiptInfo " +
                     $"where user_id = '{Global.uid}' and transaction_id = {transaction_id}) R inner join dbo.YGOCardsInfo as C on C.card_id = R.card_id";
-            
+
             dt = db.Select(query);
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             foreach (DataRow row in dt.Rows)
