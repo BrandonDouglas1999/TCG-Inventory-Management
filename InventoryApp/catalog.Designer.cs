@@ -199,23 +199,31 @@ namespace InventoryApp
             // 
             // next_catalog
             // 
-            next_catalog.Location = new Point(894, 680);
+            next_catalog.BackColor = Color.White;
+            next_catalog.FlatStyle = FlatStyle.Popup;
+            next_catalog.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            next_catalog.ForeColor = Color.FromArgb(26, 28, 60);
+            next_catalog.Location = new Point(822, 678);
             next_catalog.Name = "next_catalog";
-            next_catalog.Size = new Size(99, 23);
+            next_catalog.Size = new Size(177, 35);
             next_catalog.TabIndex = 9;
             next_catalog.Text = "Next Page";
-            next_catalog.UseVisualStyleBackColor = true;
+            next_catalog.UseVisualStyleBackColor = false;
             next_catalog.Click += next_catalog_Click;
             // 
             // prev_catalog
             // 
+            prev_catalog.BackColor = Color.White;
             prev_catalog.Enabled = false;
-            prev_catalog.Location = new Point(777, 680);
+            prev_catalog.FlatStyle = FlatStyle.Popup;
+            prev_catalog.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            prev_catalog.ForeColor = Color.FromArgb(26, 28, 60);
+            prev_catalog.Location = new Point(599, 678);
             prev_catalog.Name = "prev_catalog";
-            prev_catalog.Size = new Size(99, 23);
+            prev_catalog.Size = new Size(173, 35);
             prev_catalog.TabIndex = 8;
             prev_catalog.Text = "Previous Page";
-            prev_catalog.UseVisualStyleBackColor = true;
+            prev_catalog.UseVisualStyleBackColor = false;
             prev_catalog.Click += prev_catalog_Click;
             // 
             // catalog_view
@@ -228,12 +236,12 @@ namespace InventoryApp
             catalog_view.BorderStyle = BorderStyle.None;
             catalog_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             catalog_view.GridColor = SystemColors.Control;
-            catalog_view.Location = new Point(325, 109);
+            catalog_view.Location = new Point(311, 109);
             catalog_view.Name = "catalog_view";
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
             catalog_view.RowTemplate.Height = 25;
-            catalog_view.Size = new Size(1080, 528);
+            catalog_view.Size = new Size(1100, 528);
             catalog_view.TabIndex = 7;
             catalog_view.CellContentClick += catalog_view_CellContentClick;
             // 
