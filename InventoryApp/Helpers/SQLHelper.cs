@@ -724,5 +724,81 @@ namespace InventoryApp.Helpers
             }
             return ds;
         }
+
+
+        public DataTable GetRarities()
+        {
+            string query = "Select distinct rarity from dbo.YGOMarketPrice";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
+
+        public DataTable GetCardType()
+        {
+            string query = "Select distinct card_type from dbo.YGOCardsInfo";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
+
+        public DataTable GetCardRace()
+        {
+            string query = "Select distinct card_race from dbo.YGOCardsInfo";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
     }
 }

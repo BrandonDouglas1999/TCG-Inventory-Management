@@ -137,6 +137,30 @@ namespace InventoryApp
         {
             setup_dttable();
             format_view();
+
+            //Fill combo boxes
+            DataTable rarity_datatable = db.GetRarities();
+            rarity_datatable.DefaultView.Sort = "Rarity ASC";
+            rarity_combobox.DataSource = rarity_datatable;
+            rarity_combobox.DisplayMember = "Rarity";
+
+            DataTable card_type_datatable = db.GetCardType();
+            DataRow emptyRow = card_type_datatable.NewRow();
+            emptyRow["card_type"] = "";
+            card_type_datatable.Rows.Add(emptyRow);
+            card_type_datatable.DefaultView.Sort = "card_type ASC";
+            card_type_combobox.DataSource = card_type_datatable;
+            card_type_combobox.DisplayMember = "card_type";
+
+
+            DataTable card_race_datatable = db.GetCardRace();
+            emptyRow = card_race_datatable.NewRow();
+            emptyRow["card_race"] = "";
+            card_race_datatable.Rows.Add(emptyRow);
+            card_race_datatable.DefaultView.Sort = "card_race ASC";
+            card_race_combobox.DataSource = card_race_datatable;
+            card_race_combobox.DisplayMember = "card_race";
+
         }
 
         private void prev_catalog_Click(object sender, EventArgs e)
@@ -265,6 +289,22 @@ namespace InventoryApp
             catalog_view.Columns[9].Width = 50;
             catalog_view.Columns[12].Width = 35;
 
+            //Make sure columns are not editable
+            catalog_view.Columns[0].ReadOnly = true;
+            catalog_view.Columns[1].ReadOnly = true;
+            catalog_view.Columns[2].ReadOnly = true;
+            catalog_view.Columns[3].ReadOnly = true;
+            catalog_view.Columns[4].ReadOnly = true;
+            catalog_view.Columns[5].ReadOnly = true;
+            catalog_view.Columns[6].ReadOnly = true;
+            catalog_view.Columns[7].ReadOnly = true;
+            catalog_view.Columns[8].ReadOnly = true;
+            catalog_view.Columns[9].ReadOnly = true;
+            catalog_view.Columns[10].ReadOnly = true;
+            catalog_view.Columns[11].ReadOnly = true;
+            catalog_view.Columns[12].ReadOnly = false; //Make sure quantity is editable
+            catalog_view.Columns[13].ReadOnly = true;
+
             foreach (DataGridViewRow r in catalog_view.Rows)
             {
                 r.Cells[12].Value = 1;
@@ -283,7 +323,7 @@ namespace InventoryApp
          *                       
          * Outputs: filter_string - String to be used for SQL select statement where clause
          */
-        public static string return_filter_string(string search_string, string card_type, string card_race, string rarity, string card_price_upper, string card_price_lower, string inventory_lower, string inventory_upper)
+        public static string return_filter_string(string search_string, string card_type, string card_race, string rarity, string card_price_lower, string card_price_upper, string inventory_lower, string inventory_upper)
         {
 
             string filter_string = ""; //empty string to be used for filters for SQL select statement
@@ -341,22 +381,22 @@ namespace InventoryApp
                 filter_string += "store_price <= " + card_price_upper;
             }
 
-            if (!string.IsNullOrEmpty(inventory_upper))
-            {
-                if (!string.IsNullOrEmpty(filter_string))
-                {
-                    filter_string += " and ";
-                }
-                filter_string += "copies >= " + inventory_upper;
-            }
-
             if (!string.IsNullOrEmpty(inventory_lower))
             {
                 if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
-                filter_string += "copies <= " + inventory_lower;
+                filter_string += "copies >= " + inventory_lower;
+            }
+
+            if (!string.IsNullOrEmpty(inventory_upper))
+            {
+                if (!string.IsNullOrEmpty(filter_string))
+                {
+                    filter_string += " and ";
+                }
+                filter_string += "copies <= " + inventory_upper;
             }
 
             if (!string.IsNullOrEmpty(filter_string))

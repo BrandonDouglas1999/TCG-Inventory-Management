@@ -27,6 +27,8 @@ namespace InventoryApp
         string rarity;
         string quantity;
 
+        int total_copies;
+
         public shopping_cart_page()
         {
             InitializeComponent();
@@ -80,6 +82,8 @@ namespace InventoryApp
                 sub_total.Text = totalprice.ToString("$0.00");
                 taxes.Text = (totalprice * 0.05).ToString("$0.00");
                 total_price.Text = (totalprice + (totalprice * 0.05)).ToString("$0.00");
+
+                total_copies = Convert.ToInt32(dt.Compute("Sum(Quantity)", string.Empty));
             }
         }
 
