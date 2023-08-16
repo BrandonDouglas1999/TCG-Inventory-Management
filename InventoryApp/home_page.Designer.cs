@@ -117,7 +117,6 @@
             increaseTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(239, 239, 249);
             increaseTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            increaseTable.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             increaseTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             increaseTable.BorderStyle = BorderStyle.None;
             increaseTable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -139,7 +138,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             increaseTable.DefaultCellStyle = dataGridViewCellStyle3;
-            increaseTable.Location = new Point(60, 37);
+            increaseTable.Location = new Point(60, 115);
             increaseTable.Name = "increaseTable";
             increaseTable.ReadOnly = true;
             increaseTable.RowHeadersVisible = false;

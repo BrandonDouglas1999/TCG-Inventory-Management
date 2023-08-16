@@ -316,7 +316,6 @@
             card_gridview.AllowUserToDeleteRows = false;
             card_gridview.AllowUserToResizeColumns = false;
             card_gridview.AllowUserToResizeRows = false;
-            card_gridview.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             card_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             card_gridview.BackgroundColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -367,7 +366,6 @@
             set_gridview.AllowUserToDeleteRows = false;
             set_gridview.AllowUserToResizeColumns = false;
             set_gridview.AllowUserToResizeRows = false;
-            set_gridview.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             set_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             set_gridview.BackgroundColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
