@@ -217,8 +217,16 @@ namespace InventoryApp
                 }
                 catch
                 {
-                    image_thumbnail = path + @"\Card_Thumbnails\21727231.jpg";
-                    row["Card Image"] = File.ReadAllBytes(image_thumbnail);
+                    try
+                    {
+                        SaveImage(row["card_id"].ToString(), Global.path); //Retrieve image from link
+                        row["Card Image"] = File.ReadAllBytes(image_thumbnail); //try again
+                    }
+                    catch
+                    {
+                        image_thumbnail = Global.path + @"\Card_Thumbnails\21727231.jpg";
+                        row["Card Image"] = File.ReadAllBytes(image_thumbnail);
+                    }
                 }
 
             }
@@ -645,6 +653,52 @@ namespace InventoryApp
             store_price_lower.Text = "";
             store_price_upper.Text = "";
             paging_catalog();
+        }
+
+        public async void SaveImage(string card_ID, string path)
+        {
+            YGOProCard card = await CardProcessor.GetImage(card_ID);
+            string url = card.data[0].card_images[0].image_url;
+            String file_name = card_ID + ".jpg";
+            String file_path = path + @"\" + file_name;
+            String save_path = path + @"\Card_Thumbnails\" + file_name;
+            var uri = new Uri(url);
+            if (File.Exists(save_path) && File.Exists(file_path)) //check if both file exist
+            {
+                return;
+            }
+            else
+            {   try
+                {
+                    HttpClient client = new HttpClient();
+                    using (var stream = await client.GetStreamAsync(uri))
+                    {
+                        using (var file_stream = new FileStream(file_path, FileMode.CreateNew))
+                        {
+                            await stream.CopyToAsync(file_stream);
+                        }
+                    }
+                    create_thumbnail(file_name, path);
+                }
+                catch 
+                {
+                    return;
+                }
+            }
+        }
+
+        /*Create thumbnail from image*/
+        private void create_thumbnail(string file_name, string path)
+        {
+            if (!File.Exists(file_name))
+            {
+                DirectoryInfo d = new DirectoryInfo(Global.path);
+                string save_path = path + @"\Card_Thumbnails\";
+                Image img = new Bitmap(path + @"\" + file_name);
+                Image myThumbnail = img.GetThumbnailImage(105, 153, () => false, IntPtr.Zero);
+                myThumbnail.Save(save_path + file_name);
+            }
+            return;
         }
     }
 }
