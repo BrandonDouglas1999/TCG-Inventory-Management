@@ -47,10 +47,18 @@
             cardPlot = new ScottPlot.FormsPlot();
             receipt_view = new DataGridView();
             tabPage2 = new TabPage();
+            label4 = new Label();
             panel1 = new Panel();
             button1 = new Button();
             label23 = new Label();
             receipt_info = new DataGridView();
+            panel4 = new Panel();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            recpt_ID = new Label();
+            items = new Label();
+            cost = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel2.SuspendLayout();
@@ -60,6 +68,7 @@
             tabPage2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)receipt_info).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -245,6 +254,8 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.WhiteSmoke;
+            tabPage2.Controls.Add(label5);
+            tabPage2.Controls.Add(panel4);
             tabPage2.Controls.Add(panel1);
             tabPage2.Controls.Add(receipt_info);
             tabPage2.Location = new Point(4, 24);
@@ -253,6 +264,17 @@
             tabPage2.Size = new Size(1492, 822);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Receipt info";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlText;
+            label4.Location = new Point(69, 20);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 21);
+            label4.TabIndex = 26;
+            label4.Text = "Receipt ID:";
             // 
             // panel1
             // 
@@ -301,14 +323,91 @@
             receipt_info.BorderStyle = BorderStyle.None;
             receipt_info.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             receipt_info.GridColor = SystemColors.Control;
-            receipt_info.Location = new Point(133, 114);
+            receipt_info.Location = new Point(528, 107);
             receipt_info.Name = "receipt_info";
             receipt_info.ReadOnly = true;
             receipt_info.RowHeadersVisible = false;
             receipt_info.RowHeadersWidth = 51;
             receipt_info.RowTemplate.Height = 25;
-            receipt_info.Size = new Size(747, 378);
+            receipt_info.Size = new Size(747, 604);
             receipt_info.TabIndex = 8;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.White;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(cost);
+            panel4.Controls.Add(items);
+            panel4.Controls.Add(recpt_ID);
+            panel4.Controls.Add(label7);
+            panel4.Controls.Add(label6);
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(78, 165);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(348, 188);
+            panel4.TabIndex = 27;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(78, 107);
+            label5.Name = "label5";
+            label5.Size = new Size(195, 25);
+            label5.TabIndex = 28;
+            label5.Text = "Receipt Information:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ControlText;
+            label6.Location = new Point(73, 124);
+            label6.Name = "label6";
+            label6.Size = new Size(86, 21);
+            label6.TabIndex = 27;
+            label6.Text = "Total Cost:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = SystemColors.ControlText;
+            label7.Location = new Point(20, 71);
+            label7.Name = "label7";
+            label7.Size = new Size(139, 21);
+            label7.TabIndex = 28;
+            label7.Text = "Number of Items:";
+            // 
+            // recpt_ID
+            // 
+            recpt_ID.AutoSize = true;
+            recpt_ID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            recpt_ID.Location = new Point(242, 20);
+            recpt_ID.Name = "recpt_ID";
+            recpt_ID.Size = new Size(52, 21);
+            recpt_ID.TabIndex = 29;
+            recpt_ID.Text = "label2";
+            // 
+            // items
+            // 
+            items.AutoSize = true;
+            items.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            items.Location = new Point(242, 71);
+            items.Name = "items";
+            items.Size = new Size(52, 21);
+            items.TabIndex = 30;
+            items.Text = "label2";
+            // 
+            // cost
+            // 
+            cost.AutoSize = true;
+            cost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cost.Location = new Point(242, 124);
+            cost.Name = "cost";
+            cost.Size = new Size(52, 21);
+            cost.TabIndex = 31;
+            cost.Text = "label2";
             // 
             // sales_report
             // 
@@ -327,9 +426,12 @@
             ((System.ComponentModel.ISupportInitialize)pop_cards).EndInit();
             ((System.ComponentModel.ISupportInitialize)receipt_view).EndInit();
             tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)receipt_info).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -355,5 +457,13 @@
         private Label label22;
         private Panel panel2;
         private Label separator;
+        private Label label4;
+        private Label label5;
+        private Panel panel4;
+        private Label label7;
+        private Label label6;
+        private Label cost;
+        private Label items;
+        private Label recpt_ID;
     }
 }

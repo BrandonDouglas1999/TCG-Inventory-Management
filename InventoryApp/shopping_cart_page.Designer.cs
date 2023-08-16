@@ -66,7 +66,7 @@
             check_out.FlatStyle = FlatStyle.Popup;
             check_out.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             check_out.ForeColor = Color.White;
-            check_out.Location = new Point(913, 349);
+            check_out.Location = new Point(929, 349);
             check_out.Name = "check_out";
             check_out.Size = new Size(305, 51);
             check_out.TabIndex = 2;
@@ -104,7 +104,7 @@
             panel1.Controls.Add(taxes);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(total_price);
-            panel1.Location = new Point(913, 175);
+            panel1.Location = new Point(929, 175);
             panel1.Name = "panel1";
             panel1.Size = new Size(305, 138);
             panel1.TabIndex = 5;
@@ -172,7 +172,7 @@
             shopping_cart_view.Name = "shopping_cart_view";
             shopping_cart_view.RowHeadersWidth = 51;
             shopping_cart_view.RowTemplate.Height = 25;
-            shopping_cart_view.Size = new Size(786, 479);
+            shopping_cart_view.Size = new Size(804, 479);
             shopping_cart_view.TabIndex = 0;
             shopping_cart_view.CellContentClick += shopping_cart_view_CellContentClick;
             // 
