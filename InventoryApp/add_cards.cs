@@ -180,12 +180,13 @@ namespace InventoryApp
                 set_gridview.DataSource = card.data[index].card_sets;
                 setinfo_column();
             }
-            else {
+            else
+            {
                 set_gridview.DataSource = null;
                 set_gridview.ColumnCount = 1;
-                set_gridview.Columns[0].Name = "No Card Version Available"; 
+                set_gridview.Columns[0].Name = "No Card Version Available";
             }
-            
+
         }
 
         //Change header name and add select button for set gridview

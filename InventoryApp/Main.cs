@@ -9,7 +9,6 @@ namespace InventoryApp
         public string user = "test user";
         public string uid = null;
         bool sidebarExpand = false;
-        int activeWindowNumber = 1;
         UserControl activeWindow;
         Point sidebarCollapsedLocation;
         Point sidebarExpandedLocation;
@@ -135,6 +134,7 @@ namespace InventoryApp
         {
             transitionUC(sales_uc);
             sales_uc.load_sales();
+            activeWindow.SendToBack();
         }
 
         // Handles the transition between UserControls (buttons)
@@ -149,9 +149,9 @@ namespace InventoryApp
             activeWindow.Show();
 
             // This is here to hide the white border since colour cant be changed in tab control.
-            if (activeWindow == catalog_uc)
+            if (activeWindow == catalog_uc || activeWindow == sales_uc)
             {
-                activeWindow.Location = new Point(activeWindow.Location.X - 4, activeWindow.Location.Y - 5); ;
+                activeWindow.Location = new Point(activeWindow.Location.X - 4, activeWindow.Location.Y - 5);
             }
 
         }

@@ -145,9 +145,8 @@ namespace InventoryApp
             catalog_panel.Controls.Add(tabControl1);
             catalog_panel.Dock = DockStyle.Fill;
             catalog_panel.Location = new Point(0, 0);
-            catalog_panel.Margin = new Padding(3, 4, 3, 4);
             catalog_panel.Name = "catalog_panel";
-            catalog_panel.Size = new Size(1714, 1133);
+            catalog_panel.Size = new Size(1500, 850);
             catalog_panel.TabIndex = 0;
             // 
             // tabControl1
@@ -161,7 +160,7 @@ namespace InventoryApp
             tabControl1.Margin = new Padding(0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1714, 1133);
+            tabControl1.Size = new Size(1500, 850);
             tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -178,24 +177,24 @@ namespace InventoryApp
             tabPage1.Location = new Point(4, 64);
             tabPage1.Margin = new Padding(0);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(1706, 1065);
+            tabPage1.Size = new Size(1492, 782);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             // 
             // label21
             // 
             label21.BorderStyle = BorderStyle.Fixed3D;
-            label21.Location = new Point(85, 103);
+            label21.Location = new Point(74, 77);
             label21.Name = "label21";
-            label21.Size = new Size(171, 3);
+            label21.Size = new Size(150, 2);
             label21.TabIndex = 30;
             // 
             // separator
             // 
             separator.BorderStyle = BorderStyle.Fixed3D;
-            separator.Location = new Point(328, 121);
+            separator.Location = new Point(287, 91);
             separator.Name = "separator";
-            separator.Size = new Size(2, 800);
+            separator.Size = new Size(2, 600);
             separator.TabIndex = 23;
             // 
             // next_catalog
@@ -204,10 +203,9 @@ namespace InventoryApp
             next_catalog.FlatStyle = FlatStyle.Popup;
             next_catalog.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             next_catalog.ForeColor = Color.FromArgb(26, 28, 60);
-            next_catalog.Location = new Point(939, 904);
-            next_catalog.Margin = new Padding(3, 4, 3, 4);
+            next_catalog.Location = new Point(822, 678);
             next_catalog.Name = "next_catalog";
-            next_catalog.Size = new Size(202, 47);
+            next_catalog.Size = new Size(177, 35);
             next_catalog.TabIndex = 9;
             next_catalog.Text = "Next Page";
             next_catalog.UseVisualStyleBackColor = false;
@@ -220,10 +218,9 @@ namespace InventoryApp
             prev_catalog.FlatStyle = FlatStyle.Popup;
             prev_catalog.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             prev_catalog.ForeColor = Color.FromArgb(26, 28, 60);
-            prev_catalog.Location = new Point(685, 904);
-            prev_catalog.Margin = new Padding(3, 4, 3, 4);
+            prev_catalog.Location = new Point(599, 678);
             prev_catalog.Name = "prev_catalog";
-            prev_catalog.Size = new Size(198, 47);
+            prev_catalog.Size = new Size(173, 35);
             prev_catalog.TabIndex = 8;
             prev_catalog.Text = "Previous Page";
             prev_catalog.UseVisualStyleBackColor = false;
@@ -239,13 +236,12 @@ namespace InventoryApp
             catalog_view.BorderStyle = BorderStyle.None;
             catalog_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             catalog_view.GridColor = SystemColors.Control;
-            catalog_view.Location = new Point(355, 145);
-            catalog_view.Margin = new Padding(3, 4, 3, 4);
+            catalog_view.Location = new Point(311, 109);
             catalog_view.Name = "catalog_view";
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
             catalog_view.RowTemplate.Height = 25;
-            catalog_view.Size = new Size(1257, 704);
+            catalog_view.Size = new Size(1110, 540);
             catalog_view.TabIndex = 7;
             catalog_view.CellContentClick += catalog_view_CellContentClick;
             // 
@@ -254,9 +250,8 @@ namespace InventoryApp
             panel3.BackColor = SystemColors.ControlDark;
             panel3.Controls.Add(label22);
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1711, 84);
+            panel3.Size = new Size(1497, 63);
             panel3.TabIndex = 22;
             // 
             // label22
@@ -264,9 +259,9 @@ namespace InventoryApp
             label22.AutoSize = true;
             label22.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(19, 29);
+            label22.Location = new Point(17, 22);
             label22.Name = "label22";
-            label22.Size = new Size(121, 31);
+            label22.Size = new Size(103, 25);
             label22.TabIndex = 0;
             label22.Text = "Inventory";
             // 
@@ -302,45 +297,42 @@ namespace InventoryApp
             panel4.Controls.Add(card_race_combobox);
             panel4.Controls.Add(label18);
             panel4.Controls.Add(label19);
-            panel4.Location = new Point(19, 121);
-            panel4.Margin = new Padding(3, 4, 3, 4);
+            panel4.Location = new Point(17, 91);
             panel4.Name = "panel4";
-            panel4.Size = new Size(286, 852);
+            panel4.Size = new Size(251, 640);
             panel4.TabIndex = 31;
             // 
             // label37
             // 
             label37.BorderStyle = BorderStyle.Fixed3D;
-            label37.Location = new Point(63, 740);
+            label37.Location = new Point(55, 555);
             label37.Name = "label37";
-            label37.Size = new Size(171, 3);
+            label37.Size = new Size(150, 2);
             label37.TabIndex = 50;
             // 
             // store_price_max
             // 
-            store_price_max.Location = new Point(173, 684);
-            store_price_max.Margin = new Padding(3, 4, 3, 4);
+            store_price_max.Location = new Point(151, 513);
             store_price_max.Name = "store_price_max";
             store_price_max.PlaceholderText = "$0.00";
-            store_price_max.Size = new Size(74, 27);
+            store_price_max.Size = new Size(65, 23);
             store_price_max.TabIndex = 49;
             // 
             // store_price_min
             // 
-            store_price_min.Location = new Point(57, 684);
-            store_price_min.Margin = new Padding(3, 4, 3, 4);
+            store_price_min.Location = new Point(50, 513);
             store_price_min.Name = "store_price_min";
             store_price_min.PlaceholderText = "$0.00";
-            store_price_min.Size = new Size(74, 27);
+            store_price_min.Size = new Size(65, 23);
             store_price_min.TabIndex = 48;
             // 
             // label35
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label35.Location = new Point(138, 681);
+            label35.Location = new Point(121, 511);
             label35.Name = "label35";
-            label35.Size = new Size(31, 28);
+            label35.Size = new Size(24, 21);
             label35.TabIndex = 47;
             label35.Text = "to";
             // 
@@ -348,45 +340,43 @@ namespace InventoryApp
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label36.Location = new Point(103, 636);
+            label36.Location = new Point(90, 477);
             label36.Name = "label36";
-            label36.Size = new Size(109, 28);
+            label36.Size = new Size(87, 21);
             label36.TabIndex = 46;
             label36.Text = "Store Price:";
             // 
             // market_price_max
             // 
-            market_price_max.Location = new Point(173, 584);
-            market_price_max.Margin = new Padding(3, 4, 3, 4);
+            market_price_max.Location = new Point(151, 438);
             market_price_max.Name = "market_price_max";
             market_price_max.PlaceholderText = "$0.00";
-            market_price_max.Size = new Size(74, 27);
+            market_price_max.Size = new Size(65, 23);
             market_price_max.TabIndex = 45;
             // 
             // label34
             // 
             label34.BorderStyle = BorderStyle.Fixed3D;
-            label34.Location = new Point(63, 512);
+            label34.Location = new Point(55, 384);
             label34.Name = "label34";
-            label34.Size = new Size(171, 3);
+            label34.Size = new Size(150, 2);
             label34.TabIndex = 44;
             // 
             // market_price_min
             // 
-            market_price_min.Location = new Point(57, 584);
-            market_price_min.Margin = new Padding(3, 4, 3, 4);
+            market_price_min.Location = new Point(50, 438);
             market_price_min.Name = "market_price_min";
             market_price_min.PlaceholderText = "$0.00";
-            market_price_min.Size = new Size(74, 27);
+            market_price_min.Size = new Size(65, 23);
             market_price_min.TabIndex = 43;
             // 
             // label32
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.Location = new Point(138, 581);
+            label32.Location = new Point(121, 436);
             label32.Name = "label32";
-            label32.Size = new Size(31, 28);
+            label32.Size = new Size(24, 21);
             label32.TabIndex = 42;
             label32.Text = "to";
             // 
@@ -394,9 +384,9 @@ namespace InventoryApp
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label33.Location = new Point(96, 539);
+            label33.Location = new Point(84, 404);
             label33.Name = "label33";
-            label33.Size = new Size(125, 28);
+            label33.Size = new Size(100, 21);
             label33.TabIndex = 39;
             label33.Text = "Market Price:";
             // 
@@ -404,82 +394,79 @@ namespace InventoryApp
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label31.Location = new Point(183, 447);
+            label31.Location = new Point(160, 335);
             label31.Name = "label31";
-            label31.Size = new Size(31, 28);
+            label31.Size = new Size(24, 21);
             label31.TabIndex = 38;
             label31.Text = "to";
             // 
             // store_copies_max
             // 
-            store_copies_max.Location = new Point(217, 447);
-            store_copies_max.Margin = new Padding(3, 4, 3, 4);
+            store_copies_max.Location = new Point(190, 335);
             store_copies_max.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             store_copies_max.Name = "store_copies_max";
-            store_copies_max.Size = new Size(55, 27);
+            store_copies_max.Size = new Size(48, 23);
             store_copies_max.TabIndex = 37;
             store_copies_max.Value = new decimal(new int[] { 999, 0, 0, 0 });
             // 
             // store_copies_min
             // 
-            store_copies_min.Location = new Point(121, 447);
-            store_copies_min.Margin = new Padding(3, 4, 3, 4);
+            store_copies_min.Location = new Point(106, 335);
             store_copies_min.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             store_copies_min.Name = "store_copies_min";
-            store_copies_min.Size = new Size(55, 27);
+            store_copies_min.Size = new Size(48, 23);
             store_copies_min.TabIndex = 36;
             // 
             // label30
             // 
             label30.BorderStyle = BorderStyle.Fixed3D;
-            label30.Location = new Point(63, 75);
+            label30.Location = new Point(55, 56);
             label30.Name = "label30";
-            label30.Size = new Size(171, 3);
+            label30.Size = new Size(150, 2);
             label30.TabIndex = 35;
             // 
             // label29
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label29.Location = new Point(3, 447);
+            label29.Location = new Point(3, 335);
             label29.Name = "label29";
-            label29.Size = new Size(126, 28);
+            label29.Size = new Size(100, 21);
             label29.TabIndex = 34;
             label29.Text = "Store Copies:";
             // 
             // label28
             // 
             label28.BorderStyle = BorderStyle.Fixed3D;
-            label28.Location = new Point(63, 400);
+            label28.Location = new Point(55, 300);
             label28.Name = "label28";
-            label28.Size = new Size(171, 3);
+            label28.Size = new Size(150, 2);
             label28.TabIndex = 33;
             // 
             // label27
             // 
             label27.BorderStyle = BorderStyle.Fixed3D;
-            label27.Location = new Point(64, 176);
+            label27.Location = new Point(56, 132);
             label27.Name = "label27";
-            label27.Size = new Size(171, 3);
+            label27.Size = new Size(150, 2);
             label27.TabIndex = 32;
             // 
             // card_type_combobox
             // 
             card_type_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             card_type_combobox.FormattingEnabled = true;
-            card_type_combobox.Location = new Point(112, 271);
-            card_type_combobox.Margin = new Padding(3, 4, 3, 4);
+            card_type_combobox.Location = new Point(98, 203);
             card_type_combobox.Name = "card_type_combobox";
-            card_type_combobox.Size = new Size(134, 28);
+            card_type_combobox.Size = new Size(118, 23);
             card_type_combobox.TabIndex = 32;
             // 
             // label26
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label26.Location = new Point(11, 271);
+            label26.Location = new Point(10, 203);
             label26.Name = "label26";
-            label26.Size = new Size(103, 28);
+            label26.Size = new Size(82, 21);
             label26.TabIndex = 31;
             label26.Text = "Card Type:";
             // 
@@ -489,10 +476,9 @@ namespace InventoryApp
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Popup;
             button1.ForeColor = Color.FromArgb(26, 28, 60);
-            button1.Location = new Point(42, 780);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(37, 585);
             button1.Name = "button1";
-            button1.Size = new Size(89, 33);
+            button1.Size = new Size(78, 25);
             button1.TabIndex = 30;
             button1.Text = "Clear Filters";
             button1.UseVisualStyleBackColor = false;
@@ -501,9 +487,9 @@ namespace InventoryApp
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(72, 16);
+            label1.Location = new Point(63, 12);
             label1.Name = "label1";
-            label1.Size = new Size(163, 37);
+            label1.Size = new Size(123, 30);
             label1.TabIndex = 24;
             label1.Text = "Card Filters";
             // 
@@ -511,9 +497,9 @@ namespace InventoryApp
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(39, 209);
+            label20.Location = new Point(34, 157);
             label20.Name = "label20";
-            label20.Size = new Size(67, 28);
+            label20.Size = new Size(54, 21);
             label20.TabIndex = 29;
             label20.Text = "Rarity:";
             // 
@@ -524,10 +510,9 @@ namespace InventoryApp
             search_button.Cursor = Cursors.Hand;
             search_button.FlatStyle = FlatStyle.Popup;
             search_button.ForeColor = Color.White;
-            search_button.Location = new Point(155, 780);
-            search_button.Margin = new Padding(3, 4, 3, 4);
+            search_button.Location = new Point(136, 585);
             search_button.Name = "search_button";
-            search_button.Size = new Size(91, 40);
+            search_button.Size = new Size(80, 30);
             search_button.TabIndex = 2;
             search_button.Text = "Search";
             search_button.UseVisualStyleBackColor = false;
@@ -537,19 +522,17 @@ namespace InventoryApp
             // 
             rarity_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             rarity_combobox.FormattingEnabled = true;
-            rarity_combobox.Location = new Point(112, 209);
-            rarity_combobox.Margin = new Padding(3, 4, 3, 4);
+            rarity_combobox.Location = new Point(98, 157);
             rarity_combobox.Name = "rarity_combobox";
-            rarity_combobox.Size = new Size(134, 28);
+            rarity_combobox.Size = new Size(118, 23);
             rarity_combobox.TabIndex = 28;
             // 
             // search_box
             // 
-            search_box.Location = new Point(112, 104);
-            search_box.Margin = new Padding(3, 4, 3, 4);
+            search_box.Location = new Point(98, 78);
             search_box.Name = "search_box";
             search_box.PlaceholderText = "Card Name";
-            search_box.Size = new Size(134, 27);
+            search_box.Size = new Size(118, 23);
             search_box.TabIndex = 1;
             search_box.TextChanged += search_box_TextChanged;
             // 
@@ -557,19 +540,18 @@ namespace InventoryApp
             // 
             card_race_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             card_race_combobox.FormattingEnabled = true;
-            card_race_combobox.Location = new Point(112, 328);
-            card_race_combobox.Margin = new Padding(3, 4, 3, 4);
+            card_race_combobox.Location = new Point(98, 246);
             card_race_combobox.Name = "card_race_combobox";
-            card_race_combobox.Size = new Size(134, 28);
+            card_race_combobox.Size = new Size(118, 23);
             card_race_combobox.TabIndex = 27;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(3, 101);
+            label18.Location = new Point(3, 76);
             label18.Name = "label18";
-            label18.Size = new Size(114, 28);
+            label18.Size = new Size(92, 21);
             label18.TabIndex = 25;
             label18.Text = "Card Name:";
             // 
@@ -577,9 +559,9 @@ namespace InventoryApp
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(5, 328);
+            label19.Location = new Point(4, 246);
             label19.Name = "label19";
-            label19.Size = new Size(103, 28);
+            label19.Size = new Size(83, 21);
             label19.TabIndex = 26;
             label19.Text = "Card Race:";
             // 
@@ -596,19 +578,18 @@ namespace InventoryApp
             tabPage2.Controls.Add(update_card);
             tabPage2.Controls.Add(panel1);
             tabPage2.Location = new Point(4, 64);
-            tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1706, 1065);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1492, 782);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             // 
             // label25
             // 
             label25.BorderStyle = BorderStyle.Fixed3D;
-            label25.Location = new Point(171, 473);
+            label25.Location = new Point(150, 355);
             label25.Name = "label25";
-            label25.Size = new Size(686, 3);
+            label25.Size = new Size(600, 2);
             label25.TabIndex = 25;
             // 
             // label3
@@ -616,9 +597,9 @@ namespace InventoryApp
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(26, 28, 60);
-            label3.Location = new Point(223, 129);
+            label3.Location = new Point(195, 97);
             label3.Name = "label3";
-            label3.Size = new Size(167, 30);
+            label3.Size = new Size(129, 23);
             label3.TabIndex = 23;
             label3.Text = "Edit Inventory:";
             // 
@@ -641,40 +622,36 @@ namespace InventoryApp
             card_details_panel.Controls.Add(label5);
             card_details_panel.Controls.Add(label4);
             card_details_panel.Controls.Add(label2);
-            card_details_panel.Location = new Point(223, 577);
-            card_details_panel.Margin = new Padding(3, 4, 3, 4);
+            card_details_panel.Location = new Point(195, 433);
             card_details_panel.Name = "card_details_panel";
-            card_details_panel.Size = new Size(580, 378);
+            card_details_panel.Size = new Size(508, 284);
             card_details_panel.TabIndex = 22;
             // 
             // market_price
             // 
             market_price.Cursor = Cursors.No;
-            market_price.Location = new Point(162, 311);
-            market_price.Margin = new Padding(3, 4, 3, 4);
+            market_price.Location = new Point(142, 233);
             market_price.Name = "market_price";
             market_price.ReadOnly = true;
-            market_price.Size = new Size(114, 27);
+            market_price.Size = new Size(100, 23);
             market_price.TabIndex = 19;
             // 
             // card_rarity
             // 
             card_rarity.Cursor = Cursors.No;
-            card_rarity.Location = new Point(19, 311);
-            card_rarity.Margin = new Padding(3, 4, 3, 4);
+            card_rarity.Location = new Point(17, 233);
             card_rarity.Name = "card_rarity";
             card_rarity.ReadOnly = true;
-            card_rarity.Size = new Size(114, 27);
+            card_rarity.Size = new Size(100, 23);
             card_rarity.TabIndex = 18;
             // 
             // set_name
             // 
             set_name.Cursor = Cursors.No;
-            set_name.Location = new Point(162, 224);
-            set_name.Margin = new Padding(3, 4, 3, 4);
+            set_name.Location = new Point(142, 168);
             set_name.Name = "set_name";
             set_name.ReadOnly = true;
-            set_name.Size = new Size(342, 27);
+            set_name.Size = new Size(300, 23);
             set_name.TabIndex = 17;
             // 
             // label10
@@ -682,60 +659,55 @@ namespace InventoryApp
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = SystemColors.ControlDark;
-            label10.Location = new Point(163, 279);
+            label10.Location = new Point(143, 209);
             label10.Name = "label10";
-            label10.Size = new Size(126, 28);
+            label10.Size = new Size(102, 21);
             label10.TabIndex = 11;
             label10.Text = "Market Price";
             // 
             // set_code
             // 
             set_code.Cursor = Cursors.No;
-            set_code.Location = new Point(19, 224);
-            set_code.Margin = new Padding(3, 4, 3, 4);
+            set_code.Location = new Point(17, 168);
             set_code.Name = "set_code";
             set_code.ReadOnly = true;
-            set_code.Size = new Size(114, 27);
+            set_code.Size = new Size(100, 23);
             set_code.TabIndex = 16;
             // 
             // card_race
             // 
             card_race.Cursor = Cursors.No;
-            card_race.Location = new Point(19, 131);
-            card_race.Margin = new Padding(3, 4, 3, 4);
+            card_race.Location = new Point(17, 98);
             card_race.Name = "card_race";
             card_race.ReadOnly = true;
-            card_race.Size = new Size(114, 27);
+            card_race.Size = new Size(100, 23);
             card_race.TabIndex = 15;
             // 
             // card_type
             // 
             card_type.Cursor = Cursors.No;
-            card_type.Location = new Point(162, 131);
-            card_type.Margin = new Padding(3, 4, 3, 4);
+            card_type.Location = new Point(142, 98);
             card_type.Name = "card_type";
             card_type.ReadOnly = true;
-            card_type.Size = new Size(114, 27);
+            card_type.Size = new Size(100, 23);
             card_type.TabIndex = 14;
             // 
             // card_name
             // 
             card_name.Cursor = Cursors.No;
-            card_name.Location = new Point(162, 44);
-            card_name.Margin = new Padding(3, 4, 3, 4);
+            card_name.Location = new Point(142, 33);
             card_name.Name = "card_name";
             card_name.ReadOnly = true;
-            card_name.Size = new Size(342, 27);
+            card_name.Size = new Size(300, 23);
             card_name.TabIndex = 13;
             // 
             // card_id
             // 
             card_id.Cursor = Cursors.No;
-            card_id.Location = new Point(19, 44);
-            card_id.Margin = new Padding(3, 4, 3, 4);
+            card_id.Location = new Point(17, 33);
             card_id.Name = "card_id";
             card_id.ReadOnly = true;
-            card_id.Size = new Size(114, 27);
+            card_id.Size = new Size(100, 23);
             card_id.TabIndex = 12;
             // 
             // label9
@@ -743,9 +715,9 @@ namespace InventoryApp
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ControlDark;
-            label9.Location = new Point(19, 279);
+            label9.Location = new Point(17, 209);
             label9.Name = "label9";
-            label9.Size = new Size(63, 28);
+            label9.Size = new Size(52, 21);
             label9.TabIndex = 11;
             label9.Text = "Rarity";
             // 
@@ -754,9 +726,9 @@ namespace InventoryApp
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.ControlDark;
-            label8.Location = new Point(163, 192);
+            label8.Location = new Point(143, 144);
             label8.Name = "label8";
-            label8.Size = new Size(101, 28);
+            label8.Size = new Size(81, 21);
             label8.TabIndex = 10;
             label8.Text = "Set Name";
             // 
@@ -765,9 +737,9 @@ namespace InventoryApp
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ControlDark;
-            label7.Location = new Point(18, 192);
+            label7.Location = new Point(16, 144);
             label7.Name = "label7";
-            label7.Size = new Size(94, 28);
+            label7.Size = new Size(77, 21);
             label7.TabIndex = 9;
             label7.Text = "Set Code";
             // 
@@ -776,9 +748,9 @@ namespace InventoryApp
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ControlDark;
-            label6.Location = new Point(162, 99);
+            label6.Location = new Point(142, 74);
             label6.Name = "label6";
-            label6.Size = new Size(102, 28);
+            label6.Size = new Size(83, 21);
             label6.TabIndex = 8;
             label6.Text = "Card Type";
             // 
@@ -787,9 +759,9 @@ namespace InventoryApp
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlDark;
-            label5.Location = new Point(17, 99);
+            label5.Location = new Point(15, 74);
             label5.Name = "label5";
-            label5.Size = new Size(101, 28);
+            label5.Size = new Size(83, 21);
             label5.TabIndex = 7;
             label5.Text = "Card Race";
             // 
@@ -798,9 +770,9 @@ namespace InventoryApp
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ControlDark;
-            label4.Location = new Point(162, 12);
+            label4.Location = new Point(142, 9);
             label4.Name = "label4";
-            label4.Size = new Size(113, 28);
+            label4.Size = new Size(91, 21);
             label4.TabIndex = 6;
             label4.Text = "Card Name";
             // 
@@ -809,9 +781,9 @@ namespace InventoryApp
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlDark;
-            label2.Location = new Point(17, 12);
+            label2.Location = new Point(15, 9);
             label2.Name = "label2";
-            label2.Size = new Size(79, 28);
+            label2.Size = new Size(64, 21);
             label2.TabIndex = 5;
             label2.Text = "Card ID";
             // 
@@ -824,19 +796,17 @@ namespace InventoryApp
             inventory_panel.Controls.Add(store_price);
             inventory_panel.Controls.Add(label12);
             inventory_panel.Controls.Add(label11);
-            inventory_panel.Location = new Point(223, 164);
-            inventory_panel.Margin = new Padding(3, 4, 3, 4);
+            inventory_panel.Location = new Point(195, 123);
             inventory_panel.Name = "inventory_panel";
-            inventory_panel.Size = new Size(580, 131);
+            inventory_panel.Size = new Size(508, 99);
             inventory_panel.TabIndex = 21;
             // 
             // card_copies
             // 
-            card_copies.Location = new Point(162, 52);
-            card_copies.Margin = new Padding(3, 4, 3, 4);
+            card_copies.Location = new Point(142, 39);
             card_copies.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             card_copies.Name = "card_copies";
-            card_copies.Size = new Size(117, 27);
+            card_copies.Size = new Size(102, 23);
             card_copies.TabIndex = 22;
             // 
             // warning_label
@@ -844,9 +814,9 @@ namespace InventoryApp
             warning_label.AutoSize = true;
             warning_label.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             warning_label.ForeColor = Color.Red;
-            warning_label.Location = new Point(18, 85);
+            warning_label.Location = new Point(16, 64);
             warning_label.Name = "warning_label";
-            warning_label.Size = new Size(63, 25);
+            warning_label.Size = new Size(50, 20);
             warning_label.TabIndex = 21;
             warning_label.Text = "label1";
             warning_label.Visible = false;
@@ -854,10 +824,9 @@ namespace InventoryApp
             // store_price
             // 
             store_price.Cursor = Cursors.IBeam;
-            store_price.Location = new Point(19, 51);
-            store_price.Margin = new Padding(3, 4, 3, 4);
+            store_price.Location = new Point(17, 38);
             store_price.Name = "store_price";
-            store_price.Size = new Size(114, 27);
+            store_price.Size = new Size(100, 23);
             store_price.TabIndex = 19;
             // 
             // label12
@@ -865,9 +834,9 @@ namespace InventoryApp
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label12.ForeColor = SystemColors.ControlText;
-            label12.Location = new Point(162, 19);
+            label12.Location = new Point(142, 14);
             label12.Name = "label12";
-            label12.Size = new Size(73, 28);
+            label12.Size = new Size(60, 21);
             label12.TabIndex = 13;
             label12.Text = "Copies";
             // 
@@ -876,19 +845,18 @@ namespace InventoryApp
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlText;
-            label11.Location = new Point(19, 19);
+            label11.Location = new Point(17, 14);
             label11.Name = "label11";
-            label11.Size = new Size(109, 28);
+            label11.Size = new Size(90, 21);
             label11.TabIndex = 12;
             label11.Text = "Store Price";
             // 
             // CardImage
             // 
             CardImage.BorderStyle = BorderStyle.FixedSingle;
-            CardImage.Location = new Point(991, 129);
-            CardImage.Margin = new Padding(3, 4, 3, 4);
+            CardImage.Location = new Point(867, 97);
             CardImage.Name = "CardImage";
-            CardImage.Size = new Size(457, 727);
+            CardImage.Size = new Size(400, 546);
             CardImage.TabIndex = 16;
             CardImage.TabStop = false;
             // 
@@ -898,10 +866,9 @@ namespace InventoryApp
             delete_card.FlatStyle = FlatStyle.Popup;
             delete_card.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             delete_card.ForeColor = Color.FromArgb(26, 28, 60);
-            delete_card.Location = new Point(519, 329);
-            delete_card.Margin = new Padding(3, 4, 3, 4);
+            delete_card.Location = new Point(454, 247);
             delete_card.Name = "delete_card";
-            delete_card.Size = new Size(183, 60);
+            delete_card.Size = new Size(160, 45);
             delete_card.TabIndex = 17;
             delete_card.Text = "Delete From Inventory";
             delete_card.UseVisualStyleBackColor = false;
@@ -912,9 +879,9 @@ namespace InventoryApp
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             label13.ForeColor = Color.FromArgb(26, 28, 60);
-            label13.Location = new Point(223, 543);
+            label13.Location = new Point(195, 407);
             label13.Name = "label13";
-            label13.Size = new Size(239, 30);
+            label13.Size = new Size(186, 23);
             label13.TabIndex = 20;
             label13.Text = "Selected Card Details:";
             // 
@@ -924,10 +891,9 @@ namespace InventoryApp
             update_card.FlatStyle = FlatStyle.Popup;
             update_card.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             update_card.ForeColor = Color.White;
-            update_card.Location = new Point(272, 329);
-            update_card.Margin = new Padding(3, 4, 3, 4);
+            update_card.Location = new Point(238, 247);
             update_card.Name = "update_card";
-            update_card.Size = new Size(183, 60);
+            update_card.Size = new Size(160, 45);
             update_card.TabIndex = 18;
             update_card.Text = "Save Changes";
             update_card.UseVisualStyleBackColor = false;
@@ -939,9 +905,8 @@ namespace InventoryApp
             panel1.Controls.Add(button2);
             panel1.Controls.Add(label23);
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1711, 84);
+            panel1.Size = new Size(1497, 63);
             panel1.TabIndex = 24;
             // 
             // button2
@@ -954,10 +919,9 @@ namespace InventoryApp
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(7, 19);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(6, 14);
             button2.Name = "button2";
-            button2.Size = new Size(85, 44);
+            button2.Size = new Size(74, 33);
             button2.TabIndex = 25;
             button2.UseVisualStyleBackColor = false;
             button2.Click += cancel_bttn_Click;
@@ -967,9 +931,9 @@ namespace InventoryApp
             label23.AutoSize = true;
             label23.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label23.ForeColor = Color.White;
-            label23.Location = new Point(89, 29);
+            label23.Location = new Point(78, 22);
             label23.Name = "label23";
-            label23.Size = new Size(253, 31);
+            label23.Size = new Size(213, 25);
             label23.TabIndex = 1;
             label23.Text = "Edit Inventory Values";
             // 
@@ -985,10 +949,9 @@ namespace InventoryApp
             tabPage3.Controls.Add(marketChart);
             tabPage3.Controls.Add(panel2);
             tabPage3.Location = new Point(4, 64);
-            tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 4, 3, 4);
-            tabPage3.Size = new Size(1706, 1065);
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1492, 782);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "graph";
             // 
@@ -1001,30 +964,27 @@ namespace InventoryApp
             panel5.Controls.Add(label14);
             panel5.Controls.Add(label15);
             panel5.Controls.Add(refresh_chart);
-            panel5.Location = new Point(197, 105);
-            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Location = new Point(172, 79);
             panel5.Name = "panel5";
-            panel5.Size = new Size(703, 73);
+            panel5.Size = new Size(616, 56);
             panel5.TabIndex = 24;
             // 
             // EndRange
             // 
             EndRange.CustomFormat = "yyyy-MM-dd";
             EndRange.Format = DateTimePickerFormat.Custom;
-            EndRange.Location = new Point(310, 19);
-            EndRange.Margin = new Padding(3, 4, 3, 4);
+            EndRange.Location = new Point(271, 14);
             EndRange.Name = "EndRange";
-            EndRange.Size = new Size(162, 27);
+            EndRange.Size = new Size(142, 23);
             EndRange.TabIndex = 4;
             // 
             // StartRange
             // 
             StartRange.CustomFormat = "yyyy-MM-dd";
             StartRange.Format = DateTimePickerFormat.Custom;
-            StartRange.Location = new Point(77, 19);
-            StartRange.Margin = new Padding(3, 4, 3, 4);
+            StartRange.Location = new Point(67, 14);
             StartRange.Name = "StartRange";
-            StartRange.Size = new Size(142, 27);
+            StartRange.Size = new Size(125, 23);
             StartRange.TabIndex = 3;
             // 
             // label14
@@ -1032,9 +992,9 @@ namespace InventoryApp
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(17, 19);
+            label14.Location = new Point(15, 14);
             label14.Name = "label14";
-            label14.Size = new Size(57, 25);
+            label14.Size = new Size(45, 20);
             label14.TabIndex = 5;
             label14.Text = "From";
             // 
@@ -1043,19 +1003,18 @@ namespace InventoryApp
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label15.ForeColor = Color.Black;
-            label15.Location = new Point(273, 19);
+            label15.Location = new Point(239, 14);
             label15.Name = "label15";
-            label15.Size = new Size(31, 25);
+            label15.Size = new Size(25, 20);
             label15.TabIndex = 6;
             label15.Text = "To";
             // 
             // refresh_chart
             // 
             refresh_chart.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            refresh_chart.Location = new Point(552, 21);
-            refresh_chart.Margin = new Padding(3, 4, 3, 4);
+            refresh_chart.Location = new Point(483, 16);
             refresh_chart.Name = "refresh_chart";
-            refresh_chart.Size = new Size(131, 31);
+            refresh_chart.Size = new Size(115, 23);
             refresh_chart.TabIndex = 7;
             refresh_chart.Text = "Refresh";
             refresh_chart.UseVisualStyleBackColor = true;
@@ -1066,9 +1025,9 @@ namespace InventoryApp
             price_label.AutoSize = true;
             price_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
             price_label.ForeColor = Color.Black;
-            price_label.Location = new Point(678, 196);
+            price_label.Location = new Point(593, 147);
             price_label.Name = "price_label";
-            price_label.Size = new Size(0, 24);
+            price_label.Size = new Size(0, 19);
             price_label.TabIndex = 11;
             // 
             // label17
@@ -1076,9 +1035,9 @@ namespace InventoryApp
             label17.AutoSize = true;
             label17.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label17.ForeColor = Color.Black;
-            label17.Location = new Point(610, 196);
+            label17.Location = new Point(534, 147);
             label17.Name = "label17";
-            label17.Size = new Size(66, 24);
+            label17.Size = new Size(53, 19);
             label17.TabIndex = 10;
             label17.Text = "Price:";
             // 
@@ -1087,9 +1046,9 @@ namespace InventoryApp
             label16.AutoSize = true;
             label16.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label16.ForeColor = Color.Black;
-            label16.Location = new Point(382, 196);
+            label16.Location = new Point(334, 147);
             label16.Name = "label16";
-            label16.Size = new Size(62, 24);
+            label16.Size = new Size(51, 19);
             label16.TabIndex = 9;
             label16.Text = "Date:";
             // 
@@ -1098,27 +1057,26 @@ namespace InventoryApp
             date_label.AutoSize = true;
             date_label.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point);
             date_label.ForeColor = Color.Black;
-            date_label.Location = new Point(447, 196);
+            date_label.Location = new Point(391, 147);
             date_label.Name = "date_label";
-            date_label.Size = new Size(0, 24);
+            date_label.Size = new Size(0, 19);
             date_label.TabIndex = 8;
             // 
             // GraphPic
             // 
             GraphPic.BorderStyle = BorderStyle.FixedSingle;
-            GraphPic.Location = new Point(991, 129);
-            GraphPic.Margin = new Padding(3, 4, 3, 4);
+            GraphPic.Location = new Point(867, 97);
             GraphPic.Name = "GraphPic";
-            GraphPic.Size = new Size(457, 727);
+            GraphPic.Size = new Size(400, 546);
             GraphPic.TabIndex = 1;
             GraphPic.TabStop = false;
             // 
             // marketChart
             // 
-            marketChart.Location = new Point(197, 225);
-            marketChart.Margin = new Padding(5, 4, 5, 4);
+            marketChart.Location = new Point(172, 169);
+            marketChart.Margin = new Padding(4, 3, 4, 3);
             marketChart.Name = "marketChart";
-            marketChart.Size = new Size(704, 740);
+            marketChart.Size = new Size(616, 555);
             marketChart.TabIndex = 0;
             // 
             // panel2
@@ -1127,9 +1085,8 @@ namespace InventoryApp
             panel2.Controls.Add(label24);
             panel2.Controls.Add(Return);
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1711, 84);
+            panel2.Size = new Size(1497, 63);
             panel2.TabIndex = 23;
             // 
             // label24
@@ -1137,9 +1094,9 @@ namespace InventoryApp
             label24.AutoSize = true;
             label24.Font = new Font("Sylfaen", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label24.ForeColor = Color.White;
-            label24.Location = new Point(89, 29);
+            label24.Location = new Point(78, 22);
             label24.Name = "label24";
-            label24.Size = new Size(238, 31);
+            label24.Size = new Size(193, 25);
             label24.TabIndex = 24;
             label24.Text = "Historical Card Data";
             // 
@@ -1153,10 +1110,9 @@ namespace InventoryApp
             Return.FlatStyle = FlatStyle.Flat;
             Return.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             Return.Image = (Image)resources.GetObject("Return.Image");
-            Return.Location = new Point(7, 19);
-            Return.Margin = new Padding(3, 4, 3, 4);
+            Return.Location = new Point(6, 14);
             Return.Name = "Return";
-            Return.Size = new Size(85, 44);
+            Return.Size = new Size(74, 33);
             Return.TabIndex = 12;
             Return.UseVisualStyleBackColor = false;
             Return.Click += graphReturn_Click;
@@ -1168,12 +1124,11 @@ namespace InventoryApp
             // 
             // catalog
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(catalog_panel);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "catalog";
-            Size = new Size(1714, 1133);
+            Size = new Size(1500, 850);
             catalog_panel.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

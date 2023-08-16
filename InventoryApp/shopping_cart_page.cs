@@ -39,6 +39,21 @@ namespace InventoryApp
         {
             setup_dttable();
             format_view();
+            update_shopping_cart_total_text();
+        }
+
+        private void update_shopping_cart_total_text()
+        {
+            if (dt.Rows.Count == 0)
+            {
+                cart_qnty_label.Text = "Your Shopping Cart is empty";
+                return;
+            }
+            else
+            {
+                cart_qnty_label.Text = $"You have {total_copies} item(s) in your Shopping Cart.";
+            }
+
         }
 
         private void setup_dttable() /*Set up datatable for query result*/
@@ -95,7 +110,7 @@ namespace InventoryApp
             if (dt == null || dt.Rows.Count <= 0)
             {
                 shopping_cart_view.ColumnCount = 1;
-                shopping_cart_view.Columns[0].Name = "Shopping Cart is Currently Empty";
+                shopping_cart_view.Columns[0].Name = "Your Shopping Cart is empty";
                 cart_qnty_label.Text = "Your Shopping Cart is empty.";
                 return;
             }
