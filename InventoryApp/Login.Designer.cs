@@ -39,6 +39,7 @@
             user_input = new TextBox();
             google_login = new Button();
             new_account = new Label();
+            create_account_uc = new create_account();
             SuspendLayout();
             // 
             // name_label
@@ -94,7 +95,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(18, 266);
+            label2.Location = new Point(30, 266);
             label2.Name = "label2";
             label2.Size = new Size(97, 25);
             label2.TabIndex = 3;
@@ -113,9 +114,10 @@
             // 
             // pw_input
             // 
-            pw_input.BackColor = Color.White;
+            pw_input.BackColor = Color.FromArgb(26, 28, 60);
             pw_input.BorderStyle = BorderStyle.None;
             pw_input.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            pw_input.ForeColor = Color.FromArgb(237, 33, 125);
             pw_input.Location = new Point(138, 266);
             pw_input.Name = "pw_input";
             pw_input.PasswordChar = '*';
@@ -124,10 +126,10 @@
             // 
             // user_input
             // 
-            user_input.BackColor = Color.White;
+            user_input.BackColor = Color.FromArgb(26, 28, 60);
             user_input.BorderStyle = BorderStyle.None;
             user_input.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            user_input.ForeColor = Color.Yellow;
+            user_input.ForeColor = Color.FromArgb(237, 33, 125);
             user_input.Location = new Point(138, 193);
             user_input.Name = "user_input";
             user_input.PlaceholderText = "User Name";
@@ -161,11 +163,23 @@
             new_account.Text = "Create new account";
             new_account.Click += new_account_Click;
             // 
+            // create_account_uc
+            // 
+            create_account_uc.BackColor = Color.FromArgb(26, 28, 60);
+            create_account_uc.Dock = DockStyle.Fill;
+            create_account_uc.Location = new Point(0, 0);
+            create_account_uc.Name = "create_account_uc";
+            create_account_uc.Size = new Size(644, 501);
+            create_account_uc.TabIndex = 10;
+            create_account_uc.Visible = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(646, 498);
+            BackColor = Color.FromArgb(26, 28, 60);
+            ClientSize = new Size(644, 501);
+            Controls.Add(create_account_uc);
             Controls.Add(new_account);
             Controls.Add(google_login);
             Controls.Add(incorrect_prompt);
@@ -194,5 +208,6 @@
         private Label incorrect_prompt;
         private Button google_login;
         private Label new_account;
+        private create_account create_account_uc;
     }
 }

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace InventoryApp
 {
 
@@ -32,15 +34,34 @@ namespace InventoryApp
 
             Login login_screen = new Login();
             Main main = new Main();
-            
             Application.Run(login_screen);
-            if (login_screen.authenticated)
+
+            while (true)
             {
-                main.user = login_screen.logged_user;
-                main.uid = login_screen.uid;
-                Global.uid = login_screen.uid;
-                Application.Run(main);
+                if (login_screen.authenticated)
+                {
+                    main = new Main();
+                    main.user = login_screen.logged_user;
+                    main.uid = login_screen.uid;
+                    Global.uid = login_screen.uid;
+                    Application.Run(main);
+                }
+
+                if (main.logout_selected)
+                {
+                    // Have to re-establish a new object after its closed.
+                    login_screen = new Login();
+                    Application.Run(login_screen);
+                    main.logout_selected = false;
+                }
+                else
+                {
+                    break;
+                }
+
+
             }
+
 
         }
     }
