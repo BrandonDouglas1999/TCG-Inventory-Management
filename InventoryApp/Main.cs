@@ -157,6 +157,10 @@ namespace InventoryApp
 
         }
 
-
+        private void logout_button_Click(object sender, EventArgs e)
+        {
+            this.logout_selected = true;
+            this.Close();
+        }
     }
 }

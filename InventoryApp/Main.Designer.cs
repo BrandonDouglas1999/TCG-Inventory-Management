@@ -270,6 +270,7 @@
             logout_button.Text = "Logout";
             logout_button.TextAlign = ContentAlignment.MiddleLeft;
             logout_button.UseVisualStyleBackColor = false;
+            logout_button.Click += logout_button_Click;
             // 
             // Main
             // 
