@@ -36,11 +36,6 @@ namespace InventoryApp
         public Login()
         {
             InitializeComponent();
-            this.BackColor = Color.FromArgb(255, 26, 28, 60);
-            user_input.ForeColor = Color.FromArgb(255, 237, 33, 125);
-            user_input.BackColor = Color.FromArgb(255, 26, 28, 60);
-            pw_input.ForeColor = Color.FromArgb(255, 237, 33, 125);
-            pw_input.BackColor = Color.FromArgb(255, 26, 28, 60);
         }
 
         private void login_button_Click(object sender, EventArgs e)
@@ -200,7 +195,7 @@ namespace InventoryApp
 
         private void new_account_Click(object sender, EventArgs e)
         {
-
+            create_account_uc.Visible = true;
         }
 
     }

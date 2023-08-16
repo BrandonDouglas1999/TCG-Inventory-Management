@@ -512,7 +512,7 @@ namespace InventoryApp
             search_button.ForeColor = Color.White;
             search_button.Location = new Point(136, 585);
             search_button.Name = "search_button";
-            search_button.Size = new Size(80, 30);
+            search_button.Size = new Size(80, 25);
             search_button.TabIndex = 2;
             search_button.Text = "Search";
             search_button.UseVisualStyleBackColor = false;
