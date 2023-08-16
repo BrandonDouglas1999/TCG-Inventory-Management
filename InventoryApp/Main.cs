@@ -9,6 +9,7 @@ namespace InventoryApp
         public string user = "test user";
         public string uid = null;
         bool sidebarExpand = false;
+        public bool logout_selected = false;
         UserControl activeWindow;
         Point sidebarCollapsedLocation;
         Point sidebarExpandedLocation;
