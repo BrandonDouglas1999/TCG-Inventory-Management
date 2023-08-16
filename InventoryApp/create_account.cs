@@ -44,6 +44,12 @@ namespace InventoryApp
             string hashed_pw = hash_values(pw_input.Text);
             string hashed_repw = hash_values(repw_input.Text);
 
+            if (hashed_pw != hashed_repw)
+            {
+                error_label.Text = "Error: Passwords must match";
+                return;
+            }
+
             SQLHelper helper = new SQLHelper();
 
             int status = helper.CreateAccount(hashed_email, hashed_user, hashed_pw, hashed_repw);
@@ -51,12 +57,6 @@ namespace InventoryApp
             if (status == 0)
             {
                 error_label.Text = "Error: Unable to create account";
-                return;
-            }
-
-            if (hashed_pw != hashed_repw)
-            {
-                error_label.Text = "Error: Passwords must match";
                 return;
             }
 
