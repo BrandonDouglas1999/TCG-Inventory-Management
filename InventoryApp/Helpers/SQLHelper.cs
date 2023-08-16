@@ -692,7 +692,7 @@ namespace InventoryApp.Helpers
             }
             if (status == 1)
             {
-                MessageBox.Show("Success");
+                MessageBox.Show("Invoice Generated");
             } 
             if(status == 0) { MessageBox.Show("failed"); }
 

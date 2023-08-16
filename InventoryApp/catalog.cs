@@ -429,7 +429,8 @@ namespace InventoryApp
 
         private void load_cardInfo()
         {
-            string query = String.Format("Select card_name, card_type, card_race, set_name, market_price from dbo.YGOCurrentMarket where card_id = {0} and set_code = '{1}' and rarity = '{2}'", cid, sc, r);
+            string query = String.Format("Select card_name, card_type, card_race, set_name, ROUND(market_price / R.rate, 2) as market_price from dbo.YGOCurrentMarket, dbo.ConversionRate as R where card_id = {0} and set_code = '{1}' and rarity = '{2}' " +
+                "and R.update_date = (Select MAX(update_date) from ConversionRate)", cid, sc, r);
             warning_label.Visible = false;
             DataTable dt = new DataTable();
             dt = db.Select(query);
@@ -444,8 +445,7 @@ namespace InventoryApp
             card_type.Text = dt.Rows[0]["card_type"].ToString();
             card_race.Text = dt.Rows[0]["card_race"].ToString();
             set_name.Text = dt.Rows[0]["set_name"].ToString();
-            string mp = dt.Rows[0]["market_price"].ToString();
-            market_price.Text = mp.Substring(0, mp.Length - 2);
+            market_price.Text = dt.Rows[0]["market_price"].ToString();
         }
 
         private void update_card_Click(object sender, EventArgs e)
