@@ -39,13 +39,6 @@ namespace InventoryApp
             panel2.BackColor = Color.FromArgb(255, 50, 55, 143);
         }
 
-        //load conversion rate on opening
-        private void AddCardForm_Load(object sender, EventArgs e)
-        {
-            //var rate = await ConversionRate.LoadRate();
-            //c_rate = rate.db_rate;
-        }
-
         private async void rtv_card_Click(object sender, EventArgs e)
         {
             clear_boxes();
