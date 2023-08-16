@@ -86,15 +86,14 @@ namespace InventoryApp.Helpers
         public int LoadCatalog(DataTable catalog, string uid, int scrollVal, string filters) /*Paging the result, passing in scroll value to indicate the start point*/
         {
             SqlCommand myCommand;
-            filters = null; //Comment out to test filter string
             int total;
             int end = 0;
             string num = String.Format("SELECT COUNT(user_id) as num from YGOStorePrice where user_id = '{0}'", uid);
-            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join " +
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCardsInfo as ci on s.card_id = ci.card_id inner join" +
                 "(Select Y.image, Y.card_id, Y.set_code, Y.rarity, Y.card_name, Y.card_type, Y.card_race, Y.set_name, ROUND(Y.market_price / C.rate, 2) as market_price " +
                 "from YGOCurrentMarket as Y, dbo.ConversionRate as C\r\nwhere C.update_date = ((select MAX(update_date) from dbo.ConversionRate))) as CM " +
                 "on S.card_id = CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = @UID";
-            if (filters !=  null) { query += " WHERE " + filters + " "; }
+            if (filters !=  null) { query += " and " + filters + " "; }
             query += " ORDER BY card_name";
             
             SqlDataAdapter pagingAdapter;

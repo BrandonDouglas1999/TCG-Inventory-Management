@@ -251,7 +251,6 @@ namespace InventoryApp
 
             catalog_view.Columns[1].Visible = false; //hide image file name
             catalog_view.Columns[2].Visible = false; //hide card id
-            catalog_view.Columns[9].Visible = false; //Hide copies
 
             //Change prices decimal points
             catalog_view.Columns[7].DefaultCellStyle.Format = "$0.00##";
@@ -370,7 +369,7 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "cm.market_price >= " + market_price_lower;
+                filter_string += "CM.market_price >= " + market_price_lower;
             }
 
             if (!string.IsNullOrEmpty(market_price_upper))
@@ -379,7 +378,7 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "cm.market_price <= " + market_price_upper;
+                filter_string += "CM.market_price <= " + market_price_upper;
             }
 
             if (!string.IsNullOrEmpty(store_price_lower))
