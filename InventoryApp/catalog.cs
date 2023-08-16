@@ -33,6 +33,7 @@ namespace InventoryApp
         string sp; //Store price
         string c;  //copies
 
+        string filters = null;
         public catalog()
         {
             InitializeComponent();
@@ -56,6 +57,29 @@ namespace InventoryApp
             panel1.BackColor = Color.FromArgb(255, 50, 55, 143);
             panel2.BackColor = Color.FromArgb(255, 50, 55, 143);
             panel3.BackColor = Color.FromArgb(255, 50, 55, 143);
+
+            //Fill combo boxes
+            DataTable rarity_datatable = db.GetRarities();
+            rarity_datatable.DefaultView.Sort = "Rarity ASC";
+            rarity_combobox.DataSource = rarity_datatable;
+            rarity_combobox.DisplayMember = "Rarity";
+
+            DataTable card_type_datatable = db.GetCardType();
+            DataRow emptyRow = card_type_datatable.NewRow();
+            emptyRow["card_type"] = "";
+            card_type_datatable.Rows.Add(emptyRow);
+            card_type_datatable.DefaultView.Sort = "card_type ASC";
+            card_type_combobox.DataSource = card_type_datatable;
+            card_type_combobox.DisplayMember = "card_type";
+
+
+            DataTable card_race_datatable = db.GetCardRace();
+            emptyRow = card_race_datatable.NewRow();
+            emptyRow["card_race"] = "";
+            card_race_datatable.Rows.Add(emptyRow);
+            card_race_datatable.DefaultView.Sort = "card_race ASC";
+            card_race_combobox.DataSource = card_race_datatable;
+            card_race_combobox.DisplayMember = "card_race";
         }
 
         //============================================================================Gridview Interaction================================================================== 
@@ -138,29 +162,6 @@ namespace InventoryApp
             setup_dttable();
             format_view();
 
-            //Fill combo boxes
-            DataTable rarity_datatable = db.GetRarities();
-            rarity_datatable.DefaultView.Sort = "Rarity ASC";
-            rarity_combobox.DataSource = rarity_datatable;
-            rarity_combobox.DisplayMember = "Rarity";
-
-            DataTable card_type_datatable = db.GetCardType();
-            DataRow emptyRow = card_type_datatable.NewRow();
-            emptyRow["card_type"] = "";
-            card_type_datatable.Rows.Add(emptyRow);
-            card_type_datatable.DefaultView.Sort = "card_type ASC";
-            card_type_combobox.DataSource = card_type_datatable;
-            card_type_combobox.DisplayMember = "card_type";
-
-
-            DataTable card_race_datatable = db.GetCardRace();
-            emptyRow = card_race_datatable.NewRow();
-            emptyRow["card_race"] = "";
-            card_race_datatable.Rows.Add(emptyRow);
-            card_race_datatable.DefaultView.Sort = "card_race ASC";
-            card_race_combobox.DataSource = card_race_datatable;
-            card_race_combobox.DisplayMember = "card_race";
-
         }
 
         private void prev_catalog_Click(object sender, EventArgs e)
@@ -196,7 +197,7 @@ namespace InventoryApp
             dt.Columns.Add("Card Image", Type.GetType("System.Byte[]")); //Thumbnail
             //dt.Load(myreader); //load sql result into datatable
 
-            int end = db.LoadCatalog(dt, Global.uid, ScrollVal, Global.filters);
+            int end = db.LoadCatalog(dt, Global.uid, ScrollVal, filters);
 
             dt.Columns["Card_Name"].ColumnName = "Card Name";
             dt.Columns["Set_Code"].ColumnName = "Set Code";
@@ -250,6 +251,7 @@ namespace InventoryApp
 
             catalog_view.Columns[1].Visible = false; //hide image file name
             catalog_view.Columns[2].Visible = false; //hide card id
+            catalog_view.Columns[9].Visible = false; //Hide copies
 
             //Change prices decimal points
             catalog_view.Columns[7].DefaultCellStyle.Format = "$0.00##";
@@ -271,7 +273,6 @@ namespace InventoryApp
             catalog_view.Columns.Add("Qty.", "Qty.");
             catalog_view.Columns[12].ValueType = typeof(string);
             catalog_view.Columns[12].ReadOnly = false;
-            //catalog_view.Columns[12].AllowNumericOnly = true;
 
 
             DataGridViewButtonColumn add_to_cart = new DataGridViewButtonColumn();
@@ -323,7 +324,7 @@ namespace InventoryApp
          *                       
          * Outputs: filter_string - String to be used for SQL select statement where clause
          */
-        public static string return_filter_string(string search_string, string card_type, string card_race, string rarity, string card_price_lower, string card_price_upper, string inventory_lower, string inventory_upper)
+        public static string return_filter_string(string search_string, string card_type, string card_race, string rarity, string inventory_lower, string inventory_upper, string market_price_lower, string market_price_upper, string store_price_lower, string store_price_upper)
         {
 
             string filter_string = ""; //empty string to be used for filters for SQL select statement
@@ -331,9 +332,9 @@ namespace InventoryApp
             //If card_name has a filter string
             if (!string.IsNullOrEmpty(search_string))
             {
-                filter_string += "UPPER(card_name) like UPPER('%" + search_string + "%')";
-                filter_string += " and UPPER(set_name) like UPPER('%" + search_string + "%')";
-                filter_string += " and UPPER(set_code) like UPPER('%" + search_string + "%')";
+                filter_string += "(ci.card_name like ('%" + search_string + "%')";
+                filter_string += " or cm.set_name like ('%" + search_string + "%')";
+                filter_string += " or s.set_code like ('%" + search_string + "%'))";
             }
 
             if (!string.IsNullOrEmpty(card_type))
@@ -342,7 +343,7 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "card_type = " + card_type;
+                filter_string += "ci.card_type = '" + card_type + "'";
             }
 
             if (!string.IsNullOrEmpty(card_race))
@@ -351,7 +352,7 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "card_race = " + card_race;
+                filter_string += "ci.card_race = '" + card_race + "'";
             }
 
             if (!string.IsNullOrEmpty(rarity))
@@ -360,25 +361,43 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "rarity = " + rarity;
+                filter_string += "s.rarity like ('%" + rarity + "%')";
             }
 
-            if (!string.IsNullOrEmpty(card_price_lower))
+            if (!string.IsNullOrEmpty(market_price_lower))
             {
                 if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
-                filter_string += "store_price >= " + card_price_lower;
+                filter_string += "cm.market_price >= " + market_price_lower;
             }
 
-            if (!string.IsNullOrEmpty(card_price_upper))
+            if (!string.IsNullOrEmpty(market_price_upper))
             {
                 if (!string.IsNullOrEmpty(filter_string))
                 {
                     filter_string += " and ";
                 }
-                filter_string += "store_price <= " + card_price_upper;
+                filter_string += "cm.market_price <= " + market_price_upper;
+            }
+
+            if (!string.IsNullOrEmpty(store_price_lower))
+            {
+                if (!string.IsNullOrEmpty(filter_string))
+                {
+                    filter_string += " and ";
+                }
+                filter_string += "s.store_price >= " + store_price_lower;
+            }
+
+            if (!string.IsNullOrEmpty(store_price_upper))
+            {
+                if (!string.IsNullOrEmpty(filter_string))
+                {
+                    filter_string += " and ";
+                }
+                filter_string += "s.store_price <= " + store_price_upper;
             }
 
             if (!string.IsNullOrEmpty(inventory_lower))
@@ -387,7 +406,7 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "copies >= " + inventory_lower;
+                filter_string += "s.copies >= " + inventory_lower;
             }
 
             if (!string.IsNullOrEmpty(inventory_upper))
@@ -396,10 +415,10 @@ namespace InventoryApp
                 {
                     filter_string += " and ";
                 }
-                filter_string += "copies <= " + inventory_upper;
+                filter_string += "s.copies <= " + inventory_upper;
             }
 
-            if (!string.IsNullOrEmpty(filter_string))
+            if (string.IsNullOrEmpty(filter_string))
             {
                 return null;
             }
@@ -602,22 +621,31 @@ namespace InventoryApp
         }
         private void search_button_Click(object sender, EventArgs e)
         {
-            if (search_box.Text == "")
-            {
-                return;
-            }
+            DataRowView rarity_view = rarity_combobox.SelectedItem as DataRowView;
+            string rarity = rarity_view.Row["Rarity"] as string;
+            DataRowView card_type_view = card_type_combobox.SelectedItem as DataRowView;
+            string card_type = card_type_view.Row["card_type"] as string;
+            DataRowView card_race_view = card_race_combobox.SelectedItem as DataRowView;
+            string card_race = card_race_view.Row["card_race"] as string;
 
-
+            filters = return_filter_string(search_box.Text, card_type, card_race, rarity, inventory_lower.Value.ToString(), inventory_upper.Value.ToString(), market_price_lower.Text, market_price_upper.Text, store_price_lower.Text, store_price_upper.Text);
+            paging_catalog();
         }
 
-        private void search_box_TextChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            DataTable search = new DataTable();
-            string query;
-            if (search_box.TextLength >= 5)
-            {
-                return;
-            }
+            filters = null;
+            search_box.Text = "";
+            rarity_combobox.SelectedIndex = 0;
+            card_type_combobox.SelectedIndex = 0;
+            card_race_combobox.SelectedIndex = 0;
+            inventory_lower.Value = 0;
+            inventory_upper.Value = 999;
+            market_price_lower.Text = "";
+            market_price_upper.Text = "";
+            store_price_lower.Text = "";
+            store_price_upper.Text = "";
+            paging_catalog();
         }
     }
 }
