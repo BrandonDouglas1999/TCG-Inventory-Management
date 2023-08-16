@@ -46,6 +46,7 @@
             catalog_uc = new catalog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1 = new Panel();
+            logout_button = new Button();
             sidebar.SuspendLayout();
             SuspendLayout();
             // 
@@ -210,6 +211,7 @@
             // 
             home_page.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             home_page.AutoSize = true;
+            home_page.BackColor = Color.WhiteSmoke;
             home_page.Location = new Point(150, 116);
             home_page.Name = "home_page";
             home_page.Size = new Size(1503, 1001);
@@ -249,12 +251,34 @@
             panel1.Size = new Size(1466, 58);
             panel1.TabIndex = 7;
             // 
+            // logout_button
+            // 
+            logout_button.BackColor = Color.Transparent;
+            logout_button.Cursor = Cursors.Hand;
+            logout_button.FlatAppearance.BorderSize = 0;
+            logout_button.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            logout_button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            logout_button.FlatStyle = FlatStyle.Flat;
+            logout_button.Font = new Font("Sylfaen", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            logout_button.ForeColor = Color.White;
+            logout_button.Image = (Image)resources.GetObject("logout_button.Image");
+            logout_button.ImageAlign = ContentAlignment.MiddleRight;
+            logout_button.Location = new Point(1351, 12);
+            logout_button.Name = "logout_button";
+            logout_button.Size = new Size(121, 45);
+            logout_button.TabIndex = 8;
+            logout_button.Text = "Logout";
+            logout_button.TextAlign = ContentAlignment.MiddleLeft;
+            logout_button.UseVisualStyleBackColor = false;
+            logout_button.Click += logout_button_Click;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
+            BackColor = Color.FromArgb(50, 55, 143);
             ClientSize = new Size(1484, 811);
+            Controls.Add(logout_button);
             Controls.Add(panel1);
             Controls.Add(catalog_uc);
             Controls.Add(sidebar);
@@ -290,5 +314,6 @@
         private Button menu_button;
         private Label separator;
         private Panel panel1;
+        private Button logout_button;
     }
 }

@@ -515,6 +515,36 @@ namespace InventoryApp.Helpers
             return status;
         }
 
+        public int CreateAccount(string hashed_email, string hashed_username, string hashed_password, string re_entered_hash_pw)
+        {
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            int status;
+            string query = "Exec CreateUser @UN, @PW, @REPW, @EMAIL, @Status output";
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@UN", SqlDbType.VarChar, 64).Value = hashed_username;
+                myCommand.Parameters.Add("@PW", SqlDbType.VarChar, 50).Value = hashed_password;
+                myCommand.Parameters.Add("@REPW", SqlDbType.VarChar, -1).Value = re_entered_hash_pw;
+                myCommand.Parameters.Add("@EMAIL", SqlDbType.VarChar, 50).Value = hashed_email;
+                myCommand.Parameters.Add("@Status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    /*should be 1 if successfully create an account*/
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                }
+                catch
+                {
+                    status = 0;
+                }
+                finally { myConnection.Close(); }
+            }
+            return status;
+        }
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //-------------------------------------------------------------Shopping Cart----------------------------------------------------------------------
