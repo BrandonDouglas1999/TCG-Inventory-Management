@@ -134,6 +134,7 @@ namespace InventoryApp
         {
             transitionUC(sales_uc);
             sales_uc.load_sales();
+            activeWindow.SendToBack();
         }
 
         // Handles the transition between UserControls (buttons)

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             card_qnty = new NumericUpDown();
             label9 = new Label();
             label8 = new Label();
@@ -68,10 +68,10 @@
             label14 = new Label();
             label12 = new Label();
             panel3 = new Panel();
+            label11 = new Label();
             label21 = new Label();
             panel4 = new Panel();
             label10 = new Label();
-            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)card_qnty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)card_gridview).BeginInit();
             ((System.ComponentModel.ISupportInitialize)set_gridview).BeginInit();
@@ -138,7 +138,7 @@
             // 
             s_price.Location = new Point(110, 9);
             s_price.Name = "s_price";
-            s_price.PlaceholderText = "0.00";
+            s_price.PlaceholderText = "$0.00";
             s_price.Size = new Size(100, 23);
             s_price.TabIndex = 41;
             // 
@@ -319,14 +319,14 @@
             card_gridview.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             card_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             card_gridview.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            card_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            card_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             card_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.GridColor = SystemColors.ActiveCaption;
@@ -334,14 +334,14 @@
             card_gridview.MultiSelect = false;
             card_gridview.Name = "card_gridview";
             card_gridview.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Control;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             card_gridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             card_gridview.RowTemplate.Height = 25;
             card_gridview.Size = new Size(698, 177);
@@ -359,7 +359,7 @@
             srch_option.Name = "srch_option";
             srch_option.Size = new Size(121, 29);
             srch_option.TabIndex = 56;
-            srch_option.SelectedIndexChanged += srch_option_SelectedIndexChanged;
+            srch_option.Click += srch_option_SelectedIndexChanged;
             // 
             // set_gridview
             // 
@@ -370,28 +370,28 @@
             set_gridview.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             set_gridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             set_gridview.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.Control;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            set_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            set_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             set_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             set_gridview.EnableHeadersVisualStyles = false;
             set_gridview.Location = new Point(49, 588);
             set_gridview.MultiSelect = false;
             set_gridview.Name = "set_gridview";
             set_gridview.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = SystemColors.Control;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            set_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            set_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             set_gridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             set_gridview.RowTemplate.Height = 25;
             set_gridview.Size = new Size(698, 179);
@@ -502,9 +502,9 @@
             label14.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label14.Location = new Point(49, 301);
             label14.Name = "label14";
-            label14.Size = new Size(207, 23);
+            label14.Size = new Size(176, 23);
             label14.TabIndex = 67;
-            label14.Text = "2. Select Card Version:";
+            label14.Text = "2. Select Card Info:";
             // 
             // label12
             // 
@@ -512,9 +512,9 @@
             label12.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label12.Location = new Point(49, 553);
             label12.Name = "label12";
-            label12.Size = new Size(176, 23);
+            label12.Size = new Size(207, 23);
             label12.TabIndex = 68;
-            label12.Text = "3. Select Card Info:";
+            label12.Text = "3. Select Card Version:";
             // 
             // panel3
             // 
@@ -534,6 +534,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(558, 179);
             panel3.TabIndex = 69;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.ForeColor = Color.Black;
+            label11.Location = new Point(234, 128);
+            label11.Name = "label11";
+            label11.Size = new Size(283, 30);
+            label11.TabIndex = 56;
+            label11.Text = "*Market Price displayed is after converting from USD\r\n  to CAD";
             // 
             // label21
             // 
@@ -566,16 +576,6 @@
             label10.Size = new Size(174, 23);
             label10.TabIndex = 72;
             label10.Text = "4. Product Details:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(234, 128);
-            label11.Name = "label11";
-            label11.Size = new Size(283, 30);
-            label11.TabIndex = 56;
-            label11.Text = "*Market Price displayed is after converting from USD\r\n  to CAD";
             // 
             // add_cards
             // 

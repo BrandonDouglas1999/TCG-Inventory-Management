@@ -59,7 +59,7 @@ namespace InventoryApp
             label29 = new Label();
             label28 = new Label();
             label27 = new Label();
-            set_code_combobox = new ComboBox();
+            card_type_combobox = new ComboBox();
             label26 = new Label();
             button1 = new Button();
             label1 = new Label();
@@ -67,7 +67,7 @@ namespace InventoryApp
             search_button = new Button();
             rarity_combobox = new ComboBox();
             search_box = new TextBox();
-            set_name_combobox = new ComboBox();
+            card_race_combobox = new ComboBox();
             label18 = new Label();
             label19 = new Label();
             tabPage2 = new TabPage();
@@ -241,7 +241,7 @@ namespace InventoryApp
             catalog_view.RowHeadersVisible = false;
             catalog_view.RowHeadersWidth = 51;
             catalog_view.RowTemplate.Height = 25;
-            catalog_view.Size = new Size(1108, 528);
+            catalog_view.Size = new Size(1110, 540);
             catalog_view.TabIndex = 7;
             catalog_view.CellContentClick += catalog_view_CellContentClick;
             // 
@@ -286,7 +286,7 @@ namespace InventoryApp
             panel4.Controls.Add(label29);
             panel4.Controls.Add(label28);
             panel4.Controls.Add(label27);
-            panel4.Controls.Add(set_code_combobox);
+            panel4.Controls.Add(card_type_combobox);
             panel4.Controls.Add(label26);
             panel4.Controls.Add(button1);
             panel4.Controls.Add(label1);
@@ -294,7 +294,7 @@ namespace InventoryApp
             panel4.Controls.Add(search_button);
             panel4.Controls.Add(rarity_combobox);
             panel4.Controls.Add(search_box);
-            panel4.Controls.Add(set_name_combobox);
+            panel4.Controls.Add(card_race_combobox);
             panel4.Controls.Add(label18);
             panel4.Controls.Add(label19);
             panel4.Location = new Point(17, 91);
@@ -446,28 +446,29 @@ namespace InventoryApp
             // label27
             // 
             label27.BorderStyle = BorderStyle.Fixed3D;
-            label27.Location = new Point(55, 175);
+            label27.Location = new Point(56, 132);
             label27.Name = "label27";
             label27.Size = new Size(150, 2);
             label27.TabIndex = 32;
             // 
-            // set_code_combobox
+            // card_type_combobox
             // 
-            set_code_combobox.FormattingEnabled = true;
-            set_code_combobox.Location = new Point(98, 203);
-            set_code_combobox.Name = "set_code_combobox";
-            set_code_combobox.Size = new Size(118, 23);
-            set_code_combobox.TabIndex = 32;
+            card_type_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            card_type_combobox.FormattingEnabled = true;
+            card_type_combobox.Location = new Point(98, 203);
+            card_type_combobox.Name = "card_type_combobox";
+            card_type_combobox.Size = new Size(118, 23);
+            card_type_combobox.TabIndex = 32;
             // 
             // label26
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label26.Location = new Point(14, 205);
+            label26.Location = new Point(10, 203);
             label26.Name = "label26";
-            label26.Size = new Size(75, 21);
+            label26.Size = new Size(82, 21);
             label26.TabIndex = 31;
-            label26.Text = "Set Code:";
+            label26.Text = "Card Type:";
             // 
             // button1
             // 
@@ -496,7 +497,7 @@ namespace InventoryApp
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(38, 124);
+            label20.Location = new Point(34, 157);
             label20.Name = "label20";
             label20.Size = new Size(54, 21);
             label20.TabIndex = 29;
@@ -511,7 +512,7 @@ namespace InventoryApp
             search_button.ForeColor = Color.White;
             search_button.Location = new Point(136, 585);
             search_button.Name = "search_button";
-            search_button.Size = new Size(80, 25);
+            search_button.Size = new Size(80, 30);
             search_button.TabIndex = 2;
             search_button.Text = "Search";
             search_button.UseVisualStyleBackColor = false;
@@ -519,8 +520,9 @@ namespace InventoryApp
             // 
             // rarity_combobox
             // 
+            rarity_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             rarity_combobox.FormattingEnabled = true;
-            rarity_combobox.Location = new Point(98, 122);
+            rarity_combobox.Location = new Point(98, 157);
             rarity_combobox.Name = "rarity_combobox";
             rarity_combobox.Size = new Size(118, 23);
             rarity_combobox.TabIndex = 28;
@@ -534,13 +536,14 @@ namespace InventoryApp
             search_box.TabIndex = 1;
             search_box.TextChanged += search_box_TextChanged;
             // 
-            // set_name_combobox
+            // card_race_combobox
             // 
-            set_name_combobox.FormattingEnabled = true;
-            set_name_combobox.Location = new Point(98, 247);
-            set_name_combobox.Name = "set_name_combobox";
-            set_name_combobox.Size = new Size(118, 23);
-            set_name_combobox.TabIndex = 27;
+            card_race_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            card_race_combobox.FormattingEnabled = true;
+            card_race_combobox.Location = new Point(98, 246);
+            card_race_combobox.Name = "card_race_combobox";
+            card_race_combobox.Size = new Size(118, 23);
+            card_race_combobox.TabIndex = 27;
             // 
             // label18
             // 
@@ -556,11 +559,11 @@ namespace InventoryApp
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(14, 249);
+            label19.Location = new Point(4, 246);
             label19.Name = "label19";
-            label19.Size = new Size(81, 21);
+            label19.Size = new Size(83, 21);
             label19.TabIndex = 26;
-            label19.Text = "Set Name:";
+            label19.Text = "Card Race:";
             // 
             // tabPage2
             // 
@@ -1185,7 +1188,7 @@ namespace InventoryApp
         private Label label1;
         private Label separator;
         private Label label18;
-        private ComboBox set_name_combobox;
+        private ComboBox card_race_combobox;
         private Label label19;
         private Label label20;
         private ComboBox rarity_combobox;
@@ -1227,7 +1230,7 @@ namespace InventoryApp
         private Button button2;
         private Label label23;
         private Label label25;
-        private ComboBox set_code_combobox;
+        private ComboBox card_type_combobox;
         private Label label26;
         private Label label28;
         private Label label27;

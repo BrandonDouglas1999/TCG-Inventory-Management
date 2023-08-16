@@ -27,6 +27,8 @@ namespace InventoryApp
         string rarity;
         string quantity;
 
+        int total_copies;
+
         public shopping_cart_page()
         {
             InitializeComponent();
@@ -37,6 +39,21 @@ namespace InventoryApp
         {
             setup_dttable();
             format_view();
+            update_shopping_cart_total_text();
+        }
+
+        private void update_shopping_cart_total_text()
+        {
+            if (dt.Rows.Count == 0)
+            {
+                cart_qnty_label.Text = "Your Shopping Cart is empty";
+                return;
+            }
+            else
+            {
+                cart_qnty_label.Text = $"You have {total_copies} item(s) in your Shopping Cart.";
+            }
+
         }
 
         private void setup_dttable() /*Set up datatable for query result*/
@@ -80,6 +97,8 @@ namespace InventoryApp
                 sub_total.Text = totalprice.ToString("$0.00");
                 taxes.Text = (totalprice * 0.05).ToString("$0.00");
                 total_price.Text = (totalprice + (totalprice * 0.05)).ToString("$0.00");
+
+                total_copies = Convert.ToInt32(dt.Compute("Sum(Quantity)", string.Empty));
             }
         }
 
@@ -91,7 +110,7 @@ namespace InventoryApp
             if (dt == null || dt.Rows.Count <= 0)
             {
                 shopping_cart_view.ColumnCount = 1;
-                shopping_cart_view.Columns[0].Name = "Shopping Cart is Currently Empty";
+                shopping_cart_view.Columns[0].Name = "Your Shopping Cart is empty";
                 cart_qnty_label.Text = "Your Shopping Cart is empty.";
                 return;
             }

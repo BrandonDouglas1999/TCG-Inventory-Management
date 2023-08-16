@@ -90,8 +90,10 @@ namespace InventoryApp.Helpers
             int total;
             int end = 0;
             string num = String.Format("SELECT COUNT(user_id) as num from YGOStorePrice where user_id = '{0}'", uid);
-            string query = String.Format("select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = " +
-                "CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = '{0}'", uid);
+            string query = "select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join " +
+                "(Select Y.image, Y.card_id, Y.set_code, Y.rarity, Y.card_name, Y.card_type, Y.card_race, Y.set_name, ROUND(Y.market_price / C.rate, 2) as market_price " +
+                "from YGOCurrentMarket as Y, dbo.ConversionRate as C\r\nwhere C.update_date = ((select MAX(update_date) from dbo.ConversionRate))) as CM " +
+                "on S.card_id = CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = @UID";
             if (filters !=  null) { query += " WHERE " + filters + " "; }
             query += " ORDER BY card_name";
             
@@ -101,7 +103,9 @@ namespace InventoryApp.Helpers
                 myConnection.Open();
                 myCommand = new SqlCommand(num, myConnection);
                 total = (int)myCommand.ExecuteScalar();
-                pagingAdapter = new SqlDataAdapter(query, myConnection);
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@UID", SqlDbType.VarChar, 64).Value = uid;
+                pagingAdapter = new SqlDataAdapter(myCommand);
                 //Check if end of database is reached
                 if (scrollVal > 0 && scrollVal + 20 > total) 
                 {
@@ -115,12 +119,6 @@ namespace InventoryApp.Helpers
                 myConnection.Close();
             }
             return end;
-        }
-
-        public void search_card(string search, string uid)
-        {
-           
-
         }
 
         public void search_autoFill(string search, string uid)
@@ -378,19 +376,22 @@ namespace InventoryApp.Helpers
         public double GetRate()
         {
             SqlCommand myCommand;
-            SqlDataReader myReader;
-            double rate = 0;
+            double rate;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
-                myConnection.Open();
-                String query = "Select Rate from ConversionRate where Date = (Select MAX(Date) as date from ConversionRate)";
-                myCommand= new SqlCommand(query, myConnection);
-                myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction= System.Data.ParameterDirection.Output;
-                myReader= myCommand.ExecuteReader();
-                if (myReader.HasRows) 
+                try
                 {
-                    rate = myReader.GetDouble(0);
+                    myConnection.Open();
+                    String query = "Select rate from ConversionRate where update_date = (Select MAX(update_date) as date from ConversionRate)";
+                    myCommand = new SqlCommand(query, myConnection);
+                    myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction = System.Data.ParameterDirection.Output;
+                    rate = (double)myCommand.ExecuteScalar();
                 }
+                catch(Exception ex)
+                {
+                    rate = 1;
+                }
+                finally { myConnection.Close(); }
             }
             return rate; 
         }
@@ -723,6 +724,82 @@ namespace InventoryApp.Helpers
                 finally { myConnection.Close(); }
             }
             return ds;
+        }
+
+
+        public DataTable GetRarities()
+        {
+            string query = "Select distinct rarity from dbo.YGOMarketPrice";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
+
+        public DataTable GetCardType()
+        {
+            string query = "Select distinct card_type from dbo.YGOCardsInfo";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
+        }
+
+        public DataTable GetCardRace()
+        {
+            string query = "Select distinct card_race from dbo.YGOCardsInfo";
+            DataTable dt = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter myAdapter = new SqlDataAdapter();
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                myCommand = new SqlCommand(query, myConnection);
+                try
+                {
+                    myConnection.Open();
+                    myAdapter.SelectCommand = myCommand;
+                    myAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = null;
+                }
+                finally { myConnection.Close(); }
+            }
+            return dt;
         }
     }
 }

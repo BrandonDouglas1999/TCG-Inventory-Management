@@ -21,8 +21,9 @@ namespace InventoryApp
 {
     public partial class add_cards : UserControl
     {
-        public double c_rate = 0;
+        public double c_rate;
         YGOProCard card;
+        SQLHelper db = new SQLHelper();
 
         public add_cards()
         {
@@ -30,6 +31,7 @@ namespace InventoryApp
             APIHelper.InitializeClient();
             srch_option.SelectedIndex = 0;
             set_colours();
+            c_rate = db.GetRate();
         }
 
         private void set_colours()
@@ -93,7 +95,6 @@ namespace InventoryApp
                 }
                 card_gridview.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Aqua;
                 load_set(e.RowIndex);
-                setinfo_column();
             }
         }
 
@@ -105,7 +106,8 @@ namespace InventoryApp
                 api_setname.Text = set_gridview.Rows[e.RowIndex].Cells[0].Value.ToString();
                 api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
                 api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
-                api_price.Text = set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString();
+                double market_price = Math.Round(Convert.ToDouble(set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString()) / c_rate, 2);
+                api_price.Text = market_price.ToString();
                 foreach (DataGridViewRow r in set_gridview.Rows)
                 {
                     r.DefaultCellStyle.BackColor = Color.White;
@@ -117,7 +119,6 @@ namespace InventoryApp
         //---------------------------------Functions for inserting card into database---------------------------------------------
         private void InsertCardYGO(string uid, string cid, string set_code, string cname, string ctype, string crace, string set_name, string rarity, string price, string inv, string image, string s_price)
         {
-            SQLHelper db = new SQLHelper();
             int status = db.InsertCard(uid, cid, set_code, cname, ctype, crace, set_name, rarity, price, inv, image, s_price);
             if (status == 0) { MessageBox.Show("Card already in database"); }
             else if (status == 1) { MessageBox.Show("Successfully added card to Inventory"); }
@@ -174,12 +175,24 @@ namespace InventoryApp
             api_price.Text = "";
             api_rare.Text = "";
             set_gridview.Columns.Clear();
-            set_gridview.DataSource = card.data[index].card_sets;
+            if (card.data[index].card_sets != null)
+            {
+                set_gridview.DataSource = card.data[index].card_sets;
+                setinfo_column();
+            }
+            else
+            {
+                set_gridview.DataSource = null;
+                set_gridview.ColumnCount = 1;
+                set_gridview.Columns[0].Name = "No Card Version Available";
+            }
+
         }
 
         //Change header name and add select button for set gridview
         private void setinfo_column()
         {
+            set_gridview.Columns[0].Width = 260;
             set_gridview.Columns["set_name"].HeaderText = "Set Name";
             set_gridview.Columns["set_code"].HeaderText = "Set Code";
             set_gridview.Columns["set_rarity"].HeaderText = "Rarity";
@@ -197,6 +210,8 @@ namespace InventoryApp
 
         private void cardinfo_columns()
         {
+            card_gridview.Columns[0].Width = 100;
+            card_gridview.Columns[1].Width = 260;
             card_gridview.Columns["id"].HeaderText = "Card ID";
             card_gridview.Columns["name"].HeaderText = "Card Name";
             card_gridview.Columns["type"].HeaderText = "Card Type";
