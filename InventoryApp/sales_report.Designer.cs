@@ -102,7 +102,7 @@
             // separator
             // 
             separator.BorderStyle = BorderStyle.Fixed3D;
-            separator.Location = new Point(735, 140);
+            separator.Location = new Point(735, 100);
             separator.Name = "separator";
             separator.Size = new Size(2, 600);
             separator.TabIndex = 25;
@@ -237,7 +237,6 @@
             receipt_view.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(238, 239, 249);
             receipt_view.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            receipt_view.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             receipt_view.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             receipt_view.BackgroundColor = SystemColors.Control;
             receipt_view.BorderStyle = BorderStyle.None;
@@ -247,7 +246,7 @@
             receipt_view.Name = "receipt_view";
             receipt_view.ReadOnly = true;
             receipt_view.RowTemplate.Height = 25;
-            receipt_view.Size = new Size(667, 535);
+            receipt_view.Size = new Size(617, 499);
             receipt_view.TabIndex = 4;
             receipt_view.CellContentClick += receipt_view_CellContentClick;
             // 

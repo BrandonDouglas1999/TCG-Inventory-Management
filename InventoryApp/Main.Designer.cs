@@ -214,7 +214,7 @@
             home_page.BackColor = Color.WhiteSmoke;
             home_page.Location = new Point(150, 116);
             home_page.Name = "home_page";
-            home_page.Size = new Size(1503, 1001);
+            home_page.Size = new Size(1703, 1051);
             home_page.TabIndex = 2;
             // 
             // sales_uc
@@ -246,9 +246,9 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Location = new Point(50, 780);
+            panel1.Location = new Point(50, 744);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1466, 58);
+            panel1.Size = new Size(1466, 44);
             panel1.TabIndex = 7;
             // 
             // logout_button
@@ -277,7 +277,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(50, 55, 143);
-            ClientSize = new Size(1484, 811);
+            ClientSize = new Size(1484, 761);
             Controls.Add(logout_button);
             Controls.Add(panel1);
             Controls.Add(catalog_uc);

@@ -97,7 +97,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(795, 301);
+            label9.Location = new Point(795, 259);
             label9.Name = "label9";
             label9.Size = new Size(205, 23);
             label9.TabIndex = 58;
@@ -329,7 +329,7 @@
             card_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             card_gridview.EnableHeadersVisualStyles = false;
             card_gridview.GridColor = SystemColors.ActiveCaption;
-            card_gridview.Location = new Point(49, 342);
+            card_gridview.Location = new Point(49, 300);
             card_gridview.MultiSelect = false;
             card_gridview.Name = "card_gridview";
             card_gridview.ReadOnly = true;
@@ -343,7 +343,7 @@
             card_gridview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             card_gridview.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             card_gridview.RowTemplate.Height = 25;
-            card_gridview.Size = new Size(698, 177);
+            card_gridview.Size = new Size(698, 176);
             card_gridview.TabIndex = 57;
             card_gridview.CellClick += card_view_CellContentClick;
             // 
@@ -378,7 +378,7 @@
             set_gridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             set_gridview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             set_gridview.EnableHeadersVisualStyles = false;
-            set_gridview.Location = new Point(49, 588);
+            set_gridview.Location = new Point(49, 524);
             set_gridview.MultiSelect = false;
             set_gridview.Name = "set_gridview";
             set_gridview.ReadOnly = true;
@@ -462,7 +462,7 @@
             card_input_vals_panel.Controls.Add(srch_option);
             card_input_vals_panel.Controls.Add(rtv_card);
             card_input_vals_panel.Controls.Add(card_srch);
-            card_input_vals_panel.Location = new Point(49, 135);
+            card_input_vals_panel.Location = new Point(49, 119);
             card_input_vals_panel.Name = "card_input_vals_panel";
             card_input_vals_panel.Size = new Size(540, 86);
             card_input_vals_panel.TabIndex = 64;
@@ -471,7 +471,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(49, 93);
+            label13.Location = new Point(49, 77);
             label13.Name = "label13";
             label13.Size = new Size(139, 23);
             label13.TabIndex = 65;
@@ -489,7 +489,7 @@
             panel1.Controls.Add(cn_label);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
-            panel1.Location = new Point(795, 341);
+            panel1.Location = new Point(795, 299);
             panel1.Name = "panel1";
             panel1.Size = new Size(558, 177);
             panel1.TabIndex = 66;
@@ -498,7 +498,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(49, 301);
+            label14.Location = new Point(49, 259);
             label14.Name = "label14";
             label14.Size = new Size(176, 23);
             label14.TabIndex = 67;
@@ -508,7 +508,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(49, 553);
+            label12.Location = new Point(49, 489);
             label12.Name = "label12";
             label12.Size = new Size(207, 23);
             label12.TabIndex = 68;
@@ -528,7 +528,7 @@
             panel3.Controls.Add(api_setcode);
             panel3.Controls.Add(label8);
             panel3.Controls.Add(image_url);
-            panel3.Location = new Point(795, 588);
+            panel3.Location = new Point(795, 524);
             panel3.Name = "panel3";
             panel3.Size = new Size(558, 179);
             panel3.TabIndex = 69;
@@ -546,7 +546,7 @@
             // label21
             // 
             label21.BorderStyle = BorderStyle.Fixed3D;
-            label21.Location = new Point(194, 262);
+            label21.Location = new Point(194, 238);
             label21.Name = "label21";
             label21.Size = new Size(1000, 2);
             label21.TabIndex = 70;
@@ -560,7 +560,7 @@
             panel4.Controls.Add(s_price);
             panel4.Controls.Add(card_qnty);
             panel4.Controls.Add(add_bttn);
-            panel4.Location = new Point(795, 135);
+            panel4.Location = new Point(795, 119);
             panel4.Name = "panel4";
             panel4.Size = new Size(558, 86);
             panel4.TabIndex = 71;
@@ -569,7 +569,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(795, 93);
+            label10.Location = new Point(795, 77);
             label10.Name = "label10";
             label10.Size = new Size(174, 23);
             label10.TabIndex = 72;
@@ -594,7 +594,7 @@
             Controls.Add(set_gridview);
             Controls.Add(card_gridview);
             Name = "add_cards";
-            Size = new Size(1500, 850);
+            Size = new Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)card_qnty).EndInit();
             ((System.ComponentModel.ISupportInitialize)card_gridview).EndInit();
             ((System.ComponentModel.ISupportInitialize)set_gridview).EndInit();
