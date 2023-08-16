@@ -40,6 +40,7 @@
             back_button = new Button();
             email_input = new TextBox();
             email_label = new Label();
+            error_label = new Label();
             SuspendLayout();
             // 
             // user_input
@@ -128,12 +129,13 @@
             create_account_button.FlatStyle = FlatStyle.Popup;
             create_account_button.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             create_account_button.ForeColor = Color.White;
-            create_account_button.Location = new Point(158, 406);
+            create_account_button.Location = new Point(154, 380);
             create_account_button.Name = "create_account_button";
             create_account_button.Size = new Size(298, 32);
             create_account_button.TabIndex = 5;
             create_account_button.Text = "Create Account";
             create_account_button.UseVisualStyleBackColor = false;
+            create_account_button.Click += create_account_button_Click;
             // 
             // back_button
             // 
@@ -179,11 +181,24 @@
             email_label.TabIndex = 28;
             email_label.Text = "Email";
             // 
+            // error_label
+            // 
+            error_label.AutoSize = true;
+            error_label.BackColor = Color.Transparent;
+            error_label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            error_label.ForeColor = Color.Red;
+            error_label.Location = new Point(204, 438);
+            error_label.Name = "error_label";
+            error_label.Size = new Size(0, 21);
+            error_label.TabIndex = 29;
+            error_label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // create_account
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(26, 28, 60);
+            Controls.Add(error_label);
             Controls.Add(email_input);
             Controls.Add(email_label);
             Controls.Add(back_button);
@@ -214,5 +229,6 @@
         private Button back_button;
         private TextBox email_input;
         private Label email_label;
+        private Label error_label;
     }
 }

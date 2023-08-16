@@ -166,9 +166,10 @@
             // create_account_uc
             // 
             create_account_uc.BackColor = Color.FromArgb(26, 28, 60);
+            create_account_uc.Dock = DockStyle.Fill;
             create_account_uc.Location = new Point(0, 0);
             create_account_uc.Name = "create_account_uc";
-            create_account_uc.Size = new Size(660, 540);
+            create_account_uc.Size = new Size(644, 501);
             create_account_uc.TabIndex = 10;
             create_account_uc.Visible = false;
             // 

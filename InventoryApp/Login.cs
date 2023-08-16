@@ -40,22 +40,22 @@ namespace InventoryApp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            if (user_input.Text == "" || pw_input.Text == "")
+            if (string.IsNullOrEmpty(user_input.Text) || string.IsNullOrEmpty(pw_input.Text))
             {
                 incorrect_prompt.Text = "Incorrect Username or Password";
                 incorrect_prompt.Visible = true;
                 return;
             }
-            string username = user_input.Text;
-            string password = pw_input.Text;
+            string hashed_username = create_account_uc.hash_values(user_input.Text);
+            string hashed_password = create_account_uc.hash_values(pw_input.Text);
 
             // Hash the inputs and compare against the db stored value
-            var login = db.AppLogin(username, password);
+            var login = db.AppLogin(hashed_username, hashed_password);
 
             // If correct, close form, if not, show error
             if (login.status == 1)
             {
-                this.logged_user = username;
+                this.logged_user = user_input.Text;
                 this.uid = login.uid;
                 this.authenticated = true;
                 this.Close();
@@ -168,7 +168,6 @@ namespace InventoryApp
 
             SQLHelper sqlHelper = new SQLHelper();
             var login = sqlHelper.ExternalLogin(google_id, "google");
-            Debug.WriteLine(login.uid);
             if (login.status == 0)
             {
                 int success = sqlHelper.CreateExternalAccount(google_id, "google", email, user_name);
