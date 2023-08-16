@@ -1,4 +1,4 @@
-Create Proc AddCard
+Alter Proc AddCard
 @UID varchar(64), /*Store id*/
 @CID int,
 @Set_Code varchar(50),
@@ -23,7 +23,7 @@ Begin
 			Insert into dbo.YGOStorePrice 
 				(user_id, card_id, set_code, rarity, store_price, copies) 
 			values 
-				(@UID, @CID, @Set_Code, @Rarity, @s_price, @Copies)
+				(@UID, @CID, @Set_Code, @Rarity, ROUND(@s_price, 2), @Copies)
 
 			/*Add market price to YGOMarketPrice*/
 			If not exists (select update_date, card_id, set_code, rarity from YGOMarketPrice where update_date = @date and card_id = @CID and set_code = @Set_Code and rarity= @Rarity)

@@ -5,16 +5,13 @@ Select C.image, M.card_id, M.set_code, M.rarity, C.card_name, C.card_type, C.car
 from dbo.YGOCardsInfo as C 
 inner join (select card_id, set_code, rarity, set_name, market_price from dbo.YGOMarketPrice where update_date = (select MAX(update_date) from dbo.YGOMarketPrice)) as M on C.card_id = M.card_id
 
-drop view YGOCurrentMarket
+select CM.image, S.card_id, CM.card_name, S.set_code, CM.set_name, S.rarity,  CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join  
+(Select Y.image, Y.card_id, Y.set_code, Y.rarity, Y.card_name, Y.card_type, Y.card_race, Y.set_name, ROUND(Y.market_price / C.rate, 2) as market_price
+from YGOCurrentMarket as Y, dbo.ConversionRate as C
+where C.update_date = ((select MAX(update_date) from dbo.ConversionRate))) as CM
+on S.card_id = CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = '101164323405038069020'
 
-select * from YGOCurrentMarket order by set_name
-select * from YGOMarketPrice
-
-select CM.image, S.card_id, S.set_code, S.rarity, CM.card_name, CM.market_price, S.store_price, S.copies from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.store_id = 1
-
-SELECT COUNT(store_id) as num from YGOStorePrice where store_id = 1
-
-select CM.image, S.card_id, CM.card_name, S.set_code, S.rarity,  CM.market_price, S.store_price, S.copies, CM.set_name from YGOStorePrice as S inner join YGOCurrentMarket as CM on S.card_id = CM.card_id and S.set_code = CM.set_code and S.rarity = CM.rarity where S.user_id = 1
+select * from ShoppingCart
 
 update YGOStorePrice
 set store_price = C.market_price
