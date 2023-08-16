@@ -94,10 +94,10 @@
             // chart2
             // 
             chart2.ForeColor = SystemColors.Control;
-            chart2.Location = new Point(764, 413);
+            chart2.Location = new Point(778, 413);
             chart2.Margin = new Padding(4, 3, 4, 3);
             chart2.Name = "chart2";
-            chart2.Size = new Size(630, 359);
+            chart2.Size = new Size(630, 325);
             chart2.TabIndex = 11;
             // 
             // chart
@@ -106,7 +106,7 @@
             chart.Location = new Point(17, 413);
             chart.Margin = new Padding(4, 3, 4, 3);
             chart.Name = "chart";
-            chart.Size = new Size(611, 359);
+            chart.Size = new Size(611, 325);
             chart.TabIndex = 10;
             // 
             // increaseTable
@@ -183,7 +183,7 @@
             // separator
             // 
             separator.BorderStyle = BorderStyle.Fixed3D;
-            separator.Location = new Point(707, 438);
+            separator.Location = new Point(705, 420);
             separator.Name = "separator";
             separator.Size = new Size(2, 300);
             separator.TabIndex = 20;
@@ -237,7 +237,7 @@
             Controls.Add(chart);
             Controls.Add(top_back_panel);
             Name = "home_page";
-            Size = new Size(1500, 850);
+            Size = new Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)increaseTable).EndInit();
             top_back_panel.ResumeLayout(false);
             top_back_panel.PerformLayout();
