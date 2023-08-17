@@ -91,7 +91,7 @@ namespace InventoryApp
             {
                 string transaction_id = receipt_view.Rows[e.RowIndex].Cells[2].Value.ToString();
                 recpt_ID.Text = transaction_id;
-                items.Text = receipt_view.Rows[e.RowIndex].Cells[2].Value.ToString();
+                items.Text = receipt_view.Rows[e.RowIndex].Cells[3].Value.ToString();
                 cost.Text = $"${receipt_view.Rows[e.RowIndex].Cells[4].Value.ToString().Substring(0, receipt_view.Rows[e.RowIndex].Cells[4].Value.ToString().IndexOf('.') + 3)}";
                 load_receiptInfo(transaction_id);
                 tabControl1.SelectedIndex = 1;
