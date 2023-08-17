@@ -848,5 +848,33 @@ namespace InventoryApp.Helpers
             }
             return dt;
         }
+
+        public int CheckIfUpdated()
+        {
+            int status;
+            SqlCommand myCommand;
+            SqlDataReader myReader;
+            using (SqlConnection myConnection = new SqlConnection(connectionString))
+            {
+                string query = "Exec CheckIfUpdated @status output";
+                myCommand = new SqlCommand(query, myConnection);
+                myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
+                try
+                {
+                    myConnection.Open();
+                    myReader = myCommand.ExecuteReader();
+                    status = (int)myCommand.Parameters["@status"].Value;
+                    myConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    myConnection.Close();
+                    status = -1;
+                }
+                finally { myConnection.Close(); }
+            }
+            return status;
+        }
     }
 }
