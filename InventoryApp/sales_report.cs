@@ -70,7 +70,7 @@ namespace InventoryApp
                 return;
             }
             receipt_view.DataSource = ds.Tables[0];
-            receipt_view.Columns[3].DefaultCellStyle.Format = "$0.00##";
+            receipt_view.Columns[4].DefaultCellStyle.Format = "$0.00##";
             DataGridViewButtonColumn view_receipt = new DataGridViewButtonColumn();
             view_receipt.Text = "See Receipt";
             view_receipt.UseColumnTextForButtonValue = true;
@@ -87,12 +87,12 @@ namespace InventoryApp
 
         private void receipt_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 5)
             {
-                string transaction_id = receipt_view.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string transaction_id = receipt_view.Rows[e.RowIndex].Cells[2].Value.ToString();
                 recpt_ID.Text = transaction_id;
                 items.Text = receipt_view.Rows[e.RowIndex].Cells[2].Value.ToString();
-                cost.Text = $"${receipt_view.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, receipt_view.Rows[e.RowIndex].Cells[3].Value.ToString().IndexOf('.') + 3)}";
+                cost.Text = $"${receipt_view.Rows[e.RowIndex].Cells[4].Value.ToString().Substring(0, receipt_view.Rows[e.RowIndex].Cells[4].Value.ToString().IndexOf('.') + 3)}";
                 load_receiptInfo(transaction_id);
                 tabControl1.SelectedIndex = 1;
             }
@@ -133,7 +133,7 @@ namespace InventoryApp
         }
 
         //-------------------------------------------------------------------Receipt Info Tab------------------------------------------------------------------------------
-        public async void load_receiptInfo(string transaction_id)
+        public void load_receiptInfo(string transaction_id)
         {
             receipt_info.DataSource = null;
             DataTable dt = new DataTable();

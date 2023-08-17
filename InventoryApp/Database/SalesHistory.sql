@@ -3,7 +3,7 @@ Alter Proc SalesHistory
 @Start date,
 @End date
 as Begin 
-	Select date as Date, transaction_id as 'Transaction ID', items as 'Number of Item', total_price as 'Total' from dbo.Receipt where date <= @End and date >= @Start and user_id = @UID
+	Select date as Date, transaction_time as 'Transaction Time' ,transaction_id as 'Transaction ID', items as 'Number of Item', total_price as 'Total' from dbo.Receipt where date <= @End and date >= @Start and user_id = @UID order by date desc, transaction_time
 
 	Select Top 5 C.card_name as 'Card Name', US.[Unit Sold] from (Select card_id, SUM(quantity) as "Unit Sold" from (Select card_id, set_code, rarity, quantity from ReceiptInfo as R1 inner join 
 	(Select transaction_id, user_id, items, total_price from dbo.Receipt where date <= @End and date >= @Start and user_id = @UID) as R2 on R1.transaction_id = R2.transaction_id and R1.user_id = R2.user_id) as Q group by card_id) as US
