@@ -169,9 +169,17 @@ namespace InventoryApp
 
         private void check_out_Click(object sender, EventArgs e)
         {
-            db.Check_Out(Global.uid, dt, total_price.Text);
-            paging_catalog();
-            total_price.Text = taxes.Text = sub_total.Text = "$0.00";
+            try
+            {
+                db.Check_Out(Global.uid, dt, total_price.Text);
+                paging_catalog();
+                total_price.Text = taxes.Text = sub_total.Text = "$0.00";
+            }
+            catch
+            {
+                MessageBox.Show("Shopping cart is empty.");
+            }
+
         }
 
         private void shopping_cart_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
