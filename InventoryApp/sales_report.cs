@@ -82,6 +82,7 @@ namespace InventoryApp
             }
             pop_cards.ClearSelection();
             receipt_view.ClearSelection();
+            receipt_view.Sort(receipt_view.Columns["Date"], ListSortDirection.Descending);
         }
 
         private void receipt_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -95,19 +96,6 @@ namespace InventoryApp
                 load_receiptInfo(transaction_id);
                 tabControl1.SelectedIndex = 1;
             }
-        }
-
-        private void pie_chart(DataTable dt)
-        {
-            double[] y = new double[dt.Rows.Count];
-            for (int count = 0; count < dt.Rows.Count; count++)
-            {
-                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["Unit Sold"]), 2);
-            }
-            var pie = cardPlot.Plot.AddPie(y);
-            pie.Explode = true;
-            pie.ShowValues = true;
-            cardPlot.Refresh();
         }
 
         private void bar_chart(DataTable dt)

@@ -22,6 +22,7 @@ namespace InventoryApp
     public partial class add_cards : UserControl
     {
         public double c_rate;
+        private string usd_market_price;
         YGOProCard card;
         SQLHelper db = new SQLHelper();
 
@@ -100,6 +101,7 @@ namespace InventoryApp
                 api_setcode.Text = set_gridview.Rows[e.RowIndex].Cells[1].Value.ToString();
                 api_rare.Text = set_gridview.Rows[e.RowIndex].Cells[3].Value.ToString();
                 double market_price = Math.Round(Convert.ToDouble(set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString()) / c_rate, 2);
+                usd_market_price = Math.Round(Convert.ToDouble(set_gridview.Rows[e.RowIndex].Cells[4].Value.ToString()), 2).ToString();
                 api_price.Text = market_price.ToString();
                 foreach (DataGridViewRow r in set_gridview.Rows)
                 {
@@ -134,7 +136,7 @@ namespace InventoryApp
             else
             {
                 InsertCardYGO(Global.uid, api_id.Text.ToString(), api_setcode.Text.ToString(), api_cn.Text.ToString(), api_ctype.Text.ToString(), api_crace.Text.ToString(),
-                api_setname.Text.ToString(), api_rare.Text.ToString(), api_price.Text.ToString(), card_qnty.Value.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
+                api_setname.Text.ToString(), api_rare.Text.ToString(), usd_market_price, card_qnty.Value.ToString(), image_url.Text.ToString(), s_price.Text.ToString());
             }
         }
 
