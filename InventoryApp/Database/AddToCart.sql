@@ -48,7 +48,3 @@ Begin
 			End
         End
 End
-
-select * from ShoppingCart
-
-delete from ShoppingCart

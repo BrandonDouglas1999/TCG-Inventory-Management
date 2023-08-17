@@ -21,9 +21,3 @@ Begin
 	set @Start = (Select Min(update_date) from dbo.YGOMarketPrice where card_id = @CID and set_code = @SC and rarity = @R)
 	set @End = (Select Max(update_date) from dbo.YGOMarketPrice where card_id = @CID and set_code = @SC and rarity = @R)
 End
-
-drop proc DateRange
-drop proc CardPriceHistory
-select Top 7 update_date, market_price from dbo.YGOMarketPrice where card_id = 3410461 and set_code = 'DIFO-EN035' and rarity = '(ScR)' order by update_date desc
-
-exec CardPriceHistory 3410461, 'DIFO-EN035', '(ScR)', '2023-07-25', '2023-07-29'
