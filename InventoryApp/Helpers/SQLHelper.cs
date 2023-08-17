@@ -366,6 +366,22 @@ namespace InventoryApp.Helpers
                 }
             }
         }
+
+        /*Insert the entire table of latest market price of all cards into market price table*/
+        public void UpdateTable(DataTable data)
+        {
+            SqlConnection myConnection = new SqlConnection(connectionString);
+            SqlCommand myCommand;
+            myConnection.Open();
+            myCommand = new SqlCommand("UpdateDB2", myConnection);
+            myCommand.CommandType = CommandType.StoredProcedure;
+            SqlParameter parameter = new SqlParameter();
+            parameter.ParameterName = "@datatable";
+            parameter.Value = data;
+            myCommand.Parameters.Add(parameter);
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
+        }
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
         //-----------------------------------------------------------------Conversion Rate Related-----------------------------------------------------

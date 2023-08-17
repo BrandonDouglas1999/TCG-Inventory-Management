@@ -23,8 +23,6 @@ as Begin
 		End
 End
 
-drop proc LoginVerification
-
 create proc ExternalLogin
 @GID varchar(64),
 @auth_type varchar(50),

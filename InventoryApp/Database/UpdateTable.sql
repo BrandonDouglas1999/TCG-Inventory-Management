@@ -26,11 +26,3 @@ Begin
 		delete from CardsUpdate
 	End 
 End
-
-drop proc UpdateDB
-delete from CardsUpdate
-select * from CardsUpdate
-select * from CardsInfo
-update CardsInfo set current_price = 0
-update CardsInfo set old_price = current_price
-select * from CardsInfo where card_name = 'Number 39: Utopia'

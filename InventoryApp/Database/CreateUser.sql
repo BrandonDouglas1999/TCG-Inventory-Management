@@ -1,3 +1,4 @@
+/*Create new user account*/
 Create Proc CreateUser
 @UN varchar(50), /*username*/
 @PW varchar(50),
@@ -34,10 +35,3 @@ as Begin
 	Insert into UserLogin(user_id, password, email, user_name) values (@UID, @PW, @EMAIL, @UN)
 	set @Status = 1
 End
-
-select * from UserLogin
-delete from UserLogin where user_id = '91'
-
-declare @stat int
-Exec CreateUser 'anothernew_man', 'Random', 'randon', 'anothernew_man@mail.com', @stat output
-print @stat
