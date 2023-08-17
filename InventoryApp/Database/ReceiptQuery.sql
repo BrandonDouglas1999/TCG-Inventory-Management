@@ -17,6 +17,7 @@ Alter Proc AddReceipt
 @uid varchar(64),
 @table ReceiptContent Readonly,
 @total money,
+@time time,
 @status int output
 as 
 Begin
@@ -26,7 +27,7 @@ Begin
 		Begin Transaction
 			set @date = GETDATE()
 			set @count = (select SUM(quantity) from @table)
-			Insert into dbo.Receipt(transaction_id, user_id, date, items, total_price) values (@tid, @uid, @date, @count, @total) /*Insert receipt info*/
+			Insert into dbo.Receipt(transaction_id, user_id, date, items, total_price, transaction_time) values (@tid, @uid, @date, @count, @total, @time) /*Insert receipt info*/
 			Insert into dbo.ReceiptInfo(transaction_id, user_id, card_id, set_code, rarity, quantity, price) Select transaction_id, user_id, card_id, set_code, rarity, quantity, price from @table
 			Update dbo.YGOStorePrice set copies = (copies - quantity)
 					from dbo.YGOStorePrice SP inner join dbo.ReceiptInfo R on SP.card_id = R.card_id and SP.set_code = R.set_code and SP.rarity = R.rarity where transaction_id = @tid and SP.user_id = @uid

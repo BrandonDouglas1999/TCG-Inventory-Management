@@ -686,6 +686,7 @@ namespace InventoryApp.Helpers
             int status = 0;
             Random rand = new Random((int)DateTime.Now.Ticks);
             int tid = rand.Next(1, 100000000); //generate transaction id 
+            string time = DateTime.Now.ToString("HH:mm:ss");
             dt.Columns.Add("transaction_id", typeof(System.Int32));
             dt.Columns.Add("user_id", typeof(System.String));
             foreach (DataRow r in dt.Rows)
@@ -704,6 +705,7 @@ namespace InventoryApp.Helpers
                 myParameter.Value = dt;
                 myCommand.Parameters.Add(myParameter);
                 myCommand.Parameters.Add("@total", SqlDbType.Money).Value = total;
+                myCommand.Parameters.Add("@time", SqlDbType.Time).Value = time;
                 myCommand.Parameters.Add("@status", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {
