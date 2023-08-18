@@ -1,4 +1,5 @@
 ﻿using InventoryApp.Helpers;
+using InventoryApp.Processors;
 using ScottPlot;
 using ScottPlot.Plottable;
 using System;
@@ -21,196 +22,69 @@ namespace InventoryApp
             Use datagridview to show all the card that change it price, then user can select a card on the datagrid view then the chart will show the market trend of that card
         */
         SQLHelper db = new SQLHelper();
-        private ScottPlot.Plottable.MarkerPlot HighlightedPoint;
-        private ScottPlot.Plottable.ScatterPlot CurrencyPlot;
-        private ScottPlot.Plottable.ScatterPlot CardPlot;
-        private int LastHighlightedIndex = -1; //for currency chart
-        private int LastHighlightedIndex2 = -1; //for card chart
 
         public Full_ImageForm()
         {
             InitializeComponent();
-            load_dashboard();
         }
 
-        /*Load currency exchange rate for the last 7 days*/
-        private void load_rateChart()
+        private async void update_card_Click(object sender, EventArgs e)
         {
-            chart2.Plot.Clear();
-            //Fill chart 
-            DataTable dt = new DataTable();
-            string query = "Select top 7 update_date, rate from dbo.ConversionRate order by update_date desc";
-            dt = db.Select(query);
-            if (dt == null)
+            label1.Text = "Updating Database";
+            int result = await update_cardsV3();
+            if (result ==  1)
             {
-                return;
+                label1.Text = "Update complete";
             }
-            DateTime[] date = new DateTime[dt.Rows.Count];
-            double[] y = new double[dt.Rows.Count];
-            string[] y_label = new string[dt.Rows.Count];
-            for (int count = 0; count < dt.Rows.Count; count++)
+            else
             {
-                date[count] = Convert.ToDateTime(dt.Rows[count]["update_date"].ToString());
-                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["rate"]), 3);
-                y_label[count] = y[count].ToString();
+                label1.Text = "Failed";
             }
-            //convert date time to double
-            double[] x = date.Select(x => x.ToOADate()).ToArray();
-            CurrencyPlot = chart2.Plot.AddScatter(x, y);
-            chart2.Plot.XAxis.DateTimeFormat(true);
-            chart2.Plot.XAxis.Label("Date");
-            chart2.Plot.YAxis.Label("Conversion Rate (CAD to USD)");
-            //plot.DataPointLabels = y_label;
-            chart2.Plot.SetAxisLimits(x.Min() - .5, x.Max() + .5, y.Min() - 0.01, y.Max() + 0.01);
-            // disable left-click-drag pan
-            chart2.Configuration.Pan = false;
-            // disable right-click-drag zoom
-            chart2.Configuration.Zoom = false;
-            // disable scroll wheel zoom
-            chart2.Configuration.ScrollWheelZoom = false;
-            // disable middle-click-drag zoom window
-            chart2.Configuration.MiddleClickDragZoom = false;
-            chart2.Plot.Grid(false);
-            chart2.Plot.XAxis.TickLabelStyle(rotation: 45);
 
-            //Add red circle as highlight point indicator
-            HighlightedPoint = chart2.Plot.AddPoint(0, 0);
-            HighlightedPoint.Color = Color.Red;
-            HighlightedPoint.MarkerSize = 10;
-            HighlightedPoint.MarkerShape = ScottPlot.MarkerShape.openCircle;
-            HighlightedPoint.IsVisible = false;
-
-            chart2.Refresh();
         }
 
-        private void currency_MouseMove(object sender, MouseEventArgs e)
+        private async Task<int> update_cards()
         {
-            // determine point nearest the cursor
-            (double mouseCoordX, double mouseCoordY) = chart2.GetMouseCoordinates();
-            double xyRatio = chart2.Plot.XAxis.Dims.PxPerUnit / chart2.Plot.YAxis.Dims.PxPerUnit;
-            (double pointX, double pointY, int pointIndex) = CurrencyPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
-
-            // place the highlight over the point of interest
-            HighlightedPoint.X = pointX;
-            HighlightedPoint.Y = pointY;
-            HighlightedPoint.IsVisible = true;
-            DateTime date = DateTime.FromOADate(pointX);
-            date_label.Text = date.ToString("yyyy-MM-dd");
-            rate_label.Text = pointY.ToString();
-            
-            // render if the highlighted point chnaged
-            if (LastHighlightedIndex != pointIndex)
+            try
             {
-                LastHighlightedIndex = pointIndex;
-                chart2.Render();
-            }
-        }
-
-        private void load_priceChange()
-        {
-            increaseTable.Columns.Clear();
-            DataTable dt = new DataTable();
-            string query = "select SP.card_id, AP.card_name, SP.set_code, SP.rarity, AP.lastWeekAVG, AP.thisWeekAVG, AP.differ from YGOStorePrice as SP inner join " +
-                "(select C.card_name, A.card_id, A.set_code, A.rarity, A.lastWeekAVG, A.thisWeekAVG, A.differ from YGOPriceAVG as A inner join " +
-                "YGOCardsInfo as C on  A.card_id = C.card_id where A.differ > 5 or A.differ < -4) as AP on SP.card_id = AP.card_id and SP.set_code " +
-                "= AP.set_code and SP.rarity = AP.rarity and SP.user_id = '1'";
-            dt = db.Select(query);
-            increaseTable.DataSource = dt;
-            increaseTable.Columns[0].Visible= false;
-            increaseTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            increaseTable.Columns[4].DefaultCellStyle.Format = "$0.00##";
-            increaseTable.Columns[5].DefaultCellStyle.Format = "$0.00##";
-            increaseTable.Columns[6].DefaultCellStyle.Format = "$0.00##";
-            DataGridViewButtonColumn graph_card = new DataGridViewButtonColumn();
-            graph_card.Text = "See Market Trend";
-            graph_card.UseColumnTextForButtonValue= true;
-            increaseTable.Columns.Add(graph_card);
-        }
-
-        private void increaseTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show(e.ColumnIndex.ToString());
-            if (e.RowIndex >= 0)
-            {
-                string cid = increaseTable.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string sc = increaseTable.Rows[e.RowIndex].Cells[3].Value.ToString();
-                string r = increaseTable.Rows[e.RowIndex].Cells[4].Value.ToString();
-                if (e.ColumnIndex == 0)
+                DataTable set_info = new DataTable(); //number of cards in each set
+                DateTime date = DateTime.Now;
+                string dateFormat = date.ToString("yyyy-MM-dd");
+                String cards_set = "select distinct card_id, set_code, rarity from dbo.YGOMarketPrice";
+                set_info = db.Select(cards_set);
+                set_info.Columns.Add("update_date", typeof(string)).SetOrdinal(0); //Add update_date column to the front
+                set_info.Columns.Add("current_price", typeof(string));
+                set_info.Columns.Add("set_name", typeof(string));
+                foreach (DataRow dr in set_info.Rows)
                 {
-                    load_cardTrend(cid, sc, r);
+                    dr["update_date"] = dateFormat;
                 }
+                foreach (DataRow dr in set_info.Rows)
+                {
+                    string card_id = dr["card_id"].ToString();
+                    var api_card = await CardProcessor.LoadProDataID(card_id);
+                    if (api_card != null)
+                    {
+                        foreach (var card in api_card.data[0].card_sets)
+                        {
+                            if (card.set_code == dr["set_code"].ToString() && card.set_rarity_code == dr["rarity"].ToString())
+                            {
+                                double new_price = Convert.ToDouble(card.set_price);
+                                dr["current_price"] = Math.Round(new_price, 2).ToString(); //change card price in datatable
+                                dr["set_name"] = card.set_name;
+                            }
+                        }
+                    }
+                }
+                db.UpdateTable(set_info);
+                return 1;
             }
+            catch (Exception ex) { 
+                MessageBox.Show(ex.Message);
+                return -1; }
         }
 
-        private void load_cardTrend(string cid, string setcode, string rarity) 
-        {
-            DataTable dt = new DataTable();
-            string query = String.Format("select update_date, market_price from YGOMarketPrice where card_id = {0} and set_code = '{1}' and rarity = '{2}' and " +
-                "update_date > DATEADD(week, -2, format(GETDATE(), 'yyyy-MM-dd'))", cid, setcode, rarity);
-            dt = db.Select(query);
-            plot_data(dt);
-        }
 
-        private void plot_data(DataTable dt)
-        {
-            chart.Plot.Clear();
-            DateTime[] date = new DateTime[dt.Rows.Count];
-            double[] y = new double[dt.Rows.Count];
-            string[] y_label = new string[dt.Rows.Count];
-            for (int count = 0; count < dt.Rows.Count; count++)
-            {
-                date[count] = Convert.ToDateTime(dt.Rows[count]["update_date"].ToString());
-                y[count] = Math.Round(Convert.ToDouble(dt.Rows[count]["market_price"]), 2);
-                y_label[count] = "$" + y[count].ToString();
-            }
-            //convert date time to double
-            double[] x = date.Select(x => x.ToOADate()).ToArray();
-            CardPlot = chart.Plot.AddScatter(x, y);
-            chart.Plot.XAxis.DateTimeFormat(true);
-            chart.Plot.YAxis.Label("Card Price (CAD)");
-            chart.Plot.XAxis.Label("Market Price for the Past 2 Weeks");
-            //plot.DataPointLabels = y_label;
-            chart.Plot.SetAxisLimits(x.Min() - 1, x.Max() + .9, y.Min() - 2, y.Max() + 1);
-            chart.Plot.XAxis.TickLabelStyle(rotation: 45);
-
-            //Add red circle as highlight point indicator
-            HighlightedPoint = chart.Plot.AddPoint(0, 0);
-            HighlightedPoint.Color = Color.Green;
-            HighlightedPoint.MarkerSize = 10;
-            HighlightedPoint.MarkerShape = ScottPlot.MarkerShape.openCircle;
-            HighlightedPoint.IsVisible = false;
-            chart.MouseMove += card_MouseMove;
-            chart.Refresh();
-        }
-
-        private void card_MouseMove(object sender, MouseEventArgs e)
-        {
-            // determine point nearest the cursor
-            (double mouseCoordX, double mouseCoordY) = chart.GetMouseCoordinates();
-            double xyRatio = chart.Plot.XAxis.Dims.PxPerUnit / chart.Plot.YAxis.Dims.PxPerUnit;
-            (double pointX, double pointY, int pointIndex) = CardPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
-
-            // place the highlight over the point of interest
-            HighlightedPoint.X = pointX;
-            HighlightedPoint.Y = pointY;
-            HighlightedPoint.IsVisible = true;
-            DateTime date = DateTime.FromOADate(pointX);
-            date_label.Text = date.ToString("yyyy-MM-dd");
-            rate_label.Text = "$" + pointY.ToString();
-
-            // render if the highlighted point chnaged
-            if (LastHighlightedIndex2 != pointIndex)
-            {
-                LastHighlightedIndex2 = pointIndex;
-                chart.Render();
-            }
-        }
-
-        private void load_dashboard()
-        {
-            load_rateChart();
-            load_priceChange();
-        }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

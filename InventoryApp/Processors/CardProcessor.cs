@@ -56,6 +56,33 @@ namespace InventoryApp.Processors
             }
         }
 
+        public static async Task<YGOProCard> LoadProDataID(string cardid = "")
+        {
+            string url = "";
+            if (!String.IsNullOrEmpty(cardid))
+            {
+                url = $"https://db.ygoprodeck.com/api/v7/cardinfo.php?id={cardid}&tcgplayer_data";
+            }
+            else
+                url = $"https://db.ygoprodeck.com/api";
+
+            using (HttpResponseMessage response = await APIHelper.APIClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+                    YGOProCard card = await response.Content.ReadAsAsync<YGOProCard>();
+                    return card;
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                    YGOProCard card = new YGOProCard();
+                    return card;
+                }
+            }
+        }
+
         public static async Task<YGOProCard> GetImage(string cardName = "")
         {
            
