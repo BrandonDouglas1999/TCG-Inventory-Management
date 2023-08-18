@@ -1,4 +1,6 @@
-/*Store content of the receipt in a datatable then insert the entire table into ReceiptInfo*/
+/*
+Store content of the receipt in a datatable then insert the entire table into ReceiptInfo
+*/
 Create Type ReceiptContent as Table 
 (
 	card_id int not null,

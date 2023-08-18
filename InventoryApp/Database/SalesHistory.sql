@@ -1,3 +1,6 @@
+/*
+Return list of receipt and the list of store's top seller cards along with total units sold
+*/
 Alter Proc SalesHistory 
 @UID varchar(64),
 @Start date,

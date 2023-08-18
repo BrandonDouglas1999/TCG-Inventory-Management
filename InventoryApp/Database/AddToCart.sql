@@ -1,3 +1,6 @@
+/*
+Add the selected card into the user shopping card, will check if the quantity the user requested for exist first before inserting.
+*/
 USE [TCG_Inventory3]
 GO
 /****** Object:  StoredProcedure [dbo].[AddToCart]    Script Date: 2023-08-11 9:24:31 AM ******/

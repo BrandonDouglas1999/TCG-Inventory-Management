@@ -1,4 +1,7 @@
-(stringcreate proc LoginVerification
+/*
+ Login verification for using password 
+*/
+create proc LoginVerification
 @user_name varchar(50),
 @pw varchar(50),
 @status int output, /*output or validation*/
@@ -23,6 +26,9 @@ as Begin
 		End
 End
 
+/* 
+ Login verification for using external login (google)
+*/
 create proc ExternalLogin
 @GID varchar(64),
 @auth_type varchar(50),

@@ -1,3 +1,7 @@
+/*
+Update the user's item in the shopping cart
+*/
+
 USE [TCG_Inventory3]
 GO
 /****** Object:  StoredProcedure [dbo].[EditCart]    Script Date: 2023-08-14 12:29:03 AM ******/

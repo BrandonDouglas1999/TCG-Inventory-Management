@@ -1,3 +1,6 @@
+/*
+Retrieve the user shopping cart along with the price of those card
+*/
 USE [TCG_Inventory3]
 GO
 /****** Object:  StoredProcedure [dbo].[GetCart]    Script Date: 2023-08-11 9:25:23 AM ******/

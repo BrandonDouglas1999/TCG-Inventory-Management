@@ -1,3 +1,6 @@
+/*
+Add new card into user inventory table, if card does not exist in database then it will be add and its price keep track of from then on with daily market price update
+*/
 Alter Proc AddCard
 @UID varchar(64), /*Store id*/
 @CID int,
