@@ -1,5 +1,6 @@
 ﻿using InventoryApp.Helpers;
 using InventoryApp.Processors;
+using InventoryApp.API_Model;
 using ScottPlot;
 using ScottPlot.Plottable;
 using System;
@@ -16,31 +17,33 @@ using System.Xml.Linq;
 
 namespace InventoryApp
 {
-    public partial class Full_ImageForm : Form
+    public partial class ManuallyUpdateDB : Form
     {
         /*
             Use datagridview to show all the card that change it price, then user can select a card on the datagrid view then the chart will show the market trend of that card
         */
         SQLHelper db = new SQLHelper();
 
-        public Full_ImageForm()
+        public ManuallyUpdateDB()
         {
             InitializeComponent();
         }
 
         private async void update_card_Click(object sender, EventArgs e)
         {
-            label1.Text = "Updating Database";
-            int result = await update_cardsV3();
-            if (result ==  1)
+            int result;
+
+            label1.Text = "Updating Database...";
+            ConversionModel rate = await ConversionRate.LoadRate();
+            result = await update_cards();
+            if (result == 1)
             {
-                label1.Text = "Update complete";
+                label1.Text = "Update complete \nPlease close this window";
             }
             else
             {
                 label1.Text = "Failed";
             }
-
         }
 
         private async Task<int> update_cards()

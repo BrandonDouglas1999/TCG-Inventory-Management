@@ -415,16 +415,13 @@ namespace InventoryApp.Helpers
         public double InsertRate(double rate)
         {
             SqlCommand myCommand;
-            SqlDataReader myReader;
             double db_rate = 0;
             using (SqlConnection myConnection = new SqlConnection(connectionString))
             {
                 myConnection.Open();
-                String query = String.Format("Exec InsertRate {0}, @rate output", rate);
+                String query = String.Format("Exec InsertRate {0}", rate);
                 myCommand = new SqlCommand(query, myConnection);
-                myCommand.Parameters.Add("@rate", System.Data.SqlDbType.Float).Direction = System.Data.ParameterDirection.Output;
-                myReader = myCommand.ExecuteReader();
-                db_rate = (double)myCommand.Parameters["@rate"].Value;
+                myCommand.ExecuteNonQuery();
             }
             return db_rate;
         }
