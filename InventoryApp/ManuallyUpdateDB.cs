@@ -27,22 +27,20 @@ namespace InventoryApp
         public ManuallyUpdateDB()
         {
             InitializeComponent();
+            update_db();
+            
         }
 
-        private async void update_card_Click(object sender, EventArgs e)
+        public async void update_db()
         {
-            int result;
-
-            label1.Text = "Updating Database...";
-            ConversionModel rate = await ConversionRate.LoadRate();
-            result = await update_cards();
+            int result = await update_cards();
             if (result == 1)
             {
-                label1.Text = "Update complete \nPlease close this window";
+                this.Close();
             }
             else
             {
-                label1.Text = "Failed";
+                label1.Text = "Error";
             }
         }
 
