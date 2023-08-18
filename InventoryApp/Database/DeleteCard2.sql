@@ -1,4 +1,5 @@
-/*Delete card from database, stored procedure return status code to indicate whether the card exists 
+/*
+Delete card from database, stored procedure return status code to indicate whether the card exists 
 and has been deleted or not, will also delete card from shopping cart
 */
 Alter Proc deleteCard

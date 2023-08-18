@@ -1,3 +1,6 @@
+/*
+Update the card inventory info
+*/
 Alter proc UpdateInventory 
 @UID varchar(64),
 @CID int,

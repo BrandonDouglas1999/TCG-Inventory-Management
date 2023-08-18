@@ -1,4 +1,6 @@
-/*Materialized view for the current market price of all cards*/
+/*
+Materialized view for the current market price of all cards
+*/
 create view YGOCurrentMarket
 with Schemabinding
 as
@@ -6,7 +8,9 @@ Select C.image, M.card_id, M.set_code, M.rarity, C.card_name, C.card_type, C.car
 from dbo.YGOCardsInfo as C 
 inner join (select card_id, set_code, rarity, set_name, market_price from dbo.YGOMarketPrice where update_date = (select MAX(update_date) from dbo.YGOMarketPrice)) as M on C.card_id = M.card_id
 
-/*Materialized view showing the card average price change from last 7 days and current 7 days*/
+/*
+Materialized view showing the card average price change from last 7 days and current 7 days
+*/
 create view YGOPriceAVG
 with Schemabinding 
 as 
