@@ -26,24 +26,14 @@ namespace InventoryApp
         [STAThread]
         static void Main()
         {
-
-            /*
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Full_ImageForm());
-            */
+            
+            
+            ApplicationConfiguration.Initialize();
             SQLHelper db = new SQLHelper();
             if (db.CheckIfUpdated() == 0)
             {
-                var task = update_cards(db);
-                task.Wait();
+                Application.Run(new ManuallyUpdateDB());
             }
-
-
-            ApplicationConfiguration.Initialize();
-
-            Full_ImageForm full_ImageForm = new Full_ImageForm();
-
             Login login_screen = new Login();
             Main main = new Main();
             Application.Run(login_screen);
