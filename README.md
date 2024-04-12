@@ -5,5 +5,8 @@ Setting up
 Database Connection
 You will need to change the server name in the connection string to your database server to connect the app to your database. You will find the connection string variable in the Program.cs file.
 
+Setting up Google OAuth 
+You will need to add new secret and client IDs to login code
+
 Running Application
 When running the app for the first time every day, the app will take some time to update the database with the current market price and exchange rate.
